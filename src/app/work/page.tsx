@@ -15,7 +15,6 @@ const weddings = [
   { src: "/haldi-ceremony-indian-wedding.webp", caption: 'Vibrant Haldi Rituals' },
   { src: "/10-mehndi-photos.jpg", caption: 'Intricate Mehndi Art' },
   { src: "/Indian-Wedding-Photography-Baraat-Boston-Ptaufiq-Gaylord-National-Maryland.jpg", caption: 'Joyful Baraat Procession' },
-  { src: "/bride-groom-standing.jpg", caption: 'A Moment in Time' },
   { src: "/bride-groom-handshake.jpg", caption: 'A Vow of Togetherness' },
   { src: "/resort-hall.jpg", caption: 'Destination Dream' },
   { src: "/wedding-lawns.jpg", caption: 'Garden Paradise' },
