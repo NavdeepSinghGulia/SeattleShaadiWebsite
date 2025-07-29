@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview A contact form submission flow.
@@ -10,7 +11,7 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 
-export const ContactFormSchema = z.object({
+const ContactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
   eventDate: z.string().optional(),
