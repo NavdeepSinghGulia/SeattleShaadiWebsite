@@ -53,7 +53,7 @@ export function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent'
+        isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent text-white'
       )}
     >
       <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-6">
@@ -66,7 +66,8 @@ export function Header() {
               key={link.href}
               href={link.href}
               className={cn(
-                "relative font-semibold text-foreground/80 transition-colors hover:text-primary",
+                "relative font-semibold transition-colors hover:text-primary",
+                 isScrolled ? "text-foreground/80" : "text-white/80",
                 "after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 after:origin-center hover:after:scale-x-100",
                 pathname === link.href ? "text-primary after:scale-x-100" : ""
               )}

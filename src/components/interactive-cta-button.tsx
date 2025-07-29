@@ -12,7 +12,7 @@ export function InteractiveCtaButton() {
     <Button
       asChild
       size="lg"
-      className="mt-8 relative overflow-hidden group"
+      className="mt-8 relative overflow-hidden group animate-glow"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
