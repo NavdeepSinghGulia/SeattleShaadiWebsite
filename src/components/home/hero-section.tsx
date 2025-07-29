@@ -29,7 +29,7 @@ export function HeroSection() {
                     <CarouselContent>
                         {mainCarouselImages.map((image, index) => (
                             <CarouselItem key={index}>
-                                <div className="relative h-[90vh] w-full">
+                                <div className="relative h-[95vh] w-full">
                                     <Image
                                         src={image.src}
                                         alt={image.alt}
@@ -47,7 +47,7 @@ export function HeroSection() {
                     <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
                 </Carousel>
             </div>
-            <div className="md:hidden relative h-[60vh] w-full">
+            <div className="md:hidden relative h-[70vh] w-full">
                 <Image
                     src={mainCarouselImages[0].src}
                     alt={mainCarouselImages[0].alt}
