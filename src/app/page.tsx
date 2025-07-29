@@ -205,7 +205,7 @@ export default function Home() {
       </section>
 
       {/* YouTube Video Section */}
-      <section className="w-full py-16 md:py-24">
+      <section className="w-full">
         <div className="container mx-auto px-0">
           <AnimatedDiv>
             <div className="aspect-w-16 aspect-h-9 shadow-2xl mx-auto max-w-full">
