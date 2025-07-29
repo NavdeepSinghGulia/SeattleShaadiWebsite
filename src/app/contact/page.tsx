@@ -1,7 +1,7 @@
 
 'use client';
 import { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,15 +13,10 @@ import { type ContactFormInput, submitContactForm } from '@/ai/flows/contact-flo
 import { Loader2 } from 'lucide-react';
 import { z } from 'zod';
 
-const phoneRegex = new RegExp(
-  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9A-Z]{3}[)])?[\s-]?([0-9A-Z]{3})[\s-]?([0-9A-Z]{4,7})$/
-);
-
-
 export const ContactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
-  phone: z.string().regex(phoneRegex, 'Invalid number!'),
+  phone: z.string().min(14, { message: 'Phone number must be 10 digits.' }), // (123) 456-7890 is 14 chars
   eventDate: z.string().optional(),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
@@ -40,9 +35,32 @@ export default function ContactPage() {
     },
   });
 
+    const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>, fieldChange: (value: string) => void) => {
+    const input = e.target.value.replace(/\D/g, ''); // Remove all non-digit characters
+    if (input.length > 10) {
+      return; // Don't allow more than 10 digits
+    }
+
+    let formattedInput = '';
+    if (input.length > 0) {
+      formattedInput = '(' + input.substring(0, 3);
+    }
+    if (input.length >= 4) {
+      formattedInput += ') ' + input.substring(3, 6);
+    }
+    if (input.length >= 7) {
+      formattedInput += '-' + input.substring(6, 10);
+    }
+    
+    fieldChange(formattedInput);
+  };
+
   async function onSubmit(values: ContactFormInput) {
     setIsSubmitting(true);
-    const result = await submitContactForm(values);
+    const result = await submitContactForm({
+        ...values,
+        phone: values.phone.replace(/\D/g, ''), // Send raw digits to backend
+    });
     if (result.success) {
       toast({
         title: 'Message Sent!',
@@ -113,7 +131,12 @@ export default function ContactPage() {
                 <FormItem>
                   <FormLabel className="font-semibold">Phone Number</FormLabel>
                   <FormControl>
-                    <Input type="tel" placeholder="Your phone number" {...field} className="bg-background" />
+                    <Input 
+                      type="tel" 
+                      placeholder="(***) ***-****" 
+                      {...field} 
+                      onChange={(e) => handlePhoneChange(e, field.onChange)}
+                      className="bg-background" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

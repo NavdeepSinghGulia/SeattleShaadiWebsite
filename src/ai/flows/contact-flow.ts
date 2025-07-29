@@ -11,15 +11,10 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 
-const phoneRegex = new RegExp(
-  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9A-Z]{3}[)])?[\s-]?([0-9A-Z]{3})[\s-]?([0-9A-Z]{4,7})$/
-);
-
-
 const ContactFormInputSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
-  phone: z.string().regex(phoneRegex, 'Invalid number'),
+  phone: z.string().min(10, { message: 'Please enter a valid 10-digit phone number.' }),
   eventDate: z.string().optional(),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
