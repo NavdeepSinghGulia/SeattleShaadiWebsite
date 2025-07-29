@@ -72,7 +72,7 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-       <section className="w-full relative bg-background pt-24 md:pt-0">
+       <section className="w-full relative bg-background">
          {/* Desktop Carousel */}
          <div className="hidden md:block">
             <Carousel
@@ -87,7 +87,7 @@ export default function Home() {
               <CarouselContent>
                 {mainCarouselImages.map((image, index) => (
                   <CarouselItem key={index}>
-                    <div className="relative w-full h-[75vh] md:h-[90vh]">
+                    <div className="relative w-full h-[75vh] md:h-screen">
                       <Image
                         src={image.src}
                         alt={image.alt}
@@ -104,6 +104,21 @@ export default function Home() {
               <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
             </Carousel>
          </div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-20 w-full px-4">
+             <AnimatedDiv>
+                <h1 className="text-5xl md:text-7xl font-bold font-headline text-white drop-shadow-2xl">
+                    Crafting Timeless Indian Weddings
+                </h1>
+             </AnimatedDiv>
+              <AnimatedDiv delay={200}>
+                <p className="mt-6 text-lg md:text-xl max-w-3xl mx-auto text-white/90 drop-shadow-xl">
+                    From grand traditions to modern elegance, we bring your dream wedding to life in the heart of the Pacific Northwest.
+                </p>
+              </AnimatedDiv>
+              <AnimatedDiv delay={400}>
+                <InteractiveCtaButton />
+              </AnimatedDiv>
+          </div>
       </section>
 
       {/* About Section */}
@@ -289,3 +304,4 @@ export default function Home() {
     </div>
   );
 }
+    

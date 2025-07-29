@@ -11,30 +11,28 @@ import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/work', label: 'Our Work' },
   { href: '/spotlight', label: 'Spotlight' },
-  { href: '/fun', label: 'Fun at SS' },
+  { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
   { href: '/faq', label: 'FAQs' },
 ];
 
 function Logo() {
     return (
-    <div className="flex items-center justify-center p-1">
+    <Link href="/" className="flex items-center justify-center p-1 transition-transform hover:scale-105">
       <Image
         src="/Logo-new.webp"
         alt="Seattle Shaadi Logo"
         width={150}
         height={50}
-        className="h-16 w-auto transition-transform hover:scale-105"
+        className="h-16 w-auto"
         priority
       />
-    </div>
+    </Link>
   );
 }
-
 
 export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
@@ -43,23 +41,23 @@ export function Header() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHome = pathname === '/';
+  const headerClasses = cn(
+    'fixed top-0 z-50 w-full transition-all duration-300',
+    isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md animate-glow' : 'bg-transparent',
+    isHome && !isScrolled ? 'text-white' : 'text-foreground'
+  );
+
   return (
-    <header
-      className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent text-white'
-      )}
-    >
+    <header className={headerClasses}>
       <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-6">
-        <Link href="/" onClick={() => isMobileMenuOpen && setIsMobileMenuOpen(false)}>
-          <Logo />
-        </Link>
+        <Logo />
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) => (
             <Link
@@ -67,7 +65,7 @@ export function Header() {
               href={link.href}
               className={cn(
                 "relative font-semibold transition-colors hover:text-primary",
-                 isScrolled ? "text-foreground/80" : "text-white/80",
+                 (isHome && !isScrolled) ? "text-white/80" : "text-foreground/80",
                 "after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 after:origin-center hover:after:scale-x-100",
                 pathname === link.href ? "text-primary after:scale-x-100" : ""
               )}
@@ -75,11 +73,14 @@ export function Header() {
               {link.label}
             </Link>
           ))}
+           <Button asChild>
+            <Link href="/contact">Get a Quote</Link>
+          </Button>
         </nav>
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" className={cn((isHome && !isScrolled) ? "text-white" : "text-foreground")}>
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
@@ -97,12 +98,20 @@ export function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-semibold text-foreground/80 transition-colors hover:text-primary"
+                      className={cn(
+                        "text-lg font-semibold text-foreground/80 transition-colors hover:text-primary",
+                         pathname === link.href && "text-primary"
+                      )}
                     >
                       {link.label}
                     </Link>
                   ))}
                 </nav>
+                 <div className="mt-auto">
+                    <Button asChild className="w-full">
+                        <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)}>Get a Quote</Link>
+                    </Button>
+                 </div>
               </div>
             </SheetContent>
           </Sheet>
@@ -111,3 +120,4 @@ export function Header() {
     </header>
   );
 }
+    
