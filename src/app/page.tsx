@@ -206,9 +206,9 @@ export default function Home() {
 
       {/* YouTube Video Section */}
       <section className="w-full">
-        <div className="container mx-auto px-0">
+        <div className="container mx-auto px-0 max-w-full">
           <AnimatedDiv>
-            <div className="aspect-w-16 aspect-h-9 shadow-2xl mx-auto max-w-full">
+            <div className="aspect-w-16 aspect-h-9 shadow-2xl mx-auto">
               <LiteYouTubeEmbed
                   id="EnxQdO3x12s"
                   title="Seattle Shaadi - Wedding Highlight Reel"
