@@ -26,7 +26,7 @@ function Logo() {
         alt="Seattle Shaadi Logo"
         width={150}
         height={50}
-        className="h-16 w-auto dark:invert"
+        className="h-16 w-auto"
         priority
       />
     </Link>
