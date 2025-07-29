@@ -37,7 +37,7 @@ export default function AboutPage() {
       <div className="mt-16 max-w-4xl mx-auto space-y-12">
         {teamMembers.map((member, index) => (
           <AnimatedDiv key={member.name} delay={index * 150}>
-            <Card className="border-none shadow-lg overflow-hidden bg-secondary/30">
+            <Card className="border-none shadow-lg overflow-hidden bg-secondary/30 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
               <CardHeader>
                 <CardTitle className="font-headline text-3xl font-bold">{member.name}</CardTitle>
                 <p className="text-primary font-semibold text-lg">{member.role}</p>
@@ -52,7 +52,7 @@ export default function AboutPage() {
 
        <div className="mt-16 md:mt-24">
          <AnimatedDiv>
-            <div className="bg-secondary/50 p-8 md:p-12 rounded-lg">
+            <div className="bg-secondary/50 p-8 md:p-12 rounded-lg shadow-inner">
               <div className="text-center">
                 <h2 className="font-headline text-3xl font-bold">Our Philosophy</h2>
                 <p className="mt-4 max-w-4xl mx-auto text-muted-foreground">
