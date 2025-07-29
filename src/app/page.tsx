@@ -19,7 +19,6 @@ import { InteractiveCtaButton } from '@/components/interactive-cta-button';
 const mainCarouselImages = [
   { src: "/Homepage_main.jpeg", alt: "Elegant wedding reception dinner setup" },
   { src: "/Homepage_main2.jpg", alt: "Bride and groom in a beautiful outdoor setting" },
-  { src: "/Homepage_main3.webp", alt: "Luxurious wedding decor with floral arrangements" },
 ];
 
 const services = [
@@ -73,9 +72,8 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="w-full relative bg-background">
-        {/* Unified Carousel for all screen sizes */}
-        <div>
+      <section className="relative w-full bg-background">
+        <div className="hidden md:block">
           <Carousel
             plugins={[plugin.current]}
             className="w-full"
@@ -88,16 +86,15 @@ export default function Home() {
             <CarouselContent>
               {mainCarouselImages.map((image, index) => (
                 <CarouselItem key={index}>
-                  {/* The height on mobile (the first value) has been adjusted */}
-                  <div className="relative w-full h-[60vh] md:h-[90vh]">
+                  <div className="relative h-[90vh] w-full">
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
-                      className="z-0 object-cover object-left md:object-center"
+                      className="object-cover object-center"
                       priority={index === 0}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                   </div>
                 </CarouselItem>
               ))}
@@ -105,6 +102,16 @@ export default function Home() {
             <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
             <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
           </Carousel>
+        </div>
+        <div className="md:hidden relative h-[60vh] w-full">
+            <Image
+                src={mainCarouselImages[0].src}
+                alt={mainCarouselImages[0].alt}
+                fill
+                className="object-cover object-center"
+                priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
         </div>
       </section>
 
