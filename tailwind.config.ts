@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['Literata', 'serif'],
-        headline: ['"Playfair Display"', 'serif'],
+        body: ['var(--font-pt-sans)'],
+        headline: ['var(--font-playfair-display)'],
         code: ['monospace'],
       },
       colors: {

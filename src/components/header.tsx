@@ -5,9 +5,10 @@ import { Menu } from 'lucide-react';
 import { Logo } from '@/components/logo';
 
 const navLinks = [
-  { href: '#services', label: 'Services' },
-  { href: '#gallery', label: 'Gallery' },
-  { href: '#about', label: 'About' },
+  { href: '/services', label: 'Services' },
+  { href: '/work', label: 'Work' },
+  { href: '/about', label: 'About' },
+  { href: '/faq', label: 'FAQ' },
 ];
 
 export function Header() {
@@ -25,8 +26,8 @@ export function Header() {
         </nav>
 
         <div className="hidden md:flex items-center space-x-4">
-          <Button asChild variant="accent">
-            <Link href="#contact">Contact Us</Link>
+          <Button asChild>
+            <Link href="/contact">Contact Us</Link>
           </Button>
         </div>
 
@@ -48,8 +49,8 @@ export function Header() {
                     </Link>
                   ))}
                 </nav>
-                <Button asChild variant="accent">
-                  <Link href="#contact">Contact Us</Link>
+                <Button asChild>
+                  <Link href="/contact">Contact Us</Link>
                 </Button>
               </div>
             </SheetContent>

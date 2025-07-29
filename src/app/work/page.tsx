@@ -1,19 +1,20 @@
+
 import Image from 'next/image';
 import { AnimatedDiv } from '@/components/animated-div';
 
 const weddings = [
-  { src: "https://placehold.co/800x600.png", caption: 'Anushka & Virat', hint: 'bride groom' },
-  { src: "https://placehold.co/800x600.png", caption: 'Deepika & Ranveer', hint: 'couple dancing' },
-  { src: "https://placehold.co/800x600.png", caption: 'Priyanka & Nick', hint: 'engagement ceremony' },
-  { src: "https://placehold.co/800x600.png", caption: 'Alia & Ranbir', hint: 'wedding decor' },
-  { src: "https://placehold.co/800x600.png", caption: 'Kiara & Sidharth', hint: 'wedding dance' },
-  { src: "https://placehold.co/800x600.png", caption: 'Katrina & Vicky', hint: 'wedding hall' },
-  { src: "https://placehold.co/800x600.png", caption: 'Sonam & Anand', hint: 'flower decor' },
-  { src: "https://placehold.co/800x600.png", caption: 'Natasha & Varun', hint: 'wedding lighting' },
-  { src: "https://placehold.co/800x600.png", caption: 'Family Feasts', hint: 'wedding food' },
-  { src: "https://placehold.co/800x600.png", caption: 'Haldi Moments', hint: 'haldi ceremony' },
-  { src: "https://placehold.co/800x600.png", caption: 'Mehndi Designs', hint: 'mehndi hands' },
-  { src: "https://placehold.co/800x600.png", caption: 'Baraat Procession', hint: 'baraat wedding' },
+  { src: "/bride_groom_ceremony.jpg", caption: 'Anushka & Virat' },
+  { src: "/bride-groom-dance.jpg", caption: 'Deepika & Ranveer' },
+  { src: "/groom-bride-sagai.jpg", caption: 'Priyanka & Nick' },
+  { src: "/bride-groom-decor.jpg", caption: 'Alia & Ranbir' },
+  { src: "/Bollywood+wedding+dance.jpg", caption: 'Kiara & Sidharth' },
+  { src: "/phere-hall.jpg", caption: 'Katrina & Vicky' },
+  { src: "/flower-decor.jpg", caption: 'Sonam & Anand' },
+  { src: "/weddinghall-lighting.webp", caption: 'Natasha & Varun' },
+  { src: "/hindu+wedding+foods.jpeg", caption: 'Family Feasts' },
+  { src: "/haldi-ceremony-indian-wedding.webp", caption: 'Haldi Moments' },
+  { src: "/10-mehndi-photos.jpg", caption: 'Mehndi Designs' },
+  { src: "/Indian-Wedding-Photography-Baraat-Boston-Ptaufiq-Gaylord-National-Maryland.jpg", caption: 'Baraat Procession' },
 ];
 
 export default function WorkPage() {
@@ -40,7 +41,6 @@ export default function WorkPage() {
                   width={800}
                   height={600}
                   className="w-full h-auto"
-                  data-ai-hint={wedding.hint}
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                     <h3 className="text-white font-headline text-xl">{wedding.caption}</h3>
