@@ -8,12 +8,8 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { ArrowRight, Star, Quote } from 'lucide-react';
+import { Star, Quote } from 'lucide-react';
 import { AnimatedDiv } from '@/components/animated-div';
-import { cn } from '@/lib/utils';
-import { useOnScreen } from '@/hooks/use-on-screen';
-import LiteYouTubeEmbed from 'react-lite-youtube-embed';
-import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import { InteractiveCtaButton } from '@/components/interactive-cta-button';
 
 const mainCarouselImages = [
@@ -72,21 +68,20 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-      <section className="relative w-full bg-background">
-        <div className="hidden md:block">
+      <section className="relative w-full h-[90vh] bg-background">
           <Carousel
             plugins={[plugin.current]}
-            className="w-full"
+            className="w-full h-full"
             onMouseEnter={plugin.current.stop}
             onMouseLeave={plugin.current.reset}
             opts={{
               loop: true,
             }}
           >
-            <CarouselContent>
+            <CarouselContent className="h-full">
               {mainCarouselImages.map((image, index) => (
-                <CarouselItem key={index}>
-                  <div className="relative h-[90vh] w-full">
+                <CarouselItem key={index} className="h-full">
+                  <div className="relative h-full w-full">
                     <Image
                       src={image.src}
                       alt={image.alt}
@@ -99,20 +94,19 @@ export default function Home() {
                 </CarouselItem>
               ))}
             </CarouselContent>
+            <div className="absolute inset-0 flex items-center justify-center text-center text-white">
+                <AnimatedDiv className="max-w-4xl p-4">
+                    <h1 className="font-headline text-5xl md:text-7xl font-bold !leading-tight tracking-tight text-shadow-lg">
+                        Your Story, Our Masterpiece
+                    </h1>
+                    <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-white/90 text-shadow">
+                        Weaving dreams into reality. Crafting timeless weddings with passion, precision, and a personal touch.
+                    </p>
+                </AnimatedDiv>
+            </div>
             <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
             <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
           </Carousel>
-        </div>
-        <div className="md:hidden relative h-[60vh] w-full">
-            <Image
-                src={mainCarouselImages[0].src}
-                alt={mainCarouselImages[0].alt}
-                fill
-                className="object-cover object-center"
-                priority
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-        </div>
       </section>
 
       {/* About Section */}
@@ -125,13 +119,6 @@ export default function Home() {
             <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
               Seattle Shaadi was born from a passion for creating beautiful, seamless, and personal weddings. We believe that every couple has a unique story, and we're here to help you tell it in the most spectacular way possible. Our team combines meticulous planning with breathtaking design to create moments that last a lifetime.
             </p>
-          </AnimatedDiv>
-          <AnimatedDiv delay={400}>
-            {/*
-            <Button asChild variant="link" className="mt-6 text-foreground text-lg">
-              <Link href="/about">Meet the Squad <ArrowRight className="ml-2 h-5 w-5" /></Link>
-            </Button>
-            */}
           </AnimatedDiv>
         </div>
       </section>

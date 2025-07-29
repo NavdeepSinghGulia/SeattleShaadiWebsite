@@ -26,7 +26,7 @@ function Logo() {
         alt="Seattle Shaadi Logo"
         width={150}
         height={50}
-        className="h-16 w-auto dark:mix-blend-screen dark:invert"
+        className="h-16 w-auto dark:invert"
         priority
       />
     </Link>
@@ -49,7 +49,7 @@ export function Header() {
   const isHome = pathname === '/';
   const headerClasses = cn(
     'fixed top-0 z-50 w-full transition-all duration-300',
-    isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md animate-glow' : 'bg-transparent',
+    isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent',
     isHome && !isScrolled ? 'text-white' : 'text-foreground'
   );
 
@@ -64,7 +64,7 @@ export function Header() {
               href={link.href}
               className={cn(
                 "relative font-semibold transition-colors hover:text-primary",
-                 (isHome && !isScrolled) ? "text-white/80" : "text-foreground/80",
+                 (isHome && !isScrolled) ? "text-white/80 hover:text-white" : "text-foreground/80",
                 "after:absolute after:bottom-[-4px] after:left-0 after:h-0.5 after:w-full after:bg-primary after:transition-transform after:duration-300 after:scale-x-0 after:origin-center hover:after:scale-x-100",
                 pathname === link.href ? "text-primary after:scale-x-100" : ""
               )}
@@ -79,7 +79,7 @@ export function Header() {
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="ghost" size="icon" className={cn((isHome && !isScrolled) ? "text-white" : "text-foreground")}>
+              <Button variant="ghost" size="icon" className={cn((isHome && !isScrolled) ? "text-white hover:text-white hover:bg-white/10" : "text-foreground")}>
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
@@ -119,4 +119,3 @@ export function Header() {
     </header>
   );
 }
-    
