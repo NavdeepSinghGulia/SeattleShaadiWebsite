@@ -66,7 +66,7 @@ export default function ContactPage() {
           <h2 className="font-headline text-2xl md:text-3xl font-bold mb-6">Contact Information</h2>
           <div className="space-y-4 text-base md:text-lg">
             <p><strong>Address:</strong> 123 Wedding Lane, Seattle, WA 98101, USA</p>
-            <p><strong>Phone:</strong> <a href="tel:+12065550100" className="hover:text-primary">+1 (206) 555-0100</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+12068216764" className="hover:text-primary">+1 (206) 821-6764</a></p>
             <p><strong>Email:</strong> <a href="mailto:hello@seattleshaadi.com" className="hover:text-primary">hello@seattleshaadi.com</a></p>
             <p><strong>Hours:</strong> Mon - Fri, 10am - 6pm</p>
           </div>

@@ -1,3 +1,4 @@
+
 'use client';
 import React from 'react';
 import Image from 'next/image';
@@ -71,22 +72,22 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-       <section className="w-full relative bg-background">
+       <section className="w-full relative bg-background h-screen">
          {/* Desktop Carousel */}
-         <div className="hidden md:block">
+         <div className="hidden md:block h-full">
             <Carousel
               plugins={[plugin.current]}
-              className="w-full"
+              className="w-full h-full"
               onMouseEnter={plugin.current.stop}
               onMouseLeave={plugin.current.reset}
               opts={{
                 loop: true,
               }}
             >
-              <CarouselContent>
+              <CarouselContent className="h-full">
                 {mainCarouselImages.map((image, index) => (
-                  <CarouselItem key={index}>
-                    <div className="relative w-full h-[75vh] md:h-screen">
+                  <CarouselItem key={index} className="h-full">
+                    <div className="relative w-full h-full">
                       <Image
                         src={image.src}
                         alt={image.alt}
@@ -193,22 +194,14 @@ export default function Home() {
       </section>
 
       {/* YouTube Video Section */}
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <AnimatedDiv>
-              <h2 className="font-headline text-3xl md:text-4xl font-bold">Seattle Shaadi in Motion</h2>
-            </AnimatedDiv>
-            <AnimatedDiv delay={200}>
-              <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">See the magic we create, one celebration at a time.</p>
-            </AnimatedDiv>
-          </div>
+      <section className="w-full">
+        <div className="container mx-auto px-0">
           <AnimatedDiv>
-            <div className="aspect-w-16 aspect-h-9 shadow-2xl mx-auto max-w-5xl rounded-lg overflow-hidden">
+            <div className="aspect-w-16 aspect-h-9 shadow-2xl mx-auto max-w-full">
               <LiteYouTubeEmbed
                   id="EnxQdO3x12s"
                   title="Seattle Shaadi - Wedding Highlight Reel"
-                  params="start=9&vq=hd2160"
+                  params="start=10&autoplay=1&mute=1&vq=hd2160"
                   thumbnail="/hq720.webp"
                   poster="maxresdefault"
               />
