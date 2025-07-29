@@ -1,38 +1,43 @@
 
 import Image from 'next/image';
+import { AnimatedDiv } from '@/components/animated-div';
 
 const publications = [
-  { name: 'Vogue Weddings', logo: "/logo.webp" },
-  { name: 'Harper\'s Bazaar Bride', logo: "/logo.webp" },
-  { name: 'Brides Today', logo: "/logo.webp" },
-  { name: 'Elle Decor', logo: "/logo.webp" },
-  { name: 'Condé Nast Traveller', logo: "/logo.webp" },
-  { name: 'WeddingSutra', logo: "/logo.webp" },
-  { name: 'The Times of India', logo: "/logo.webp" },
-  { name: 'Femina', logo: "/logo.webp" },
+  { name: 'Vogue Weddings', logo: "/vogue-logo.png" },
+  { name: 'Harper\'s Bazaar Bride', logo: "/harpers-bazaar-logo.png" },
+  { name: 'Brides Today', logo: "/brides-today-logo.png" },
+  { name: 'Elle Decor', logo: "/elle-decor-logo.png" },
+  { name: 'Condé Nast Traveller', logo: "/conde-nast-logo.png" },
+  { name: 'WeddingSutra', logo: "/weddingsutra-logo.png" },
 ];
 
 export default function SpotlightPage() {
   return (
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="text-center">
-        <h1 className="font-headline text-4xl md:text-5xl font-bold">In The Spotlight</h1>
-        <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-          We're honored to be featured in some of the most prestigious publications for our work in creating exceptional weddings.
-        </p>
+        <AnimatedDiv>
+          <h1 className="font-headline text-4xl md:text-5xl font-bold">In The Spotlight</h1>
+        </AnimatedDiv>
+        <AnimatedDiv delay={200}>
+          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+            We're honored to be featured in some of the most prestigious publications for our work in creating exceptional weddings.
+          </p>
+        </AnimatedDiv>
       </div>
 
-      <div className="mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
+      <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8 items-center">
         {publications.map((pub, index) => (
-          <div key={index} className="flex justify-center p-6 bg-secondary/50 rounded-lg">
-            <Image 
-              src={pub.logo} 
-              alt={pub.name} 
-              width={200} 
-              height={100}
-              className="object-contain grayscale hover:grayscale-0 transition-all duration-300"
-            />
-          </div>
+          <AnimatedDiv key={index} delay={index * 100}>
+            <div className="group flex justify-center p-6 bg-secondary/50 rounded-lg h-32 items-center transition-all duration-300 hover:shadow-xl hover:-translate-y-2">
+              <Image 
+                src={pub.logo} 
+                alt={pub.name} 
+                width={150} 
+                height={60}
+                className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+              />
+            </div>
+          </AnimatedDiv>
         ))}
       </div>
     </div>

@@ -1,3 +1,4 @@
+
 'use client';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
@@ -7,7 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { useToast } from '@/hooks/use-toast';
+import { toast } from '@/hooks/use-toast';
 import { type ContactFormInput, submitContactForm } from '@/ai/flows/contact-flow';
 import { Loader2 } from 'lucide-react';
 import { z } from 'zod';
@@ -20,7 +21,6 @@ export const ContactFormSchema = z.object({
 });
 
 export default function ContactPage() {
-  const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const form = useForm<ContactFormInput>({
@@ -35,26 +35,21 @@ export default function ContactPage() {
 
   async function onSubmit(values: ContactFormInput) {
     setIsSubmitting(true);
-    try {
-      const result = await submitContactForm(values);
-      if (result.success) {
-        toast({
-          title: 'Message Sent!',
-          description: result.message,
-        });
-        form.reset();
-      } else {
-        throw new Error(result.message);
-      }
-    } catch (error) {
+    const result = await submitContactForm(values);
+    if (result.success) {
+      toast({
+        title: 'Message Sent!',
+        description: result.message,
+      });
+      form.reset();
+    } else {
       toast({
         variant: 'destructive',
         title: 'Uh oh! Something went wrong.',
-        description: error instanceof Error ? error.message : 'There was a problem with your request.',
+        description: result.message,
       });
-    } finally {
-      setIsSubmitting(false);
     }
+    setIsSubmitting(false);
   }
 
   return (
@@ -66,13 +61,13 @@ export default function ContactPage() {
         </p>
       </div>
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
         <div className="bg-secondary/50 p-8 rounded-lg">
-          <h2 className="font-headline text-2xl font-bold mb-6">Contact Information</h2>
-          <div className="space-y-4 text-lg">
-            <p><strong>Address:</strong> 123 Wedding Lane, Juhu, Mumbai, 400049, India</p>
-            <p><strong>Phone:</strong> <a href="tel:+911234567890" className="hover:text-primary">+91 123 456 7890</a></p>
-            <p><strong>Email:</strong> <a href="mailto:hello@vivaahverse.com" className="hover:text-primary">hello@vivaahverse.com</a></p>
+          <h2 className="font-headline text-2xl md:text-3xl font-bold mb-6">Contact Information</h2>
+          <div className="space-y-4 text-base md:text-lg">
+            <p><strong>Address:</strong> 123 Wedding Lane, Seattle, WA 98101, USA</p>
+            <p><strong>Phone:</strong> <a href="tel:+12065550100" className="hover:text-primary">+1 (206) 555-0100</a></p>
+            <p><strong>Email:</strong> <a href="mailto:hello@seattleshaadi.com" className="hover:text-primary">hello@seattleshaadi.com</a></p>
             <p><strong>Hours:</strong> Mon - Fri, 10am - 6pm</p>
           </div>
         </div>

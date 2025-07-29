@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Menu } from 'lucide-react';
@@ -12,26 +12,24 @@ import { usePathname } from 'next/navigation';
 
 const navLinks = [
   { href: '/', label: 'Home' },
-  { href: '/about', label: 'About Us' },
   { href: '/services', label: 'Services' },
   { href: '/work', label: 'Our Work' },
   { href: '/spotlight', label: 'Spotlight' },
   { href: '/fun', label: 'Fun at SS' },
-  { href: '/careers', label: 'Careers' },
   { href: '/contact', label: 'Contact' },
   { href: '/faq', label: 'FAQs' },
 ];
 
 function Logo() {
-  return (
+    return (
     <div className="flex items-center justify-center p-1">
       <Image
-        src="/shaadi-squad-high-resolution-logo-transparent.png"
-        alt="VivaahVerse Logo"
-        width={60}
-        height={60}
-        className="h-16 w-auto"
-        unoptimized
+        src="/Logo-new.webp"
+        alt="Seattle Shaadi Logo"
+        width={150}
+        height={50}
+        className="h-16 w-auto transition-transform hover:scale-105"
+        priority
       />
     </div>
   );
@@ -39,10 +37,11 @@ function Logo() {
 
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolled, setIsScrolled] = React.useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false);
   const pathname = usePathname();
 
-  useEffect(() => {
+  React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
@@ -54,11 +53,11 @@ export function Header() {
     <header
       className={cn(
         'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'bg-background/80 backdrop-blur-sm animate-glow' : 'bg-transparent'
+        isScrolled ? 'bg-background/80 backdrop-blur-sm shadow-md' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-24 items-center justify-between px-4 md:px-6">
-        <Link href="/">
+        <Link href="/" onClick={() => isMobileMenuOpen && setIsMobileMenuOpen(false)}>
           <Logo />
         </Link>
         <nav className="hidden items-center gap-6 md:flex">
@@ -77,7 +76,7 @@ export function Header() {
           ))}
         </nav>
         <div className="md:hidden">
-          <Sheet>
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
@@ -87,7 +86,7 @@ export function Header() {
             <SheetContent side="right" className="w-[300px] bg-background">
               <div className="flex h-full flex-col p-6">
                 <div className="mb-8">
-                   <Link href="/">
+                   <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
                       <Logo />
                     </Link>
                 </div>
@@ -96,6 +95,7 @@ export function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
                       className="text-lg font-semibold text-foreground/80 transition-colors hover:text-primary"
                     >
                       {link.label}

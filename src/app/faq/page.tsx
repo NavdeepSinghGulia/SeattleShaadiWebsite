@@ -1,3 +1,4 @@
+
 import {
   Accordion,
   AccordionContent,
@@ -38,7 +39,7 @@ export default function FAQPage() {
         </p>
       </div>
 
-      <div className="mt-16 max-w-3xl mx-auto">
+      <div className="mt-12 md:mt-16 max-w-3xl mx-auto">
         <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, index) => (
                  <AccordionItem key={index} value={`item-${index}`}>

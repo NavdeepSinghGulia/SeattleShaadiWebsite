@@ -17,7 +17,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['var(--font-pt-sans)'],
+        body: ['var(--font-lato)'],
         headline: ['var(--font-playfair-display)'],
         code: ['monospace'],
       },
@@ -102,5 +102,5 @@ export default {
       },
     },
   },
-  plugins: [require('tailwindcss-animate')],
+  plugins: [require('tailwindcss-animate'), require('@tailwindcss/aspect-ratio')],
 } satisfies Config;

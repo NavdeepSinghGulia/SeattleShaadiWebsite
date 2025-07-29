@@ -8,15 +8,15 @@ export function Footer() {
   return (
     <footer className="bg-secondary/50">
       <div className="container mx-auto px-4 py-12 md:px-6">
-        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-12 text-center md:text-left md:grid-cols-2 lg:grid-cols-4">
           <div className="md:col-span-1">
-            <h3 className="font-headline text-xl font-bold text-primary mb-4">VivaahVerse</h3>
+            <h3 className="font-headline text-xl font-bold text-primary mb-4">Seattle Shaadi</h3>
             <p className="text-muted-foreground">Crafting timeless weddings with a touch of modern elegance. Your story, our canvas.</p>
-            <div className="flex space-x-4 mt-6">
-              <Link href="#" className="text-muted-foreground hover:text-primary"><Facebook /></Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary"><Instagram /></Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary"><Twitter /></Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary"><Linkedin /></Link>
+            <div className="flex space-x-4 mt-6 justify-center md:justify-start">
+              <Link href="#" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Facebook /></Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Instagram /></Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Twitter /></Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Linkedin /></Link>
             </div>
           </div>
 
@@ -33,16 +33,16 @@ export function Footer() {
           <div>
             <h4 className="font-headline font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-muted-foreground">
-              <li>Mumbai, India</li>
-              <li>+91 123 456 7890</li>
-              <li>hello@vivaahverse.com</li>
+              <li>Seattle, WA</li>
+              <li>+1 (206) 555-0100</li>
+              <li>hello@seattleshaadi.com</li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-headline font-semibold mb-4">Newsletter</h4>
             <p className="text-muted-foreground mb-4">Stay up to date with our latest weddings and offers.</p>
-            <div className="flex w-full max-w-sm items-center space-x-2">
+            <div className="flex w-full max-w-sm items-center space-x-2 mx-auto md:mx-0">
               <Input type="email" placeholder="Email" className="bg-background" />
               <Button type="submit" variant="default">Subscribe</Button>
             </div>
@@ -50,7 +50,7 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t pt-8 text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} VivaahVerse. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Seattle Shaadi. All Rights Reserved.</p>
         </div>
       </div>
     </footer>

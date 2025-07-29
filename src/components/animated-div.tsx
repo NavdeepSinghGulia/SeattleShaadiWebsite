@@ -19,10 +19,14 @@ export function AnimatedDiv({ children, className, style, delay = 0 }: AnimatedD
   return (
     <div
       ref={ref}
-      className={cn(className, isVisible ? 'animate-fade-in-up' : 'opacity-0')}
+      className={cn(
+        "transition-all duration-1000 ease-out",
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5',
+        className
+      )}
       style={{
         ...style,
-        animationDelay: isVisible ? `${delay}ms` : '0ms',
+        transitionDelay: isVisible ? `${delay}ms` : '0ms',
       }}
     >
       {children}

@@ -1,10 +1,11 @@
+
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
 const jobOpenings = [
   {
     title: "Senior Wedding Planner",
-    location: "Mumbai, Full-time",
+    location: "Seattle, Full-time",
     description: "Lead our planning team, manage high-profile weddings, and mentor junior planners. 5+ years of experience required."
   },
   {
@@ -14,7 +15,7 @@ const jobOpenings = [
   },
   {
     title: "Client Servicing Intern",
-    location: "Mumbai, Internship",
+    location: "Seattle, Internship",
     description: "A great opportunity for a passionate individual to learn the ropes of wedding planning and client management."
   }
 ];
@@ -29,7 +30,7 @@ export default function CareersPage() {
         </p>
       </div>
 
-      <div className="mt-16">
+      <div className="mt-12 md:mt-16">
         <h2 className="font-headline text-3xl font-bold text-center mb-8">Current Openings</h2>
         <div className="max-w-3xl mx-auto space-y-6">
           {jobOpenings.map((job) => (
@@ -47,7 +48,7 @@ export default function CareersPage() {
             </Card>
           ))}
            <div className="text-center pt-8">
-            <p className="text-muted-foreground">Don't see a role that fits? Send your resume to <a href="mailto:careers@vivaahverse.com" className="text-primary font-semibold">careers@vivaahverse.com</a>.</p>
+            <p className="text-muted-foreground">Don't see a role that fits? Send your resume to <a href="mailto:careers@seattleshaadi.com" className="text-primary font-semibold">careers@seattleshaadi.com</a>.</p>
            </div>
         </div>
       </div>
