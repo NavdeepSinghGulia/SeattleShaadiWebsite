@@ -104,6 +104,17 @@ export default function Home() {
               <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
             </Carousel>
          </div>
+          {/* Mobile Image */}
+          <div className="md:hidden relative w-full h-full">
+             <Image
+                src={mainCarouselImages[0].src}
+                alt={mainCarouselImages[0].alt}
+                fill
+                className="z-0 object-cover object-center"
+                priority
+              />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
+          </div>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-20 w-full px-4">
               <AnimatedDiv delay={400}>
                 <InteractiveCtaButton />
@@ -194,7 +205,7 @@ export default function Home() {
       </section>
 
       {/* YouTube Video Section */}
-      <section className="w-full">
+      <section className="w-full py-16 md:py-24">
         <div className="container mx-auto px-0">
           <AnimatedDiv>
             <div className="aspect-w-16 aspect-h-9 shadow-2xl mx-auto max-w-full">
