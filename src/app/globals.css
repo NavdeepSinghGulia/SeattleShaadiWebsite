@@ -30,27 +30,27 @@
   }
 
   .dark {
-    --background: 215 39% 15%; /* Deep Navy */
+    --background: 220 25% 10%; /* Deep Navy */
     --foreground: 45 50% 98%;
 
-    --primary: 45 86% 55%; /* Brighter Gold for Dark Mode */
+    --primary: 45 85% 55%;
     --primary-foreground: 240 10% 15%;
 
-    --secondary: 215 35% 20%;
+    --secondary: 220 20% 15%;
     --secondary-foreground: 45 50% 98%;
 
-    --muted: 215 35% 20%;
+    --muted: 220 20% 15%;
     --muted-foreground: 45 50% 90%;
 
-    --accent: 45 86% 55%; /* Rich Gold as Accent in Dark Mode */
-    --accent-foreground: 215 39% 15%;
+    --accent: 40 90% 65%;
+    --accent-foreground: 240 10% 15%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 215 35% 25%;
-    --input: 215 35% 22%;
-    --ring: 45 86% 55%;
+    --border: 220 20% 20%;
+    --input: 220 20% 18%;
+    --ring: 45 85% 55%;
   }
 }
 
