@@ -47,16 +47,24 @@ const contactFlow = ai.defineFlow(
     outputSchema: ContactFormOutputSchema,
   },
   async (input) => {
-    console.log('Received contact form submission:', input);
+    console.log('New contact form submission received. Processing...');
     
     // Use AI to categorize the message
     const { output } = await categorizationPrompt({ message: input.message });
     const category = output?.category || 'Other';
 
-    console.log(`Message categorized as: ${category}`);
+    // Log all the details to the server console.
+    // In a production app, you would integrate an email service (like Resend, SendGrid)
+    // or save this data to a database (like Firebase Firestore).
+    console.log('---------- NEW CONTACT SUBMISSION ----------');
+    console.log(`Name: ${input.name}`);
+    console.log(`Email: ${input.email}`);
+    console.log(`Phone: ${input.phone || 'Not provided'}`);
+    console.log(`Event Date: ${input.eventDate || 'Not provided'}`);
+    console.log(`Message: ${input.message}`);
+    console.log(`Categorized as: ${category}`);
+    console.log('-------------------------------------------');
 
-    // Here you would typically send an email, save to a database, etc.
-    // including the new category and phone number.
     // For this example, we'll just simulate a success response.
     return {
         success: true,
