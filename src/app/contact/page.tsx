@@ -132,8 +132,7 @@ export default function ContactPage() {
                   <FormLabel className="font-semibold">Phone Number</FormLabel>
                   <FormControl>
                     <Input 
-                      type="tel" 
-                      placeholder="(***) ***-****" 
+                      type="tel"
                       {...field} 
                       onChange={(e) => handlePhoneChange(e, field.onChange)}
                       className="bg-background" />
