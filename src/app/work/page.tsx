@@ -15,6 +15,14 @@ const weddings = [
   { src: "/haldi-ceremony-indian-wedding.webp", caption: 'Vibrant Haldi Rituals' },
   { src: "/10-mehndi-photos.jpg", caption: 'Intricate Mehndi Art' },
   { src: "/Indian-Wedding-Photography-Baraat-Boston-Ptaufiq-Gaylord-National-Maryland.jpg", caption: 'Joyful Baraat Procession' },
+  { src: "/bride-groom-standing.jpg", caption: 'A Moment in Time' },
+  { src: "/bride-groom-handshake.jpg", caption: 'A Vow of Togetherness' },
+  { src: "/bride-groom-weeding-hall.jpg", caption: 'Elegant Beginnings' },
+  { src: "/resort-hall.jpg", caption: 'Destination Dream' },
+  { src: "/wedding-lawns.jpg", caption: 'Garden Paradise' },
+  { src: "/Sarita-Souvik-MnMphotography-38.jpg", caption: 'Portrait of Love' },
+  { src: "/Kaajol-Pruthul_Ama-by-Aisha_Westin-Galleria-109.jpg", caption: 'Radiant Smiles' },
+  { src: "/bride-dance.jpeg", caption: 'Joyful Moves' }
 ];
 
 export default function WorkPage() {

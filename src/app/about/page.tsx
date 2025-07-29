@@ -25,7 +25,7 @@ export default function AboutPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="text-center">
         <AnimatedDiv>
-          <h1 className="font-headline text-4xl md:text-5xl font-bold">Meet the Team</h1>
+          <h1 className="font-headline text-4xl md:text-5xl font-bold">Meet the Dream Weavers</h1>
         </AnimatedDiv>
         <AnimatedDiv delay={200}>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
