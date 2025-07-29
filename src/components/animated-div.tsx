@@ -1,23 +1,31 @@
-"use client";
 
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+'use client';
+
+import { useRef, ReactNode } from 'react';
+import { useOnScreen } from '@/hooks/use-on-screen';
+import { cn } from '@/lib/utils';
 
 interface AnimatedDivProps {
   children: ReactNode;
   className?: string;
-  delay?: number;
+  style?: React.CSSProperties;
+  delay?: number; // in milliseconds
 }
 
-export function AnimatedDiv({ children, className, delay = 0 }: AnimatedDivProps) {
+export function AnimatedDiv({ children, className, style, delay = 0 }: AnimatedDivProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const isVisible = useOnScreen(ref, '-100px');
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, delay: delay / 1000 }}
-      className={className}
+    <div
+      ref={ref}
+      className={cn(className, isVisible ? 'animate-fade-in-up' : 'opacity-0')}
+      style={{
+        ...style,
+        animationDelay: isVisible ? `${delay}ms` : '0ms',
+      }}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

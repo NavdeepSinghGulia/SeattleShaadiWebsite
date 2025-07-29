@@ -1,49 +1,56 @@
-import { Mail, Phone, Instagram, Facebook } from 'lucide-react';
+import React from 'react';
 import Link from 'next/link';
+import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
+import { Input } from './ui/input';
+import { Button } from './ui/button';
 
 export function Footer() {
   return (
-    <footer className="bg-foreground text-background">
-      <div className="container max-w-7xl py-12 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-secondary/50">
+      <div className="container mx-auto px-4 py-12 md:px-6">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="md:col-span-1">
-            <Link href="/" className="font-headline text-2xl font-bold tracking-tight text-background">
-              VivaahVerse
-            </Link>
-            <p className="mt-4 text-sm text-background/70">Crafting unforgettable moments.</p>
+            <h3 className="font-headline text-xl font-bold text-primary mb-4">VivaahVerse</h3>
+            <p className="text-muted-foreground">Crafting timeless weddings with a touch of modern elegance. Your story, our canvas.</p>
+            <div className="flex space-x-4 mt-6">
+              <Link href="#" className="text-muted-foreground hover:text-primary"><Facebook /></Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary"><Instagram /></Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary"><Twitter /></Link>
+              <Link href="#" className="text-muted-foreground hover:text-primary"><Linkedin /></Link>
+            </div>
           </div>
+
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-background">Quick Links</h3>
-            <ul className="mt-4 space-y-2">
-              <li><Link href="/services" className="text-background/80 hover:text-background">Services</Link></li>
-              <li><Link href="/work" className="text-background/80 hover:text-background">Gallery</Link></li>
-              <li><Link href="/about" className="text-background/80 hover:text-background">About</Link></li>
-              <li><Link href="/contact" className="text-background/80 hover:text-background">Contact</Link></li>
+            <h4 className="font-headline font-semibold mb-4">Quick Links</h4>
+            <ul className="space-y-2">
+              <li><Link href="/about" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link href="/services" className="hover:text-primary transition-colors">Services</Link></li>
+              <li><Link href="/work" className="hover:text-primary transition-colors">Our Work</Link></li>
+              <li><Link href="/faq" className="hover:text-primary transition-colors">FAQs</Link></li>
             </ul>
           </div>
+
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-background">Contact Us</h3>
-            <ul className="mt-4 space-y-2">
-              <li className="flex items-center">
-                <Mail className="h-5 w-5 mr-3" />
-                <a href="mailto:contact@vivaahverse.com" className="text-background/80 hover:text-background">contact@vivaahverse.com</a>
-              </li>
-              <li className="flex items-center">
-                <Phone className="h-5 w-5 mr-3" />
-                <a href="tel:+911234567890" className="text-background/80 hover:text-background">+91 123 456 7890</a>
-              </li>
+            <h4 className="font-headline font-semibold mb-4">Contact</h4>
+            <ul className="space-y-2 text-muted-foreground">
+              <li>Mumbai, India</li>
+              <li>+91 123 456 7890</li>
+              <li>hello@vivaahverse.com</li>
             </ul>
           </div>
+
           <div>
-             <h3 className="text-sm font-semibold uppercase tracking-wider text-background">Follow Us</h3>
-             <div className="flex mt-4 space-x-4">
-                <a href="#" className="text-background/70 hover:text-background"><span className="sr-only">Facebook</span><Facebook className="h-6 w-6" /></a>
-                <a href="#" className="text-background/70 hover:text-background"><span className="sr-only">Instagram</span><Instagram className="h-6 w-6" /></a>
-             </div>
+            <h4 className="font-headline font-semibold mb-4">Newsletter</h4>
+            <p className="text-muted-foreground mb-4">Stay up to date with our latest weddings and offers.</p>
+            <div className="flex w-full max-w-sm items-center space-x-2">
+              <Input type="email" placeholder="Email" className="bg-background" />
+              <Button type="submit" variant="default">Subscribe</Button>
+            </div>
           </div>
         </div>
-        <div className="mt-8 border-t border-background/20 pt-8 text-center">
-          <p className="text-base text-background/60">&copy; {new Date().getFullYear()} VivaahVerse. All rights reserved.</p>
+
+        <div className="mt-12 border-t pt-8 text-center text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} VivaahVerse. All Rights Reserved.</p>
         </div>
       </div>
     </footer>
