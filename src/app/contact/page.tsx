@@ -16,6 +16,7 @@ import { z } from 'zod';
 export const ContactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
+  phone: z.string().optional(),
   eventDate: z.string().optional(),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
@@ -28,6 +29,7 @@ export default function ContactPage() {
     defaultValues: {
       name: '',
       email: '',
+      phone: '',
       eventDate: '',
       message: '',
     },
@@ -94,6 +96,19 @@ export default function ContactPage() {
                   <FormLabel className="font-semibold">Email Address</FormLabel>
                   <FormControl>
                     <Input type="email" placeholder="your@email.com" {...field} className="bg-background" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+             <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel className="font-semibold">Phone Number</FormLabel>
+                  <FormControl>
+                    <Input type="tel" placeholder="Your phone number" {...field} className="bg-background" />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

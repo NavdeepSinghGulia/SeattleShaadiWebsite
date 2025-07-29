@@ -14,6 +14,7 @@ import { z } from 'zod';
 const ContactFormInputSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
+  phone: z.string().optional(),
   eventDate: z.string().optional(),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
@@ -55,7 +56,7 @@ const contactFlow = ai.defineFlow(
     console.log(`Message categorized as: ${category}`);
 
     // Here you would typically send an email, save to a database, etc.
-    // including the new category.
+    // including the new category and phone number.
     // For this example, we'll just simulate a success response.
     return {
         success: true,
