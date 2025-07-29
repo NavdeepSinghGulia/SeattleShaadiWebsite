@@ -30,7 +30,7 @@ export default function AboutPage() {
             <Card className="text-center border-none shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:[transform:rotateY(10deg)_rotateX(5deg)] group">
               <CardContent className="p-0">
                 <div className="relative w-full h-96">
-                  <Image src={member.image} alt={member.name} fill style={{objectFit: 'cover', objectPosition: 'top'}} className="w-full h-auto transition-transform duration-500 group-hover:scale-105" />
+                  <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{objectFit: 'cover', objectPosition: 'top'}} className="w-full h-auto transition-transform duration-500 group-hover:scale-105" />
                    <div className="absolute inset-0 transition-all duration-300 group-hover:shadow-[inset_0_0_0_8px_hsl(var(--primary))]"></div>
                 </div>
                 <div className="p-6">

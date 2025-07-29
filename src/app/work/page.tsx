@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import { AnimatedDiv } from '@/components/animated-div';
 
@@ -39,6 +40,7 @@ export default function WorkPage() {
                   alt={wedding.caption}
                   width={800}
                   height={600}
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                   className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">

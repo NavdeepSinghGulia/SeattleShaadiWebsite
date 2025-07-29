@@ -34,6 +34,7 @@ export default function FunPage() {
                   alt={moment.caption}
                   width={600}
                   height={400}
+                  sizes="(max-width: 768px) 50vw, 33vw"
                   className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
                 />
                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 group-hover:shadow-[inset_0_0_0_8px_hsl(var(--primary))]">

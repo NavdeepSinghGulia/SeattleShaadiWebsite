@@ -1,3 +1,4 @@
+
 import React from 'react';
 import Link from 'next/link';
 import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
@@ -13,10 +14,10 @@ export function Footer() {
             <h3 className="font-headline text-xl font-bold text-primary mb-4">Seattle Shaadi</h3>
             <p className="text-muted-foreground">Crafting timeless weddings with a touch of modern elegance. Your story, our canvas.</p>
             <div className="flex space-x-4 mt-6 justify-center md:justify-start">
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Facebook /></Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Instagram /></Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Twitter /></Link>
-              <Link href="#" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Linkedin /></Link>
+              <Link href="#" aria-label="Facebook" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Facebook /></Link>
+              <Link href="#" aria-label="Instagram" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Instagram /></Link>
+              <Link href="#" aria-label="Twitter" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Twitter /></Link>
+              <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-primary transition-transform hover:scale-110"><Linkedin /></Link>
             </div>
           </div>
 
