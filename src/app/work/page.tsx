@@ -2,18 +2,18 @@ import Image from 'next/image';
 import { AnimatedDiv } from '@/components/animated-div';
 
 const weddings = [
-  { src: "/bride_groom_ceremony.jpg", caption: 'Anushka & Virat' },
-  { src: "/bride-groom-dance.jpg", caption: 'Deepika & Ranveer' },
-  { src: "/groom-bride-sagai.jpg", caption: 'Priyanka & Nick' },
-  { src: "/bride-groom-decor.jpg", caption: 'Alia & Ranbir' },
-  { src: "/Bollywood+wedding+dance.jpg", caption: 'Kiara & Sidharth' },
-  { src: "/phere-hall.jpg", caption: 'Katrina & Vicky' },
-  { src: "/flower-decor.jpg", caption: 'Sonam & Anand' },
-  { src: "/weddinghall-lighting.webp", caption: 'Natasha & Varun' },
-  { src: "/hindu+wedding+foods.jpeg", caption: 'Family Feasts' },
-  { src: "/haldi-ceremony-indian-wedding.webp", caption: 'Haldi Moments' },
-  { src: "/10-mehndi-photos.jpg", caption: 'Mehndi Designs' },
-  { src: "/Indian-Wedding-Photography-Baraat-Boston-Ptaufiq-Gaylord-National-Maryland.jpg", caption: 'Baraat Procession' },
+  { src: "/bride_groom_ceremony.jpg", caption: 'Regal Palace Nuptials' },
+  { src: "/bride-groom-dance.jpg", caption: 'Lakeside Serenity' },
+  { src: "/groom-bride-sagai.jpg", caption: 'Cross-Cultural Celebration' },
+  { src: "/bride-groom-decor.jpg", caption: 'Secret Garden Vows' },
+  { src: "/Bollywood+wedding+dance.jpg", caption: 'Modern City Romance' },
+  { src: "/phere-hall.jpg", caption: 'Sunset Beach Ceremony' },
+  { src: "/flower-decor.jpg", caption: 'Opulent Floral Fantasy' },
+  { src: "/weddinghall-lighting.webp", caption: 'Grand Ballroom Gala' },
+  { src: "/hindu+wedding+foods.jpeg", caption: 'A Culinary Journey' },
+  { src: "/haldi-ceremony-indian-wedding.webp", caption: 'Vibrant Haldi Rituals' },
+  { src: "/10-mehndi-photos.jpg", caption: 'Intricate Mehndi Art' },
+  { src: "/Indian-Wedding-Photography-Baraat-Boston-Ptaufiq-Gaylord-National-Maryland.jpg", caption: 'Joyful Baraat Procession' },
 ];
 
 export default function WorkPage() {

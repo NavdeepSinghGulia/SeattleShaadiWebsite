@@ -34,7 +34,7 @@ export function Footer() {
             <h4 className="font-headline font-semibold mb-4">Contact</h4>
             <ul className="space-y-2 text-muted-foreground">
               <li>Seattle, WA</li>
-              <li>+1 (206) 555-0100</li>
+              <li>206 821 6764</li>
               <li>hello@seattleshaadi.com</li>
             </ul>
           </div>
