@@ -17,7 +17,6 @@ const weddings = [
   { src: "/Indian-Wedding-Photography-Baraat-Boston-Ptaufiq-Gaylord-National-Maryland.jpg", caption: 'Joyful Baraat Procession' },
   { src: "/bride-groom-standing.jpg", caption: 'A Moment in Time' },
   { src: "/bride-groom-handshake.jpg", caption: 'A Vow of Togetherness' },
-  { src: "/bride-groom-weeding-hall.jpg", caption: 'Elegant Beginnings' },
   { src: "/resort-hall.jpg", caption: 'Destination Dream' },
   { src: "/wedding-lawns.jpg", caption: 'Garden Paradise' },
   { src: "/Sarita-Souvik-MnMphotography-38.jpg", caption: 'Portrait of Love' },
