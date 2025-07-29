@@ -13,10 +13,15 @@ import { type ContactFormInput, submitContactForm } from '@/ai/flows/contact-flo
 import { Loader2 } from 'lucide-react';
 import { z } from 'zod';
 
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9A-Z]{3}[)])?[\s-]?([0-9A-Z]{3})[\s-]?([0-9A-Z]{4,7})$/
+);
+
+
 export const ContactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
-  phone: z.string().optional(),
+  phone: z.string().regex(phoneRegex, 'Invalid number!'),
   eventDate: z.string().optional(),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
