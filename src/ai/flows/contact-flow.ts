@@ -11,15 +11,15 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 
-const ContactFormSchema = z.object({
+const ContactFormInputSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
   eventDate: z.string().optional(),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
-export type ContactFormInput = z.infer<typeof ContactFormSchema>;
+export type ContactFormInput = z.infer<typeof ContactFormInputSchema>;
 
-export const ContactFormOutputSchema = z.object({
+const ContactFormOutputSchema = z.object({
     success: z.boolean(),
     message: z.string(),
 });
@@ -32,7 +32,7 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
 const contactFlow = ai.defineFlow(
   {
     name: 'contactFlow',
-    inputSchema: ContactFormSchema,
+    inputSchema: ContactFormInputSchema,
     outputSchema: ContactFormOutputSchema,
   },
   async (input) => {
