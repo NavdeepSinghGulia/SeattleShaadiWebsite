@@ -1,13 +1,23 @@
 
-import Image from 'next/image';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { AnimatedDiv } from '@/components/animated-div';
 
 const teamMembers = [
-  { name: 'Sana Khan', role: 'Founder & Chief Planner', image: "/bride-vidai.jpg" },
-  { name: 'Rohan Mehra', role: 'Co-Founder & Operations Head', image: "/groom-barat.jpg" },
-  { name: 'Anjali Sharma', role: 'Lead Designer', image: "/bride-haldi.jpg" },
-  { name: 'Vikram Singh', role: 'Client Relations Manager', image: "/Indian-Wedding-Photography-Baraat-Boston-Ptaufiq-Gaylord-National-Maryland.jpg" },
+  { 
+    name: 'Rajesh Choudhary', 
+    role: 'Founder & CEO', 
+    bio: "The visionary behind Seattle Shaadi, Rajesh brings over two decades of premier project and event management experience from the Greater Seattle Area. His deep-rooted expertise in the local landscape and his passion for celebrating South Asian traditions are the cornerstones of our company. Rajesh's leadership and meticulous attention to detail ensure that every wedding we plan is not just an event, but a landmark experience. He has built Seattle Shaadi on a foundation of professionalism, creativity, and a commitment to flawless execution, making dream weddings a reality for couples across the Pacific Northwest." 
+  },
+  { 
+    name: 'Navdeep Singh', 
+    role: 'Co-founder & Head of Operations', 
+    bio: "Navdeep is our in-house wizard when it comes to organization and coordination. As the operational mastermind of Seattle Shaadi, he is the backbone of every event we produce. With a remarkable talent for orchestrating complex logistics and managing on-the-ground execution, Navdeep ensures that every element of your celebration flows together seamlessly. From initial vendor planning to the precision of the event-day timeline, his calm demeanor and proactive approach guarantee that the only thing you’ll need to focus on is enjoying your special day."
+  },
+  { 
+    name: 'Soniya Arora', 
+    role: 'Client Relations Manager', 
+    bio: "Soniya is the heart of our client experience and the driving force at every wedding – right from the inception to the end. She works closely with each couple and their families through the entire planning process, acting as their dedicated guide and trusted advocate. Soniya excels at listening to your ideas and understanding your unique story, ensuring that all your visions translate into reality in the best possible way. Her warmth, dedication, and creative touch make the journey to your wedding day as joyful and stress-free as the celebration itself."
+  },
 ];
 
 export default function AboutPage() {
@@ -15,7 +25,7 @@ export default function AboutPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="text-center">
         <AnimatedDiv>
-          <h1 className="font-headline text-4xl md:text-5xl font-bold">Meet the Dream Weavers</h1>
+          <h1 className="font-headline text-4xl md:text-5xl font-bold">Meet the Team</h1>
         </AnimatedDiv>
         <AnimatedDiv delay={200}>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
@@ -24,19 +34,16 @@ export default function AboutPage() {
         </AnimatedDiv>
       </div>
 
-      <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 preserve-3d">
+      <div className="mt-16 max-w-4xl mx-auto space-y-12">
         {teamMembers.map((member, index) => (
           <AnimatedDiv key={member.name} delay={index * 150}>
-            <Card className="text-center border-none shadow-lg overflow-hidden transition-all duration-500 hover:shadow-2xl hover:[transform:rotateY(10deg)_rotateX(5deg)] group">
-              <CardContent className="p-0">
-                <div className="relative w-full h-96">
-                  <Image src={member.image} alt={member.name} fill sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw" style={{objectFit: 'cover', objectPosition: 'top'}} className="w-full h-auto transition-transform duration-500 group-hover:scale-105" />
-                   <div className="absolute inset-0 transition-all duration-300 group-hover:shadow-[inset_0_0_0_8px_hsl(var(--primary))]"></div>
-                </div>
-                <div className="p-6">
-                  <h3 className="font-headline text-xl font-semibold">{member.name}</h3>
-                  <p className="text-primary">{member.role}</p>
-                </div>
+            <Card className="border-none shadow-lg overflow-hidden bg-secondary/30">
+              <CardHeader>
+                <CardTitle className="font-headline text-3xl font-bold">{member.name}</CardTitle>
+                <p className="text-primary font-semibold text-lg">{member.role}</p>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">{member.bio}</p>
               </CardContent>
             </Card>
           </AnimatedDiv>
