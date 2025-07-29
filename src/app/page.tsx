@@ -11,6 +11,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ArrowRight, Star, Quote } from 'lucide-react';
 import { AnimatedDiv } from '@/components/animated-div';
 import { cn } from '@/lib/utils';
+import { useOnScreen } from '@/hooks/use-on-screen';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import { InteractiveCtaButton } from '@/components/interactive-cta-button';
@@ -72,54 +73,39 @@ export default function Home() {
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
-       <section className="w-full relative bg-background h-screen">
-         {/* Desktop Carousel */}
-         <div className="hidden md:block h-full">
-            <Carousel
-              plugins={[plugin.current]}
-              className="w-full h-full"
-              onMouseEnter={plugin.current.stop}
-              onMouseLeave={plugin.current.reset}
-              opts={{
-                loop: true,
-              }}
-            >
-              <CarouselContent className="h-full">
-                {mainCarouselImages.map((image, index) => (
-                  <CarouselItem key={index} className="h-full">
-                    <div className="relative w-full h-full">
-                      <Image
-                        src={image.src}
-                        alt={image.alt}
-                        fill
-                        className="z-0 object-cover object-center"
-                        priority={index === 0}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
-                    </div>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
-              <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
-            </Carousel>
-         </div>
-          {/* Mobile Image */}
-          <div className="md:hidden relative w-full h-full">
-             <Image
-                src={mainCarouselImages[0].src}
-                alt={mainCarouselImages[0].alt}
-                fill
-                className="z-0 object-cover object-center"
-                priority
-              />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
-          </div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center z-20 w-full px-4">
-              <AnimatedDiv delay={400}>
-                <InteractiveCtaButton />
-              </AnimatedDiv>
-          </div>
+      <section className="w-full relative bg-background">
+        {/* Unified Carousel for all screen sizes */}
+        <div>
+          <Carousel
+            plugins={[plugin.current]}
+            className="w-full"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+            opts={{
+              loop: true,
+            }}
+          >
+            <CarouselContent>
+              {mainCarouselImages.map((image, index) => (
+                <CarouselItem key={index}>
+                  {/* The height on mobile (the first value) has been adjusted */}
+                  <div className="relative w-full h-[60vh] md:h-[90vh]">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      className="z-0 object-cover object-left md:object-center"
+                      priority={index === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
+            <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none" />
+          </Carousel>
+        </div>
       </section>
 
       {/* About Section */}
@@ -134,9 +120,11 @@ export default function Home() {
             </p>
           </AnimatedDiv>
           <AnimatedDiv delay={400}>
+            {/*
             <Button asChild variant="link" className="mt-6 text-foreground text-lg">
               <Link href="/about">Meet the Squad <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
+            */}
           </AnimatedDiv>
         </div>
       </section>
@@ -196,28 +184,11 @@ export default function Home() {
           </div>
            <div className="text-center mt-12">
              <AnimatedDiv>
-              <Button asChild size="lg" variant="outline" className="border-foreground text-foreground hover:bg-foreground hover:text-background">
-                  <Link href="/work">View Our Portfolio</Link>
-              </Button>
+               <Button asChild size="lg" variant="outline" className="border-foreground text-foreground hover:bg-foreground hover:text-background">
+                   <Link href="/work">View Our Portfolio</Link>
+               </Button>
              </AnimatedDiv>
            </div>
-        </div>
-      </section>
-
-      {/* YouTube Video Section */}
-      <section className="w-full">
-        <div className="container mx-auto px-0 max-w-full">
-          <AnimatedDiv>
-            <div className="aspect-w-16 aspect-h-9 shadow-2xl mx-auto">
-              <LiteYouTubeEmbed
-                  id="EnxQdO3x12s"
-                  title="Seattle Shaadi - Wedding Highlight Reel"
-                  params="start=10&autoplay=1&mute=1&vq=hd2160"
-                  thumbnail="/hq720.webp"
-                  poster="maxresdefault"
-              />
-            </div>
-          </AnimatedDiv>
         </div>
       </section>
       
@@ -252,7 +223,7 @@ export default function Home() {
                         </AnimatedDiv>
                         <div className="relative max-w-2xl">
                            <AnimatedDiv delay={300}>
-                              <Quote className="absolute -top-2 -left-8 w-12 h-12 text-primary/20" />
+                             <Quote className="absolute -top-2 -left-8 w-12 h-12 text-primary/20" />
                            </AnimatedDiv>
                             <AnimatedDiv delay={400}>
                                 <p className="text-xl italic text-foreground mb-6">
@@ -260,7 +231,7 @@ export default function Home() {
                                 </p>
                             </AnimatedDiv>
                            <AnimatedDiv delay={300}>
-                             <Quote className="absolute -bottom-2 -right-8 w-12 h-12 text-primary/20 transform scale-x-[-1]" />
+                            <Quote className="absolute -bottom-2 -right-8 w-12 h-12 text-primary/20 transform scale-x-[-1]" />
                            </AnimatedDiv>
                         </div>
                         <AnimatedDiv delay={500}>
