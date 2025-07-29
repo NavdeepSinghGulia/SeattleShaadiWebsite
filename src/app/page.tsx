@@ -10,7 +10,6 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { ArrowRight, Star, Quote } from 'lucide-react';
 import { AnimatedDiv } from '@/components/animated-div';
 import { cn } from '@/lib/utils';
-import { useOnScreen } from '@/hooks/use-on-screen';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
 import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css'
 import { InteractiveCtaButton } from '@/components/interactive-cta-button';
@@ -123,11 +122,9 @@ export default function Home() {
             </p>
           </AnimatedDiv>
           <AnimatedDiv delay={400}>
-            {/*
             <Button asChild variant="link" className="mt-6 text-foreground text-lg">
               <Link href="/about">Meet the Squad <ArrowRight className="ml-2 h-5 w-5" /></Link>
             </Button>
-            */}
           </AnimatedDiv>
         </div>
       </section>
@@ -294,4 +291,3 @@ export default function Home() {
     </div>
   );
 }
-    

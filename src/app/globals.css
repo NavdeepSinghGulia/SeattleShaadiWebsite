@@ -4,27 +4,27 @@
 
 @layer base {
   :root {
-    --background: 45 50% 98%;
+    --background: 60 90% 98%; /* Soft Beige */
     --foreground: 240 10% 15%; 
 
-    --primary: 45 85% 55%; /* Rich Gold */
-    --primary-foreground: 240 10% 15%;
+    --primary: 43 74% 49%; /* Muted Gold (#B8860B) */
+    --primary-foreground: 60 90% 98%;
 
-    --secondary: 45 30% 94%;
+    --secondary: 60 90% 96%;
     --secondary-foreground: 240 10% 15%;
 
-    --muted: 45 30% 94%;
+    --muted: 60 90% 96%;
     --muted-foreground: 240 10% 30%;
 
-    --accent: 40 90% 65%; /* Brighter Gold */
-    --accent-foreground: 240 10% 15%;
+    --accent: 339 63% 36%; /* Deep Burgundy (#800020) */
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 45 30% 88%;
-    --input: 45 30% 92%;
-    --ring: 45 85% 55%;
+    --border: 60 90% 90%;
+    --input: 60 90% 94%;
+    --ring: 43 74% 49%;
     
     --radius: 0.5rem;
   }
@@ -33,7 +33,7 @@
     --background: 220 25% 10%; /* Deep Navy */
     --foreground: 45 50% 98%;
 
-    --primary: 45 85% 55%;
+    --primary: 43 74% 60%;
     --primary-foreground: 240 10% 15%;
 
     --secondary: 220 20% 15%;
@@ -42,15 +42,15 @@
     --muted: 220 20% 15%;
     --muted-foreground: 45 50% 90%;
 
-    --accent: 40 90% 65%;
-    --accent-foreground: 240 10% 15%;
+    --accent: 339 70% 50%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
     --border: 220 20% 20%;
     --input: 220 20% 18%;
-    --ring: 45 85% 55%;
+    --ring: 43 74% 60%;
   }
 }
 
