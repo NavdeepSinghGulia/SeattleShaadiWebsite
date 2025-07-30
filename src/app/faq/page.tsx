@@ -16,8 +16,8 @@ const faqs = [
         answer: "We recommend booking us at least 10-12 months in advance, especially for popular wedding dates. For destination weddings, 12-18 months is ideal. However, don't hesitate to reach out if your timeline is shorter!"
     },
     {
-        question: "Do you plan weddings outside of Mumbai?",
-        answer: "Absolutely! We specialize in destination weddings across India and internationally. From the beaches of Goa to the palaces of Udaipur and the vineyards of Tuscany, we've planned weddings all over the world."
+        question: "Do you plan weddings outside of the Greater Seattle Area?",
+        answer: "Absolutely! We specialize in destination weddings across the US and internationally. From the sunny beaches of Florida to the Hawaiian islands and the vineyards of Napa Valley, we've planned weddings all over the world."
     },
     {
         question: "How do you determine your fees?",
