@@ -111,11 +111,7 @@ export function Header() {
 
               {/* ✅ SheetClose for consistent close behavior */}
               <div className="flex justify-end">
-                <SheetClose asChild>
-                  <Button variant="ghost" size="icon" aria-label="Close menu">
-                    <X className="h-6 w-6" />
-                  </Button>
-                </SheetClose>
+                {/* This is the redundant close button that was causing the issue */}
               </div>
 
               <div className="mb-8 mt-2">
