@@ -17,20 +17,21 @@ import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 
 const navLinks = [
+  { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/work', label: 'Our Work' },
   { href: '/about', label: 'About' },
   { href: '/faq', label: 'FAQs' },
 ];
 
-function Logo() {
+function Logo({ className }: { className?: string }) {
   return (
     <Image
       src="/Logo-new.webp"
       alt="Seattle Shaadi Logo"
       width={150}
       height={50}
-      className="h-12 w-auto md:h-16"
+      className={cn("h-12 w-auto md:h-16", className)}
       priority
     />
   );
@@ -67,7 +68,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => (
+          {navLinks.slice(1).map((link) => (
             <Link
               key={link.href}
               href={link.href}
@@ -109,18 +110,13 @@ export function Header() {
                 <SheetTitle className="sr-only">Main Menu</SheetTitle>
               </SheetHeader>
 
-              {/* ✅ SheetClose for consistent close behavior */}
-              <div className="flex justify-end">
-                {/* This is the redundant close button that was causing the issue */}
-              </div>
-
               <div className="mb-8 mt-2">
                 <SheetClose asChild>
                   <Link
                     href="/"
                     className="flex items-center justify-center p-1 transition-transform hover:scale-105"
                   >
-                    <Logo />
+                    <Logo className="h-16" />
                   </Link>
                 </SheetClose>
               </div>
