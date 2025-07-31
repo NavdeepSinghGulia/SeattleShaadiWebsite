@@ -10,6 +10,7 @@
 
 import { ai } from '@/ai/genkit';
 import { z } from 'zod';
+import { Resend } from 'resend';
 
 const ContactFormInputSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -48,14 +49,14 @@ const contactFlow = ai.defineFlow(
   },
   async (input) => {
     console.log('New contact form submission received. Processing...');
+
+    const resend = new Resend(process.env.RESEND_API_KEY);
     
     // Use AI to categorize the message
     const { output } = await categorizationPrompt({ message: input.message });
     const category = output?.category || 'Other';
 
-    // Log all the details to the server console.
-    // In a production app, you would integrate an email service (like Resend, SendGrid)
-    // or save this data to a database (like Firebase Firestore).
+    // In a production app, you would save this data to a database (like Firebase Firestore).
     console.log('---------- NEW CONTACT SUBMISSION ----------');
     console.log(`Name: ${input.name}`);
     console.log(`Email: ${input.email}`);
@@ -65,11 +66,34 @@ const contactFlow = ai.defineFlow(
     console.log(`Categorized as: ${category}`);
     console.log('-------------------------------------------');
 
-    // For this example, we'll just simulate a success response.
-    return {
-        success: true,
-        message: "Thanks for reaching out! We'll get back to you soon.",
-        category: category,
-    };
+    try {
+      await resend.emails.send({
+        from: 'Seattle Shaadi <onboarding@resend.dev>',
+        to: 'delivered@resend.dev', // IMPORTANT: Change this to your email address
+        subject: `New Contact Form Submission - ${category}`,
+        html: `
+          <h1>New Contact Form Submission</h1>
+          <p><strong>Name:</strong> ${input.name}</p>
+          <p><strong>Email:</strong> ${input.email}</p>
+          <p><strong>Phone:</strong> ${input.phone}</p>
+          <p><strong>Event Date:</strong> ${input.eventDate || 'Not provided'}</p>
+          <p><strong>Message:</strong></p>
+          <p>${input.message}</p>
+          <p><em>This message was categorized as: ${category}</em></p>
+        `,
+      });
+
+      return {
+          success: true,
+          message: "Thanks for reaching out! We'll get back to you soon.",
+          category: category,
+      };
+    } catch (error) {
+        console.error("Failed to send email", error);
+        return {
+            success: false,
+            message: "Sorry, we couldn't send your message. Please try again later.",
+        };
+    }
   }
 );
