@@ -1,3 +1,4 @@
+
 'use client';
 
 import React from 'react';
@@ -116,7 +117,7 @@ export function Header() {
                     href="/"
                     className="flex items-center justify-center p-1 transition-transform hover:scale-105"
                   >
-                    <Logo className="h-16" />
+                    <Logo className="h-20" />
                   </Link>
                 </SheetClose>
               </div>
