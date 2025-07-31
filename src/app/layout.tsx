@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import { Playfair_Display, Lato } from 'next/font/google';
 import './globals.css';
@@ -38,7 +39,7 @@ export default function RootLayout({
           <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
           <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className="font-body antialiased bg-background">
+      <body className="font-body antialiased bg-background overflow-x-hidden">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
