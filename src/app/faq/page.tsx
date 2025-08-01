@@ -5,6 +5,10 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion"
+import { AnimatedDiv } from "@/components/animated-div";
+import { FloatingParticles } from "@/components/floating-particles";
+import { RoyalBackground } from "@/components/royal-background";
+import { ShimmerEffect } from "@/components/shimmer-effect";
 
 const faqs = [
     {
@@ -31,25 +35,48 @@ const faqs = [
 
 export default function FAQPage() {
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
-      <div className="text-center">
-        <h1 className="font-headline text-4xl md:text-5xl font-bold">Frequently Asked Questions</h1>
-        <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-          Got questions? We've got answers. Here are some of the things we get asked the most.
-        </p>
-      </div>
+    <div className="relative min-h-screen">
+      <RoyalBackground />
+      <FloatingParticles />
 
-      <div className="mt-12 md:mt-16 max-w-3xl mx-auto">
-        <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, index) => (
-                 <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-left font-headline text-xl">{faq.question}</AccordionTrigger>
-                    <AccordionContent className="text-muted-foreground text-base">
-                        {faq.answer}
-                    </AccordionContent>
-                </AccordionItem>
-            ))}
-        </Accordion>
+      <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+        <div className="text-center">
+          <AnimatedDiv animation="royalEntrance">
+            <ShimmerEffect>
+              <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent">
+                Frequently Asked Questions
+              </h1>
+            </ShimmerEffect>
+          </AnimatedDiv>
+          <AnimatedDiv delay={300} animation="fadeInScale">
+            <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
+              Got questions? We've got answers. Here are some of the things we get asked the most.
+            </p>
+          </AnimatedDiv>
+        </div>
+
+        <div className="mt-16 max-w-3xl mx-auto">
+           <Accordion type="single" collapsible className="w-full space-y-4">
+              {faqs.map((faq, index) => (
+                <AnimatedDiv key={index} delay={index * 150} animation="fadeInScale">
+                   <ShimmerEffect className="rounded-lg">
+                     <div className="p-px bg-gradient-to-br from-amber-500/30 via-rose-500/30 to-amber-500/30 rounded-lg">
+                        <div className="bg-gradient-to-br from-secondary/60 via-secondary/40 to-background/60 backdrop-blur-sm rounded-lg">
+                          <AccordionItem value={`item-${index}`} className="border-none px-6">
+                              <AccordionTrigger className="text-left font-headline text-xl text-foreground/90 hover:text-primary">
+                                  {faq.question}
+                              </AccordionTrigger>
+                              <AccordionContent className="text-muted-foreground text-base">
+                                  {faq.answer}
+                              </AccordionContent>
+                          </AccordionItem>
+                        </div>
+                     </div>
+                   </ShimmerEffect>
+                </AnimatedDiv>
+              ))}
+          </Accordion>
+        </div>
       </div>
     </div>
   );
