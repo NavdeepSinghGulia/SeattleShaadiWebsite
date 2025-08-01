@@ -5,6 +5,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Card, CardContent } from '@/components/ui/card';
 import { AnimatedDiv } from '@/components/animated-div';
 import { Star, Quote } from 'lucide-react';
+import { ShimmerEffect } from '../shimmer-effect';
 
 const testimonials = [
     {
@@ -26,13 +27,15 @@ const testimonials = [
 
 export function TestimonialsSection() {
     return (
-        <section className="py-16 md:py-24 bg-secondary/50">
+        <section className="py-16 md:py-24 bg-secondary/30">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="text-center mb-12">
-                    <AnimatedDiv>
-                        <h2 className="font-headline text-3xl md:text-4xl font-bold">Words of Love</h2>
+                    <AnimatedDiv animation="royalEntrance">
+                      <ShimmerEffect>
+                        <h2 className="font-headline text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent">Words of Love</h2>
+                      </ShimmerEffect>
                     </AnimatedDiv>
-                    <AnimatedDiv delay={200}>
+                    <AnimatedDiv delay={300} animation="fadeInScale">
                         <p className="mt-4 max-w-2xl mx-auto text-muted-foreground">What our happy couples say about us.</p>
                     </AnimatedDiv>
                 </div>
@@ -40,39 +43,31 @@ export function TestimonialsSection() {
                     <CarouselContent>
                         {testimonials.map((testimonial, index) => (
                             <CarouselItem key={index}>
-                                <div className="p-2">
-                                    <Card className="border-none bg-transparent shadow-none">
-                                        <CardContent className="flex flex-col items-center justify-center p-6 text-center">
-                                            <AnimatedDiv delay={100}>
-                                                <Avatar className="w-32 h-32 mb-6 border-4 border-primary">
-                                                    <AvatarImage src={testimonial.avatar} alt={`${testimonial.name}'s testimonial photo`} />
-                                                    <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                                                </Avatar>
-                                            </AnimatedDiv>
-                                            <AnimatedDiv delay={200}>
-                                                <div className="flex gap-1 text-yellow-400 mb-4">
-                                                    {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" aria-label="Star rating" />)}
-                                                </div>
-                                            </AnimatedDiv>
-                                            <div className="relative max-w-2xl">
-                                                <AnimatedDiv delay={300}>
-                                                    <Quote className="absolute -top-2 -left-8 w-12 h-12 text-primary/20" />
-                                                </AnimatedDiv>
-                                                <AnimatedDiv delay={400}>
-                                                    <p className="text-xl italic text-foreground mb-6">
-                                                        {testimonial.text}
-                                                    </p>
-                                                </AnimatedDiv>
-                                                <AnimatedDiv delay={300}>
-                                                    <Quote className="absolute -bottom-2 -right-8 w-12 h-12 text-primary/20 transform scale-x-[-1]" />
-                                                </AnimatedDiv>
-                                            </div>
-                                            <AnimatedDiv delay={500}>
-                                                <h4 className="font-headline font-bold text-3xl">{testimonial.name}</h4>
-                                            </AnimatedDiv>
-                                        </CardContent>
-                                    </Card>
-                                </div>
+                                <AnimatedDiv delay={index * 200} animation="fadeInScale">
+                                    <ShimmerEffect className="h-full">
+                                        <div className="p-px bg-gradient-to-br from-amber-500/30 via-rose-500/30 to-amber-500/30 rounded-lg h-full">
+                                            <Card className="border-none shadow-2xl bg-gradient-to-br from-secondary/60 via-secondary/40 to-background/60 backdrop-blur-sm h-full flex flex-col">
+                                                <CardContent className="flex flex-col items-center justify-center p-6 text-center">
+                                                    <Avatar className="w-32 h-32 mb-6 border-4 border-primary">
+                                                        <AvatarImage src={testimonial.avatar} alt={`${testimonial.name}'s testimonial photo`} />
+                                                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                                                    </Avatar>
+                                                    <div className="flex gap-1 text-yellow-400 mb-4">
+                                                        {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" aria-label="Star rating" />)}
+                                                    </div>
+                                                    <div className="relative max-w-2xl">
+                                                        <Quote className="absolute -top-2 -left-8 w-12 h-12 text-primary/20" />
+                                                            <p className="text-xl italic text-foreground mb-6">
+                                                                {testimonial.text}
+                                                            </p>
+                                                        <Quote className="absolute -bottom-2 -right-8 w-12 h-12 text-primary/20 transform scale-x-[-1]" />
+                                                    </div>
+                                                    <h4 className="font-headline font-bold text-3xl bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">{testimonial.name}</h4>
+                                                </CardContent>
+                                            </Card>
+                                        </div>
+                                    </ShimmerEffect>
+                                </AnimatedDiv>
                             </CarouselItem>
                         ))}
                     </CarouselContent>
