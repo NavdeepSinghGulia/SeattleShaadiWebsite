@@ -51,7 +51,8 @@ export function Footer() {
         </div>
 
         <div className="mt-12 border-t pt-8 text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} Seattle Shaadi. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Seattle Shaadi. All Rights Reserved. </p>
+          <p> Crafted with ❤️ for Indian weddings.</p>
         </div>
       </div>
     </footer>
