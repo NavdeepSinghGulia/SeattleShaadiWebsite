@@ -69,7 +69,7 @@ const contactFlow = ai.defineFlow(
     try {
       await resend.emails.send({
         from: 'Seattle Shaadi <onboarding@resend.dev>',
-        to: 'delivered@resend.dev', // IMPORTANT: Change this to your email address
+        to: 'navdeep.code@gmail.com', // IMPORTANT: Change this to your email address
         subject: `New Contact Form Submission - ${category}`,
         html: `
           <h1>New Contact Form Submission</h1>
