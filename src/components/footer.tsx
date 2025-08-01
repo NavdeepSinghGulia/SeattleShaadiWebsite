@@ -52,7 +52,7 @@ export function Footer() {
 
         <div className="mt-12 border-t pt-8 text-center text-muted-foreground">
           <p>&copy; {new Date().getFullYear()} Seattle Shaadi. All Rights Reserved. </p>
-          <p> Crafted with ❤️ for Indian weddings.</p>
+          <p> Crafted with ❤️ for everlasting bonds.</p>
         </div>
       </div>
     </footer>
