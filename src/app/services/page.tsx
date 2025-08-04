@@ -44,7 +44,7 @@ export default function ServicesPage() {
         <div className="text-center">
            <AnimatedDiv animation="royalEntrance">
             <ShimmerEffect>
-              <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent">
+              <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">
                 Services Tailored for You
               </h1>
             </ShimmerEffect>
@@ -74,7 +74,7 @@ export default function ServicesPage() {
                           />
                         </div>
                       )}
-                      <CardTitle className="font-headline text-2xl md:text-3xl bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">
+                      <CardTitle className="font-headline text-2xl md:text-3xl bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">
                         {service.title}
                       </CardTitle>
                       <CardDescription className="pt-2 text-base text-muted-foreground">{service.description}</CardDescription>

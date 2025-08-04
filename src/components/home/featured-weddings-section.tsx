@@ -19,7 +19,7 @@ export function FeaturedWeddingsSection() {
                 <div className="text-center mb-12">
                     <AnimatedDiv animation="royalEntrance">
                       <ShimmerEffect>
-                        <h2 className="font-headline text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent">Love in Focus</h2>
+                        <h2 className="font-headline text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">Love in Focus</h2>
                       </ShimmerEffect>
                     </AnimatedDiv>
                     <AnimatedDiv delay={300} animation="fadeInScale">

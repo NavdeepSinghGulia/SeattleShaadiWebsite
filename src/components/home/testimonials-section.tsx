@@ -32,7 +32,7 @@ export function TestimonialsSection() {
                 <div className="text-center mb-12">
                     <AnimatedDiv animation="royalEntrance">
                       <ShimmerEffect>
-                        <h2 className="font-headline text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent">Words of Love</h2>
+                        <h2 className="font-headline text-3xl md:text-4xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">Words of Love</h2>
                       </ShimmerEffect>
                     </AnimatedDiv>
                     <AnimatedDiv delay={300} animation="fadeInScale">
@@ -62,7 +62,7 @@ export function TestimonialsSection() {
                                                             </p>
                                                         <Quote className="absolute -bottom-2 -right-8 w-12 h-12 text-primary/20 transform scale-x-[-1]" />
                                                     </div>
-                                                    <h4 className="font-headline font-bold text-3xl bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent">{testimonial.name}</h4>
+                                                    <h4 className="font-headline font-bold text-3xl bg-gradient-to-r from-amber-600 to-rose-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">{testimonial.name}</h4>
                                                 </CardContent>
                                             </Card>
                                         </div>

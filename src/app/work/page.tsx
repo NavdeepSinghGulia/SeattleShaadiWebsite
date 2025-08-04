@@ -36,7 +36,7 @@ export default function WorkPage() {
         <div className="text-center">
           <AnimatedDiv animation="royalEntrance">
             <ShimmerEffect>
-              <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent">
+              <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">
                 Our Gallery of Dreams
               </h1>
             </ShimmerEffect>

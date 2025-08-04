@@ -32,7 +32,7 @@ export default function AboutPage() {
         <div className="text-center">
           <AnimatedDiv animation="royalEntrance">
             <ShimmerEffect>
-              <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent">
+              <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">
                 Meet the Dream Weavers
               </h1>
             </ShimmerEffect>
@@ -74,7 +74,7 @@ export default function AboutPage() {
             <ShimmerEffect className="rounded-lg">
               <div className="bg-gradient-to-br from-secondary/60 via-secondary/40 to-background/60 backdrop-blur-sm p-8 md:p-12 rounded-lg shadow-2xl border border-amber-200/20">
                 <div className="text-center">
-                  <h2 className="font-headline text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                  <h2 className="font-headline text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent leading-normal drop-shadow-sm">
                     Our Core Philosophy: "Regal Modernity"
                   </h2>
                   <p className="mt-4 max-w-4xl mx-auto text-muted-foreground leading-relaxed">

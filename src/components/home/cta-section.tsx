@@ -8,7 +8,7 @@ export function CtaSection() {
             <div className="container mx-auto px-4 md:px-6 text-center">
                 <AnimatedDiv animation="royalEntrance">
                   <ShimmerEffect>
-                    <h2 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent">Ready to Start Planning?</h2>
+                    <h2 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">Ready to Start Planning?</h2>
                   </ShimmerEffect>
                 </AnimatedDiv>
                 <AnimatedDiv delay={300} animation="fadeInScale">
