@@ -30,23 +30,24 @@ const mobileCarouselContent = [
     },
 ];
 
-const shloka = "वक्रतुण्ड महाकाय सूर्य कोटी समप्रभा। निर्विघ्नं कुरु मे देव सर्व-कार्येशु सर्वदा";
-const shlokaWords = shloka.split(' ');
+const shlokaLine1 = "वक्रतुण्ड महाकाय सूर्य कोटी समप्रभा।".split(' ');
+const shlokaLine2 = "निर्विघ्नं कुरु मे देव सर्व-कार्येशु सर्वदा॥".split(' ');
+
 
 const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
         transition: {
-            delay: 2.5, // Start after initial hero animations
-            staggerChildren: 0.3,
+            delay: 1.5,
+            staggerChildren: 0.2,
         },
     },
     fadeOut: {
         opacity: 0,
         transition: {
-            delay: 1, // Wait a bit after the last word appears
-            duration: 2,
+            delay: 4, // Time shloka is visible before fading
+            duration: 2.5,
             ease: "easeOut"
         }
     }
@@ -55,18 +56,16 @@ const containerVariants = {
 const wordVariants = {
     hidden: { 
         opacity: 0, 
-        y: 10,
-        filter: "blur(5px)",
-        textShadow: "0 0 0px hsl(var(--primary) / 0)"
+        y: 15,
+        filter: "blur(8px)",
     },
     visible: {
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
-        textShadow: "0 0 8px hsl(var(--primary) / 0.5)",
         transition: {
-            duration: 1,
-            ease: [0.25, 0.46, 0.45, 0.94],
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1], // More dramatic ease
         },
     },
 };
@@ -105,8 +104,6 @@ export function HeroSection() {
                             <CarouselItem key={index}>
                                 <motion.div 
                                   className="relative h-[95vh] w-full"
-                                  whileHover={{ scale: 1.02 }}
-                                  transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                                 >
                                     <Image
                                         src={image.src}
@@ -127,22 +124,31 @@ export function HeroSection() {
                 
                 {/* Spiritual Shloka Animation */}
                 <motion.div
-                    className="absolute bottom-20 left-1/2 -translate-x-1/2 w-full max-w-4xl text-center z-20 pointer-events-none"
+                    className="absolute bottom-24 left-1/2 -translate-x-1/2 w-full max-w-5xl text-center z-20 pointer-events-none"
                     variants={containerVariants}
                     initial="hidden"
                     animate={animationState}
                     onAnimationComplete={(definition) => {
                         if (definition === "visible") {
-                           setTimeout(() => setAnimationState("fadeOut"), 6000); // Time the shloka is visible
+                           setTimeout(() => setAnimationState("fadeOut"), 6000); 
                         }
                     }}
                 >
-                    <h2 className="font-headline text-2xl md:text-3xl text-white drop-shadow-lg" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.5)' }}>
-                        {shlokaWords.map((word, index) => (
-                            <motion.span key={index} variants={wordVariants} className="inline-block mr-3">
-                                {word}
-                            </motion.span>
-                        ))}
+                    <h2 className="font-headline text-3xl md:text-4xl text-white drop-shadow-xl" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
+                        <div className="mb-2">
+                            {shlokaLine1.map((word, index) => (
+                                <motion.span key={index} variants={wordVariants} className="inline-block mr-4">
+                                    {word}
+                                </motion.span>
+                            ))}
+                        </div>
+                        <div>
+                             {shlokaLine2.map((word, index) => (
+                                <motion.span key={index} variants={wordVariants} className="inline-block mr-4">
+                                    {word}
+                                </motion.span>
+                            ))}
+                        </div>
                     </h2>
                 </motion.div>
 
