@@ -198,7 +198,6 @@
   .animate-particle {
     animation: particle-float 25s infinite linear;
   }
-}
 
   /* ELEGANT KEYFRAMES - Following Design Principles */
   
@@ -404,3 +403,4 @@
     transform-style: preserve-3d;
     perspective: 1000px;
   }
+}
