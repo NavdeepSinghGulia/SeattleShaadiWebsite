@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { useMobileRoyalAnimations } from '@/hooks/use-mobile-royal-animations';
 
 interface LuxuryCardProps {
   children: ReactNode;
@@ -20,6 +21,7 @@ export function LuxuryCard({
   glowEffect = false
 }: LuxuryCardProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const { isMobile, isTouch, variants, triggerHapticFeedback, settings } = useMobileRoyalAnimations();
 
   const baseClasses = "relative overflow-hidden rounded-xl border backdrop-blur-sm";
   
@@ -29,7 +31,8 @@ export function LuxuryCard({
     elegant: "bg-card/90 border-accent/30"
   };
 
-  const cardVariants = {
+  // Use mobile-optimized variants when on mobile
+  const cardVariants = isMobile ? variants.mobileCard : {
     idle: {
       scale: 1,
       rotateX: 0,
@@ -125,8 +128,19 @@ export function LuxuryCard({
       variants={cardVariants}
       initial="idle"
       animate={isHovered && hoverable ? "hover" : "idle"}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      onHoverStart={() => !isTouch && setIsHovered(true)}
+      onHoverEnd={() => !isTouch && setIsHovered(false)}
+      onTapStart={() => {
+        if (isTouch && settings.enableHapticFeedback) {
+          triggerHapticFeedback('light');
+        }
+        setIsHovered(true);
+      }}
+      onTapEnd={() => {
+        if (isTouch) {
+          setTimeout(() => setIsHovered(false), 200);
+        }
+      }}
       style={{ transformStyle: 'preserve-3d' }}
     >
       {/* Animated Border */}
@@ -155,10 +169,10 @@ export function LuxuryCard({
         animate={isHovered ? "hover" : "idle"}
       />
 
-      {/* Royal Particles */}
-      {variant === 'royal' && (
+      {/* Royal Particles - Mobile Optimized */}
+      {variant === 'royal' && settings.enableParticles && (
         <div className="absolute inset-0 pointer-events-none">
-          {Array.from({ length: 4 }).map((_, i) => (
+          {Array.from({ length: Math.min(4, settings.particleCount) }).map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-primary/60 rounded-full"
@@ -209,4 +223,3 @@ export function LuxuryCard({
     </motion.div>
   );
 }
-

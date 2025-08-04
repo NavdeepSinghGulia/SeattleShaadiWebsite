@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { useMobileRoyalAnimations } from '@/hooks/use-mobile-royal-animations';
 
 interface InteractiveCtaButtonProps {
   children: ReactNode;
@@ -25,6 +26,7 @@ export function InteractiveCtaButton({
 }: InteractiveCtaButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
+  const { isMobile, isTouch, variants, triggerHapticFeedback, settings } = useMobileRoyalAnimations();
 
   const baseClasses = "relative inline-flex items-center justify-center font-medium transition-all duration-300 overflow-hidden rounded-lg";
   
@@ -40,7 +42,8 @@ export function InteractiveCtaButton({
     lg: "px-8 py-4 text-lg"
   };
 
-  const buttonVariants = {
+  // Use mobile-optimized variants when on mobile
+  const buttonVariants = isMobile ? variants.mobileHover : {
     idle: {
       scale: 1,
       boxShadow: variant === 'royal' 
@@ -116,11 +119,21 @@ export function InteractiveCtaButton({
       variants={buttonVariants}
       initial="idle"
       animate={isPressed ? "pressed" : isHovered ? "hover" : "idle"}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      onTapStart={() => setIsPressed(true)}
+      onHoverStart={() => !isTouch && setIsHovered(true)}
+      onHoverEnd={() => !isTouch && setIsHovered(false)}
+      onTapStart={() => {
+        setIsPressed(true);
+        if (isTouch && settings.enableHapticFeedback) {
+          triggerHapticFeedback('light');
+        }
+      }}
       onTapEnd={() => setIsPressed(false)}
-      whileTap={{ scale: 0.98 }}
+      onTap={() => {
+        if (isTouch && settings.enableHapticFeedback) {
+          triggerHapticFeedback('medium');
+        }
+      }}
+      whileTap={isMobile ? variants.mobileHover.tap : { scale: 0.98 }}
       {...componentProps}
     >
       {/* Golden Glow Effect */}
@@ -139,10 +152,10 @@ export function InteractiveCtaButton({
         animate={isHovered ? "hover" : "idle"}
       />
 
-      {/* Royal Particles */}
-      {variant === 'royal' && (
+      {/* Royal Particles - Mobile Optimized */}
+      {variant === 'royal' && settings.enableParticles && (
         <>
-          {Array.from({ length: 6 }).map((_, i) => (
+          {Array.from({ length: settings.particleCount }).map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-primary-foreground rounded-full"
@@ -192,4 +205,3 @@ export function InteractiveCtaButton({
     </Component>
   );
 }
-

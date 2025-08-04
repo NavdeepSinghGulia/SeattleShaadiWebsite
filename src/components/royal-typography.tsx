@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { ReactNode, useState } from 'react';
 import { cn } from '@/lib/utils';
+import { useMobileRoyalAnimations } from '@/hooks/use-mobile-royal-animations';
 
 interface RoyalTypographyProps {
   children: ReactNode;
@@ -25,6 +26,7 @@ export function RoyalTypography({
 }: RoyalTypographyProps) {
   const [isHovered, setIsHovered] = useState(false);
   const text = typeof children === 'string' ? children : '';
+  const { isMobile, isTouch, variants, settings, isSmallScreen } = useMobileRoyalAnimations();
 
   const Component = motion[variant as keyof typeof motion] || motion.p;
 
@@ -37,13 +39,16 @@ export function RoyalTypography({
     span: "font-body"
   };
 
+  // Mobile-optimized animation duration
+  const mobileDuration = isMobile ? settings.animationDuration : duration;
+  
   const animationVariants = {
     typewriter: {
       hidden: { width: 0 },
       visible: {
         width: "100%",
         transition: {
-          duration: duration,
+          duration: mobileDuration,
           ease: "easeInOut",
           delay: delay
         }
@@ -56,14 +61,14 @@ export function RoyalTypography({
       },
       visible: {
         opacity: 1,
-        textShadow: [
+        textShadow: settings.enableComplexAnimations ? [
           "0 0 0px rgba(184, 134, 11, 0)",
-          "0 0 10px rgba(184, 134, 11, 0.5)",
-          "0 0 20px rgba(184, 134, 11, 0.3)",
-          "0 0 10px rgba(184, 134, 11, 0.5)"
-        ],
+          `0 0 10px rgba(184, 134, 11, ${settings.glowIntensity * 0.5})`,
+          `0 0 20px rgba(184, 134, 11, ${settings.glowIntensity * 0.3})`,
+          `0 0 10px rgba(184, 134, 11, ${settings.glowIntensity * 0.5})`
+        ] : `0 0 5px rgba(184, 134, 11, ${settings.glowIntensity * 0.3})`,
         transition: {
-          duration: duration,
+          duration: mobileDuration,
           delay: delay,
           textShadow: {
             duration: 2,
@@ -73,7 +78,7 @@ export function RoyalTypography({
         }
       }
     },
-    royalReveal: {
+    royalReveal: isMobile ? variants.mobileTextReveal : {
       hidden: { 
         opacity: 0,
         y: 30,
@@ -84,7 +89,7 @@ export function RoyalTypography({
         y: 0,
         clipPath: "inset(0% 0 0 0)",
         transition: {
-          duration: duration,
+          duration: mobileDuration,
           delay: delay,
           ease: [0.25, 0.46, 0.45, 0.94]
         }
@@ -93,15 +98,15 @@ export function RoyalTypography({
     elegantFade: {
       hidden: { 
         opacity: 0,
-        y: 20,
-        filter: "blur(10px)"
+        y: isSmallScreen ? 10 : 20,
+        filter: isSmallScreen ? "blur(3px)" : "blur(10px)"
       },
       visible: {
         opacity: 1,
         y: 0,
         filter: "blur(0px)",
         transition: {
-          duration: duration,
+          duration: mobileDuration,
           delay: delay,
           ease: "easeOut"
         }
@@ -134,10 +139,10 @@ export function RoyalTypography({
       scale: 1
     },
     hover: {
-      textShadow: "0 0 15px rgba(184, 134, 11, 0.6), 0 0 25px rgba(184, 134, 11, 0.4)",
-      scale: 1.02,
+      textShadow: `0 0 15px rgba(184, 134, 11, ${settings.glowIntensity * 0.6}), 0 0 25px rgba(184, 134, 11, ${settings.glowIntensity * 0.4})`,
+      scale: isMobile ? 1.01 : 1.02,
       transition: {
-        duration: 0.3,
+        duration: settings.animationDuration * 0.5,
         ease: "easeOut"
       }
     }
@@ -247,8 +252,10 @@ export function RoyalTypography({
         variants={glowOnHover ? hoverVariants : animationVariants[animation]}
         initial={glowOnHover ? "idle" : "hidden"}
         animate={glowOnHover ? (isHovered ? "hover" : "idle") : "visible"}
-        onHoverStart={() => glowOnHover && setIsHovered(true)}
-        onHoverEnd={() => glowOnHover && setIsHovered(false)}
+        onHoverStart={() => glowOnHover && !isTouch && setIsHovered(true)}
+        onHoverEnd={() => glowOnHover && !isTouch && setIsHovered(false)}
+        onTapStart={() => glowOnHover && isTouch && setIsHovered(true)}
+        onTapEnd={() => glowOnHover && isTouch && setTimeout(() => setIsHovered(false), 200)}
       >
         {children}
       </Component>
@@ -263,10 +270,10 @@ export function RoyalTypography({
         />
       )}
 
-      {/* Sparkle effects for special animations */}
-      {(animation === 'crownTitle' || animation === 'goldenGlow') && (
+      {/* Sparkle effects for special animations - Mobile Optimized */}
+      {(animation === 'crownTitle' || animation === 'goldenGlow') && settings.enableParticles && (
         <div className="absolute inset-0 pointer-events-none">
-          {Array.from({ length: 3 }).map((_, i) => (
+          {Array.from({ length: Math.min(3, Math.ceil(settings.particleCount / 2)) }).map((_, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-primary rounded-full"
@@ -292,4 +299,3 @@ export function RoyalTypography({
     </div>
   );
 }
-
