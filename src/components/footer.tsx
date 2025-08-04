@@ -44,23 +44,39 @@ export function Footer() {
           💎
         </motion.div>
 
-        {/* Mobile-friendly constellation */}
-        {Array.from({ length: 15 }).map((_, i) => (
+        {/* Mobile-friendly constellation - using fixed positions to avoid hydration issues */}
+        {[
+          { left: 10, top: 20, delay: 0.5 },
+          { left: 25, top: 15, delay: 1.2 },
+          { left: 40, top: 30, delay: 0.8 },
+          { left: 60, top: 10, delay: 1.8 },
+          { left: 75, top: 25, delay: 0.3 },
+          { left: 85, top: 40, delay: 1.5 },
+          { left: 15, top: 60, delay: 2.1 },
+          { left: 35, top: 70, delay: 0.9 },
+          { left: 55, top: 80, delay: 1.6 },
+          { left: 80, top: 65, delay: 0.6 },
+          { left: 90, top: 85, delay: 2.3 },
+          { left: 20, top: 90, delay: 1.1 },
+          { left: 45, top: 95, delay: 1.9 },
+          { left: 70, top: 88, delay: 0.4 },
+          { left: 95, top: 75, delay: 1.4 }
+        ].map((star, i) => (
           <motion.div
             key={i}
             className="absolute w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary/30 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${star.left}%`,
+              top: `${star.top}%`,
             }}
             animate={{
               opacity: [0, 1, 0],
               scale: [0, 1, 0],
             }}
             transition={{
-              duration: Math.random() * 2 + 2,
+              duration: 3,
               repeat: Infinity,
-              delay: Math.random() * 3,
+              delay: star.delay,
             }}
           />
         ))}
@@ -320,4 +336,3 @@ export function Footer() {
     </footer>
   );
 }
-

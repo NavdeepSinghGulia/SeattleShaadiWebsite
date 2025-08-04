@@ -1,4 +1,3 @@
-
 'use client';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
@@ -10,8 +9,14 @@ import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { toast } from '@/hooks/use-toast';
 import { type ContactFormInput, submitContactForm } from '@/ai/flows/contact-flow';
-import { Loader2 } from 'lucide-react';
+import { Loader2, Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { z } from 'zod';
+import { RoyalBackground } from '@/components/royal-background';
+import { RoyalTypography } from '@/components/royal-typography';
+import { LuxuryCard } from '@/components/luxury-card';
+import { InteractiveCtaButton } from '@/components/interactive-cta-button';
+import { AnimatedDiv } from '@/components/animated-div';
+import { motion } from 'framer-motion';
 
 export const ContactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -78,26 +83,117 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 py-16 md:py-24">
-      <div className="text-center">
-        <h1 className="font-headline text-4xl md:text-5xl font-bold">Let's Create Magic Together</h1>
-        <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-          Have a question or ready to start planning your dream wedding? Fill out the form below or reach out to us directly. We can't wait to hear your story.
-        </p>
-      </div>
-
-      <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
-        <div className="bg-secondary/50 p-8 rounded-lg">
-          <h2 className="font-headline text-2xl md:text-3xl font-bold mb-6">Contact Information</h2>
-          <div className="space-y-4 text-base md:text-lg">
-            <p><strong>Address:</strong> 123 Wedding Lane, Seattle, WA 98101, USA</p>
-            <p><strong>Phone:</strong> <a href="tel:+12068216764" className="hover:text-primary">+1 (206) 821-6764</a></p>
-            <p><strong>Email:</strong> <a href="mailto:hello@seattleshaadi.com" className="hover:text-primary">hello@seattleshaadi.com</a></p>
-            <p><strong>Hours:</strong> Mon - Fri, 10am - 6pm</p>
+    <div className="relative min-h-screen">
+      <RoyalBackground />
+      
+      <div className="relative z-10 container mx-auto px-4 py-16 md:py-24">
+        <AnimatedDiv animation="royalEntrance">
+          <div className="text-center">
+            <RoyalTypography
+              variant="h1"
+              animation="crownTitle"
+              className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
+            >
+              Let's Create Magic Together
+            </RoyalTypography>
+            <RoyalTypography
+              variant="p"
+              animation="royalReveal"
+              className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground"
+              delay={0.5}
+            >
+              Have a question or ready to start planning your dream wedding? Fill out the form below or reach out to us directly. We can't wait to hear your story.
+            </RoyalTypography>
           </div>
-        </div>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+        </AnimatedDiv>
+
+        <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
+          <AnimatedDiv delay={300} animation="fadeInScale">
+            <LuxuryCard variant="royal" className="p-8" glowEffect>
+              <RoyalTypography
+                variant="h2"
+                animation="goldenGlow"
+                className="text-2xl md:text-3xl font-bold mb-8 text-center"
+              >
+                Contact Information
+              </RoyalTypography>
+              
+              <div className="space-y-6">
+                <motion.div 
+                  className="flex items-center space-x-4 p-4 rounded-lg bg-background/50 hover:bg-background/70 transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="p-2 rounded-full bg-primary/20">
+                    <MapPin className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-semibold">Address</p>
+                    <p className="text-muted-foreground">123 Wedding Lane, Seattle, WA 98101, USA</p>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="flex items-center space-x-4 p-4 rounded-lg bg-background/50 hover:bg-background/70 transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="p-2 rounded-full bg-primary/20">
+                    <Phone className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-semibold">Phone</p>
+                    <a href="tel:+12068216764" className="text-muted-foreground hover:text-primary transition-colors">
+                      +1 (206) 821-6764
+                    </a>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="flex items-center space-x-4 p-4 rounded-lg bg-background/50 hover:bg-background/70 transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="p-2 rounded-full bg-primary/20">
+                    <Mail className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-semibold">Email</p>
+                    <a href="mailto:hello@seattleshaadi.com" className="text-muted-foreground hover:text-primary transition-colors">
+                      hello@seattleshaadi.com
+                    </a>
+                  </div>
+                </motion.div>
+
+                <motion.div 
+                  className="flex items-center space-x-4 p-4 rounded-lg bg-background/50 hover:bg-background/70 transition-colors"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="p-2 rounded-full bg-primary/20">
+                    <Clock className="h-5 w-5 text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-semibold">Hours</p>
+                    <p className="text-muted-foreground">Mon - Fri, 10am - 6pm</p>
+                  </div>
+                </motion.div>
+              </div>
+            </LuxuryCard>
+          </AnimatedDiv>
+          <AnimatedDiv delay={600} animation="fadeInScale">
+            <LuxuryCard variant="elegant" className="p-8" glowEffect>
+              <RoyalTypography
+                variant="h2"
+                animation="goldenGlow"
+                className="text-2xl md:text-3xl font-bold mb-8 text-center"
+                delay={0.8}
+              >
+                Get Your Royal Quote
+              </RoyalTypography>
+              
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
               name="name"
@@ -167,12 +263,21 @@ export default function ContactPage() {
                 </FormItem>
               )}
             />
-            <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-              {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-            </Button>
-          </form>
-        </Form>
+                  <InteractiveCtaButton 
+                    type="submit" 
+                    variant="royal" 
+                    size="lg" 
+                    className="w-full" 
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                    {isSubmitting ? 'Sending Your Royal Request...' : 'Send Royal Message'}
+                  </InteractiveCtaButton>
+                </form>
+              </Form>
+            </LuxuryCard>
+          </AnimatedDiv>
+        </div>
       </div>
     </div>
   );

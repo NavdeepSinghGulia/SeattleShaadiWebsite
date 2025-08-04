@@ -52,7 +52,7 @@ export function AboutSection() {
                     </RoyalTypography>
                 </AnimatedDiv>
 
-                {/* Royal Stats Cards */}
+                {/* Our Values */}
                 <motion.div 
                     className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto"
                     initial={{ opacity: 0, y: 50 }}
@@ -61,44 +61,48 @@ export function AboutSection() {
                 >
                     <LuxuryCard variant="royal" className="text-center p-6">
                         <motion.div
-                            className="text-3xl mb-2"
+                            className="text-3xl mb-4"
                             animate={{ scale: [1, 1.1, 1] }}
                             transition={{ duration: 2, repeat: Infinity }}
                         >
                             👑
                         </motion.div>
                         <RoyalTypography
-                            variant="h3"
+                            variant="h4"
                             animation="goldenGlow"
-                            className="text-2xl font-bold text-primary mb-2"
+                            className="text-xl font-bold text-primary mb-3"
                         >
-                            500+
+                            Royal Elegance
                         </RoyalTypography>
-                        <p className="text-muted-foreground">Royal Celebrations</p>
+                        <p className="text-muted-foreground text-sm">
+                            Every detail crafted with majestic precision and timeless sophistication
+                        </p>
                     </LuxuryCard>
 
                     <LuxuryCard variant="royal" className="text-center p-6">
                         <motion.div
-                            className="text-3xl mb-2"
+                            className="text-3xl mb-4"
                             animate={{ rotate: [0, 10, -10, 0] }}
                             transition={{ duration: 3, repeat: Infinity }}
                         >
                             💎
                         </motion.div>
                         <RoyalTypography
-                            variant="h3"
+                            variant="h4"
                             animation="goldenGlow"
-                            className="text-2xl font-bold text-primary mb-2"
+                            className="text-xl font-bold text-primary mb-3"
                             delay={0.2}
                         >
-                            15+
+                            Personalized Touch
                         </RoyalTypography>
-                        <p className="text-muted-foreground">Years of Excellence</p>
+                        <p className="text-muted-foreground text-sm">
+                            Your unique love story deserves a celebration as special as you are
+                        </p>
                     </LuxuryCard>
 
                     <LuxuryCard variant="royal" className="text-center p-6">
                         <motion.div
-                            className="text-3xl mb-2"
+                            className="text-3xl mb-4"
                             animate={{ 
                                 y: [0, -5, 0],
                                 opacity: [0.7, 1, 0.7]
@@ -108,18 +112,19 @@ export function AboutSection() {
                             ✨
                         </motion.div>
                         <RoyalTypography
-                            variant="h3"
+                            variant="h4"
                             animation="goldenGlow"
-                            className="text-2xl font-bold text-primary mb-2"
+                            className="text-xl font-bold text-primary mb-3"
                             delay={0.4}
                         >
-                            100%
+                            Magical Moments
                         </RoyalTypography>
-                        <p className="text-muted-foreground">Magical Moments</p>
+                        <p className="text-muted-foreground text-sm">
+                            Creating unforgettable memories that will last a lifetime
+                        </p>
                     </LuxuryCard>
                 </motion.div>
             </div>
         </section>
     );
 }
-

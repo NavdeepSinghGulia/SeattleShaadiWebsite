@@ -14,8 +14,10 @@ interface RoyalParticle {
 
 export function RoyalBackground() {
   const [royalParticles, setRoyalParticles] = useState<RoyalParticle[]>([]);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
+    setIsClient(true);
     const particles = Array.from({ length: 15 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
@@ -27,6 +29,15 @@ export function RoyalBackground() {
     }));
     setRoyalParticles(particles);
   }, []);
+
+  if (!isClient) {
+    return (
+      <div className="absolute inset-0 z-0 overflow-hidden bg-secondary">
+        {/* Static background for SSR */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
+      </div>
+    );
+  }
 
   const particleVariants = {
     animate: {
@@ -146,22 +157,22 @@ export function RoyalBackground() {
 
       {/* Royal Constellation Effect */}
       <div className="absolute inset-0 opacity-30">
-        {Array.from({ length: 50 }).map((_, i) => (
+        {royalParticles.slice(0, 8).map((particle) => (
           <motion.div
-            key={i}
+            key={`constellation-${particle.id}`}
             className="absolute w-1 h-1 bg-primary/40 rounded-full"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${particle.x}%`,
+              top: `${particle.y}%`,
             }}
             animate={{
               opacity: [0, 1, 0],
               scale: [0, 1, 0],
             }}
             transition={{
-              duration: Math.random() * 3 + 2,
+              duration: particle.duration / 5,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: particle.delay,
             }}
           />
         ))}
@@ -169,4 +180,3 @@ export function RoyalBackground() {
     </div>
   );
 }
-
