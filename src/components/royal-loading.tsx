@@ -2,16 +2,17 @@
 
 import { motion } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { Loader2 } from 'lucide-react';
 
 interface RoyalLoadingProps {
-  variant?: 'crown' | 'spinner' | 'dots' | 'shimmer';
+  variant?: 'spinner' | 'dots' | 'shimmer';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   text?: string;
 }
 
 export function RoyalLoading({
-  variant = 'crown',
+  variant = 'spinner',
   size = 'md',
   className,
   text
@@ -28,91 +29,21 @@ export function RoyalLoading({
     lg: 'text-lg'
   };
 
-  if (variant === 'crown') {
-    return (
-      <div className={cn("flex flex-col items-center justify-center space-y-4", className)}>
-        <motion.div
-          className={cn("text-primary", sizeClasses[size])}
-          animate={{
-            rotate: [0, -10, 10, -10, 0],
-            scale: [1, 1.1, 1, 1.1, 1],
-          }}
-          transition={{
-            duration: 2,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-          style={{ fontSize: size === 'sm' ? '24px' : size === 'md' ? '48px' : '80px' }}
-        >
-          👑
-        </motion.div>
-        
-        {/* Royal particles around crown */}
-        <div className="relative">
-          {Array.from({ length: 8 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-primary/60 rounded-full"
-              style={{
-                left: `${Math.cos((i * Math.PI * 2) / 8) * 30}px`,
-                top: `${Math.sin((i * Math.PI * 2) / 8) * 30}px`,
-              }}
-              animate={{
-                opacity: [0, 1, 0],
-                scale: [0, 1, 0],
-              }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                delay: i * 0.2,
-              }}
-            />
-          ))}
-        </div>
-
-        {text && (
-          <motion.p
-            className={cn("text-muted-foreground font-medium", textSizeClasses[size])}
-            animate={{ opacity: [0.5, 1, 0.5] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            {text}
-          </motion.p>
-        )}
-      </div>
-    );
-  }
-
   if (variant === 'spinner') {
     return (
       <div className={cn("flex flex-col items-center justify-center space-y-4", className)}>
         <motion.div
-          className={cn(
-            "border-4 border-primary/20 border-t-primary rounded-full",
-            sizeClasses[size]
-          )}
+          className={cn("text-primary", sizeClasses[size])}
           animate={{ rotate: 360 }}
           transition={{
             duration: 1,
             repeat: Infinity,
             ease: "linear"
           }}
-        />
+        >
+          <Loader2 className="w-full h-full" />
+        </motion.div>
         
-        {/* Golden glow effect */}
-        <motion.div
-          className={cn(
-            "absolute border-4 border-transparent border-t-accent/50 rounded-full blur-sm",
-            sizeClasses[size]
-          )}
-          animate={{ rotate: -360 }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "linear"
-          }}
-        />
-
         {text && (
           <motion.p
             className={cn("text-muted-foreground font-medium", textSizeClasses[size])}
@@ -279,4 +210,3 @@ export function RoyalSkeleton({ className, lines = 3, avatar = false }: RoyalSke
     </div>
   );
 }
-

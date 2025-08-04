@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { useMobileRoyalAnimations } from '@/hooks/use-mobile-royal-animations';
+import { RoyalTypography } from './royal-typography';
 
 interface MobileRoyalFooterProps {
   className?: string;
@@ -64,22 +65,6 @@ export function MobileRoyalFooter({ className }: MobileRoyalFooterProps) {
             ))}
           </>
         )}
-
-        {/* Royal Crown Pattern */}
-        <motion.div
-          className="absolute top-4 right-4 text-primary/20 text-2xl"
-          animate={settings.enableComplexAnimations ? {
-            rotate: [0, 5, -5, 0],
-            scale: [1, 1.05, 1],
-          } : {}}
-          transition={{
-            duration: settings.animationDuration * 6,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          👑
-        </motion.div>
       </div>
 
       <div className="relative z-10 container mx-auto px-4 py-8">
@@ -97,7 +82,6 @@ export function MobileRoyalFooter({ className }: MobileRoyalFooterProps) {
               whileHover={!isMobile ? { scale: 1.05 } : {}}
               whileTap={isMobile ? { scale: 0.98 } : {}}
             >
-              <span className="text-3xl">👑</span>
               Royal Experience
             </motion.h3>
             <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -215,22 +199,7 @@ export function MobileRoyalFooter({ className }: MobileRoyalFooterProps) {
               ease: "easeInOut"
             }}
           >
-            <span className="text-xs">Crafted with</span>
-            <motion.span
-              className="text-sm"
-              animate={settings.enableComplexAnimations ? {
-                scale: [1, 1.2, 1],
-                rotate: [0, 5, -5, 0]
-              } : {}}
-              transition={{
-                duration: settings.animationDuration * 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            >
-              👑
-            </motion.span>
-            <span className="text-xs">royal precision</span>
+            <RoyalTypography variant='span' className="text-xs">Crafted with royal precision</RoyalTypography>
           </motion.div>
         </motion.div>
       </div>

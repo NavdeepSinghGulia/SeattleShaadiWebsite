@@ -218,31 +218,6 @@ export function RoyalTypography({
 
   return (
     <div className="relative">
-      {/* Crown decoration for crownTitle */}
-      {animation === 'crownTitle' && (
-        <motion.div
-          className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-2xl"
-          initial={{ opacity: 0, y: -20, rotate: -10 }}
-          animate={{ 
-            opacity: 1, 
-            y: 0, 
-            rotate: 0,
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ 
-            duration: 1,
-            delay: delay + 0.5,
-            scale: {
-              duration: 2,
-              repeat: Infinity,
-              repeatType: "reverse"
-            }
-          }}
-        >
-          👑
-        </motion.div>
-      )}
-
       <Component
         className={cn(
           baseClasses[variant],

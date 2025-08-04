@@ -185,26 +185,6 @@ export function AnimatedDiv({
         </motion.div>
       )}
 
-      {/* Crown effect for crownDrop animation */}
-      {animation === 'crownDrop' && isVisible && (
-        <motion.div
-          className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-2xl"
-          initial={{ opacity: 0, y: -50, rotate: -20 }}
-          animate={{ 
-            opacity: [0, 1, 1, 0], 
-            y: [-50, -20, -20, 10],
-            rotate: [-20, 0, 0, 10]
-          }}
-          transition={{ 
-            duration: 2,
-            times: [0, 0.3, 0.7, 1],
-            delay: 0.5
-          }}
-        >
-          👑
-        </motion.div>
-      )}
-
       {staggerChildren ? (
         <motion.div variants={animationVariants[animation]}>
           {children}
@@ -215,4 +195,3 @@ export function AnimatedDiv({
     </motion.div>
   );
 }
-

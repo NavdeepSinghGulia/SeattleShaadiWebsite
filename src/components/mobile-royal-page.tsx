@@ -75,38 +75,6 @@ export function MobileRoyalPage({ children, className, showDemo = true }: Mobile
             ))}
           </>
         )}
-
-        {/* Royal Crown Elements */}
-        <motion.div
-          className="absolute top-10 right-10 text-primary/10 text-4xl"
-          animate={settings.enableComplexAnimations ? {
-            rotate: [0, 10, -10, 0],
-            scale: [1, 1.1, 1],
-          } : {}}
-          transition={{
-            duration: settings.animationDuration * 8,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          👑
-        </motion.div>
-
-        <motion.div
-          className="absolute bottom-20 left-10 text-accent/10 text-3xl"
-          animate={settings.enableComplexAnimations ? {
-            rotate: [0, -5, 5, 0],
-            scale: [1, 1.05, 1],
-          } : {}}
-          transition={{
-            duration: settings.animationDuration * 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 2
-          }}
-        >
-          ✨
-        </motion.div>
       </div>
 
       {/* Main Content */}
@@ -337,4 +305,3 @@ export function MobileRoyalPage({ children, className, showDemo = true }: Mobile
     </div>
   );
 }
-

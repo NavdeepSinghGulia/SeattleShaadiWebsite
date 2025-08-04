@@ -194,20 +194,6 @@ export function LuxuryCard({
         </div>
       )}
 
-      {/* Crown decoration for royal variant */}
-      {variant === 'royal' && (
-        <motion.div
-          className="absolute top-2 right-2 text-primary/40"
-          animate={isHovered ? { 
-            rotate: [0, -5, 5, 0],
-            scale: [1, 1.1, 1]
-          } : { rotate: 0, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
-        >
-          👑
-        </motion.div>
-      )}
-
       {/* Content */}
       <div className="relative z-10 p-6">
         {children}

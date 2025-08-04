@@ -14,6 +14,7 @@ interface InteractiveCtaButtonProps {
   size?: 'sm' | 'md' | 'lg';
   disabled?: boolean;
   href?: string;
+  type?: 'button' | 'submit' | 'reset';
 }
 
 export function InteractiveCtaButton({
@@ -23,7 +24,8 @@ export function InteractiveCtaButton({
   variant = 'primary',
   size = 'md',
   disabled = false,
-  href
+  href,
+  type = 'button'
 }: InteractiveCtaButtonProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isPressed, setIsPressed] = useState(false);
@@ -107,6 +109,7 @@ export function InteractiveCtaButton({
 
   const buttonContent = (
     <motion.button
+      type={type}
       className={cn(
         baseClasses,
         variantClasses[variant],
@@ -176,17 +179,6 @@ export function InteractiveCtaButton({
         </>
       )}
 
-      {/* Crown Icon for Royal Variant */}
-      {variant === 'royal' && (
-        <motion.span
-          className="mr-2 text-lg"
-          animate={isHovered ? { rotate: [0, -10, 10, 0] } : { rotate: 0 }}
-          transition={{ duration: 0.6, ease: "easeInOut" }}
-        >
-          👑
-        </motion.span>
-      )}
-
       {/* Button Content */}
       <span className="relative z-10 flex items-center">
         {children}
@@ -206,7 +198,7 @@ export function InteractiveCtaButton({
 
   if (href) {
     return (
-      <Link href={href}>
+      <Link href={href} passHref>
         {buttonContent}
       </Link>
     );

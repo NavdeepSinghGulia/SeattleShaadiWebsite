@@ -10,21 +10,18 @@ const services = [
         title: "Full Wedding Planning",
         description: "From venue selection to vendor management, we handle every detail so you can enjoy your special day stress-free.",
         image: "/bride-groom-weeding-hall.jpg",
-        icon: "",
         features: ["Venue Selection", "Vendor Management", "Timeline Coordination"]
     },
     {
         title: "Destination Weddings",
         description: "Dreaming of a wedding in an exotic location? We specialize in creating unforgettable destination weddings.",
         image: "/resort-hall.jpg",
-        icon: "🏰",
         features: ["Location Scouting", "Travel Coordination", "Local Vendor Network"]
     },
     {
         title: "Decor & Design",
         description: "Our team of talented designers will transform your vision into a stunning reality with bespoke decor concepts.",
         image: "/flower-decor.jpg",
-        icon: "",
         features: ["Custom Design", "Floral Arrangements", "Lighting Design"]
     }
 ];
@@ -69,22 +66,6 @@ export function ServicesSection() {
                                 className="h-full group cursor-pointer"
                                 glowEffect={true}
                             >
-                                {/* Service Icon */}
-                                <motion.div
-                                    className="absolute top-4 right-4 text-2xl z-20"
-                                    animate={{ 
-                                        rotate: [0, 10, -10, 0],
-                                        scale: [1, 1.1, 1]
-                                    }}
-                                    transition={{ 
-                                        duration: 3,
-                                        repeat: Infinity,
-                                        delay: index * 0.5
-                                    }}
-                                >
-                                    {service.icon}
-                                </motion.div>
-
                                 {/* Image Container */}
                                 <div className="overflow-hidden relative aspect-4/3 clip-arch mb-6">
                                     <Image 

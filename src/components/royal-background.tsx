@@ -9,7 +9,6 @@ interface RoyalParticle {
   size: number;
   delay: number;
   duration: number;
-  type: 'crown' | 'jewel' | 'star';
 }
 
 export function RoyalBackground() {
@@ -22,10 +21,9 @@ export function RoyalBackground() {
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 8 + 4,
+      size: Math.random() * 2 + 1,
       delay: Math.random() * 5,
       duration: Math.random() * 20 + 15,
-      type: ['crown', 'jewel', 'star'][Math.floor(Math.random() * 3)] as 'crown' | 'jewel' | 'star',
     }));
     setRoyalParticles(particles);
   }, []);
@@ -43,9 +41,8 @@ export function RoyalBackground() {
     animate: {
       y: [0, -20, 0],
       x: [0, 10, -10, 0],
-      rotate: [0, 360],
       scale: [1, 1.2, 1],
-      opacity: [0.3, 0.8, 0.3],
+      opacity: [0.1, 0.4, 0.1],
     }
   };
 
@@ -131,14 +128,12 @@ export function RoyalBackground() {
       {royalParticles.map((particle) => (
         <motion.div
           key={particle.id}
-          className={`absolute ${
-            particle.type === 'crown' ? 'text-primary' : 
-            particle.type === 'jewel' ? 'text-accent' : 'text-primary/60'
-          }`}
+          className="absolute bg-primary/50 rounded-full"
           style={{
             left: `${particle.x}%`,
             top: `${particle.y}%`,
-            fontSize: `${particle.size}px`,
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
           }}
           variants={particleVariants}
           animate="animate"
@@ -148,35 +143,8 @@ export function RoyalBackground() {
             ease: "easeInOut",
             delay: particle.delay,
           }}
-        >
-          {particle.type === 'crown' && '👑'}
-          {particle.type === 'jewel' && '💎'}
-          {particle.type === 'star' && '✨'}
-        </motion.div>
+        />
       ))}
-
-      {/* Royal Constellation Effect */}
-      <div className="absolute inset-0 opacity-30">
-        {royalParticles.slice(0, 8).map((particle) => (
-          <motion.div
-            key={`constellation-${particle.id}`}
-            className="absolute w-1 h-1 bg-primary/40 rounded-full"
-            style={{
-              left: `${particle.x}%`,
-              top: `${particle.y}%`,
-            }}
-            animate={{
-              opacity: [0, 1, 0],
-              scale: [0, 1, 0],
-            }}
-            transition={{
-              duration: particle.duration / 5,
-              repeat: Infinity,
-              delay: particle.delay,
-            }}
-          />
-        ))}
-      </div>
     </div>
   );
 }
