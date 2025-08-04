@@ -49,7 +49,7 @@ export default function AboutPage() {
 
         <div className="mt-16 max-w-4xl mx-auto space-y-12">
           {teamMembers.map((member, index) => (
-            <AnimatedDiv key={member.name} delay={index * 200} animation="fadeInScale">
+            <div key={member.name} className="mb-8">
               <LuxuryCard variant="royal" glowEffect>
                 <div className="p-8">
                   <div className="text-center mb-6">
@@ -65,7 +65,7 @@ export default function AboutPage() {
                   </p>
                 </div>
               </LuxuryCard>
-            </AnimatedDiv>
+            </div>
           ))}
         </div>
 
@@ -74,21 +74,11 @@ export default function AboutPage() {
             <ShimmerEffect className="rounded-lg">
               <div className="bg-gradient-to-br from-secondary/60 via-secondary/40 to-background/60 backdrop-blur-sm p-8 md:p-12 rounded-lg shadow-2xl border border-amber-200/20">
                 <div className="text-center">
-                  <h2 className="font-headline text-3xl font-bold bg-gradient-to-r from-amber-700 to-rose-700 bg-clip-text text-transparent">
-                    Our Philosophy
+                  <h2 className="font-headline text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                    Our Core Philosophy: "Regal Modernity"
                   </h2>
-                  <p className="mt-4 max-w-4xl mx-auto text-muted-foreground">
-                    We believe wedding planning should be a
-                    joyous journey, not a stressful task. Our
-                    approach is built on three pillars:
-                    personalization, transparency, and
-                    excellence. We listen to your story,
-                    understand your vision, and then
-                    meticulously bring it to life, ensuring
-                    every element reflects you as a couple. With
-                    Seattle Shaadi, you're not just getting a
-                    planner; you're gaining a partner dedicated
-                    to making your dream day perfect.
+                  <p className="mt-4 max-w-4xl mx-auto text-muted-foreground leading-relaxed">
+                    We believe in honoring the deep, rich tapestry of Indian wedding traditions while providing cutting-edge beauty and innovation. Our "Regal Modernity" approach creates a space that feels luxurious, exclusive, and supremely competent - where timeless customs meet contemporary elegance. Every celebration we craft respects your heritage while embracing the sophistication of modern design, ensuring your wedding is both deeply meaningful and breathtakingly beautiful.
                   </p>
                 </div>
               </div>

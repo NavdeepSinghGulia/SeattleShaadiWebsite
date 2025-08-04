@@ -238,51 +238,7 @@ export function Footer() {
               </motion.ul>
             </motion.div>
 
-            {/* Newsletter */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-            >
-              <RoyalTypography
-                variant="h4"
-                animation="goldenGlow"
-                className="font-semibold text-foreground mb-3 sm:mb-4 text-base sm:text-lg"
-                glowOnHover={true}
-              >
-                Newsletter
-              </RoyalTypography>
-              <motion.p 
-                className="text-muted-foreground mb-3 sm:mb-4 text-sm sm:text-base"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1 }}
-              >
-                Stay up to date with our latest weddings and offers.
-              </motion.p>
-              
-              <LuxuryCard variant="elegant" className="p-3 sm:p-4">
-                <motion.div 
-                  className="flex flex-col sm:flex-row gap-2 sm:gap-3"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 1.2 }}
-                >
-                  <Input 
-                    type="email" 
-                    placeholder="Your royal email" 
-                    className="bg-background/80 border-primary/20 focus:border-primary text-sm flex-1" 
-                  />
-                  <InteractiveCtaButton
-                    variant="royal"
-                    size="sm"
-                    className="text-sm px-4 py-2 w-full sm:w-auto"
-                  >
-                    Subscribe
-                  </InteractiveCtaButton>
-                </motion.div>
-              </LuxuryCard>
-            </motion.div>
+
           </div>
 
           {/* Enhanced Footer Bottom */}

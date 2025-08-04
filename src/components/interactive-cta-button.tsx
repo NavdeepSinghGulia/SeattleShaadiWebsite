@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ReactNode, useState } from 'react';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { useMobileRoyalAnimations } from '@/hooks/use-mobile-royal-animations';
 
@@ -104,11 +105,8 @@ export function InteractiveCtaButton({
     }
   };
 
-  const Component = href ? motion.a : motion.button;
-  const componentProps = href ? { href } : { onClick, disabled };
-
-  return (
-    <Component
+  const buttonContent = (
+    <motion.button
       className={cn(
         baseClasses,
         variantClasses[variant],
@@ -134,7 +132,8 @@ export function InteractiveCtaButton({
         }
       }}
       whileTap={isMobile ? variants.mobileHover.tap : { scale: 0.98 }}
-      {...componentProps}
+      onClick={onClick}
+      disabled={disabled}
     >
       {/* Golden Glow Effect */}
       <motion.div
@@ -202,6 +201,16 @@ export function InteractiveCtaButton({
           transition={{ duration: 0.6, ease: "easeOut" }}
         />
       )}
-    </Component>
+    </motion.button>
   );
+
+  if (href) {
+    return (
+      <Link href={href}>
+        {buttonContent}
+      </Link>
+    );
+  }
+
+  return buttonContent;
 }

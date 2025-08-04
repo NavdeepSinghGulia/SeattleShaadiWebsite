@@ -10,7 +10,7 @@ interface MobileRoyalFooterProps {
 }
 
 export function MobileRoyalFooter({ className }: MobileRoyalFooterProps) {
-  const [emailFocused, setEmailFocused] = useState(false);
+
   const { isMobile, isTouch, variants, triggerHapticFeedback, settings, isSmallScreen } = useMobileRoyalAnimations();
 
   const socialLinks = [
@@ -26,12 +26,7 @@ export function MobileRoyalFooter({ className }: MobileRoyalFooterProps) {
     }
   };
 
-  const handleNewsletterSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (isTouch && settings.enableHapticFeedback) {
-      triggerHapticFeedback('heavy');
-    }
-  };
+
 
   return (
     <footer className={cn(
@@ -171,81 +166,7 @@ export function MobileRoyalFooter({ className }: MobileRoyalFooterProps) {
             </ul>
           </motion.div>
 
-          {/* Newsletter Section - Mobile Optimized */}
-          <motion.div
-            className="text-center md:text-left"
-            variants={variants.mobileRoyalEntrance}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ delay: 0.4 }}
-          >
-            <h4 className="text-lg font-headline font-semibold text-foreground mb-4">
-              Royal Newsletter
-            </h4>
-            <p className="text-muted-foreground mb-4 text-sm">
-              Subscribe for exclusive updates and royal insights.
-            </p>
-            
-            <form onSubmit={handleNewsletterSubmit} className="space-y-3">
-              <motion.div
-                className="relative"
-                animate={emailFocused ? {
-                  boxShadow: `0 0 0 2px rgba(184, 134, 11, ${settings.glowIntensity * 0.3})`
-                } : {}}
-                transition={{ duration: 0.2 }}
-              >
-                <input
-                  type="email"
-                  placeholder="Your royal email..."
-                  className={cn(
-                    "w-full px-4 py-3 rounded-lg bg-background/50 border border-primary/20",
-                    "focus:outline-none focus:border-primary/40 transition-all duration-300",
-                    "text-sm placeholder:text-muted-foreground/60",
-                    isSmallScreen && "text-base" // Prevent zoom on iOS
-                  )}
-                  onFocus={() => setEmailFocused(true)}
-                  onBlur={() => setEmailFocused(false)}
-                />
-                
-                {/* Golden glow effect */}
-                {emailFocused && settings.enableComplexAnimations && (
-                  <motion.div
-                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 -z-10 blur-sm"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1.05 }}
-                    exit={{ opacity: 0, scale: 0.8 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                )}
-              </motion.div>
-              
-              <motion.button
-                type="submit"
-                className={cn(
-                  "w-full px-6 py-3 bg-gradient-to-r from-primary to-accent text-primary-foreground",
-                  "rounded-lg font-medium transition-all duration-300",
-                  "hover:shadow-lg hover:shadow-primary/25",
-                  isTouch && "active:scale-98"
-                )}
-                whileHover={!isMobile ? { 
-                  scale: 1.02,
-                  boxShadow: `0 4px 20px rgba(184, 134, 11, ${settings.glowIntensity * 0.4})`
-                } : {}}
-                whileTap={isMobile ? { scale: 0.98 } : {}}
-              >
-                <span className="flex items-center justify-center gap-2">
-                  Subscribe
-                  <motion.span
-                    animate={settings.enableComplexAnimations ? { rotate: [0, 10, -10, 0] } : {}}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    ✨
-                  </motion.span>
-                </span>
-              </motion.button>
-            </form>
-          </motion.div>
+
         </div>
 
         {/* Bottom Section */}
@@ -316,4 +237,3 @@ export function MobileRoyalFooter({ className }: MobileRoyalFooterProps) {
     </footer>
   );
 }
-
