@@ -4,12 +4,8 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
 import { AnimatedDiv } from './animated-div';
 import { RoyalTypography } from './royal-typography';
-import { InteractiveCtaButton } from './interactive-cta-button';
-import { LuxuryCard } from './luxury-card';
 
 export function Footer() {
   return (
@@ -125,18 +121,14 @@ export function Footer() {
                   { icon: Twitter, label: "Twitter", color: "hover:text-blue-400" },
                   { icon: Linkedin, label: "LinkedIn", color: "hover:text-blue-600" }
                 ].map(({ icon: Icon, label, color }) => (
-                  <motion.div key={label}>
-                    <motion.a
+                  <motion.div key={label} whileHover={{ scale: 1.2, rotate: 5 }} whileTap={{ scale: 0.95 }}>
+                    <Link
                       href="#"
                       aria-label={label}
-                      className={`text-muted-foreground ${color} transition-all duration-300 hover:scale-125 p-2 rounded-full hover:bg-primary/10`}
-                      whileHover={{ scale: 1.2, rotate: 5 }}
-                      whileTap={{ scale: 0.95 }}
+                      className={`text-muted-foreground ${color} transition-all duration-300 hover:scale-125 p-2 block rounded-full hover:bg-primary/10`}
                     >
-                      <Link href="#" passHref legacyBehavior>
-                          <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
-                      </Link>
-                    </motion.a>
+                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                    </Link>
                   </motion.div>
                 ))}
               </motion.div>
