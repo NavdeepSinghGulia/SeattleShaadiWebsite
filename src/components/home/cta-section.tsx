@@ -1,4 +1,3 @@
-
 import { AnimatedDiv } from '@/components/animated-div';
 import { InteractiveCtaButton } from '@/components/interactive-cta-button';
 import { ShimmerEffect } from '../shimmer-effect';
@@ -16,7 +15,14 @@ export function CtaSection() {
                     <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">Let's connect and talk about your vision. Your dream wedding is just a conversation away.</p>
                 </AnimatedDiv>
                 <AnimatedDiv delay={400}>
-                    <InteractiveCtaButton />
+                    <InteractiveCtaButton 
+                        variant="royal" 
+                        size="lg" 
+                        href="/contact"
+                        className="mt-6"
+                    >
+                        Get Your Royal Quote
+                    </InteractiveCtaButton>
                 </AnimatedDiv>
             </div>
         </section>

@@ -1,4 +1,3 @@
-
 import { AnimatedDiv } from "@/components/animated-div";
 import { FloatingParticles } from "@/components/floating-particles";
 import { RoyalBackground } from "@/components/royal-background";
@@ -50,13 +49,23 @@ export default function AboutPage() {
 
         <div className="mt-16 max-w-4xl mx-auto space-y-12">
           {teamMembers.map((member, index) => (
-            <LuxuryCard
-              key={member.name}
-              title={member.name}
-              subtitle={member.role}
-              content={member.bio}
-              delay={index * 200}
-            />
+            <AnimatedDiv key={member.name} delay={index * 200} animation="fadeInScale">
+              <LuxuryCard variant="royal" glowEffect>
+                <div className="p-8">
+                  <div className="text-center mb-6">
+                    <h3 className="font-headline text-2xl md:text-3xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+                      {member.name}
+                    </h3>
+                    <p className="text-lg text-muted-foreground mt-2 font-medium">
+                      {member.role}
+                    </p>
+                  </div>
+                  <p className="text-muted-foreground leading-relaxed text-center">
+                    {member.bio}
+                  </p>
+                </div>
+              </LuxuryCard>
+            </AnimatedDiv>
           ))}
         </div>
 
