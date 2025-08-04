@@ -100,7 +100,7 @@ export function HeroSection() {
                                         src={image.src}
                                         alt={image.alt}
                                         fill
-                                        className="object-cover object-center transition-transform duration-500 ease-out"
+                                        className="object-contain object-center transition-transform duration-500 ease-out"
                                         priority={index === 0}
                                         sizes="100vw"
                                     />
