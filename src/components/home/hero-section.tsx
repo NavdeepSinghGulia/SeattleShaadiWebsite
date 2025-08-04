@@ -30,8 +30,8 @@ const mobileCarouselContent = [
     },
 ];
 
-const shlokaLine1 = "वक्रतुण्ड महाकाय सूर्य कोटी समप्रभा।".split(' ');
-const shlokaLine2 = "निर्विघ्नं कuru मे देव सर्व-कार्येशु सर्वदा॥".split(' ');
+const shlokaLine1 = "वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।".split(' ');
+const shlokaLine2 = "निर्विघ्नम् कुरु मे देव सर्वकार्येषु सर्वदा॥".split(' ');
 
 
 const containerVariants = {
