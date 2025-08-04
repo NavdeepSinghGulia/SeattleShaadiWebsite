@@ -1,4 +1,3 @@
-
 import type { Metadata } from 'next';
 import { Playfair_Display, Lato } from 'next/font/google';
 import './globals.css';
@@ -6,6 +5,7 @@ import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AnimationPreferencesProvider } from "@/hooks/use-animation-preferences";
 
 export const metadata: Metadata = {
   title: 'Seattle Shaadi',
@@ -46,10 +46,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <Header />
-          <main>{children}</main>
-          <Footer />
-          <Toaster />
+          <AnimationPreferencesProvider>
+            <Header />
+            <main>{children}</main>
+            <Footer />
+            <Toaster />
+          </AnimationPreferencesProvider>
         </ThemeProvider>
       </body>
     </html>
