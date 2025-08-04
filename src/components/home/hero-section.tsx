@@ -134,7 +134,7 @@ export function HeroSection() {
                         }
                     }}
                 >
-                    <h2 className="font-headline text-3xl md:text-5xl leading-loose" style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.5)' }}>
+                    <h2 className="font-headline text-3xl md:text-5xl" style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.5)', lineHeight: 1.6 }}>
                         <div className="mb-2">
                             {shlokaLine1.map((word, index) => (
                                 <motion.span 
