@@ -132,7 +132,7 @@ export function HeroSection() {
                     <CarouselContent>
                         {mobileCarouselContent.map((item, index) => (
                             <CarouselItem key={index}>
-                                <div className="relative h-[70vh] w-full">
+                                <div className="relative h-[40vh] w-full">
                                     {item.type === 'video' ? (
                                         <video
                                             className="w-full h-full object-cover"

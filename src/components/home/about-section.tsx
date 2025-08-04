@@ -44,15 +44,8 @@ const elegantVariants = {
 export function AboutSection() {
     return (
         <section className="py-16 md:py-24 bg-background/50 relative overflow-hidden">
-            {/* Purposeful decorative elements - adds royal ambiance without distraction */}
+            {/* Subtle decorative elements - elegant without crowns */}
             <div className="absolute inset-0 pointer-events-none">
-                <motion.div
-                    className="absolute top-10 left-10 text-primary/15 text-3xl animate-elegant-float"
-                    variants={elegantVariants.decorativeFloat}
-                    animate="animate"
-                >
-                    👑
-                </motion.div>
                 <motion.div
                     className="absolute bottom-10 right-10 text-accent/15 text-2xl animate-elegant-float animation-delay-300"
                     variants={elegantVariants.decorativeFloat}
@@ -95,7 +88,7 @@ export function AboutSection() {
                         <motion.div variants={elegantVariants.fadeInUp}>
                             <LuxuryCard variant="royal" className="text-center p-6 group hover:shadow-lg transition-all duration-300 ease-out">
                                 <div className="text-3xl mb-4 animate-elegant-float">
-                                    👑
+                                    ✨
                                 </div>
                                 <RoyalTypography
                                     variant="h4"

@@ -1,7 +1,7 @@
-
 'use client';
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
 import { AnimatedDiv } from './animated-div';
@@ -10,37 +10,8 @@ import { RoyalTypography } from './royal-typography';
 export function Footer() {
   return (
     <footer className="relative bg-gradient-to-br from-secondary/60 via-secondary/40 to-background/60 backdrop-blur-sm border-t border-primary/20 overflow-hidden">
-      {/* Royal Background Effects for Mobile */}
+      {/* Subtle background elements - no crowns */}
       <div className="absolute inset-0 pointer-events-none">
-        {/* Mobile-optimized floating particles */}
-        <motion.div
-          className="absolute top-4 right-4 text-primary/20 text-2xl sm:text-3xl"
-          animate={{ 
-            rotate: [0, 360],
-            scale: [1, 1.1, 1]
-          }}
-          transition={{ 
-            rotate: { duration: 20, repeat: Infinity, ease: "linear" },
-            scale: { duration: 3, repeat: Infinity, ease: "easeInOut" }
-          }}
-        >
-          👑
-        </motion.div>
-        
-        <motion.div
-          className="absolute bottom-4 left-4 text-accent/20 text-xl sm:text-2xl"
-          animate={{ 
-            y: [0, -10, 0],
-            rotate: [0, 10, -10, 0]
-          }}
-          transition={{ 
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut"
-          }}
-        >
-          💎
-        </motion.div>
 
         {/* Mobile-friendly constellation - using fixed positions to avoid hydration issues */}
         {[
@@ -84,20 +55,26 @@ export function Footer() {
         <AnimatedDiv animation="royalEntrance" delay={200}>
           <div className="grid grid-cols-1 gap-8 sm:gap-12 text-center md:text-left md:grid-cols-2 lg:grid-cols-4">
             
-            {/* Brand Section */}
+            {/* Brand Section with Enhanced Logo */}
             <motion.div 
               className="md:col-span-1"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <RoyalTypography
-                variant="h3"
-                animation="crownTitle"
-                className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent mb-4 text-2xl sm:text-3xl"
-              >
-                Seattle Shaadi
-              </RoyalTypography>
+              <div className="mb-4 flex justify-center md:justify-start">
+                <div className="relative group">
+                  <Image
+                    src="/Logo-new.webp"
+                    alt="Seattle Shaadi Logo"
+                    width={120}
+                    height={40}
+                    className="h-10 w-auto transition-all duration-300 ease-out group-hover:scale-105 filter drop-shadow-sm"
+                  />
+                  {/* Subtle glow effect on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out blur-xl -z-10" />
+                </div>
+              </div>
               
               <motion.p 
                 className="text-muted-foreground text-sm sm:text-base leading-relaxed"
