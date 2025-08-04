@@ -55,7 +55,7 @@ export function AboutSection() {
                     <motion.div variants={elegantVariants.fadeInUp}>
                         <RoyalTypography
                             variant="h2"
-                            className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-elegant-gradient pb-4"
+                            className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-elegant-gradient pb-2"
                         >
                             The Architects of Your Dream Day
                         </RoyalTypography>

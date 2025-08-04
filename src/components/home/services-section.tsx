@@ -37,7 +37,7 @@ export function ServicesSection() {
                         <RoyalTypography
                             variant="h2"
                             animation="crownTitle"
-                            className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
+                            className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent pb-2"
                         >
                             Our Signature Services
                         </RoyalTypography>
