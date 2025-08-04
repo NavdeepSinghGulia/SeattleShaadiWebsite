@@ -126,6 +126,7 @@ export function ServicesSection() {
                                         className="pt-4"
                                     >
                                         <InteractiveCtaButton
+                                            href="/services"
                                             variant="primary"
                                             size="sm"
                                             className="w-full"
@@ -154,6 +155,7 @@ export function ServicesSection() {
                     </RoyalTypography>
                     
                     <InteractiveCtaButton
+                        href="/contact"
                         variant="royal"
                         size="lg"
                         className="text-lg px-8 py-4"
