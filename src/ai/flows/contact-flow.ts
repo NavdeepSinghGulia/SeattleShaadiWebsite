@@ -1,4 +1,3 @@
-
 'use server';
 /**
  * @fileOverview A contact form submission flow.
@@ -17,6 +16,8 @@ const ContactFormInputSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email.' }),
   phone: z.string().min(10, { message: 'Please enter a valid 10-digit phone number.' }),
   eventDate: z.string().optional(),
+  estimatedGuests: z.string().optional(),
+  budget: z.string().optional(),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
 export type ContactFormInput = z.infer<typeof ContactFormInputSchema>;
@@ -62,6 +63,8 @@ const contactFlow = ai.defineFlow(
     console.log(`Email: ${input.email}`);
     console.log(`Phone: ${input.phone}`);
     console.log(`Event Date: ${input.eventDate || 'Not provided'}`);
+    console.log(`Estimated Guests: ${input.estimatedGuests || 'Not provided'}`);
+    console.log(`Budget: ${input.budget || 'Not provided'}`);
     console.log(`Message: ${input.message}`);
     console.log(`Categorized as: ${category}`);
     console.log('-------------------------------------------');
@@ -77,6 +80,8 @@ const contactFlow = ai.defineFlow(
           <p><strong>Email:</strong> ${input.email}</p>
           <p><strong>Phone:</strong> ${input.phone}</p>
           <p><strong>Event Date:</strong> ${input.eventDate || 'Not provided'}</p>
+          <p><strong>Estimated Guests:</strong> ${input.estimatedGuests || 'Not provided'}</p>
+          <p><strong>Budget:</strong> ${input.budget || 'Not provided'}</p>
           <p><strong>Message:</strong></p>
           <p>${input.message}</p>
           <p><em>This message was categorized as: ${category}</em></p>

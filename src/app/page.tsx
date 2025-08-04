@@ -1,4 +1,3 @@
-
 'use client';
 import React from 'react';
 import { HeroSection } from '@/components/home/hero-section';
@@ -14,10 +13,10 @@ import { FloatingParticles } from '@/components/floating-particles';
 export default function Home() {
 
   return (
-    <div className="flex flex-col relative">
+    <div className="flex flex-col relative overflow-x-hidden">
       <RoyalBackground />
       <FloatingParticles />
-      <div className="relative z-10">
+      <div className="relative z-10 overflow-x-hidden">
         <HeroSection />
         <AboutSection />
         <ServicesSection />

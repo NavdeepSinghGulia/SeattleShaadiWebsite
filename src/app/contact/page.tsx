@@ -23,6 +23,8 @@ export const ContactFormSchema = z.object({
   email: z.string().email({ message: 'Please enter a valid email.' }),
   phone: z.string().min(14, { message: 'Phone number must be 10 digits.' }), // (123) 456-7890 is 14 chars
   eventDate: z.string().optional(),
+  estimatedGuests: z.string().optional(),
+  budget: z.string().optional(),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
 
@@ -36,6 +38,8 @@ export default function ContactPage() {
       email: '',
       phone: '',
       eventDate: '',
+      estimatedGuests: '',
+      budget: '',
       message: '',
     },
   });
@@ -108,7 +112,7 @@ export default function ContactPage() {
         </AnimatedDiv>
 
         <div className="mt-12 md:mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
-          <AnimatedDiv delay={300} animation="fadeInScale">
+          <AnimatedDiv delay={300} animation="fadeInScale" className="hidden lg:block">
             <LuxuryCard variant="royal" className="p-8" glowEffect>
               <RoyalTypography
                 variant="h2"
@@ -250,6 +254,34 @@ export default function ContactPage() {
                 </FormItem>
               )}
             />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <FormField
+                control={form.control}
+                name="estimatedGuests"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-semibold">Estimated Guests</FormLabel>
+                    <FormControl>
+                      <Input type="number" placeholder="e.g. 150" {...field} className="bg-background" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="budget"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-semibold">Budget Range</FormLabel>
+                    <FormControl>
+                      <Input placeholder="e.g. $50,000 - $75,000" {...field} className="bg-background" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+            </div>
             <FormField
               control={form.control}
               name="message"
