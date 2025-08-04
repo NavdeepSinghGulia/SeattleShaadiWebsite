@@ -31,7 +31,7 @@ const mobileCarouselContent = [
 ];
 
 const shlokaLine1 = "वक्रतुण्ड महाकाय सूर्य कोटी समप्रभा।".split(' ');
-const shlokaLine2 = "निर्विघ्नं कुरु मे देव सर्व-कार्येशु सर्वदा॥".split(' ');
+const shlokaLine2 = "निर्विघ्नं कuru मे देव सर्व-कार्येशु सर्वदा॥".split(' ');
 
 
 const containerVariants = {
@@ -40,7 +40,7 @@ const containerVariants = {
         opacity: 1,
         transition: {
             delay: 1.5,
-            staggerChildren: 0.2,
+            staggerChildren: 0.35,
         },
     },
     fadeOut: {
@@ -134,7 +134,7 @@ export function HeroSection() {
                         }
                     }}
                 >
-                    <h2 className="font-headline text-3xl md:text-4xl text-white drop-shadow-xl" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.7)' }}>
+                    <h2 className="font-headline text-3xl md:text-5xl drop-shadow-lg bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent" style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.5)' }}>
                         <div className="mb-2">
                             {shlokaLine1.map((word, index) => (
                                 <motion.span key={index} variants={wordVariants} className="inline-block mr-4">
