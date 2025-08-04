@@ -164,27 +164,15 @@ export function HeroSection() {
                                     {/* Purposeful overlay: Ensures content visibility on mobile */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
                                     
-                                    {/* Mobile Hero Content Overlay */}
+                                    {/* Mobile Hero Content Overlay - Button Only */}
                                     <div className="absolute inset-0 flex items-center justify-center z-20">
                                         <motion.div 
-                                          className="text-center px-4 max-w-sm"
+                                          className="text-center px-4"
                                           variants={elegantVariants.fadeInUp}
                                           initial="initial"
                                           animate="animate"
                                           transition={{ delay: 0.2 }}
                                         >
-                                            <RoyalTypography
-                                                variant="h1"
-                                                className="text-white text-2xl sm:text-3xl font-bold mb-4 drop-shadow-lg"
-                                            >
-                                                Your Dream Wedding
-                                            </RoyalTypography>
-                                            <RoyalTypography
-                                                variant="p"
-                                                className="text-white/90 text-sm mb-6 drop-shadow-md"
-                                            >
-                                                Crafted with elegance, celebrated with joy
-                                            </RoyalTypography>
                                             <InteractiveCtaButton
                                                 href="/contact"
                                                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-out shadow-lg"

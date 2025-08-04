@@ -10,7 +10,7 @@ const services = [
         title: "Full Wedding Planning",
         description: "From venue selection to vendor management, we handle every detail so you can enjoy your special day stress-free.",
         image: "/bride-groom-weeding-hall.jpg",
-        icon: "✨",
+        icon: "",
         features: ["Venue Selection", "Vendor Management", "Timeline Coordination"]
     },
     {
@@ -24,7 +24,7 @@ const services = [
         title: "Decor & Design",
         description: "Our team of talented designers will transform your vision into a stunning reality with bespoke decor concepts.",
         image: "/flower-decor.jpg",
-        icon: "💎",
+        icon: "",
         features: ["Custom Design", "Floral Arrangements", "Lighting Design"]
     }
 ];
@@ -32,23 +32,7 @@ const services = [
 export function ServicesSection() {
     return (
         <section className="py-16 md:py-24 bg-secondary/30 relative overflow-hidden">
-            {/* Subtle Background Elements - no crowns */}
-            <div className="absolute inset-0 pointer-events-none">
-                <motion.div
-                    className="absolute bottom-20 left-20 text-accent/10 text-4xl animate-elegant-float"
-                    animate={{ 
-                        y: [0, -8, 0],
-                        rotate: [0, 2, -2, 0]
-                    }}
-                    transition={{ 
-                        duration: 6,
-                        repeat: Infinity,
-                        ease: "easeInOut"
-                    }}
-                >
-                    💎
-                </motion.div>
-            </div>
+
 
             <div className="container mx-auto px-4 md:px-6 relative z-10">
                 <div className="text-center mb-12">

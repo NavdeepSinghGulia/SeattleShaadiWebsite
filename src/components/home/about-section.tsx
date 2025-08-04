@@ -44,17 +44,7 @@ const elegantVariants = {
 export function AboutSection() {
     return (
         <section className="py-16 md:py-24 bg-background/50 relative overflow-hidden">
-            {/* Subtle decorative elements - elegant without crowns */}
-            <div className="absolute inset-0 pointer-events-none">
-                <motion.div
-                    className="absolute bottom-10 right-10 text-accent/15 text-2xl animate-elegant-float animation-delay-300"
-                    variants={elegantVariants.decorativeFloat}
-                    animate="animate"
-                    style={{ animationDelay: '3s' }}
-                >
-                    💎
-                </motion.div>
-            </div>
+
 
             <div className="container mx-auto px-4 md:px-6 text-center relative z-10">
                 <motion.div
@@ -80,62 +70,7 @@ export function AboutSection() {
                         </RoyalTypography>
                     </motion.div>
 
-                    {/* Our Values - Purposeful: Showcases key benefits */}
-                    <motion.div 
-                        className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12 max-w-4xl mx-auto"
-                        variants={elegantVariants.staggerContainer}
-                    >
-                        <motion.div variants={elegantVariants.fadeInUp}>
-                            <LuxuryCard variant="royal" className="text-center p-6 group hover:shadow-lg transition-all duration-300 ease-out">
-                                <div className="text-3xl mb-4 animate-elegant-float">
-                                    ✨
-                                </div>
-                                <RoyalTypography
-                                    variant="h4"
-                                    className="text-xl font-bold text-primary mb-3"
-                                >
-                                    Royal Elegance
-                                </RoyalTypography>
-                                <p className="text-muted-foreground text-sm">
-                                    Every detail crafted with majestic precision and timeless sophistication
-                                </p>
-                            </LuxuryCard>
-                        </motion.div>
 
-                        <motion.div variants={elegantVariants.fadeInUp}>
-                            <LuxuryCard variant="royal" className="text-center p-6 group hover:shadow-lg transition-all duration-300 ease-out">
-                                <div className="text-3xl mb-4 animate-elegant-sparkle">
-                                    💎
-                                </div>
-                                <RoyalTypography
-                                    variant="h4"
-                                    className="text-xl font-bold text-primary mb-3"
-                                >
-                                    Personalized Touch
-                                </RoyalTypography>
-                                <p className="text-muted-foreground text-sm">
-                                    Your unique love story deserves a celebration as special as you are
-                                </p>
-                            </LuxuryCard>
-                        </motion.div>
-
-                        <motion.div variants={elegantVariants.fadeInUp}>
-                            <LuxuryCard variant="royal" className="text-center p-6 group hover:shadow-lg transition-all duration-300 ease-out">
-                                <div className="text-3xl mb-4 animate-elegant-float animation-delay-200">
-                                    ✨
-                                </div>
-                                <RoyalTypography
-                                    variant="h4"
-                                    className="text-xl font-bold text-primary mb-3"
-                                >
-                                    Magical Moments
-                                </RoyalTypography>
-                                <p className="text-muted-foreground text-sm">
-                                    Creating unforgettable memories that will last a lifetime
-                                </p>
-                            </LuxuryCard>
-                        </motion.div>
-                    </motion.div>
                 </motion.div>
             </div>
         </section>
