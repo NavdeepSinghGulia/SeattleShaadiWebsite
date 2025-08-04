@@ -134,17 +134,25 @@ export function HeroSection() {
                         }
                     }}
                 >
-                    <h2 className="font-headline text-3xl md:text-5xl drop-shadow-lg bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent" style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.5)' }}>
+                    <h2 className="font-headline text-3xl md:text-5xl" style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.5)' }}>
                         <div className="mb-2">
                             {shlokaLine1.map((word, index) => (
-                                <motion.span key={index} variants={wordVariants} className="inline-block mr-4">
+                                <motion.span 
+                                  key={index} 
+                                  variants={wordVariants} 
+                                  className="inline-block mr-4 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg"
+                                >
                                     {word}
                                 </motion.span>
                             ))}
                         </div>
                         <div>
                              {shlokaLine2.map((word, index) => (
-                                <motion.span key={index} variants={wordVariants} className="inline-block mr-4">
+                                <motion.span 
+                                  key={index} 
+                                  variants={wordVariants} 
+                                  className="inline-block mr-4 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg"
+                                >
                                     {word}
                                 </motion.span>
                             ))}
