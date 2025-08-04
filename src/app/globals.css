@@ -101,9 +101,47 @@
     animation: royal-gradient 6s ease infinite;
     background-size: 200% 200%;
   }
+  .animate-cultural-dance {
+    animation: cultural-dance 8s ease-in-out infinite;
+  }
+  .animate-henna-flow {
+    animation: henna-flow 12s linear infinite;
+  }
+  .animate-mandala-spin {
+    animation: mandala-spin 20s linear infinite;
+  }
+  .animate-paisley-sway {
+    animation: paisley-sway 6s ease-in-out infinite;
+  }
+  .animate-lotus-bloom {
+    animation: lotus-bloom 4s ease-out forwards;
+  }
+  .animate-royal-reveal {
+    animation: royal-reveal 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+  .animate-elegant-fade-in {
+    animation: elegant-fade-in 1.2s ease-out forwards;
+  }
+  .animate-sophisticated-slide {
+    animation: sophisticated-slide 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
 
   .bg-gradient-radial {
     background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+  .bg-gradient-cultural {
+    background: linear-gradient(135deg, 
+      hsl(var(--primary) / 0.05) 0%, 
+      hsl(var(--accent) / 0.03) 25%, 
+      transparent 50%, 
+      hsl(var(--primary) / 0.03) 75%, 
+      hsl(var(--accent) / 0.05) 100%);
+  }
+  .bg-royal-texture {
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--primary) / 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, hsl(var(--accent) / 0.08) 0%, transparent 50%),
+      linear-gradient(45deg, transparent 40%, hsl(var(--primary) / 0.02) 50%, transparent 60%);
   }
 
   @keyframes glow {
@@ -232,8 +270,156 @@
     }
   }
   
+  @keyframes cultural-dance {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg) scale(1);
+    }
+    25% {
+      transform: translateY(-5px) rotate(2deg) scale(1.02);
+    }
+    50% {
+      transform: translateY(-8px) rotate(0deg) scale(1.05);
+    }
+    75% {
+      transform: translateY(-3px) rotate(-2deg) scale(1.02);
+    }
+  }
+
+  @keyframes henna-flow {
+    0% {
+      transform: translateX(-100%) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.3;
+    }
+    90% {
+      opacity: 0.3;
+    }
+    100% {
+      transform: translateX(100%) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  @keyframes mandala-spin {
+    0% {
+      transform: rotate(0deg) scale(1);
+      opacity: 0.1;
+    }
+    50% {
+      opacity: 0.2;
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+      opacity: 0.1;
+    }
+  }
+
+  @keyframes paisley-sway {
+    0%, 100% {
+      transform: translateX(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateX(10px) rotate(5deg);
+    }
+    75% {
+      transform: translateX(-10px) rotate(-5deg);
+    }
+  }
+
+  @keyframes lotus-bloom {
+    0% {
+      transform: scale(0) rotate(-45deg);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(1.2) rotate(0deg);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(1) rotate(0deg);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes royal-reveal {
+    0% {
+      opacity: 0;
+      transform: translateY(40px) scale(0.9) rotateX(-10deg);
+      filter: blur(8px);
+    }
+    60% {
+      opacity: 0.8;
+      transform: translateY(-5px) scale(1.02) rotateX(2deg);
+      filter: blur(2px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px) scale(1) rotateX(0deg);
+      filter: blur(0px);
+    }
+  }
+
+  @keyframes elegant-fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+
+  @keyframes sophisticated-slide {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0px) scale(1);
+    }
+  }
+  
   .preserve-3d {
     transform-style: preserve-3d;
     perspective: 1000px;
+  }
+
+  /* Performance optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+  
+  .will-change-opacity {
+    will-change: opacity;
+  }
+  
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Smooth scrolling for better UX */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
