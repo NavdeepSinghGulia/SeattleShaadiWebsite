@@ -1,3 +1,4 @@
+
 'use client';
 import React from 'react';
 import Link from 'next/link';
@@ -125,15 +126,17 @@ export function Footer() {
                   { icon: Linkedin, label: "LinkedIn", color: "hover:text-blue-600" }
                 ].map(({ icon: Icon, label, color }) => (
                   <motion.div key={label}>
-                    <Link 
-                      href="#" 
-                      aria-label={label} 
+                    <motion.a
+                      href="#"
+                      aria-label={label}
                       className={`text-muted-foreground ${color} transition-all duration-300 hover:scale-125 p-2 rounded-full hover:bg-primary/10`}
                       whileHover={{ scale: 1.2, rotate: 5 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
-                    </Link>
+                      <Link href="#" passHref legacyBehavior>
+                          <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                      </Link>
+                    </motion.a>
                   </motion.div>
                 ))}
               </motion.div>
