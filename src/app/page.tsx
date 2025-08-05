@@ -8,22 +8,26 @@ import { TestimonialsSection } from '@/components/home/testimonials-section';
 import { CtaSection } from '@/components/home/cta-section';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
+import { Seo } from '@/components/seo';
 
 
 export default function Home() {
 
   return (
-    <div className="flex flex-col relative overflow-x-hidden">
-      <RoyalBackground />
-      <FloatingParticles />
-      <div className="relative z-10 overflow-x-hidden">
-        <HeroSection />
-        <AboutSection />
-        <ServicesSection />
-        <FeaturedWeddingsSection />
-        <TestimonialsSection />
-        <CtaSection />
+    <>
+      <Seo />
+      <div className="flex flex-col relative overflow-x-hidden">
+        <RoyalBackground />
+        <FloatingParticles />
+        <div className="relative z-10 overflow-x-hidden">
+          <HeroSection />
+          <AboutSection />
+          <ServicesSection />
+          <FeaturedWeddingsSection />
+          <TestimonialsSection />
+          <CtaSection />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
