@@ -84,13 +84,13 @@ export default function RootLayout({
                 console.log('Web Vital:', metric);
               }
               
-              import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-                getCLS(sendToAnalytics);
-                getFID(sendToAnalytics);
-                getFCP(sendToAnalytics);
-                getLCP(sendToAnalytics);
-                getTTFB(sendToAnalytics);
-              });
+              import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
+                onCLS(sendToAnalytics);
+                onINP(sendToAnalytics);
+                onFCP(sendToAnalytics);
+                onLCP(sendToAnalytics);
+                onTTFB(sendToAnalytics);
+              }).catch(console.error);
             `,
           }}
         />

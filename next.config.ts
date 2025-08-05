@@ -28,21 +28,10 @@ const nextConfig: NextConfig = {
   // Compression
   compress: true,
   
-  // Performance optimizations
-  swcMinify: true,
-  
   // Experimental features for better performance
   experimental: {
-    optimizeCss: true,
+    // optimizeCss: true, // Disabled due to critters dependency issue
     optimizePackageImports: ['framer-motion', 'lucide-react'],
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
-      },
-    },
   },
   
   // Headers for better caching and security

@@ -1,4 +1,3 @@
-
 'use client';
 import { useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
@@ -9,7 +8,22 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { toast } from '@/hooks/use-toast';
-import { type ContactFormInput, submitContactForm } from '@/ai/flows/contact-flow';
+// import { type ContactFormInput, submitContactForm } from '@/ai/flows/contact-flow';
+
+// Temporary types and functions to replace AI functionality
+type ContactFormInput = {
+  name: string;
+  email: string;
+  phone: string;
+  eventDate?: string;
+  message: string;
+};
+
+async function submitContactForm(data: ContactFormInput) {
+  // Temporary implementation - replace with actual form submission
+  console.log('Form submitted:', data);
+  return { success: true, message: 'Thank you for your message! We will get back to you soon.' };
+}
 import { Loader2 } from 'lucide-react';
 import { z } from 'zod';
 
