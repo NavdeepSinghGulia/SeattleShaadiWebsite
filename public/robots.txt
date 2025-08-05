@@ -1,0 +1,28 @@
+# Robots.txt for Seattle Shaadi
+# https://seattleshaadi.com/robots.txt
+
+User-agent: *
+Allow: /
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+Disallow: /private/
+
+# Allow important pages
+Allow: /
+Allow: /about
+Allow: /services
+Allow: /contact
+Allow: /work
+Allow: /spotlight
+Allow: /faq
+Allow: /fun
+
+# Sitemap location
+Sitemap: https://seattleshaadi.com/sitemap.xml
+
+# Crawl delay (optional - helps prevent server overload)
+Crawl-delay: 1
+

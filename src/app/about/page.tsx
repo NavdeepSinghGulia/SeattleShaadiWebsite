@@ -1,9 +1,13 @@
-
 import { AnimatedDiv } from "@/components/animated-div";
 import { FloatingParticles } from "@/components/floating-particles";
 import { RoyalBackground } from "@/components/royal-background";
 import { LuxuryCard } from "@/components/luxury-card";
 import { ShimmerEffect } from "@/components/shimmer-effect";
+import { generateMetadata as generateSEOMetadata, pageMetadata } from '@/lib/metadata';
+import { Breadcrumbs, pageBreadcrumbs } from '@/components/seo/breadcrumbs';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = generateSEOMetadata(pageMetadata.about);
 
 const teamMembers = [
   {
@@ -30,6 +34,7 @@ export default function AboutPage() {
       <FloatingParticles />
 
       <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+        <Breadcrumbs customBreadcrumbs={pageBreadcrumbs.about} />
         <div className="text-center">
           <AnimatedDiv animation="royalEntrance">
             <ShimmerEffect>
