@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import Image from 'next/image';
+import { OptimizedImage } from '@/components/optimized-image';
 import { motion } from 'framer-motion';
 import Autoplay from "embla-carousel-autoplay";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
@@ -31,13 +31,14 @@ export function HeroSection() {
                     {mainCarouselImages.map((image, index) => (
                         <CarouselItem key={index}>
                             <div className="relative h-[95vh] w-full">
-                                <Image
+                                <OptimizedImage
                                     src={image.src}
                                     alt={image.alt}
                                     fill
                                     className="object-cover object-center"
                                     priority={index === 0}
                                     sizes="100vw"
+                                    royalAnimation={false}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                                 
