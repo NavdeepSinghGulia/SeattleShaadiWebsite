@@ -3,7 +3,11 @@ import { FloatingParticles } from "@/components/floating-particles";
 import { RoyalBackground } from "@/components/royal-background";
 import { LuxuryCard } from "@/components/luxury-card";
 import { ShimmerEffect } from "@/components/shimmer-effect";
-import { Seo } from "@/components/seo";
+import { Breadcrumb } from "@/components/breadcrumb";
+import { PagePerformanceTracker } from "@/lib/web-vitals";
+import { aboutMetadata } from "@/lib/metadata";
+
+export const metadata = aboutMetadata;
 
 const teamMembers = [
   {
@@ -26,16 +30,13 @@ const teamMembers = [
 export default function AboutPage() {
   return (
     <>
-      <Seo
-        title="About Us - The Team Behind Seattle Shaadi"
-        description="Meet the passionate and experienced team of wedding planners at Seattle Shaadi. Learn about our philosophy of 'Regal Modernity' and our commitment to creating your dream wedding."
-        pathname="/about"
-      />
+      <PagePerformanceTracker pageName="about" />
       <div className="relative min-h-screen">
         <RoyalBackground />
         <FloatingParticles />
 
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          <Breadcrumb />
           <div className="text-center">
             <AnimatedDiv animation="royalEntrance">
               <ShimmerEffect>
