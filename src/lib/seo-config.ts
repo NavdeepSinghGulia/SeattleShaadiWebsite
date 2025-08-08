@@ -4,7 +4,7 @@ export const siteConfig = {
   name: "Seattle Shaadi",
   description: "Seattle's premier wedding planning company specializing in luxurious, culturally-rich South Asian and Indian weddings. Expert wedding planners creating unforgettable celebrations in the Pacific Northwest.",
   url: process.env.NEXT_PUBLIC_SITE_URL || "https://seattleshaadi.com",
-  ogImage: "/og-image.jpg",
+  ogImage: "/Logo-new.webp",
   keywords: [
     "Seattle wedding planner",
     "Indian wedding planner Seattle",
@@ -20,7 +20,17 @@ export const siteConfig = {
     "Sikh wedding planner",
     "wedding coordination Seattle",
     "Seattle wedding services",
-    "Indian wedding traditions"
+    "Indian wedding traditions",
+    "Bellevue wedding planner",
+    "Tacoma wedding planner",
+    "Everett wedding planner",
+    "Washington state weddings",
+    "Seattle bridal services",
+    "Indian wedding decorations Seattle",
+    "Seattle wedding venues",
+    "multicultural wedding planning",
+    "Seattle event planning",
+    "luxury Indian weddings"
   ],
   authors: [{ name: "Seattle Shaadi Team", url: "https://seattleshaadi.com" }],
   creator: "Seattle Shaadi",

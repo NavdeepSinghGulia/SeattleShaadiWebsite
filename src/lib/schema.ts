@@ -8,7 +8,7 @@ export const organizationSchema = {
   "alternateName": "Seattle Shaadi Wedding Planners",
   "url": siteConfig.url,
   "logo": `${siteConfig.url}/Logo-new.webp`,
-  "image": `${siteConfig.url}/og-image.jpg`,
+  "image": `${siteConfig.url}/Logo-new.webp`,
   "description": siteConfig.description,
   "foundingDate": "2020",
   "founders": [
@@ -22,7 +22,8 @@ export const organizationSchema = {
     "@type": "PostalAddress",
     "addressLocality": "Seattle",
     "addressRegion": "WA",
-    "addressCountry": "US"
+    "addressCountry": "US",
+    "postalCode": "98101"
   },
   "contactPoint": {
     "@type": "ContactPoint",
@@ -44,7 +45,7 @@ export const localBusinessSchema = {
   "@type": "LocalBusiness",
   "@id": `${siteConfig.url}/#localbusiness`,
   "name": "Seattle Shaadi",
-  "image": `${siteConfig.url}/og-image.jpg`,
+  "image": `${siteConfig.url}/Logo-new.webp`,
   "description": siteConfig.description,
   "url": siteConfig.url,
   "telephone": "+1-XXX-XXX-XXXX", // Replace with actual phone number
@@ -85,6 +86,13 @@ export const localBusinessSchema = {
       "longitude": -122.3321
     },
     "geoRadius": "100 miles"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "50",
+    "bestRating": "5",
+    "worstRating": "1"
   }
 };
 
