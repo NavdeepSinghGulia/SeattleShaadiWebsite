@@ -46,4 +46,3 @@ export default function manifest(): MetadataRoute.Manifest {
     dir: 'ltr',
   };
 }
-

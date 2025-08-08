@@ -105,4 +105,3 @@ export const trackLocalBusinessEvent = (
 ) => {
   trackEvent(eventType, 'local_business');
 };
-

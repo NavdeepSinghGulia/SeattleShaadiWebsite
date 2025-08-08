@@ -23,4 +23,3 @@ export function SchemaMarkup({ schema, id }: SchemaMarkupProps) {
     </>
   );
 }
-
