@@ -17,12 +17,22 @@ export function Analytics() {
   useEffect(() => {
     // Track Core Web Vitals
     if (typeof window !== 'undefined') {
-      import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-        getCLS(trackWebVitals);
-        getFID(trackWebVitals);
-        getFCP(trackWebVitals);
-        getLCP(trackWebVitals);
-        getTTFB(trackWebVitals);
+      import('web-vitals').then((webVitals) => {
+        // Use the new API (web-vitals v5+)
+        if (webVitals.onCLS) webVitals.onCLS(trackWebVitals);
+        if (webVitals.onFID) webVitals.onFID(trackWebVitals);
+        if (webVitals.onFCP) webVitals.onFCP(trackWebVitals);
+        if (webVitals.onLCP) webVitals.onLCP(trackWebVitals);
+        if (webVitals.onTTFB) webVitals.onTTFB(trackWebVitals);
+        
+        // Fallback for older versions (web-vitals v4 and below)
+        if (webVitals.getCLS) webVitals.getCLS(trackWebVitals);
+        if (webVitals.getFID) webVitals.getFID(trackWebVitals);
+        if (webVitals.getFCP) webVitals.getFCP(trackWebVitals);
+        if (webVitals.getLCP) webVitals.getLCP(trackWebVitals);
+        if (webVitals.getTTFB) webVitals.getTTFB(trackWebVitals);
+      }).catch((error) => {
+        console.warn('Failed to load web-vitals:', error);
       });
     }
   }, []);
@@ -57,4 +67,3 @@ export function PerformanceMonitor() {
 
   return null;
 }
-
