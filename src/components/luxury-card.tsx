@@ -136,7 +136,12 @@ export function LuxuryCard({
         }
         setIsHovered(true);
       }}
-      onTapEnd={() => {
+      onTapCancel={() => {
+        if (isTouch) {
+          setTimeout(() => setIsHovered(false), 200);
+        }
+      }}
+      onPointerUp={() => {
         if (isTouch) {
           setTimeout(() => setIsHovered(false), 200);
         }

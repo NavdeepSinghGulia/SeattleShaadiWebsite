@@ -17,7 +17,7 @@ export function Analytics() {
   useEffect(() => {
     // Track Core Web Vitals
     if (typeof window !== 'undefined') {
-      import('web-vitals').then((webVitals) => {
+      import('web-vitals').then((webVitals: any) => {
         // Use the new API (web-vitals v5+)
         if (webVitals.onCLS) webVitals.onCLS(trackWebVitals);
         if (webVitals.onFID) webVitals.onFID(trackWebVitals);

@@ -7,7 +7,6 @@
  * - ContactFormOutput - The return type for the submitContactForm function.
  */
 
-import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import { Resend } from 'resend';
 
@@ -30,75 +29,65 @@ const ContactFormOutputSchema = z.object({
 export type ContactFormOutput = z.infer<typeof ContactFormOutputSchema>;
 
 export async function submitContactForm(input: ContactFormInput): Promise<ContactFormOutput> {
-  return contactFlow(input);
-}
+  console.log('New contact form submission received. Processing...');
 
-const categorizationPrompt = ai.definePrompt({
-    name: 'categorizeContactMessage',
-    input: { schema: z.object({ message: z.string() }) },
-    output: { schema: z.object({ category: z.string().describe('The category of the message.') }) },
-    prompt: `Categorize the following contact message into one of these categories: Venue Inquiry, Catering Question, Decor Inquiry, General Feedback, Other.
-
-    Message: {{{message}}}`,
-});
-
-const contactFlow = ai.defineFlow(
-  {
-    name: 'contactFlow',
-    inputSchema: ContactFormInputSchema,
-    outputSchema: ContactFormOutputSchema,
-  },
-  async (input) => {
-    console.log('New contact form submission received. Processing...');
-
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    
-    // Use AI to categorize the message
-    const { output } = await categorizationPrompt({ message: input.message });
-    const category = output?.category || 'Other';
-
-    // In a production app, you would save this data to a database (like Firebase Firestore).
-    console.log('---------- NEW CONTACT SUBMISSION ----------');
-    console.log(`Name: ${input.name}`);
-    console.log(`Email: ${input.email}`);
-    console.log(`Phone: ${input.phone}`);
-    console.log(`Event Date: ${input.eventDate || 'Not provided'}`);
-    console.log(`Estimated Guests: ${input.estimatedGuests || 'Not provided'}`);
-    console.log(`Budget: ${input.budget || 'Not provided'}`);
-    console.log(`Message: ${input.message}`);
-    console.log(`Categorized as: ${category}`);
-    console.log('-------------------------------------------');
-
-    try {
-      await resend.emails.send({
-        from: 'Seattle Shaadi <onboarding@resend.dev>',
-        to: 'navdeep.code@gmail.com', // IMPORTANT: Change this to your email address
-        subject: `New Contact Form Submission - ${category}`,
-        html: `
-          <h1>New Contact Form Submission</h1>
-          <p><strong>Name:</strong> ${input.name}</p>
-          <p><strong>Email:</strong> ${input.email}</p>
-          <p><strong>Phone:</strong> ${input.phone}</p>
-          <p><strong>Event Date:</strong> ${input.eventDate || 'Not provided'}</p>
-          <p><strong>Estimated Guests:</strong> ${input.estimatedGuests || 'Not provided'}</p>
-          <p><strong>Budget:</strong> ${input.budget || 'Not provided'}</p>
-          <p><strong>Message:</strong></p>
-          <p>${input.message}</p>
-          <p><em>This message was categorized as: ${category}</em></p>
-        `,
-      });
-
-      return {
-          success: true,
-          message: "Thanks for reaching out! We'll get back to you soon.",
-          category: category,
-      };
-    } catch (error) {
-        console.error("Failed to send email", error);
-        return {
-            success: false,
-            message: "Sorry, we couldn't send your message. Please try again later.",
-        };
-    }
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  
+  // Simple categorization based on keywords (replacing AI categorization for now)
+  const message = input.message.toLowerCase();
+  let category = 'Other';
+  
+  if (message.includes('venue') || message.includes('location') || message.includes('place')) {
+    category = 'Venue Inquiry';
+  } else if (message.includes('food') || message.includes('catering') || message.includes('menu')) {
+    category = 'Catering Question';
+  } else if (message.includes('decor') || message.includes('decoration') || message.includes('flowers')) {
+    category = 'Decor Inquiry';
+  } else if (message.includes('feedback') || message.includes('review') || message.includes('experience')) {
+    category = 'General Feedback';
   }
-);
+
+  // In a production app, you would save this data to a database (like Firebase Firestore).
+  console.log('---------- NEW CONTACT SUBMISSION ----------');
+  console.log(`Name: ${input.name}`);
+  console.log(`Email: ${input.email}`);
+  console.log(`Phone: ${input.phone}`);
+  console.log(`Event Date: ${input.eventDate || 'Not provided'}`);
+  console.log(`Estimated Guests: ${input.estimatedGuests || 'Not provided'}`);
+  console.log(`Budget: ${input.budget || 'Not provided'}`);
+  console.log(`Message: ${input.message}`);
+  console.log(`Categorized as: ${category}`);
+  console.log('-------------------------------------------');
+
+  try {
+    await resend.emails.send({
+      from: 'Seattle Shaadi <onboarding@resend.dev>',
+      to: 'navdeep.code@gmail.com', // IMPORTANT: Change this to your email address
+      subject: `New Contact Form Submission - ${category}`,
+      html: `
+        <h1>New Contact Form Submission</h1>
+        <p><strong>Name:</strong> ${input.name}</p>
+        <p><strong>Email:</strong> ${input.email}</p>
+        <p><strong>Phone:</strong> ${input.phone}</p>
+        <p><strong>Event Date:</strong> ${input.eventDate || 'Not provided'}</p>
+        <p><strong>Estimated Guests:</strong> ${input.estimatedGuests || 'Not provided'}</p>
+        <p><strong>Budget:</strong> ${input.budget || 'Not provided'}</p>
+        <p><strong>Message:</strong></p>
+        <p>${input.message}</p>
+        <p><em>This message was categorized as: ${category}</em></p>
+      `,
+    });
+
+    return {
+        success: true,
+        message: "Thanks for reaching out! We'll get back to you soon.",
+        category: category,
+    };
+  } catch (error) {
+      console.error("Failed to send email", error);
+      return {
+          success: false,
+          message: "Sorry, we couldn't send your message. Please try again later.",
+      };
+  }
+}

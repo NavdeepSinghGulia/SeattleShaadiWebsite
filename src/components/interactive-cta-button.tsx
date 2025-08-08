@@ -128,7 +128,8 @@ export function InteractiveCtaButton({
           triggerHapticFeedback('light');
         }
       }}
-      onTapEnd={() => setIsPressed(false)}
+      onTapCancel={() => setIsPressed(false)}
+      onPointerUp={() => setIsPressed(false)}
       onTap={() => {
         if (isTouch && settings.enableHapticFeedback) {
           triggerHapticFeedback('medium');

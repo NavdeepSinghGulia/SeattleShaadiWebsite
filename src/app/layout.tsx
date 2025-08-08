@@ -8,6 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AnimationPreferencesProvider } from "@/hooks/use-animation-preferences";
 import { Analytics, PerformanceMonitor } from "@/components/analytics";
 import Script from 'next/script';
+import { Suspense } from 'react';
 import { siteConfig, generateMetadata } from '@/lib/seo-config';
 import { SchemaMarkup } from '@/components/schema-markup';
 import { 
@@ -99,7 +100,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AnimationPreferencesProvider>
-            <Analytics />
+            <Suspense fallback={null}>
+              <Analytics />
+            </Suspense>
             <PerformanceMonitor />
             <Header />
             <main>{children}</main>
