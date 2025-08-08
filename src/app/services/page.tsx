@@ -6,6 +6,7 @@ import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
 import { ShimmerEffect } from '@/components/shimmer-effect';
 import { generateMetadata } from "@/lib/seo-config";
+import { Breadcrumb, BreadcrumbStructuredData } from "@/components/breadcrumb";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateMetadata({
@@ -49,6 +50,11 @@ export default function ServicesPage() {
         <FloatingParticles />
 
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          <Breadcrumb 
+            items={[{ label: "Services" }]} 
+            className="mb-8"
+          />
+          <BreadcrumbStructuredData items={[{ label: "Services" }]} />
           <div className="text-center">
              <AnimatedDiv animation="royalEntrance">
               <ShimmerEffect>

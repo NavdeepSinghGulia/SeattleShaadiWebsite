@@ -6,6 +6,7 @@ import { ShimmerEffect } from "@/components/shimmer-effect";
 import { generateMetadata } from "@/lib/seo-config";
 import { SchemaMarkup } from "@/components/schema-markup";
 import { teamMemberSchemas } from "@/lib/schema";
+import { Breadcrumb, BreadcrumbStructuredData } from "@/components/breadcrumb";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateMetadata({
@@ -41,6 +42,11 @@ export default function AboutPage() {
         <FloatingParticles />
 
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          <Breadcrumb 
+            items={[{ label: "About Us" }]} 
+            className="mb-8"
+          />
+          <BreadcrumbStructuredData items={[{ label: "About Us" }]} />
           <div className="text-center">
             <AnimatedDiv animation="royalEntrance">
               <ShimmerEffect>

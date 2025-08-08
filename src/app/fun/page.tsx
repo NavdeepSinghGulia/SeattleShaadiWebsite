@@ -1,6 +1,13 @@
-
 import Image from 'next/image';
 import { AnimatedDiv } from '@/components/animated-div';
+import { generateMetadata } from "@/lib/seo-config";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = generateMetadata({
+  title: "Behind the Scenes - Fun at Seattle Shaadi",
+  description: "Get a glimpse behind the scenes at Seattle Shaadi! See our team in action, candid moments, and the joy that goes into creating your perfect South Asian wedding celebration.",
+  pathname: "/fun",
+});
 
 const funMoments = [
   { src: "/traditional-dance.jpg", caption: 'Post-event shenanigans' },

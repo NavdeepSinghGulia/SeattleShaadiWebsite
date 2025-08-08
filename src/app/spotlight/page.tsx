@@ -1,6 +1,13 @@
-
 import Image from 'next/image';
 import { AnimatedDiv } from '@/components/animated-div';
+import { generateMetadata } from "@/lib/seo-config";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = generateMetadata({
+  title: "In The Spotlight - Media Features & Recognition",
+  description: "Seattle Shaadi has been featured in prestigious publications including Vogue Weddings, Harper's Bazaar Bride, and more. Discover our award-winning South Asian wedding planning expertise.",
+  pathname: "/spotlight",
+});
 
 const publications = [
   { name: 'Vogue Weddings', logo: "/vogue-logo.png" },
