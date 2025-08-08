@@ -8,10 +8,22 @@ import { TestimonialsSection } from '@/components/home/testimonials-section';
 import { CtaSection } from '@/components/home/cta-section';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
+import { SchemaMarkup } from '@/components/schema-markup';
+import { 
+  organizationSchema, 
+  localBusinessSchema, 
+  websiteSchema, 
+  weddingPlanningServiceSchema 
+} from '@/lib/schema';
 
 export default function Home() {
   return (
     <>
+      <SchemaMarkup schema={organizationSchema} id="organization" />
+      <SchemaMarkup schema={localBusinessSchema} id="local-business" />
+      <SchemaMarkup schema={websiteSchema} id="website" />
+      <SchemaMarkup schema={weddingPlanningServiceSchema} id="wedding-service" />
+      
       <div className="flex flex-col relative overflow-x-hidden">
         <RoyalBackground />
         <FloatingParticles />

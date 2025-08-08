@@ -28,7 +28,7 @@ export function RoyalTypography({
   const text = typeof children === 'string' ? children : '';
   const { isMobile, isTouch, variants, settings, isSmallScreen } = useMobileRoyalAnimations();
 
-  const Component = motion[variant as keyof typeof motion] || motion.p;
+  const Component = (motion as any)[variant] || motion.p;
 
   const baseClasses = {
     h1: "text-4xl md:text-6xl font-headline font-bold",
