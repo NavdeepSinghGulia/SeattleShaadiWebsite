@@ -8,14 +8,10 @@ import { TestimonialsSection } from '@/components/home/testimonials-section';
 import { CtaSection } from '@/components/home/cta-section';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
-import { Seo } from '@/components/seo';
-
 
 export default function Home() {
-
   return (
     <>
-      <Seo />
       <div className="flex flex-col relative overflow-x-hidden">
         <RoyalBackground />
         <FloatingParticles />

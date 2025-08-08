@@ -8,8 +8,16 @@ import { AnimatedDiv } from "@/components/animated-div";
 import { FloatingParticles } from "@/components/floating-particles";
 import { RoyalBackground } from "@/components/royal-background";
 import { ShimmerEffect } from "@/components/shimmer-effect";
-import { Seo } from "@/components/seo";
-import Script from 'next/script';
+import { generateMetadata } from "@/lib/seo-config";
+import { SchemaMarkup } from "@/components/schema-markup";
+import { faqSchema } from "@/lib/schema";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = generateMetadata({
+  title: "FAQ - Frequently Asked Questions | Seattle Shaadi",
+  description: "Get answers to common questions about our wedding planning services in Seattle. Learn about our process, pricing, and what makes Seattle Shaadi special.",
+  pathname: "/faq",
+});
 
 const faqs = [
     {
@@ -34,32 +42,12 @@ const faqs = [
     }
 ];
 
-const faqPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqs.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-};
+// FAQ schema is now imported from /lib/schema.ts
 
 export default function FAQPage() {
   return (
     <>
-      <Seo
-        title="FAQ - Seattle Shaadi"
-        description="Find answers to frequently asked questions about our wedding planning services, booking process, fees, and more. Get all the information you need."
-        pathname="/faq"
-      />
-      <Script
-        id="faq-page-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema) }}
-      />
+      <SchemaMarkup schema={faqSchema} id="faq-page" />
       <div className="relative min-h-screen">
         <RoyalBackground />
         <FloatingParticles />

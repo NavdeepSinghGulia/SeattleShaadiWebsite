@@ -3,9 +3,14 @@ import { AnimatedDiv } from '@/components/animated-div';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
 import { ShimmerEffect } from '@/components/shimmer-effect';
-import { Seo } from '@/components/seo';
-import Script from 'next/script';
-import { siteConfig } from '@/lib/utils';
+import { generateMetadata } from "@/lib/seo-config";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = generateMetadata({
+  title: "Our Work - Seattle Shaadi Wedding Portfolio",
+  description: "Explore our stunning portfolio of South Asian and Indian weddings in Seattle. See how we bring dreams to life with our 'Regal Modernity' approach to wedding planning.",
+  pathname: "/work",
+});
 
 const weddings = [
   { src: "/bride_groom_ceremony.jpg", caption: 'Regal Palace Nuptials' },
@@ -28,36 +33,11 @@ const weddings = [
   { src: "/bride-dance.jpeg", caption: 'Joyful Moves' }
 ];
 
-const gallerySchema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Our Wedding Gallery",
-  "description": "A collection of beautiful moments and designs from weddings planned by Seattle Shaadi.",
-  "url": `${siteConfig.url}/work`,
-  "hasPart": weddings.map(wedding => ({
-    "@type": "ImageObject",
-    "contentUrl": `${siteConfig.url}${wedding.src}`,
-    "caption": wedding.caption,
-    "creator": {
-      "@type": "Organization",
-      "name": "Seattle Shaadi"
-    }
-  }))
-};
+// Gallery schema is now handled by the global schema markup
 
 export default function WorkPage() {
   return (
     <>
-      <Seo
-        title="Our Work - Wedding Gallery"
-        description="Explore our gallery of stunning weddings. See the magical moments and exquisite designs we've crafted for couples in Seattle and beyond."
-        pathname="/work"
-      />
-      <Script
-        id="gallery-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(gallerySchema) }}
-      />
       <div className="relative min-h-screen">
         <RoyalBackground />
         <FloatingParticles />

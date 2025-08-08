@@ -6,48 +6,35 @@ import { Footer } from '@/components/footer';
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 import { AnimationPreferencesProvider } from "@/hooks/use-animation-preferences";
+import { Analytics, PerformanceMonitor } from "@/components/analytics";
 import Script from 'next/script';
-import { siteConfig } from '@/lib/utils';
+import { siteConfig, generateMetadata } from '@/lib/seo-config';
+import { SchemaMarkup } from '@/components/schema-markup';
+import { 
+  organizationSchema, 
+  localBusinessSchema, 
+  websiteSchema, 
+  weddingPlanningServiceSchema 
+} from '@/lib/schema';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  ...generateMetadata(),
   title: {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
-  keywords: ["Seattle wedding planner", "Indian wedding planner", "South Asian weddings", "luxury weddings Seattle", "destination weddings"],
-  authors: [{ name: "Seattle Shaadi Team", url: siteConfig.url }],
-  creator: "Seattle Shaadi",
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: siteConfig.url,
-    title: siteConfig.name,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: `${siteConfig.url}/og-image.jpg`,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
+  icons: {
+    icon: [
+      { url: "/favicon/favicon.ico", sizes: "any" },
+      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+    ],
+    shortcut: "/favicon/favicon.ico",
+    apple: [
+      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.name,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/og-image.jpg`],
-    creator: "@SeattleShaadi", // Replace with actual Twitter handle
-  },
-  icons: {
-    icon: "/favicon/favicon.ico",
-    shortcut: "/favicon/favicon-96x96.png",
-    apple: "/favicon/apple-touch-icon.png",
-  },
-  manifest: `${siteConfig.url}/favicon/site.webmanifest`,
+  manifest: "/favicon/site.webmanifest",
 };
 
 const playfairDisplay = Playfair_Display({
@@ -64,29 +51,7 @@ const lato = Lato({
   display: 'swap',
 });
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Seattle Shaadi",
-  "url": siteConfig.url,
-  "logo": `${siteConfig.url}/Logo-new.webp`,
-  "sameAs": [
-    // Add social media profile URLs here
-    // "https://www.facebook.com/seattleshaadi",
-    // "https://www.instagram.com/seattleshaadi",
-  ]
-};
-
-const websiteSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "url": siteConfig.url,
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": `${siteConfig.url}/search?q={search_term_string}`,
-    "query-input": "required name=search_term_string"
-  }
-};
+// Schema markup is now imported from /lib/schema.ts
 
 export default function RootLayout({
   children,
@@ -96,16 +61,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfairDisplay.variable} ${lato.variable} !scroll-smooth`} suppressHydrationWarning>
        <head>
-          <Script
-            id="organization-schema"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+          {/* Comprehensive Schema Markup */}
+          <SchemaMarkup 
+            schema={[
+              organizationSchema,
+              localBusinessSchema,
+              websiteSchema,
+              weddingPlanningServiceSchema
+            ]} 
+            id="global-schema"
           />
-          <Script
-            id="website-schema"
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-          />
+          
           {/* Google Analytics */}
           <Script
             async
@@ -133,6 +99,8 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <AnimationPreferencesProvider>
+            <Analytics />
+            <PerformanceMonitor />
             <Header />
             <main>{children}</main>
             <Footer />

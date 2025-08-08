@@ -5,7 +5,14 @@ import { AnimatedDiv } from '@/components/animated-div';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
 import { ShimmerEffect } from '@/components/shimmer-effect';
-import { Seo } from '@/components/seo';
+import { generateMetadata } from "@/lib/seo-config";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = generateMetadata({
+  title: "Wedding Planning Services - Seattle Shaadi",
+  description: "Explore our bespoke wedding planning services in Seattle, from full-service planning and destination weddings to decor design and partial planning. Specializing in South Asian and Indian weddings.",
+  pathname: "/services",
+});
 
 const services = [
   {
@@ -37,11 +44,6 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
-      <Seo
-        title="Wedding Planning Services - Seattle Shaadi"
-        description="Explore our bespoke wedding planning services, from full-service planning and destination weddings to decor design and partial planning. Let's craft your perfect day."
-        pathname="/services"
-      />
       <div className="relative min-h-screen">
         <RoyalBackground />
         <FloatingParticles />
