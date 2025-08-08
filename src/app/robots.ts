@@ -14,6 +14,32 @@ export default function robots(): MetadataRoute.Robots {
           '*.json$',
           '/private/',
         ],
+        crawlDelay: 1,
+      },
+      // Explicit rules for major search engines
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '*.json$',
+          '/private/',
+        ],
+        crawlDelay: 1,
+      },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+        disallow: [
+          '/api/',
+          '/_next/',
+          '/admin/',
+          '*.json$',
+          '/private/',
+        ],
+        crawlDelay: 1,
       },
       {
         userAgent: 'GPTBot',

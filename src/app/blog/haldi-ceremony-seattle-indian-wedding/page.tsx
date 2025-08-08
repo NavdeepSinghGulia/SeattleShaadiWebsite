@@ -8,6 +8,7 @@ import { generateMetadata } from "@/lib/seo-config";
 import { SchemaMarkup } from '@/components/schema-markup';
 import { generateArticleSchema } from '@/lib/schema';
 import { Breadcrumb, BreadcrumbStructuredData } from "@/components/breadcrumb";
+import { SocialShare } from "@/components/social-share";
 import type { Metadata } from 'next';
 
 const post = {
@@ -65,6 +66,15 @@ export default function BlogPostPage() {
                 <p className="mt-4 text-muted-foreground text-lg">
                   Posted on {post.date} by {post.author}
                 </p>
+              </AnimatedDiv>
+              <AnimatedDiv delay={400} animation="fadeInScale">
+                <div className="mt-6 flex justify-center">
+                  <SocialShare 
+                    title={post.title}
+                    description={post.description}
+                    className="bg-primary/10 hover:bg-primary/20 border-primary/30"
+                  />
+                </div>
               </AnimatedDiv>
             </header>
 

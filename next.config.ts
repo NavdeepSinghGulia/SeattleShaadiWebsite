@@ -82,8 +82,11 @@ const nextConfig: NextConfig = {
   generateEtags: true,
   // Enable experimental features for better performance
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', 'framer-motion'],
   },
+  // Additional performance optimizations
+  serverExternalPackages: ['sharp'],
+  reactStrictMode: true,
 };
 
 export default nextConfig;

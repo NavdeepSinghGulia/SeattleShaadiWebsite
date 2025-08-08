@@ -129,6 +129,63 @@ export function Footer() {
               </motion.ul>
             </motion.div>
 
+            {/* Blog & Resources */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+            >
+              <RoyalTypography
+                variant="h4"
+                animation="goldenGlow"
+                className="font-semibold text-foreground mb-3 sm:mb-4 text-base sm:text-lg"
+                glowOnHover={true}
+              >
+                Blog & Resources
+              </RoyalTypography>
+              <motion.ul 
+                className="space-y-2 text-muted-foreground text-sm sm:text-base"
+                variants={{
+                  hidden: {},
+                  visible: {
+                    transition: {
+                      staggerChildren: 0.1
+                    }
+                  }
+                }}
+                initial="hidden"
+                animate="visible"
+              >
+                {[
+                  { href: "/blog", text: "Wedding Blog" },
+                  { href: "/blog/indian-wedding-traditions-seattle", text: "Indian Traditions" },
+                  { href: "/blog/seattle-wedding-planning-guide", text: "Planning Guide" },
+                  { href: "/blog/top-5-seattle-wedding-venues", text: "Top Venues" }
+                ].map((link) => (
+                  <motion.li
+                    key={link.href}
+                    variants={{
+                      hidden: { opacity: 0, x: -20 },
+                      visible: { opacity: 1, x: 0 }
+                    }}
+                  >
+                    <Link 
+                      href={link.href} 
+                      className="hover:text-primary transition-all duration-300 hover:translate-x-1 inline-block relative group"
+                    >
+                      {link.text}
+                      <motion.div
+                        className="absolute bottom-0 left-0 h-0.5 bg-primary"
+                        initial={{ width: 0 }}
+                        whileHover={{ width: "100%" }}
+                        transition={{ duration: 0.3 }}
+                      />
+                    </Link>
+                  </motion.li>
+                ))}
+              </motion.ul>
+            </motion.div>
+
             {/* Contact */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}

@@ -112,6 +112,22 @@ export function generateMetadata({
       google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
       yandex: process.env.NEXT_PUBLIC_YANDEX_VERIFICATION,
       yahoo: process.env.NEXT_PUBLIC_YAHOO_SITE_VERIFICATION,
+      bing: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION,
+    },
+    other: {
+      'theme-color': '#d97706',
+      'color-scheme': 'light dark',
+      'format-detection': 'telephone=no',
+      'mobile-web-app-capable': 'yes',
+      'apple-mobile-web-app-capable': 'yes',
+      'apple-mobile-web-app-status-bar-style': 'default',
+      'apple-mobile-web-app-title': 'Seattle Shaadi',
+      'application-name': 'Seattle Shaadi',
+      'msapplication-TileColor': '#d97706',
+      'msapplication-config': '/favicon/browserconfig.xml',
+      'msapplication-tooltip': 'Seattle Shaadi - Premier Wedding Planning',
+      'msapplication-starturl': '/',
+      'msapplication-tap-highlight': 'no',
     },
   };
 }
