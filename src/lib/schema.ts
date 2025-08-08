@@ -279,7 +279,7 @@ export function generateArticleSchema({
     "@type": "Article",
     "headline": headline,
     "description": description,
-    "image": image || `${siteConfig.url}/og-image.jpg`,
+    "image": image || `${siteConfig.url}/og-image.png`,
     "datePublished": datePublished,
     "dateModified": dateModified || datePublished,
     "author": {

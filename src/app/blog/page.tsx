@@ -17,6 +17,36 @@ export const metadata: Metadata = generateMetadata({
 
 const blogPosts = [
   {
+    slug: "indian-wedding-traditions-seattle",
+    title: "Honoring Indian Wedding Traditions in Seattle: A Complete Guide",
+    excerpt: "Discover how to beautifully blend traditional Indian wedding customs with modern Seattle celebrations. Expert tips for authentic ceremonies, rituals, and cultural elements.",
+    author: "Priya Sharma",
+    date: "2024-08-05",
+    image: "https://placehold.co/800x600.png",
+    imageHint: "indian wedding ceremony",
+    tags: ["Indian Weddings", "Traditions", "Seattle", "Cultural"],
+  },
+  {
+    slug: "seattle-wedding-planning-guide",
+    title: "The Ultimate Seattle Wedding Planning Guide: From Emerald City to 'I Do'",
+    excerpt: "Complete guide to planning your dream wedding in Seattle. Expert tips on venues, vendors, timing, and making the most of the Pacific Northwest's natural beauty.",
+    author: "Rajesh Patel",
+    date: "2024-08-03",
+    image: "https://placehold.co/800x600.png",
+    imageHint: "seattle skyline wedding",
+    tags: ["Wedding Planning", "Seattle", "Guide", "Pacific Northwest"],
+  },
+  {
+    slug: "south-asian-wedding-seattle",
+    title: "South Asian Weddings in Seattle: Celebrating Culture in the Pacific Northwest",
+    excerpt: "Discover how to plan an authentic South Asian wedding in Seattle. From traditional ceremonies to modern celebrations, expert guidance for your multicultural wedding.",
+    author: "Meera Kapoor",
+    date: "2024-08-01",
+    image: "https://placehold.co/800x600.png",
+    imageHint: "south asian wedding celebration",
+    tags: ["South Asian", "Multicultural", "Seattle", "Wedding Traditions"],
+  },
+  {
     slug: "top-5-seattle-wedding-venues",
     title: "Top 5 Undiscovered Wedding Venues in Seattle",
     excerpt: "Move over, Space Needle! We're unveiling five hidden gems in the Emerald City that offer breathtaking backdrops for your unforgettable day.",
@@ -26,7 +56,6 @@ const blogPosts = [
     imageHint: "wedding venue",
     tags: ["Venues", "Seattle", "Planning"],
   },
-  // Add more blog posts here as they are created
 ];
 
 export default function BlogPage() {
