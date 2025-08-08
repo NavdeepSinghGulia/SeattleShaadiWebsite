@@ -62,6 +62,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${playfairDisplay.variable} ${lato.variable} !scroll-smooth`} suppressHydrationWarning>
        <head>
+          {/* Preload critical resources for better performance */}
+          <link rel="preload" href="/og-image.png" as="image" type="image/png" />
+          <link rel="preload" href="/shaadi-squad-high-resolution-logo-transparent.png" as="image" type="image/png" />
+          <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+          <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+          <link rel="dns-prefetch" href="//www.google-analytics.com" />
+          
           {/* Comprehensive Schema Markup */}
           <SchemaMarkup 
             schema={[

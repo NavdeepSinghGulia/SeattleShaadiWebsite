@@ -1,4 +1,3 @@
-
 import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -32,7 +31,9 @@ export function FeaturedWeddingsSection() {
                            <div className="group relative overflow-hidden rounded-lg shadow-2xl border border-amber-200/20 aspect-[3/4]">
                                 <Image src={wedding.src} alt={wedding.alt} fill style={{ objectFit: 'cover' }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="transition-transform duration-500 group-hover:scale-110" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                                <ShimmerEffect />
+                                <ShimmerEffect>
+                                    <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-rose-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                </ShimmerEffect>
                             </div>
                         </AnimatedDiv>
                     ))}
