@@ -17,6 +17,26 @@ export const metadata: Metadata = generateMetadata({
 
 const blogPosts = [
   {
+    slug: "haldi-ceremony-seattle-indian-wedding",
+    title: "Haldi Ceremony in Seattle: The Golden Glow of Indian Wedding Traditions",
+    excerpt: "Discover the sacred Haldi ceremony traditions for your Seattle Indian wedding. Learn about turmeric rituals, cultural significance, and how to plan this beautiful pre-wedding celebration.",
+    author: "Kavya Reddy",
+    date: "2024-08-07",
+    image: "/haldi-ceremony-indian-wedding.webp",
+    imageHint: "haldi ceremony turmeric",
+    tags: ["Haldi Ceremony", "Indian Wedding", "Seattle", "Pre-Wedding Rituals"],
+  },
+  {
+    slug: "mehndi-ceremony-seattle-indian-wedding",
+    title: "Mehndi Ceremony in Seattle: Intricate Henna Art for Your Indian Wedding",
+    excerpt: "Explore the beautiful Mehndi ceremony traditions for Seattle Indian weddings. Learn about henna designs, cultural significance, and planning your perfect pre-wedding celebration.",
+    author: "Anita Sharma",
+    date: "2024-08-06",
+    image: "/mehandi.webp",
+    imageHint: "mehndi henna ceremony",
+    tags: ["Mehndi Ceremony", "Henna", "Indian Wedding", "Seattle", "Pre-Wedding"],
+  },
+  {
     slug: "indian-wedding-traditions-seattle",
     title: "Honoring Indian Wedding Traditions in Seattle: A Complete Guide",
     excerpt: "Discover how to beautifully blend traditional Indian wedding customs with modern Seattle celebrations. Expert tips for authentic ceremonies, rituals, and cultural elements.",
@@ -27,6 +47,16 @@ const blogPosts = [
     tags: ["Indian Weddings", "Traditions", "Seattle", "Cultural"],
   },
   {
+    slug: "baraat-ceremony-seattle-indian-wedding",
+    title: "Baraat Ceremony in Seattle: The Grand Groom's Procession for Indian Weddings",
+    excerpt: "Discover the spectacular Baraat ceremony traditions for Seattle Indian weddings. Learn about the groom's procession, cultural significance, and planning tips for this joyous celebration.",
+    author: "Vikram Singh",
+    date: "2024-08-04",
+    image: "/groom-barat.jpg",
+    imageHint: "baraat groom procession",
+    tags: ["Baraat Ceremony", "Groom Procession", "Indian Wedding", "Seattle", "Wedding Traditions"],
+  },
+  {
     slug: "seattle-wedding-planning-guide",
     title: "The Ultimate Seattle Wedding Planning Guide: From Emerald City to 'I Do'",
     excerpt: "Complete guide to planning your dream wedding in Seattle. Expert tips on venues, vendors, timing, and making the most of the Pacific Northwest's natural beauty.",
@@ -35,6 +65,16 @@ const blogPosts = [
     image: "https://placehold.co/800x600.png",
     imageHint: "seattle skyline wedding",
     tags: ["Wedding Planning", "Seattle", "Guide", "Pacific Northwest"],
+  },
+  {
+    slug: "vidaai-ceremony-seattle-indian-wedding",
+    title: "Vidaai Ceremony in Seattle: The Emotional Farewell in Indian Wedding Traditions",
+    excerpt: "Understand the touching Vidaai ceremony for Seattle Indian weddings. Learn about this emotional farewell ritual, cultural significance, and how to honor this sacred tradition.",
+    author: "Deepika Malhotra",
+    date: "2024-08-02",
+    image: "/bride-vidai.jpg",
+    imageHint: "vidaai farewell ceremony",
+    tags: ["Vidaai Ceremony", "Indian Wedding", "Seattle", "Wedding Traditions", "Farewell Ritual"],
   },
   {
     slug: "south-asian-wedding-seattle",
