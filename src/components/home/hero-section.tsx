@@ -16,7 +16,9 @@ const mobileCarouselContent = [
       type: 'video' as const,
       src: "https://videos.pexels.com/video-files/6893946/6893946-hd_1920_1080_30fps.mp4",
       alt: "Beautiful Indian wedding ceremony",
-      poster: "/Homepage_main.jpeg"
+      poster: "/Homepage_main.jpeg",
+      // Add video optimization attributes
+      preload: "metadata" as const
     },
     { 
       type: 'image' as const,
@@ -188,6 +190,12 @@ export function HeroSection() {
                                             loop
                                             playsInline
                                             poster={item.poster}
+                                            preload={item.preload || "metadata"}
+                                            onError={(e) => {
+                                                console.warn('Video failed to load, showing fallback image');
+                                                // Hide video and show fallback image
+                                                e.currentTarget.style.display = 'none';
+                                            }}
                                         >
                                             <source src={item.src} type="video/mp4" />
                                             <Image
@@ -195,6 +203,7 @@ export function HeroSection() {
                                                 alt={item.alt}
                                                 fill
                                                 className="object-cover object-center"
+                                                priority={index === 0}
                                             />
                                         </video>
                                     ) : (

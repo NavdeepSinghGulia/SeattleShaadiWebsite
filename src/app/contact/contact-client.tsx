@@ -22,7 +22,13 @@ import { siteConfig } from '@/lib/seo-config';
 export const ContactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
-  phone: z.string().min(14, { message: 'Phone number must be 10 digits.' }), // (123) 456-7890 is 14 chars
+  phone: z.string()
+    .min(1, { message: 'Phone number is required.' })
+    .refine((phone) => {
+      // Remove all non-digit characters and check if we have exactly 10 digits
+      const digits = phone.replace(/\D/g, '');
+      return digits.length === 10;
+    }, { message: 'Phone number must be exactly 10 digits.' }),
   eventDate: z.string().optional(),
   estimatedGuests: z.string().optional(),
   budget: z.string().optional(),

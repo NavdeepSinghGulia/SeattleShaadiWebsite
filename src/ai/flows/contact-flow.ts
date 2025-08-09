@@ -36,12 +36,16 @@ export type ContactFormOutput = z.infer<typeof ContactFormOutputSchema>;
 // Security utility functions
 function sanitizeHtml(input: string): string {
   return input
+    .trim() // Remove leading/trailing whitespace
+    .replace(/\s+/g, ' ') // Normalize internal whitespace
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#x27;')
-    .replace(/\//g, '&#x2F;');
+    .replace(/\//g, '&#x2F;')
+    .replace(/\x00-\x1f\x7f-\x9f/g, '') // Remove control characters
+    .substring(0, 1000); // Reasonable length limit
 }
 
 function validateInput(input: ContactFormInput): { isValid: boolean; errors: string[] } {
@@ -103,7 +107,9 @@ function checkRateLimit(email: string): { allowed: boolean; message?: string } {
 }
 
 export async function submitContactForm(input: ContactFormInput): Promise<ContactFormOutput> {
-  console.log('New contact form submission received. Processing...');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('New contact form submission received. Processing...');
+  }
 
   // Check rate limiting first
   const rateLimitCheck = checkRateLimit(input.email);
@@ -162,16 +168,18 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
   };
 
   // In a production app, you would save this data to a database (like Firebase Firestore).
-  console.log('---------- NEW CONTACT SUBMISSION ----------');
-  console.log(`Name: ${sanitizedInput.name}`);
-  console.log(`Email: ${sanitizedInput.email}`);
-  console.log(`Phone: ${sanitizedInput.phone}`);
-  console.log(`Event Date: ${sanitizedInput.eventDate}`);
-  console.log(`Estimated Guests: ${sanitizedInput.estimatedGuests}`);
-  console.log(`Budget: ${sanitizedInput.budget}`);
-  console.log(`Message: ${sanitizedInput.message}`);
-  console.log(`Categorized as: ${category}`);
-  console.log('-------------------------------------------');
+  if (process.env.NODE_ENV === 'development') {
+    console.log('---------- NEW CONTACT SUBMISSION ----------');
+    console.log(`Name: ${sanitizedInput.name}`);
+    console.log(`Email: ${sanitizedInput.email}`);
+    console.log(`Phone: ${sanitizedInput.phone}`);
+    console.log(`Event Date: ${sanitizedInput.eventDate}`);
+    console.log(`Estimated Guests: ${sanitizedInput.estimatedGuests}`);
+    console.log(`Budget: ${sanitizedInput.budget}`);
+    console.log(`Message: ${sanitizedInput.message}`);
+    console.log(`Categorized as: ${category}`);
+    console.log('-------------------------------------------');
+  }
 
   try {
     // Get recipient email from environment variable for security
