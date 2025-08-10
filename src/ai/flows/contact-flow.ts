@@ -156,15 +156,15 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
     category = 'General Feedback';
   }
 
-  // Sanitize all inputs for logging and email
+  // Sanitize all inputs for logging and email with length limits
   const sanitizedInput = {
-    name: sanitizeHtml(input.name),
-    email: sanitizeHtml(input.email),
-    phone: sanitizeHtml(input.phone),
-    eventDate: input.eventDate ? sanitizeHtml(input.eventDate) : 'Not provided',
-    estimatedGuests: input.estimatedGuests ? sanitizeHtml(input.estimatedGuests) : 'Not provided',
-    budget: input.budget ? sanitizeHtml(input.budget) : 'Not provided',
-    message: sanitizeHtml(input.message),
+    name: sanitizeHtml(input.name).substring(0, 100),
+    email: sanitizeHtml(input.email).substring(0, 100),
+    phone: sanitizeHtml(input.phone).substring(0, 20),
+    eventDate: input.eventDate ? sanitizeHtml(input.eventDate).substring(0, 50) : 'Not provided',
+    estimatedGuests: input.estimatedGuests ? sanitizeHtml(input.estimatedGuests).substring(0, 20) : 'Not provided',
+    budget: input.budget ? sanitizeHtml(input.budget).substring(0, 50) : 'Not provided',
+    message: sanitizeHtml(input.message).substring(0, 2000),
   };
 
   // In a production app, you would save this data to a database (like Firebase Firestore).

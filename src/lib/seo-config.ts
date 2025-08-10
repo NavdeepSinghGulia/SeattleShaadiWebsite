@@ -100,9 +100,11 @@ export function generateMetadata({
     robots: {
       index: !noIndex,
       follow: !noIndex,
+      nocache: false,
       googleBot: {
         index: !noIndex,
         follow: !noIndex,
+        noimageindex: false,
         'max-video-preview': -1,
         'max-image-preview': 'large',
         'max-snippet': -1,

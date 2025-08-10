@@ -4,6 +4,7 @@ import { siteConfig } from '@/lib/seo-config';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = siteConfig.url;
   const currentDate = new Date().toISOString();
+  const lastWeek = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
 
   // Define all static routes with their priorities and change frequencies
   const routes = [
@@ -45,21 +46,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/blog/haldi-ceremony-seattle-indian-wedding`,
-      lastModified: currentDate,
+      lastModified: lastWeek,
       changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/blog/mehndi-ceremony-seattle-indian-wedding`,
-      lastModified: currentDate,
+      lastModified: lastWeek,
       changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/blog/baraat-ceremony-seattle-indian-wedding`,
-      lastModified: currentDate,
+      lastModified: lastWeek,
       changeFrequency: 'monthly' as const,
-      priority: 0.7,
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/blog/vidaai-ceremony-seattle-indian-wedding`,
