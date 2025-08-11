@@ -1,14 +1,21 @@
-
 import Image from 'next/image';
 import { AnimatedDiv } from '@/components/animated-div';
+import { generateMetadata } from "@/lib/seo-config";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = generateMetadata({
+  title: "In The Spotlight - Media Features & Recognition",
+  description: "Seattle Shaadi has been featured in prestigious publications including Vogue Weddings, Harper's Bazaar Bride, and more. Discover our award-winning South Asian wedding planning expertise.",
+  pathname: "/spotlight",
+});
 
 const publications = [
-  { name: 'Vogue Weddings', logo: "/vogue-logo.png" },
-  { name: 'Harper\'s Bazaar Bride', logo: "/harpers-bazaar-logo.png" },
-  { name: 'Brides Today', logo: "/brides-today-logo.png" },
-  { name: 'Elle Decor', logo: "/elle-decor-logo.png" },
-  { name: 'Condé Nast Traveller', logo: "/conde-nast-logo.png" },
-  { name: 'WeddingSutra', logo: "/weddingsutra-logo.png" },
+  { name: 'Vogue Weddings', logo: "/images/media/logos/vogue-weddings-logo.png" },
+  { name: 'Harper\'s Bazaar Bride', logo: "/images/media/logos/harpers-bazaar-bride-logo.png" },
+  { name: 'Brides Today', logo: "/images/media/logos/brides-today-magazine-logo.png" },
+  { name: 'Elle Decor', logo: "/images/media/logos/elle-decor-magazine-logo.png" },
+  { name: 'Condé Nast Traveller', logo: "/images/media/logos/conde-nast-traveller-logo.png" },
+  { name: 'WeddingSutra', logo: "/images/media/logos/weddingsutra-platform-logo.png" },
 ];
 
 export default function SpotlightPage() {

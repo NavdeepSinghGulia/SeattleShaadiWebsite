@@ -35,11 +35,13 @@ export function AnimationPreferencesProvider({ children }: { children: ReactNode
     setMounted(true);
     
     // Check for system preference for reduced motion
+    if (typeof window === 'undefined') return;
+    
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     const systemReducedMotion = mediaQuery.matches;
 
     // Load preferences from localStorage
-    const savedPreferences = localStorage.getItem('royal-animation-preferences');
+    const savedPreferences = typeof window !== 'undefined' ? localStorage.getItem('royal-animation-preferences') : null;
     if (savedPreferences) {
       try {
         const parsed = JSON.parse(savedPreferences);
@@ -231,4 +233,3 @@ export function useResponsiveAnimation() {
     optimalSettings: getOptimalAnimationSettings(),
   };
 }
-

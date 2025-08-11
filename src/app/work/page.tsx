@@ -3,61 +3,41 @@ import { AnimatedDiv } from '@/components/animated-div';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
 import { ShimmerEffect } from '@/components/shimmer-effect';
-import { Seo } from '@/components/seo';
-import Script from 'next/script';
-import { siteConfig } from '@/lib/utils';
+import { generateMetadata } from "@/lib/seo-config";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = generateMetadata({
+  title: "Our Work - Seattle Shaadi Wedding Portfolio",
+  description: "Explore our stunning portfolio of South Asian and Indian weddings in Seattle. See how we bring dreams to life with our 'Regal Modernity' approach to wedding planning.",
+  pathname: "/work",
+});
 
 const weddings = [
-  { src: "/bride_groom_ceremony.jpg", caption: 'Regal Palace Nuptials' },
-  { src: "/bride-groom-dance.jpg", caption: 'Lakeside Serenity' },
-  { src: "/groom-bride-sagai.jpg", caption: 'Cross-Cultural Celebration' },
-  { src: "/bride-groom-decor.jpg", caption: 'Secret Garden Vows' },
-  { src: "/Bollywood+wedding+dance.jpg", caption: 'Modern City Romance' },
-  { src: "/phere-hall.jpg", caption: 'Sunset Beach Ceremony' },
-  { src: "/flower-decor.jpg", caption: 'Opulent Floral Fantasy' },
-  { src: "/weddinghall-lighting.webp", caption: 'Grand Ballroom Gala' },
-  { src: "/hindu+wedding+foods.jpeg", caption: 'A Culinary Journey' },
-  { src: "/haldi-ceremony-indian-wedding.webp", caption: 'Vibrant Haldi Rituals' },
-  { src: "/10-mehndi-photos.jpg", caption: 'Intricate Mehndi Art' },
-  { src: "/Indian-Wedding-Photography-Baraat-Boston-Ptaufiq-Gaylord-National-Maryland.jpg", caption: 'Joyful Baraat Procession' },
-  { src: "/bride-groom-handshake.jpg", caption: 'A Vow of Togetherness' },
-  { src: "/resort-hall.jpg", caption: 'Destination Dream' },
-  { src: "/wedding-lawns.jpg", caption: 'Garden Paradise' },
-  { src: "/Sarita-Souvik-MnMphotography-38.jpg", caption: 'Portrait of Love' },
-  { src: "/Kaajol-Pruthul_Ama-by-Aisha_Westin-Galleria-109.jpg", caption: 'Radiant Smiles' },
-  { src: "/bride-dance.jpeg", caption: 'Joyful Moves' }
+  { src: "/images/portraits/bride-groom-wedding-ceremony.jpg", caption: 'Regal Palace Nuptials' },
+  { src: "/images/portraits/bride-groom-dance-celebration.jpg", caption: 'Lakeside Serenity' },
+  { src: "/images/portraits/groom-bride-sagai-engagement.jpg", caption: 'Cross-Cultural Celebration' },
+  { src: "/images/portraits/bride-groom-wedding-decor.jpg", caption: 'Secret Garden Vows' },
+  { src: "/images/celebrations/bollywood-wedding-dance.jpg", caption: 'Modern City Romance' },
+  { src: "/images/venues/traditional-phere-ceremony-hall.jpg", caption: 'Sunset Beach Ceremony' },
+  { src: "/images/venues/wedding-floral-decoration-setup.jpg", caption: 'Opulent Floral Fantasy' },
+  { src: "/images/venues/elegant-wedding-hall-lighting.webp", caption: 'Grand Ballroom Gala' },
+  { src: "/images/celebrations/hindu-wedding-food-spread.jpeg", caption: 'A Culinary Journey' },
+  { src: "/images/ceremonies/haldi/seattle-haldi-ceremony-celebration.webp", caption: 'Vibrant Haldi Rituals' },
+  { src: "/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg", caption: 'Intricate Mehndi Art' },
+  { src: "/images/ceremonies/baraat/traditional-baraat-procession-celebration.jpg", caption: 'Joyful Baraat Procession' },
+  { src: "/images/portraits/bride-groom-ceremony-handshake.jpg", caption: 'A Vow of Togetherness' },
+  { src: "/images/venues/seattle-resort-wedding-hall.jpg", caption: 'Destination Dream' },
+  { src: "/images/venues/seattle-wedding-garden-lawns.jpg", caption: 'Garden Paradise' },
+  { src: "/images/portraits/sarita-souvik-wedding-portrait.jpg", caption: 'Portrait of Love' },
+  { src: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg", caption: 'Radiant Smiles' },
+  { src: "/images/celebrations/bride-dance-celebration.jpeg", caption: 'Joyful Moves' }
 ];
 
-const gallerySchema = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Our Wedding Gallery",
-  "description": "A collection of beautiful moments and designs from weddings planned by Seattle Shaadi.",
-  "url": `${siteConfig.url}/work`,
-  "hasPart": weddings.map(wedding => ({
-    "@type": "ImageObject",
-    "contentUrl": `${siteConfig.url}${wedding.src}`,
-    "caption": wedding.caption,
-    "creator": {
-      "@type": "Organization",
-      "name": "Seattle Shaadi"
-    }
-  }))
-};
+// Gallery schema is now handled by the global schema markup
 
 export default function WorkPage() {
   return (
     <>
-      <Seo
-        title="Our Work - Wedding Gallery"
-        description="Explore our gallery of stunning weddings. See the magical moments and exquisite designs we've crafted for couples in Seattle and beyond."
-        pathname="/work"
-      />
-      <Script
-        id="gallery-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(gallerySchema) }}
-      />
       <div className="relative min-h-screen">
         <RoyalBackground />
         <FloatingParticles />

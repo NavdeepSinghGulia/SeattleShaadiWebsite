@@ -268,9 +268,9 @@ export const mobileAnimationUtils = {
     
     // Check for hardware acceleration
     if (gl) {
-      const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+      const debugInfo = (gl as WebGLRenderingContext).getExtension('WEBGL_debug_renderer_info');
       if (debugInfo) {
-        const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+        const renderer = (gl as WebGLRenderingContext).getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
         if (renderer.includes('Apple') || renderer.includes('Mali') || renderer.includes('Adreno')) {
           score += 0.3;
         }
@@ -301,4 +301,3 @@ export const mobileAnimationUtils = {
     navigator.vibrate(patterns[pattern]);
   }
 };
-

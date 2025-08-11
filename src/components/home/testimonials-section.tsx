@@ -1,4 +1,3 @@
-
 'use client';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
@@ -10,17 +9,17 @@ import { ShimmerEffect } from '../shimmer-effect';
 const testimonials = [
     {
         name: "Priya & Rohan",
-        avatar: "/Sarita-Souvik-MnMphotography-38.jpg",
+        avatar: "/images/portraits/sarita-souvik-wedding-portrait.jpg",
         text: "Seattle Shaadi made our dream wedding a reality! Their attention to detail and creative vision were outstanding. We couldn't have asked for a better team."
     },
     {
         name: "Aisha & Sameer",
-        avatar: "/groom-bride-sagai.jpg",
+        avatar: "/images/portraits/groom-bride-sagai-engagement.jpg",
         text: "The most professional and passionate team we've ever worked with. They took all the stress away and planned a flawless event. Highly recommended!"
     },
     {
         name: "Meera & Arjun",
-        avatar: "/Kaajol-Pruthul_Ama-by-Aisha_Westin-Galleria-109.jpg",
+        avatar: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg",
         text: "From start to finish, the experience was seamless. The decor was breathtaking, and our guests are still talking about how beautiful everything was."
     }
 ];

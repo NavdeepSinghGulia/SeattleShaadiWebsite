@@ -28,7 +28,7 @@ export function RoyalTypography({
   const text = typeof children === 'string' ? children : '';
   const { isMobile, isTouch, variants, settings, isSmallScreen } = useMobileRoyalAnimations();
 
-  const Component = motion[variant as keyof typeof motion] || motion.p;
+  const Component = (motion as any)[variant] || motion.p;
 
   const baseClasses = {
     h1: "text-4xl md:text-6xl font-headline font-bold",
@@ -230,7 +230,18 @@ export function RoyalTypography({
         onHoverStart={() => glowOnHover && !isTouch && setIsHovered(true)}
         onHoverEnd={() => glowOnHover && !isTouch && setIsHovered(false)}
         onTapStart={() => glowOnHover && isTouch && setIsHovered(true)}
-        onTapEnd={() => glowOnHover && isTouch && setTimeout(() => setIsHovered(false), 200)}
+        onTapCancel={() => {
+          if (glowOnHover && isTouch) {
+            const timeoutId = setTimeout(() => setIsHovered(false), 200);
+            return () => clearTimeout(timeoutId);
+          }
+        }}
+        onPointerUp={() => {
+          if (glowOnHover && isTouch) {
+            const timeoutId = setTimeout(() => setIsHovered(false), 200);
+            return () => clearTimeout(timeoutId);
+          }
+        }}
       >
         {children}
       </Component>

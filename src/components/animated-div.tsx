@@ -135,14 +135,18 @@ export function AnimatedDiv({
   };
 
   const containerVariants = staggerChildren ? {
-    hidden: {},
+    hidden: { opacity: 0 },
     visible: {
+      opacity: 1,
       transition: {
         staggerChildren: staggerDelay,
         delayChildren: delay / 1000
       }
     }
-  } : {};
+  } : {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 }
+  };
 
   return (
     <motion.div

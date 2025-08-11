@@ -13,11 +13,15 @@ export function FloatingParticles() {
   useEffect(() => {
     // Check if mobile
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      if (typeof window !== 'undefined') {
+        setIsMobile(window.innerWidth < 768);
+      }
     };
     
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', checkMobile);
+    }
     
     // This code now runs only on the client, after the initial render.
     const generateParticles = () => {
@@ -36,7 +40,11 @@ export function FloatingParticles() {
     };
     setParticles(generateParticles());
     
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', checkMobile);
+      }
+    };
   }, [isMobile]);
 
   return (

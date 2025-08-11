@@ -7,9 +7,13 @@
  * - ContactFormOutput - The return type for the submitContactForm function.
  */
 
-import { ai } from '@/ai/genkit';
 import { z } from 'zod';
 import { Resend } from 'resend';
+
+// Simple in-memory rate limiting (in production, use Redis or database)
+const submissionTracker = new Map<string, { count: number; lastSubmission: number }>();
+const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
+const MAX_SUBMISSIONS_PER_WINDOW = 3;
 
 const ContactFormInputSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -29,76 +33,188 @@ const ContactFormOutputSchema = z.object({
 });
 export type ContactFormOutput = z.infer<typeof ContactFormOutputSchema>;
 
-export async function submitContactForm(input: ContactFormInput): Promise<ContactFormOutput> {
-  return contactFlow(input);
+// Security utility functions
+function sanitizeHtml(input: string): string {
+  return input
+    .trim() // Remove leading/trailing whitespace
+    .replace(/\s+/g, ' ') // Normalize internal whitespace
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#x27;')
+    .replace(/\//g, '&#x2F;')
+    .replace(/\x00-\x1f\x7f-\x9f/g, '') // Remove control characters
+    .substring(0, 1000); // Reasonable length limit
 }
 
-const categorizationPrompt = ai.definePrompt({
-    name: 'categorizeContactMessage',
-    input: { schema: z.object({ message: z.string() }) },
-    output: { schema: z.object({ category: z.string().describe('The category of the message.') }) },
-    prompt: `Categorize the following contact message into one of these categories: Venue Inquiry, Catering Question, Decor Inquiry, General Feedback, Other.
-
-    Message: {{{message}}}`,
-});
-
-const contactFlow = ai.defineFlow(
-  {
-    name: 'contactFlow',
-    inputSchema: ContactFormInputSchema,
-    outputSchema: ContactFormOutputSchema,
-  },
-  async (input) => {
-    console.log('New contact form submission received. Processing...');
-
-    const resend = new Resend(process.env.RESEND_API_KEY);
-    
-    // Use AI to categorize the message
-    const { output } = await categorizationPrompt({ message: input.message });
-    const category = output?.category || 'Other';
-
-    // In a production app, you would save this data to a database (like Firebase Firestore).
-    console.log('---------- NEW CONTACT SUBMISSION ----------');
-    console.log(`Name: ${input.name}`);
-    console.log(`Email: ${input.email}`);
-    console.log(`Phone: ${input.phone}`);
-    console.log(`Event Date: ${input.eventDate || 'Not provided'}`);
-    console.log(`Estimated Guests: ${input.estimatedGuests || 'Not provided'}`);
-    console.log(`Budget: ${input.budget || 'Not provided'}`);
-    console.log(`Message: ${input.message}`);
-    console.log(`Categorized as: ${category}`);
-    console.log('-------------------------------------------');
-
-    try {
-      await resend.emails.send({
-        from: 'Seattle Shaadi <onboarding@resend.dev>',
-        to: 'navdeep.code@gmail.com', // IMPORTANT: Change this to your email address
-        subject: `New Contact Form Submission - ${category}`,
-        html: `
-          <h1>New Contact Form Submission</h1>
-          <p><strong>Name:</strong> ${input.name}</p>
-          <p><strong>Email:</strong> ${input.email}</p>
-          <p><strong>Phone:</strong> ${input.phone}</p>
-          <p><strong>Event Date:</strong> ${input.eventDate || 'Not provided'}</p>
-          <p><strong>Estimated Guests:</strong> ${input.estimatedGuests || 'Not provided'}</p>
-          <p><strong>Budget:</strong> ${input.budget || 'Not provided'}</p>
-          <p><strong>Message:</strong></p>
-          <p>${input.message}</p>
-          <p><em>This message was categorized as: ${category}</em></p>
-        `,
-      });
-
-      return {
-          success: true,
-          message: "Thanks for reaching out! We'll get back to you soon.",
-          category: category,
-      };
-    } catch (error) {
-        console.error("Failed to send email", error);
-        return {
-            success: false,
-            message: "Sorry, we couldn't send your message. Please try again later.",
-        };
+function validateInput(input: ContactFormInput): { isValid: boolean; errors: string[] } {
+  const errors: string[] = [];
+  
+  // Additional security validations
+  if (input.name.length > 100) errors.push('Name too long');
+  if (input.email.length > 254) errors.push('Email too long');
+  if (input.message.length > 2000) errors.push('Message too long');
+  
+  // Check for suspicious patterns
+  const suspiciousPatterns = [
+    /<script/i,
+    /javascript:/i,
+    /on\w+\s*=/i,
+    /data:text\/html/i,
+    /vbscript:/i
+  ];
+  
+  const allText = `${input.name} ${input.email} ${input.message}`;
+  for (const pattern of suspiciousPatterns) {
+    if (pattern.test(allText)) {
+      errors.push('Invalid characters detected');
+      break;
     }
   }
-);
+  
+  return { isValid: errors.length === 0, errors };
+}
+
+function checkRateLimit(email: string): { allowed: boolean; message?: string } {
+  const now = Date.now();
+  const userKey = email.toLowerCase();
+  const userSubmissions = submissionTracker.get(userKey);
+
+  if (!userSubmissions) {
+    submissionTracker.set(userKey, { count: 1, lastSubmission: now });
+    return { allowed: true };
+  }
+
+  // Reset counter if window has passed
+  if (now - userSubmissions.lastSubmission > RATE_LIMIT_WINDOW) {
+    submissionTracker.set(userKey, { count: 1, lastSubmission: now });
+    return { allowed: true };
+  }
+
+  // Check if user has exceeded rate limit
+  if (userSubmissions.count >= MAX_SUBMISSIONS_PER_WINDOW) {
+    return { 
+      allowed: false, 
+      message: "Too many submissions. Please wait a minute before trying again." 
+    };
+  }
+
+  // Increment counter
+  userSubmissions.count++;
+  userSubmissions.lastSubmission = now;
+  return { allowed: true };
+}
+
+export async function submitContactForm(input: ContactFormInput): Promise<ContactFormOutput> {
+  if (process.env.NODE_ENV === 'development') {
+    console.log('New contact form submission received. Processing...');
+  }
+
+  // Check rate limiting first
+  const rateLimitCheck = checkRateLimit(input.email);
+  if (!rateLimitCheck.allowed) {
+    console.warn(`Rate limit exceeded for email: ${input.email}`);
+    return {
+      success: false,
+      message: rateLimitCheck.message || "Too many requests. Please try again later.",
+    };
+  }
+
+  // Validate and sanitize input
+  const validation = validateInput(input);
+  if (!validation.isValid) {
+    console.warn('Invalid input detected:', validation.errors);
+    return {
+      success: false,
+      message: "Invalid input detected. Please check your submission.",
+    };
+  }
+
+  // Validate environment variables
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY not configured');
+    return {
+      success: false,
+      message: "Service temporarily unavailable. Please try again later.",
+    };
+  }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  
+  // Simple categorization based on keywords (replacing AI categorization for now)
+  const message = input.message.toLowerCase();
+  let category = 'Other';
+  
+  if (message.includes('venue') || message.includes('location') || message.includes('place')) {
+    category = 'Venue Inquiry';
+  } else if (message.includes('food') || message.includes('catering') || message.includes('menu')) {
+    category = 'Catering Question';
+  } else if (message.includes('decor') || message.includes('decoration') || message.includes('flowers')) {
+    category = 'Decor Inquiry';
+  } else if (message.includes('feedback') || message.includes('review') || message.includes('experience')) {
+    category = 'General Feedback';
+  }
+
+  // Sanitize all inputs for logging and email with length limits
+  const sanitizedInput = {
+    name: sanitizeHtml(input.name).substring(0, 100),
+    email: sanitizeHtml(input.email).substring(0, 100),
+    phone: sanitizeHtml(input.phone).substring(0, 20),
+    eventDate: input.eventDate ? sanitizeHtml(input.eventDate).substring(0, 50) : 'Not provided',
+    estimatedGuests: input.estimatedGuests ? sanitizeHtml(input.estimatedGuests).substring(0, 20) : 'Not provided',
+    budget: input.budget ? sanitizeHtml(input.budget).substring(0, 50) : 'Not provided',
+    message: sanitizeHtml(input.message).substring(0, 2000),
+  };
+
+  // In a production app, you would save this data to a database (like Firebase Firestore).
+  if (process.env.NODE_ENV === 'development') {
+    console.log('---------- NEW CONTACT SUBMISSION ----------');
+    console.log(`Name: ${sanitizedInput.name}`);
+    console.log(`Email: ${sanitizedInput.email}`);
+    console.log(`Phone: ${sanitizedInput.phone}`);
+    console.log(`Event Date: ${sanitizedInput.eventDate}`);
+    console.log(`Estimated Guests: ${sanitizedInput.estimatedGuests}`);
+    console.log(`Budget: ${sanitizedInput.budget}`);
+    console.log(`Message: ${sanitizedInput.message}`);
+    console.log(`Categorized as: ${category}`);
+    console.log('-------------------------------------------');
+  }
+
+  try {
+    // Get recipient email from environment variable for security
+    const recipientEmail = process.env.CONTACT_EMAIL || 'navdeep.code@gmail.com';
+    
+    await resend.emails.send({
+      from: 'Seattle Shaadi <onboarding@resend.dev>',
+      to: recipientEmail,
+      subject: `New Contact Form Submission - ${category}`,
+      html: `
+        <h1>New Contact Form Submission</h1>
+        <p><strong>Name:</strong> ${sanitizedInput.name}</p>
+        <p><strong>Email:</strong> ${sanitizedInput.email}</p>
+        <p><strong>Phone:</strong> ${sanitizedInput.phone}</p>
+        <p><strong>Event Date:</strong> ${sanitizedInput.eventDate}</p>
+        <p><strong>Estimated Guests:</strong> ${sanitizedInput.estimatedGuests}</p>
+        <p><strong>Budget:</strong> ${sanitizedInput.budget}</p>
+        <p><strong>Message:</strong></p>
+        <p>${sanitizedInput.message}</p>
+        <p><em>This message was categorized as: ${category}</em></p>
+        <hr>
+        <p><small>Submitted at: ${new Date().toISOString()}</small></p>
+      `,
+    });
+
+    return {
+        success: true,
+        message: "Thanks for reaching out! We'll get back to you soon.",
+        category: category,
+    };
+  } catch (error) {
+      console.error("Failed to send email", error);
+      return {
+          success: false,
+          message: "Sorry, we couldn't send your message. Please try again later.",
+      };
+  }
+}

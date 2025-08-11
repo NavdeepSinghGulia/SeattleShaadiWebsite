@@ -1,5 +1,8 @@
-import Head from 'next/head';
-import { siteConfig } from '@/lib/utils';
+// This component is deprecated in favor of Next.js metadata API
+// Individual pages should export metadata objects instead
+// This component is kept for backward compatibility but should not be used in new pages
+
+import { generateMetadata } from '@/lib/seo-config';
 
 interface SeoProps {
   title?: string;
@@ -8,33 +11,17 @@ interface SeoProps {
   image?: string;
 }
 
+// This component now returns null as metadata should be handled at the page level
 export function Seo({ title, description, pathname, image }: SeoProps) {
-  const seo = {
-    title: title ? `${title} | ${siteConfig.name}` : siteConfig.name,
-    description: description || siteConfig.description,
-    image: `${siteConfig.url}${image || '/og-image.jpg'}`,
-    url: `${siteConfig.url}${pathname || ''}`,
-  };
-
-  return (
-    <Head>
-      <title>{seo.title}</title>
-      <meta name="description" content={seo.description} />
-      <link rel="canonical" href={seo.url} />
-
-      {/* Open Graph */}
-      <meta property="og:title" content={seo.title} />
-      <meta property="og:description" content={seo.description} />
-      <meta property="og:url" content={seo.url} />
-      <meta property="og:image" content={seo.image} />
-      <meta property="og:type" content="website" />
-      <meta property="og:site_name" content={siteConfig.name} />
-
-      {/* Twitter */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={seo.title} />
-      <meta name="twitter:description" content={seo.description} />
-      <meta name="twitter:image" content={seo.image} />
-    </Head>
-  );
+  // In development, warn about deprecated usage
+  if (process.env.NODE_ENV === 'development') {
+    console.warn(
+      'The <Seo> component is deprecated. Use the generateMetadata function and export metadata from your page component instead.'
+    );
+  }
+  
+  return null;
 }
+
+// Export the generateMetadata function for easy access
+export { generateMetadata };

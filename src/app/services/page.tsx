@@ -5,48 +5,56 @@ import { AnimatedDiv } from '@/components/animated-div';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
 import { ShimmerEffect } from '@/components/shimmer-effect';
-import { Seo } from '@/components/seo';
+import { generateMetadata } from "@/lib/seo-config";
+import { Breadcrumb, BreadcrumbStructuredData } from "@/components/breadcrumb";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = generateMetadata({
+  title: "Wedding Planning Services - Seattle Shaadi",
+  description: "Explore our bespoke wedding planning services in Seattle, from full-service planning and destination weddings to decor design and partial planning. Specializing in South Asian and Indian weddings.",
+  pathname: "/services",
+});
 
 const services = [
   {
     title: "Full-Service Planning & Execution",
     description: "Our most comprehensive package, covering every aspect from the initial concept to the final farewell. We handle everything, so you can soak in every moment.",
     features: ["Unlimited Consultations", "Budget Management", "Venue & Vendor Sourcing", "Event Day Coordination"],
-    image: "/bride-groom-weeding-hall.jpg",
+    image: "/images/venues/seattle-wedding-hall-ceremony.jpg",
   },
   {
     title: "Destination Wedding Curation",
     description: "From the serene beaches of Goa to the royal palaces of Rajasthan, we craft breathtaking destination weddings that are as unique as your love story.",
     features: ["Location Scouting", "Travel & Accommodation Logistics", "Guest Management", "Local Vendor Coordination"],
-    image: "/wedding-lawns.jpg",
+    image: "/images/venues/seattle-wedding-garden-lawns.jpg",
   },
   {
     title: "Decor, Design & Styling",
     description: "For couples who have the planning under control but need a creative eye to bring their aesthetic vision to life. We design and execute stunning visual concepts.",
     features: ["Theme Conceptualization", "Floral & Lighting Design", "Custom Installations", "Furniture & Linen Sourcing"],
-    image: "/weddinghall-lighting.webp",
+    image: "/images/venues/elegant-wedding-hall-lighting.webp",
   },
   {
     title: "Partial Planning",
     description: "Perfect for couples who have started planning but need expert assistance to tie up loose ends and manage specific aspects of their wedding.",
     features: ["Vendor Recommendations", "Timeline Creation", "Select Vendor Management", "Final Month Coordination"],
-    image: "/bride-groom-handshake.jpg",
+    image: "/images/portraits/bride-groom-ceremony-handshake.jpg",
   }
 ];
 
 export default function ServicesPage() {
   return (
     <>
-      <Seo
-        title="Wedding Planning Services - Seattle Shaadi"
-        description="Explore our bespoke wedding planning services, from full-service planning and destination weddings to decor design and partial planning. Let's craft your perfect day."
-        pathname="/services"
-      />
       <div className="relative min-h-screen">
         <RoyalBackground />
         <FloatingParticles />
 
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          <Breadcrumb 
+            items={[{ label: "Services" }]} 
+            className="mb-8"
+          />
+          <BreadcrumbStructuredData items={[{ label: "Services" }]} />
           <div className="text-center">
              <AnimatedDiv animation="royalEntrance">
               <ShimmerEffect>

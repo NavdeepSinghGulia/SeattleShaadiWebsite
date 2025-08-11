@@ -3,7 +3,17 @@ import { FloatingParticles } from "@/components/floating-particles";
 import { RoyalBackground } from "@/components/royal-background";
 import { LuxuryCard } from "@/components/luxury-card";
 import { ShimmerEffect } from "@/components/shimmer-effect";
-import { Seo } from "@/components/seo";
+import { generateMetadata } from "@/lib/seo-config";
+import { SchemaMarkup } from "@/components/schema-markup";
+import { teamMemberSchemas } from "@/lib/schema";
+import { Breadcrumb, BreadcrumbStructuredData } from "@/components/breadcrumb";
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = generateMetadata({
+  title: "About Us - The Team Behind Seattle Shaadi",
+  description: "Meet the passionate and experienced team of wedding planners at Seattle Shaadi. Learn about our philosophy of 'Regal Modernity' and our commitment to creating your dream South Asian wedding in Seattle.",
+  pathname: "/about",
+});
 
 const teamMembers = [
   {
@@ -26,16 +36,17 @@ const teamMembers = [
 export default function AboutPage() {
   return (
     <>
-      <Seo
-        title="About Us - The Team Behind Seattle Shaadi"
-        description="Meet the passionate and experienced team of wedding planners at Seattle Shaadi. Learn about our philosophy of 'Regal Modernity' and our commitment to creating your dream wedding."
-        pathname="/about"
-      />
+      <SchemaMarkup schema={teamMemberSchemas} id="team-members" />
       <div className="relative min-h-screen">
         <RoyalBackground />
         <FloatingParticles />
 
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
+          <Breadcrumb 
+            items={[{ label: "About Us" }]} 
+            className="mb-8"
+          />
+          <BreadcrumbStructuredData items={[{ label: "About Us" }]} />
           <div className="text-center">
             <AnimatedDiv animation="royalEntrance">
               <ShimmerEffect>

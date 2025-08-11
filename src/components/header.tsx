@@ -20,6 +20,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/services', label: 'Services' },
   { href: '/work', label: 'Our Work' },
+  { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'About' },
   { href: '/faq', label: 'FAQs' },
 ];
@@ -28,7 +29,7 @@ function Logo({ className }: { className?: string }) {
   return (
     <div className={cn("relative group", className)}>
       <Image
-        src="/Logo-new.webp"
+        src="/images/branding/logos/shaadi-squad-main-logo.webp"
         alt="Seattle Shaadi Logo"
         width={150}
         height={50}
@@ -47,10 +48,20 @@ export function Header() {
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      if (typeof window !== 'undefined') {
+        setIsScrolled(window.scrollY > 50);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', handleScroll);
+    }
+    
+    return () => {
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('scroll', handleScroll);
+      }
+    };
   }, []);
 
   const isHome = pathname === '/';
