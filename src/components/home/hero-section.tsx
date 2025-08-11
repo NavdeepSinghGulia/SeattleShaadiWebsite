@@ -82,6 +82,16 @@ export function HeroSection() {
     );
 
     const [animationState, setAnimationState] = React.useState("visible");
+    const animationTimeoutRef = React.useRef<NodeJS.Timeout | null>(null);
+
+    // Cleanup effect for the component
+    React.useEffect(() => {
+        return () => {
+            if (animationTimeoutRef.current) {
+                clearTimeout(animationTimeoutRef.current);
+            }
+        };
+    }, []);
 
     return (
         <>
@@ -132,7 +142,11 @@ export function HeroSection() {
                     animate={animationState}
                     onAnimationComplete={(definition) => {
                         if (definition === "visible") {
-                           setTimeout(() => setAnimationState("fadeOut"), 6000); 
+                           // Clear any existing timeout
+                           if (animationTimeoutRef.current) {
+                               clearTimeout(animationTimeoutRef.current);
+                           }
+                           animationTimeoutRef.current = setTimeout(() => setAnimationState("fadeOut"), 6000); 
                         }
                     }}
                 >

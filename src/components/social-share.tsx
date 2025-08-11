@@ -25,6 +25,7 @@ export function SocialShare({
   className = ''
 }: SocialShareProps) {
   const [copied, setCopied] = React.useState(false);
+  const timeoutRef = React.useRef<NodeJS.Timeout | null>(null);
 
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
@@ -37,11 +38,16 @@ export function SocialShare({
   };
 
   const handleCopyLink = async () => {
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
     try {
       await navigator.clipboard.writeText(url);
       setCopied(true);
-      // Simple success feedback without external toast library
-      setTimeout(() => setCopied(false), 2000);
+      // Simple success feedback with proper cleanup
+      timeoutRef.current = setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       // Fallback for older browsers
       const textArea = document.createElement('textarea');
@@ -51,9 +57,18 @@ export function SocialShare({
       document.execCommand('copy');
       document.body.removeChild(textArea);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      timeoutRef.current = setTimeout(() => setCopied(false), 2000);
     }
   };
+
+  // Cleanup timeout on unmount
+  React.useEffect(() => {
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
 
   const handleShare = (platform: keyof typeof shareLinks) => {
     window.open(shareLinks[platform], '_blank', 'width=600,height=400');

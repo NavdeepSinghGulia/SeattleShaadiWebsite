@@ -230,8 +230,18 @@ export function RoyalTypography({
         onHoverStart={() => glowOnHover && !isTouch && setIsHovered(true)}
         onHoverEnd={() => glowOnHover && !isTouch && setIsHovered(false)}
         onTapStart={() => glowOnHover && isTouch && setIsHovered(true)}
-        onTapCancel={() => glowOnHover && isTouch && setTimeout(() => setIsHovered(false), 200)}
-        onPointerUp={() => glowOnHover && isTouch && setTimeout(() => setIsHovered(false), 200)}
+        onTapCancel={() => {
+          if (glowOnHover && isTouch) {
+            const timeoutId = setTimeout(() => setIsHovered(false), 200);
+            return () => clearTimeout(timeoutId);
+          }
+        }}
+        onPointerUp={() => {
+          if (glowOnHover && isTouch) {
+            const timeoutId = setTimeout(() => setIsHovered(false), 200);
+            return () => clearTimeout(timeoutId);
+          }
+        }}
       >
         {children}
       </Component>
