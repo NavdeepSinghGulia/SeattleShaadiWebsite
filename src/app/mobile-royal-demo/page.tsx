@@ -218,7 +218,9 @@ export default function MobileRoyalDemo() {
                   triggerHapticFeedback('heavy');
                 }
                 // Navigate to main site or contact
-                window.location.href = '/';
+                if (typeof window !== 'undefined') {
+                  window.location.href = '/';
+                }
               }}
             >
               Experience Full Site
@@ -232,7 +234,9 @@ export default function MobileRoyalDemo() {
                   triggerHapticFeedback('medium');
                 }
                 // Scroll to top for another demo
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                if (typeof window !== 'undefined') {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
               }}
             >
               Try Again
@@ -243,4 +247,3 @@ export default function MobileRoyalDemo() {
     </MobileRoyalPage>
   );
 }
-
