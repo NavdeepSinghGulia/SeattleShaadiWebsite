@@ -1,11 +1,8 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "next/typescript",
-    "@typescript-eslint/recommended"
+    "next/typescript"
   ],
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
   "rules": {
     // Performance and best practices
     "no-console": "warn",
@@ -41,8 +38,7 @@
     {
       "files": ["*.ts", "*.tsx"],
       "rules": {
-        "@typescript-eslint/no-explicit-any": "warn",
-        "@typescript-eslint/prefer-const": "error"
+        "@typescript-eslint/no-explicit-any": "warn"
       }
     }
   ]
