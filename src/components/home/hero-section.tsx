@@ -7,8 +7,8 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { InteractiveCtaButton } from '@/components/interactive-cta-button';
 
 const mainCarouselImages = [
-    { src: "/Homepage_main.jpeg", alt: "Elegant wedding reception dinner setup" },
-    { src: "/Homepage_main2.jpg", alt: "Bride and groom in a beautiful outdoor setting" },
+    { src: "/images/hero/seattle-indian-wedding-reception-hero.jpeg", alt: "Elegant wedding reception dinner setup" },
+    { src: "/images/hero/seattle-wedding-couple-outdoor-hero.jpg", alt: "Bride and groom in a beautiful outdoor setting" },
 ];
 
 const mobileCarouselContent = [
@@ -16,18 +16,18 @@ const mobileCarouselContent = [
       type: 'video' as const,
       src: "https://videos.pexels.com/video-files/6893946/6893946-hd_1920_1080_30fps.mp4",
       alt: "Beautiful Indian wedding ceremony",
-      poster: "/Homepage_main.jpeg",
+      poster: "/images/hero/seattle-indian-wedding-reception-hero.jpeg",
       // Add video optimization attributes
       preload: "metadata" as const
     },
     { 
       type: 'image' as const,
-      src: "/Homepage_main.jpeg", 
+      src: "/images/hero/seattle-indian-wedding-reception-hero.jpeg", 
       alt: "Elegant wedding reception dinner setup" 
     },
     { 
       type: 'image' as const,
-      src: "/Homepage_main2.jpg", 
+      src: "/images/hero/seattle-wedding-couple-outdoor-hero.jpg", 
       alt: "Bride and groom in a beautiful outdoor setting" 
     },
 ];
@@ -199,7 +199,7 @@ export function HeroSection() {
                                         >
                                             <source src={item.src} type="video/mp4" />
                                             <Image
-                                                src={item.poster || "/Homepage_main.jpeg"}
+                                                src={item.poster || "/images/hero/seattle-indian-wedding-reception-hero.jpeg"}
                                                 alt={item.alt}
                                                 fill
                                                 className="object-cover object-center"

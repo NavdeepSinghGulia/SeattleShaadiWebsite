@@ -16,7 +16,7 @@ const post = {
   description: "Discover the spectacular Baraat ceremony traditions for Seattle Indian weddings. Learn about the groom's procession, cultural significance, and planning tips for this joyous celebration.",
   author: "Vikram Singh",
   date: "2024-08-04",
-  image: "/groom-barat.jpg",
+  image: "/images/ceremonies/baraat/seattle-groom-baraat-procession.jpg",
   imageHint: "baraat groom procession",
   tags: ["Baraat Ceremony", "Groom Procession", "Indian Wedding", "Seattle", "Wedding Traditions"],
 };
@@ -107,7 +107,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/Indian-Wedding-Photography-Baraat-Boston-Ptaufiq-Gaylord-National-Maryland.jpg" alt="Traditional Baraat procession" data-ai-hint="baraat procession" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/ceremonies/baraat/traditional-baraat-procession-celebration.jpg" alt="Traditional Baraat procession" data-ai-hint="baraat procession" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Planning Your Baraat in Seattle</h2>
@@ -165,7 +165,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/indian-procession-baraat-images-ideas-1.jpg" alt="Colorful Baraat celebration" data-ai-hint="baraat celebration" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/ceremonies/baraat/colorful-baraat-wedding-procession.jpg" alt="Colorful Baraat celebration" data-ai-hint="baraat celebration" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Regional Baraat Variations in Seattle</h2>
@@ -247,7 +247,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/bride-groom-handshake.jpg" alt="Family meeting ceremony" data-ai-hint="family meeting ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/portraits/bride-groom-ceremony-handshake.jpg" alt="Family meeting ceremony" data-ai-hint="family meeting ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Professional Baraat Services in Seattle</h2>
@@ -337,7 +337,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/traditional-dance.jpg" alt="Traditional wedding dance" data-ai-hint="wedding dance celebration" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/celebrations/traditional-wedding-dance.jpg" alt="Traditional wedding dance" data-ai-hint="wedding dance celebration" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <p>

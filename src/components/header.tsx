@@ -29,7 +29,7 @@ function Logo({ className }: { className?: string }) {
   return (
     <div className={cn("relative group", className)}>
       <Image
-        src="/Logo-new.webp"
+        src="/images/branding/logos/shaadi-squad-main-logo.webp"
         alt="Seattle Shaadi Logo"
         width={150}
         height={50}

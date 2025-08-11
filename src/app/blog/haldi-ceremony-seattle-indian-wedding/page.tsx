@@ -17,7 +17,7 @@ const post = {
   description: "Discover the sacred Haldi ceremony traditions for your Seattle Indian wedding. Learn about turmeric rituals, cultural significance, and how to plan this beautiful pre-wedding celebration.",
   author: "Kavya Reddy",
   date: "2024-08-07",
-  image: "/haldi-ceremony-indian-wedding.webp",
+  image: "/images/ceremonies/haldi/seattle-haldi-ceremony-celebration.webp",
   imageHint: "haldi ceremony turmeric",
   tags: ["Haldi Ceremony", "Indian Wedding", "Seattle", "Pre-Wedding Rituals"],
 };
@@ -116,7 +116,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/bride-haldi.jpg" alt="Bride during Haldi ceremony" data-ai-hint="bride haldi ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/ceremonies/haldi/indian-bride-haldi-ceremony.jpg" alt="Bride during Haldi ceremony" data-ai-hint="bride haldi ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Planning Your Haldi Ceremony in Seattle</h2>
@@ -160,7 +160,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/Charlotte-Mehndi.jpg" alt="Traditional Indian wedding preparation" data-ai-hint="indian wedding preparation" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/ceremonies/mehndi/charlotte-mehndi-ceremony-bride.jpg" alt="Traditional Indian wedding preparation" data-ai-hint="indian wedding preparation" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">The Ceremony Process</h3>
@@ -266,7 +266,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/10-mehndi-photos.jpg" alt="Indian wedding celebration" data-ai-hint="indian wedding celebration" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg" alt="Indian wedding celebration" data-ai-hint="indian wedding celebration" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Tips for a Memorable Haldi Ceremony</h2>

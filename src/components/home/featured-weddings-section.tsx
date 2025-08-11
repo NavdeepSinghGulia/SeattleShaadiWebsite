@@ -5,10 +5,10 @@ import { AnimatedDiv } from '@/components/animated-div';
 import { ShimmerEffect } from '../shimmer-effect';
 
 const featuredWeddings = [
-    { src: "/bride-groom-standing.jpg", alt: "Bride smiling" },
-    { src: "/bride-groom-dance.jpg", alt: "Couple smiling" },
-    { src: "/Hindu+wedding+photography.jpg", alt: "Wedding details" },
-    { src: "/phere-hall.jpg", alt: "Groom smiling" },
+    { src: "/images/portraits/bride-groom-wedding-portrait.jpg", alt: "Bride smiling" },
+    { src: "/images/portraits/bride-groom-dance-celebration.jpg", alt: "Couple smiling" },
+    { src: "/images/ceremonies/hindu-wedding-photography-ceremony.jpg", alt: "Wedding details" },
+    { src: "/images/venues/traditional-phere-ceremony-hall.jpg", alt: "Groom smiling" },
 ];
 
 export function FeaturedWeddingsSection() {

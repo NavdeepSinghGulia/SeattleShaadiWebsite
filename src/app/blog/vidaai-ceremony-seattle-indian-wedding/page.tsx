@@ -16,7 +16,7 @@ const post = {
   description: "Understand the touching Vidaai ceremony for Seattle Indian weddings. Learn about this emotional farewell ritual, cultural significance, and how to honor this sacred tradition.",
   author: "Deepika Malhotra",
   date: "2024-08-02",
-  image: "/bride-vidai.jpg",
+  image: "/images/ceremonies/vidaai/seattle-bride-vidaai-ceremony.jpg",
   imageHint: "vidaai farewell ceremony",
   tags: ["Vidaai Ceremony", "Indian Wedding", "Seattle", "Wedding Traditions", "Farewell Ritual"],
 };
@@ -107,7 +107,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/76973-vidaai-ceremony-infinite-memories-dad-mom.jpeg" alt="Emotional Vidaai moment with parents" data-ai-hint="vidaai ceremony parents" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/ceremonies/vidaai/emotional-vidaai-parents-moment.jpeg" alt="Emotional Vidaai moment with parents" data-ai-hint="vidaai ceremony parents" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">The Vidaai Ceremony Process</h2>
@@ -182,7 +182,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/bride-groom-standing.jpg" alt="Bride and groom during ceremony" data-ai-hint="bride groom ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/portraits/bride-groom-wedding-portrait.jpg" alt="Bride and groom during ceremony" data-ai-hint="bride groom ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Emotional Aspects of Vidaai</h2>
@@ -268,7 +268,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/bride_groom_ceremony.jpg" alt="Wedding ceremony moment" data-ai-hint="wedding ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/portraits/bride-groom-wedding-ceremony.jpg" alt="Wedding ceremony moment" data-ai-hint="wedding ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Professional Vidaai Services in Seattle</h2>

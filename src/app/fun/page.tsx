@@ -10,12 +10,12 @@ export const metadata: Metadata = generateMetadata({
 });
 
 const funMoments = [
-  { src: "/traditional-dance.jpg", caption: 'Post-event shenanigans' },
-  { src: "/bride-dance.jpeg", caption: 'Our amazing crew' },
-  { src: "/Bollywood+wedding+dance.jpg", caption: 'The magic in making' },
-  { src: "/indian-wedding-packages-mexican-wedding-dance.png", caption: 'Laughs on set' },
-  { src: "/table20for20feast.webp", caption: 'Celebrating a success' },
-  { src: "/76973-vidaai-ceremony-infinite-memories-dad-mom.jpeg", caption: 'Candid Moments' },
+  { src: "/images/celebrations/traditional-wedding-dance.jpg", caption: 'Post-event shenanigans' },
+  { src: "/images/celebrations/bride-dance-celebration.jpeg", caption: 'Our amazing crew' },
+  { src: "/images/celebrations/bollywood-wedding-dance.jpg", caption: 'The magic in making' },
+  { src: "/images/celebrations/indian-wedding-dance-celebration.png", caption: 'Laughs on set' },
+  { src: "/images/celebrations/wedding-feast-table-setup.webp", caption: 'Celebrating a success' },
+  { src: "/images/ceremonies/vidaai/emotional-vidaai-parents-moment.jpeg", caption: 'Candid Moments' },
 ];
 
 export default function FunPage() {
