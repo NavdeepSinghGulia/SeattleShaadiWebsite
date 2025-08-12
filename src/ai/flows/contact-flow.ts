@@ -169,11 +169,23 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
   }
 
   // Sanitize all inputs for logging and email with length limits
+  const firstName = input.firstName || '';
+  const lastName = input.lastName || '';
+  const fullName = `${firstName} ${lastName}`.trim();
+  
   const sanitizedInput = {
-    name: sanitizeHtml(input.name).substring(0, 100),
+    name: sanitizeHtml(fullName).substring(0, 100),
+    firstName: sanitizeHtml(firstName).substring(0, 50),
+    lastName: sanitizeHtml(lastName).substring(0, 50),
     email: sanitizeHtml(input.email).substring(0, 100),
-    phone: input.phone ? sanitizeHtml(input.phone).substring(0, 20) : 'Not provided',
+    phone: sanitizeHtml(input.phone).substring(0, 20),
+    weddingDate: input.weddingDate ? sanitizeHtml(input.weddingDate).substring(0, 50) : 'Not provided',
+    guestCount: input.guestCount ? sanitizeHtml(input.guestCount).substring(0, 20) : 'Not provided',
+    budget: input.budget ? sanitizeHtml(input.budget).substring(0, 50) : 'Not provided',
+    weddingType: input.weddingType ? sanitizeHtml(input.weddingType).substring(0, 50) : 'Not provided',
+    venue: input.venue ? sanitizeHtml(input.venue).substring(0, 200) : 'Not provided',
     message: sanitizeHtml(input.message).substring(0, 2000),
+    preferredContact: input.preferredContact || 'email',
   };
 
   // In a production app, you would save this data to a database (like Firebase Firestore).
@@ -182,6 +194,12 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
     console.log(`Name: ${sanitizedInput.name}`);
     console.log(`Email: ${sanitizedInput.email}`);
     console.log(`Phone: ${sanitizedInput.phone}`);
+    console.log(`Wedding Date: ${sanitizedInput.weddingDate}`);
+    console.log(`Guest Count: ${sanitizedInput.guestCount}`);
+    console.log(`Budget: ${sanitizedInput.budget}`);
+    console.log(`Wedding Type: ${sanitizedInput.weddingType}`);
+    console.log(`Venue: ${sanitizedInput.venue}`);
+    console.log(`Preferred Contact: ${sanitizedInput.preferredContact}`);
     console.log(`Message: ${sanitizedInput.message}`);
     console.log(`Categorized as: ${category}`);
     console.log('-------------------------------------------');
@@ -204,6 +222,16 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
             <p><strong>Name:</strong> ${sanitizedInput.name}</p>
             <p><strong>Email:</strong> <a href="mailto:${sanitizedInput.email}">${sanitizedInput.email}</a></p>
             <p><strong>Phone:</strong> <a href="tel:${sanitizedInput.phone}">${sanitizedInput.phone}</a></p>
+            <p><strong>Preferred Contact Method:</strong> ${sanitizedInput.preferredContact}</p>
+          </div>
+
+          <div style="background-color: #fef3f2; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h2 style="color: #374151; margin-top: 0;">Wedding Details</h2>
+            <p><strong>Wedding Date:</strong> ${sanitizedInput.weddingDate}</p>
+            <p><strong>Wedding Type:</strong> ${sanitizedInput.weddingType}</p>
+            <p><strong>Guest Count:</strong> ${sanitizedInput.guestCount}</p>
+            <p><strong>Budget:</strong> ${sanitizedInput.budget}</p>
+            <p><strong>Venue:</strong> ${sanitizedInput.venue}</p>
           </div>
 
           <div style="background-color: #fff7ed; padding: 20px; border-radius: 8px; margin: 20px 0;">
