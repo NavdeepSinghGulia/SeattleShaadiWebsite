@@ -11,7 +11,7 @@ import { Breadcrumb, BreadcrumbStructuredData } from "@/components/breadcrumb";
 
 export const metadata: Metadata = generateMetadata({
   title: "Blog - Royal Musings from Seattle Shaadi",
-  description: "Explore wedding planning tips, venue spotlights, and inspiration from the experts at Seattle Shaadi. Your essential guide to planning the perfect South Asian wedding in Seattle.",
+  description: "Explore wedding planning tips, venue spotlights, and inspiration from the experts at Seattle Shaadi. Your essential guide to planning the perfect Indian wedding in Seattle.",
   pathname: "/blog",
 });
 
@@ -78,13 +78,13 @@ const blogPosts = [
   },
   {
     slug: "south-asian-wedding-seattle",
-    title: "South Asian Weddings in Seattle: Celebrating Culture in the Pacific Northwest",
-    excerpt: "Discover how to plan an authentic South Asian wedding in Seattle. From traditional ceremonies to modern celebrations, expert guidance for your multicultural wedding.",
+    title: "Indian Weddings in Seattle: Celebrating Culture in the Pacific Northwest",
+    excerpt: "Discover how to plan an authentic Indian wedding in Seattle. From traditional ceremonies to modern celebrations, expert guidance for your multicultural wedding.",
     author: "Meera Kapoor",
     date: "2024-08-01",
     image: "https://placehold.co/800x600.png",
-    imageHint: "south asian wedding celebration",
-    tags: ["South Asian", "Multicultural", "Seattle", "Wedding Traditions"],
+    imageHint: "indian wedding celebration",
+    tags: ["Indian Wedding", "Multicultural", "Seattle", "Wedding Traditions"],
   },
   {
     slug: "top-5-seattle-wedding-venues",

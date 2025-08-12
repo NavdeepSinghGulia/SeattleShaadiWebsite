@@ -11,7 +11,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateMetadata({
   title: "About Us - The Team Behind Seattle Shaadi",
-  description: "Meet the passionate and experienced team of wedding planners at Seattle Shaadi. Learn about our philosophy of 'Regal Modernity' and our commitment to creating your dream South Asian wedding in Seattle.",
+  description: "Meet the passionate and experienced team of wedding planners at Seattle Shaadi. Learn about our philosophy of 'Regal Modernity' and our commitment to creating your dream Indian wedding in Seattle.",
   pathname: "/about",
 });
 
@@ -19,7 +19,7 @@ const teamMembers = [
   {
     name: "Rajesh Choudhary",
     role: "Founder & CEO",
-    bio: "The visionary behind Seattle Shaadi, Rajesh brings over two decades of premier project and event management experience from the Greater Seattle Area. His deep-rooted expertise in the local landscape and his passion for celebrating South Asian traditions are the cornerstones of our company. Rajesh's leadership and meticulous attention to detail ensure that every wedding we plan is not just an event, but a landmark experience. He has built Seattle Shaadi on a foundation of professionalism, creativity, and a commitment to flawless execution, making dream weddings a reality for couples across the Pacific Northwest.",
+    bio: "The visionary behind Seattle Shaadi, Rajesh brings over two decades of premier project and event management experience from the Greater Seattle Area. His deep-rooted expertise in the local landscape and his passion for celebrating Indian traditions are the cornerstones of our company. Rajesh's leadership and meticulous attention to detail ensure that every wedding we plan is not just an event, but a landmark experience. He has built Seattle Shaadi on a foundation of professionalism, creativity, and a commitment to flawless execution, making dream weddings a reality for couples across the Pacific Northwest.",
   },
   {
     name: "Navdeep Singh",

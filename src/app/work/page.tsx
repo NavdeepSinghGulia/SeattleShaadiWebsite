@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateMetadata({
   title: "Our Work - Seattle Shaadi Wedding Portfolio",
-  description: "Explore our stunning portfolio of South Asian and Indian weddings in Seattle. See how we bring dreams to life with our 'Regal Modernity' approach to wedding planning.",
+  description: "Explore our stunning portfolio of Indian weddings in Seattle. See how we bring dreams to life with our 'Regal Modernity' approach to wedding planning.",
   pathname: "/work",
 });
 

@@ -122,7 +122,7 @@ export const weddingPlanningServiceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "name": "Wedding Planning Services",
-  "description": "Comprehensive wedding planning services specializing in South Asian and Indian weddings in Seattle",
+  "description": "Comprehensive wedding planning services specializing in Indian weddings in Seattle",
   "provider": {
     "@id": `${siteConfig.url}/#organization`
   },
@@ -182,7 +182,7 @@ export const teamMemberSchemas = [
       "@id": `${siteConfig.url}/#organization`
     },
     "url": `${siteConfig.url}/about`,
-    "knowsAbout": ["Wedding Planning", "Event Management", "South Asian Weddings", "Project Management"]
+    "knowsAbout": ["Wedding Planning", "Event Management", "Indian Weddings", "Project Management"]
   },
   {
     "@context": "https://schema.org",
@@ -220,7 +220,7 @@ export const faqSchema = {
       "name": "What types of weddings do you specialize in?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "We specialize in South Asian and Indian weddings, including Hindu, Sikh, Muslim, and multicultural celebrations. We honor traditional customs while incorporating modern elegance."
+        "text": "We specialize in Indian weddings, including Hindu, Sikh, Muslim, and multicultural celebrations. We honor traditional customs while incorporating modern elegance."
       }
     },
     {

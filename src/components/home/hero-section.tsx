@@ -13,14 +13,6 @@ const mainCarouselImages = [
 
 const mobileCarouselContent = [
     { 
-      type: 'video' as const,
-      src: "https://videos.pexels.com/video-files/6893946/6893946-hd_1920_1080_30fps.mp4",
-      alt: "Beautiful Indian wedding ceremony",
-      poster: "/images/hero/seattle-indian-wedding-reception-hero.jpeg",
-      // Add video optimization attributes
-      preload: "metadata" as const
-    },
-    { 
       type: 'image' as const,
       src: "/images/hero/seattle-indian-wedding-reception-hero.jpeg", 
       alt: "Elegant wedding reception dinner setup" 

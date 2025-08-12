@@ -12,13 +12,13 @@ import type { Metadata } from 'next';
 
 const post = {
   slug: "south-asian-wedding-seattle",
-  title: "South Asian Weddings in Seattle: Celebrating Culture in the Pacific Northwest",
-  description: "Discover how to plan an authentic South Asian wedding in Seattle. From traditional ceremonies to modern celebrations, expert guidance for your multicultural wedding.",
+  title: "Indian Weddings in Seattle: Celebrating Culture in the Pacific Northwest",
+  description: "Discover how to plan an authentic Indian wedding in Seattle. From traditional ceremonies to modern celebrations, expert guidance for your multicultural wedding.",
   author: "Meera Kapoor",
   date: "2024-08-01",
   image: "https://placehold.co/1200x630.png",
-  imageHint: "south asian wedding celebration",
-  tags: ["South Asian", "Multicultural", "Seattle", "Wedding Traditions"],
+  imageHint: "indian wedding celebration",
+  tags: ["Indian Wedding", "Multicultural", "Seattle", "Wedding Traditions"],
 };
 
 export const metadata: Metadata = generateMetadata({
@@ -49,7 +49,7 @@ export default function BlogPostPage() {
           <article className="max-w-4xl mx-auto">
             <header className="text-center mb-12">
                <Breadcrumb 
-                items={[{ label: "Blog", href: "/blog" }, { label: "South Asian Weddings Seattle" }]} 
+                items={[{ label: "Blog", href: "/blog" }, { label: "Indian Weddings Seattle" }]} 
                 className="justify-center mb-8"
               />
               <BreadcrumbStructuredData items={[{ label: "Blog", href: "/blog" }, { label: post.title }]} />
@@ -85,29 +85,28 @@ export default function BlogPostPage() {
             <AnimatedDiv delay={700} animation="fadeInScale">
                 <div className="prose prose-lg dark:prose-invert max-w-none mx-auto text-foreground/90">
                     <p className="lead">
-                        Seattle's vibrant South Asian community has created a rich tapestry of wedding traditions that beautifully blend ancient customs with modern Pacific Northwest elegance. As specialists in South Asian weddings, we understand the importance of honoring cultural heritage while creating celebrations that reflect contemporary life in the Emerald City.
+                        Seattle's vibrant Indian community has created a rich tapestry of wedding traditions that beautifully blend ancient customs with modern Pacific Northwest elegance. As specialists in Indian weddings, we understand the importance of honoring cultural heritage while creating celebrations that reflect contemporary life in the Emerald City.
                     </p>
                     
-                    <h2 className="font-headline text-3xl text-primary mt-12 mb-4">The South Asian Wedding Landscape in Seattle</h2>
+                    <h2 className="font-headline text-3xl text-primary mt-12 mb-4">The Indian Wedding Landscape in Seattle</h2>
                     <p>
-                        Seattle's diverse South Asian community includes families from India, Pakistan, Bangladesh, Sri Lanka, and Nepal, each bringing unique traditions and customs. The city's multicultural environment provides the perfect backdrop for celebrating these rich heritage weddings while embracing modern American wedding elements.
+                        Seattle's diverse Indian community includes families from many regions, each bringing unique traditions and customs. The city's multicultural environment provides the perfect backdrop for celebrating these rich heritage weddings while embracing modern American wedding elements.
                     </p>
                     
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Understanding Different Regional Traditions</h3>
                     <p>
-                        South Asian weddings vary significantly based on regional and religious backgrounds:
+                        Indian weddings vary significantly based on regional and religious backgrounds:
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
                         <li><strong>North Indian Weddings:</strong> Elaborate ceremonies with vibrant colors, Bollywood music, and grand celebrations</li>
                         <li><strong>South Indian Weddings:</strong> Traditional rituals with classical music, temple-style decorations, and authentic cuisine</li>
-                        <li><strong>Pakistani Weddings:</strong> Rich cultural traditions with emphasis on family gatherings and traditional attire</li>
                         <li><strong>Bengali Weddings:</strong> Unique customs like the fish ceremony and distinctive red and white color schemes</li>
                         <li><strong>Punjabi Weddings:</strong> High-energy celebrations with dhol players, bhangra dancing, and lavish feasts</li>
                     </ul>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Planning Multi-Day Celebrations</h2>
                     <p>
-                        South Asian weddings are typically multi-day affairs, each event requiring careful coordination and cultural sensitivity. Here's how we approach planning these elaborate celebrations in Seattle:
+                        Indian weddings are typically multi-day affairs, each event requiring careful coordination and cultural sensitivity. Here's how we approach planning these elaborate celebrations in Seattle:
                     </p>
                     
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Pre-Wedding Events</h3>
@@ -121,7 +120,7 @@ export default function BlogPostPage() {
                         <strong>Mehendi/Henna Parties:</strong> Intimate gatherings where intricate henna designs are applied. Seattle's indoor venues work perfectly for these extended celebrations, especially during the rainy season.
                     </p>
                     <p>
-                        <strong>Sangeet Nights:</strong> Musical celebrations featuring family performances and professional entertainment. Seattle's diverse entertainment scene offers authentic musicians, dancers, and DJs specializing in South Asian music.
+                        <strong>Sangeet Nights:</strong> Musical celebrations featuring family performances and professional entertainment. Seattle's diverse entertainment scene offers authentic musicians, dancers, and DJs specializing in Indian music.
                     </p>
 
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Wedding Day Ceremonies</h3>
@@ -129,22 +128,22 @@ export default function BlogPostPage() {
                         <strong>Morning Rituals:</strong> Traditional ceremonies like Haldi (turmeric ceremony) and Chooda (bangle ceremony) require intimate spaces with good natural light for photography.
                     </p>
                     <p>
-                        <strong>Baraat Procession:</strong> The groom's ceremonial arrival is a highlight of South Asian weddings. Seattle's streets provide unique opportunities for memorable processions, from downtown routes to waterfront paths.
+                        <strong>Baraat Procession:</strong> The groom's ceremonial arrival is a highlight of Indian weddings. Seattle's streets provide unique opportunities for memorable processions, from downtown routes to waterfront paths.
                     </p>
                     <p>
                         <strong>Ceremony and Reception:</strong> The sacred wedding ceremony followed by elaborate celebrations. Seattle venues can accommodate both traditional mandap setups and modern reception requirements.
                     </p>
 
-                    <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Venue Selection for South Asian Weddings</h2>
+                    <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Venue Selection for Indian Weddings</h2>
                     
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Large Capacity Venues</h3>
                     <p>
-                        South Asian weddings often involve large guest lists. Seattle offers several venues that can accommodate 300+ guests:
+                        Indian weddings often involve large guest lists. Seattle offers several venues that can accommodate 300+ guests:
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
                         <li><strong>Bell Harbor International Conference Center:</strong> Waterfront location with flexible spaces for multiple events</li>
                         <li><strong>Seattle Center Exhibition Hall:</strong> Large capacity with customizable layouts</li>
-                        <li><strong>Hyatt Regency Bellevue:</strong> Luxury hotel with multiple ballrooms and South Asian wedding experience</li>
+                        <li><strong>Hyatt Regency Bellevue:</strong> Luxury hotel with multiple ballrooms and Indian wedding experience</li>
                         <li><strong>The Westin Seattle:</strong> Downtown location with elegant ballrooms and city views</li>
                     </ul>
 
@@ -177,7 +176,7 @@ export default function BlogPostPage() {
 
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Color Schemes and Themes</h3>
                     <p>
-                        South Asian weddings are known for their vibrant colors:
+                        Indian weddings are known for their vibrant colors:
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
                         <li><strong>Traditional Red and Gold:</strong> Classic combination symbolizing prosperity and purity</li>
@@ -188,7 +187,7 @@ export default function BlogPostPage() {
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Catering and Cuisine</h2>
                     <p>
-                        Seattle's diverse culinary scene includes excellent South Asian caterers who understand the importance of authentic flavors and dietary requirements:
+                        Seattle's diverse culinary scene includes excellent Indian caterers who understand the importance of authentic flavors and dietary requirements:
                     </p>
                     
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Traditional Menu Options</h3>
@@ -202,7 +201,7 @@ export default function BlogPostPage() {
 
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Dietary Considerations</h3>
                     <p>
-                        South Asian weddings often involve complex dietary requirements:
+                        Indian weddings often involve complex dietary requirements:
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
                         <li>Strict vegetarian options for religious observances</li>
@@ -213,7 +212,7 @@ export default function BlogPostPage() {
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Music and Entertainment</h2>
                     <p>
-                        Seattle's entertainment scene offers authentic South Asian performers:
+                        Seattle's entertainment scene offers authentic Indian performers:
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
                         <li><strong>Classical Musicians:</strong> Sitar, tabla, and vocal artists for ceremony music</li>
@@ -224,12 +223,12 @@ export default function BlogPostPage() {
                     </ul>
 
                     <blockquote className="border-l-4 border-primary pl-4 italic my-8">
-                        "A South Asian wedding is not just a celebration of two individuals, but a joyous union of families, traditions, and communities. In Seattle, we have the unique opportunity to honor our heritage while embracing the beauty of our adopted home."
+                        "An Indian wedding is not just a celebration of two individuals, but a joyous union of families, traditions, and communities. In Seattle, we have the unique opportunity to honor our heritage while embracing the beauty of our adopted home."
                     </blockquote>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Photography and Videography</h2>
                     <p>
-                        South Asian weddings require photographers who understand the cultural significance of various rituals:
+                        Indian weddings require photographers who understand the cultural significance of various rituals:
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
                         <li>Experience with multi-day celebrations</li>
@@ -239,9 +238,9 @@ export default function BlogPostPage() {
                         <li>Knowledge of family dynamics and group photography</li>
                     </ul>
 
-                    <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Working with Seattle's South Asian Community</h2>
+                    <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Working with Seattle's Indian Community</h2>
                     <p>
-                        Seattle's established South Asian community provides excellent resources:
+                        Seattle's established Indian community provides excellent resources:
                     </p>
                     <ul className="list-disc pl-6 space-y-2">
                         <li><strong>Religious Centers:</strong> Temples, gurdwaras, and mosques for ceremony venues</li>
@@ -251,7 +250,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <p>
-                        Ready to plan your dream South Asian wedding in Seattle? <Link href="/contact" className="text-primary font-bold hover:underline">Contact Seattle Shaadi today</Link>, and let our culturally-aware team help you create a celebration that honors your traditions while embracing the beauty of the Pacific Northwest.
+                        Ready to plan your dream Indian wedding in Seattle? <Link href="/contact" className="text-primary font-bold hover:underline">Contact Seattle Shaadi today</Link>, and let our culturally-aware team help you create a celebration that honors your traditions while embracing the beauty of the Pacific Northwest.
                     </p>
                 </div>
             </AnimatedDiv>

@@ -11,7 +11,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateMetadata({
   title: "Wedding Planning Services - Seattle Shaadi",
-  description: "Explore our bespoke wedding planning services in Seattle, from full-service planning and destination weddings to decor design and partial planning. Specializing in South Asian and Indian weddings.",
+  description: "Explore our bespoke wedding planning services in Seattle, from full-service planning and destination weddings to decor design and partial planning. Specializing in Indian weddings.",
   pathname: "/services",
 });
 
