@@ -163,8 +163,8 @@ export function HeroSection() {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.8, duration: 0.8 }}
                         >
-                            Seattle's #1 rated Indian wedding planner specializing in Hindu, Sikh, and traditional Indian weddings. 
-                            Expert coordination for authentic cultural celebrations across Washington State.
+                            Seattle's #1 rated Indian wedding planner for all communities - Hindu, Sikh, Punjabi, Tamil, Telugu, Kannada, Muslim Indian, Bengali, Gujarati & Marathi weddings. 
+                            Complete authentic celebrations from $30K with luxury touches.
                         </motion.p>
                         
                         <motion.div 
@@ -314,7 +314,7 @@ export function HeroSection() {
                                                 Best Indian Wedding Planner Seattle
                                             </h1>
                                             <p className="text-sm mb-4 text-white/90" style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.7)' }}>
-                                                Seattle's #1 rated Hindu & Sikh wedding coordinator
+                                                All Indian communities • Complete weddings from $30K
                                             </p>
                                             <InteractiveCtaButton
                                                 href="/contact"

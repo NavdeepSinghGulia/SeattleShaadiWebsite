@@ -74,34 +74,64 @@ export const enhancedSeoConfig = {
   // Primary services offered
   services: [
     {
-      name: 'Full-Service Indian Wedding Planning',
-      description: 'Complete wedding planning from engagement to reception',
-      url: '/services/full-service-planning'
+      name: 'Complete Indian Wedding Under $30K',
+      description: 'Smart budget Indian wedding planning with luxury touches - full coordination from engagement to reception',
+      url: '/services/budget-indian-wedding-30k'
     },
     {
       name: 'Hindu Wedding Ceremony Planning',
-      description: 'Traditional Hindu wedding ceremony coordination',
+      description: 'Traditional Hindu wedding ceremony coordination with authentic rituals and customs',
       url: '/services/hindu-wedding-planning'
     },
     {
       name: 'Sikh Wedding Ceremony Planning',
-      description: 'Authentic Sikh wedding ceremony coordination',
+      description: 'Authentic Sikh wedding ceremony coordination including Anand Karaj and Gurdwara ceremonies',
       url: '/services/sikh-wedding-planning'
     },
     {
+      name: 'Punjabi Wedding Planning',
+      description: 'Vibrant Punjabi wedding coordination with traditional music, dance, and celebrations',
+      url: '/services/punjabi-wedding-planning'
+    },
+    {
+      name: 'Tamil Wedding Ceremony Planning',
+      description: 'Authentic South Indian Tamil wedding coordination with traditional rituals and customs',
+      url: '/services/tamil-wedding-planning'
+    },
+    {
+      name: 'Telugu Wedding Planning',
+      description: 'Traditional Telugu wedding ceremony coordination with authentic Andhra/Telangana customs',
+      url: '/services/telugu-wedding-planning'
+    },
+    {
+      name: 'Kannada Wedding Planning',
+      description: 'Karnataka tradition wedding coordination with authentic Kannada customs and rituals',
+      url: '/services/kannada-wedding-planning'
+    },
+    {
+      name: 'Muslim Indian Wedding Planning',
+      description: 'Islamic Indian wedding coordination including Nikah ceremony and traditional celebrations',
+      url: '/services/muslim-indian-wedding-planning'
+    },
+    {
+      name: 'Bengali Wedding Planning',
+      description: 'Traditional Bengali wedding coordination with authentic rituals and cultural celebrations',
+      url: '/services/bengali-wedding-planning'
+    },
+    {
+      name: 'Gujarati Wedding Planning',
+      description: 'Vibrant Gujarati wedding coordination with traditional ceremonies and celebrations',
+      url: '/services/gujarati-wedding-planning'
+    },
+    {
+      name: 'Affordable Luxury Indian Weddings',
+      description: 'Premium Indian wedding planning services with smart budget management and value optimization',
+      url: '/services/affordable-luxury-indian-weddings'
+    },
+    {
       name: 'Indian Wedding Venue Selection',
-      description: 'Expert venue selection and booking services',
+      description: 'Expert venue selection and booking services for all Indian wedding types',
       url: '/services/venue-selection'
-    },
-    {
-      name: 'Indian Wedding Decoration',
-      description: 'Traditional and modern Indian wedding decorations',
-      url: '/services/wedding-decoration'
-    },
-    {
-      name: 'Indian Wedding Catering Coordination',
-      description: 'Authentic Indian cuisine and catering services',
-      url: '/services/catering-coordination'
     }
   ],
   
@@ -138,23 +168,43 @@ export const enhancedSeoConfig = {
   faqs: [
     {
       question: 'What makes Seattle Shaadi the best Indian wedding planner in Seattle?',
-      answer: 'Seattle Shaadi combines years of experience with deep cultural knowledge to create authentic Indian weddings. We specialize in Hindu, Sikh, and other Indian wedding traditions while incorporating modern elements that reflect your unique style.'
+      answer: 'Seattle Shaadi combines years of experience with deep cultural knowledge to create authentic Indian weddings. We specialize in Hindu, Sikh, Punjabi, Tamil, Telugu, Kannada, Muslim Indian, Bengali, Gujarati, and Marathi wedding traditions while incorporating modern elements that reflect your unique style.'
     },
     {
-      question: 'How much does Indian wedding planning cost in Seattle?',
-      answer: 'Indian wedding planning costs in Seattle vary based on guest count, venue, and services. Our packages start from $5,000 for partial planning and can go up to $25,000+ for luxury full-service planning. We offer free consultations to provide accurate estimates.'
+      question: 'Can you plan a complete Indian wedding under $30,000 in Seattle?',
+      answer: 'Yes! We specialize in smart budget Indian wedding planning. Our complete wedding packages under $30K include venue coordination, decoration, catering coordination, photography coordination, and day-of management. We focus on value and luxury touches without compromising on authenticity.'
+    },
+    {
+      question: 'What is included in your $30K Indian wedding package?',
+      answer: 'Our $30K complete Indian wedding package includes: venue selection and booking, traditional decoration setup, catering coordination, photography/videography coordination, music and entertainment booking, day-of coordination, timeline management, and vendor coordination. We maximize value while maintaining authentic cultural elements.'
+    },
+    {
+      question: 'Do you plan weddings for all Indian communities in Seattle?',
+      answer: 'Absolutely! We plan weddings for all Indian communities including Punjabi, Tamil, Telugu, Kannada, Bengali, Gujarati, Marathi, and Muslim Indian families. Our team understands the unique traditions, rituals, and customs of each community and ensures authentic celebrations.'
+    },
+    {
+      question: 'What is the difference between North Indian and South Indian wedding planning?',
+      answer: 'North Indian weddings (Punjabi, Hindi, Gujarati) typically feature vibrant colors, Bollywood music, and ceremonies like Mehendi, Sangeet, and Baraat. South Indian weddings (Tamil, Telugu, Kannada) focus on traditional rituals, classical music, and ceremonies like Haldi and temple blessings. We expertly coordinate both styles.'
+    },
+    {
+      question: 'How do you plan affordable luxury Indian weddings?',
+      answer: 'We achieve affordable luxury through smart budget allocation, vendor partnerships, DIY elements for non-critical items, seasonal timing, and focusing spending on high-impact areas like venue, food, and photography. Our goal is maximum impact within your budget.'
     },
     {
       question: 'What Indian wedding venues are available in Seattle?',
-      answer: 'Seattle offers numerous venues perfect for Indian weddings, including luxury hotels, cultural centers, outdoor gardens, and traditional banquet halls. We have partnerships with top venues that understand Indian wedding requirements.'
+      answer: 'Seattle offers numerous venues perfect for Indian weddings, including luxury hotels, cultural centers, outdoor gardens, and traditional banquet halls. We have partnerships with venues that understand diverse Indian wedding requirements for all communities.'
     },
     {
       question: 'How far in advance should I book an Indian wedding planner in Seattle?',
-      answer: 'We recommend booking your Indian wedding planner 12-18 months in advance, especially for popular wedding seasons. This ensures availability of preferred vendors and venues in the Seattle area.'
+      answer: 'We recommend booking your Indian wedding planner 12-18 months in advance, especially for popular wedding seasons. This ensures availability of preferred vendors and venues in the Seattle area, and better pricing for budget-conscious couples.'
     },
     {
-      question: 'Do you plan destination Indian weddings from Seattle?',
-      answer: 'Yes, we plan destination Indian weddings throughout the USA and internationally. Many Seattle couples choose destinations like California, Hawaii, or India for their wedding celebrations.'
+      question: 'Do you coordinate Muslim Indian weddings and Nikah ceremonies?',
+      answer: 'Yes, we specialize in Muslim Indian wedding coordination including Nikah ceremonies, Walima receptions, and traditional Islamic wedding customs. We work with local mosques and Islamic centers to ensure authentic and respectful celebrations.'
+    },
+    {
+      question: 'Can you plan Tamil, Telugu, or Kannada weddings in Seattle?',
+      answer: 'Absolutely! We have extensive experience planning South Indian weddings including Tamil, Telugu, and Kannada ceremonies. We understand the traditional rituals, coordinate with local temples, and ensure authentic cultural celebrations with proper customs and traditions.'
     }
   ],
   
@@ -283,4 +333,3 @@ export const generateServiceSchema = () => ({
     }))
   }
 });
-

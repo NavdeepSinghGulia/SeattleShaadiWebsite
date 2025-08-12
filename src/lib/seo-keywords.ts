@@ -13,18 +13,46 @@ export const PRIMARY_KEYWORDS = [
   'Indian wedding coordinator Seattle',
   'Hindu wedding planner Seattle',
   'Sikh wedding planner Seattle',
+  'Punjabi wedding planner Seattle',
+  'Tamil wedding planner Seattle',
+  'Telugu wedding planner Seattle',
+  'Kannada wedding planner Seattle',
+  'Muslim Indian wedding planner Seattle',
+  'Bengali wedding planner Seattle',
+  'Gujarati wedding planner Seattle',
+  'Marathi wedding planner Seattle',
+  'South Indian wedding planner Seattle',
+  'North Indian wedding planner Seattle',
   'Indian wedding venues Seattle',
   'traditional Indian wedding Seattle',
   'Indian wedding decorations Seattle',
-  'Indian wedding catering Seattle'
+  'Indian wedding catering Seattle',
+  'affordable Indian wedding planner Seattle',
+  'budget Indian wedding planner Seattle',
+  'complete Indian wedding under 30k Seattle',
+  'Indian wedding planner 30000 budget Seattle'
 ] as const;
 
 // Long-tail keywords (lower competition, high conversion)
 export const LONG_TAIL_KEYWORDS = [
-  'affordable Indian wedding planner Seattle',
-  'luxury Indian wedding planner Seattle',
+  'affordable luxury Indian wedding planner Seattle',
+  'budget friendly Indian wedding planner Seattle',
+  'complete Indian wedding under 30k Seattle',
+  'smart budget Indian wedding planning Seattle',
+  'Indian wedding planner 25k to 35k budget',
+  'value Indian wedding coordinator Seattle',
   'Indian wedding planner near me Seattle',
   'best Hindu wedding coordinator Seattle',
+  'best Punjabi wedding planner Seattle',
+  'authentic Tamil wedding planner Seattle',
+  'traditional Telugu wedding coordinator Seattle',
+  'Kannada wedding ceremony planner Seattle',
+  'Muslim Indian wedding coordinator Seattle',
+  'Bengali wedding traditions planner Seattle',
+  'Gujarati wedding ceremony Seattle',
+  'Marathi wedding planner Washington',
+  'South Indian wedding specialist Seattle',
+  'North Indian wedding expert Seattle',
   'Indian wedding planning services Seattle',
   'traditional Indian wedding ceremony Seattle',
   'Indian wedding mandap decoration Seattle',
@@ -36,7 +64,15 @@ export const LONG_TAIL_KEYWORDS = [
   'Indian wedding planning checklist',
   'Indian wedding traditions and customs',
   'Indian wedding budget planning',
-  'Indian wedding timeline planning'
+  'Indian wedding timeline planning',
+  'Punjabi wedding traditions Seattle',
+  'Tamil wedding customs Seattle',
+  'Telugu wedding rituals Seattle',
+  'Kannada wedding ceremonies Seattle',
+  'Muslim Indian wedding traditions Seattle',
+  'Nikah ceremony planner Seattle',
+  'Mehendi ceremony coordinator Seattle',
+  'Sangeet night planner Seattle'
 ] as const;
 
 // Location-based keywords
@@ -58,6 +94,22 @@ export const SERVICE_KEYWORDS = [
   'Indian wedding planning services',
   'Hindu wedding ceremony planning',
   'Sikh wedding ceremony planning',
+  'Punjabi wedding ceremony coordination',
+  'Tamil wedding ritual planning',
+  'Telugu wedding ceremony services',
+  'Kannada wedding tradition coordination',
+  'Muslim Indian wedding planning',
+  'Nikah ceremony coordination',
+  'Bengali wedding ceremony planning',
+  'Gujarati wedding ritual coordination',
+  'Marathi wedding ceremony services',
+  'South Indian wedding planning services',
+  'North Indian wedding coordination',
+  'budget Indian wedding planning services',
+  'affordable Indian wedding coordination',
+  'complete Indian wedding packages under 30k',
+  'value Indian wedding planning services',
+  'smart budget wedding coordination',
   'Indian wedding venue selection',
   'Indian wedding vendor coordination',
   'Indian wedding day coordination',
@@ -68,7 +120,13 @@ export const SERVICE_KEYWORDS = [
   'Indian wedding transportation planning',
   'Indian wedding guest accommodation',
   'Indian wedding invitation services',
-  'Indian wedding favor coordination'
+  'Indian wedding favor coordination',
+  'Mehendi ceremony planning',
+  'Sangeet night coordination',
+  'Haldi ceremony services',
+  'Baraat coordination services',
+  'Indian wedding mandap setup',
+  'traditional Indian music coordination'
 ] as const;
 
 // Competitor analysis keywords
@@ -113,13 +171,34 @@ export const FAQ_KEYWORDS = [
   'how to plan an Indian wedding in Seattle',
   'what does an Indian wedding planner do',
   'how much does Indian wedding planning cost',
+  'how to plan Indian wedding under 30k',
+  'can you plan Indian wedding on 30000 budget',
+  'what is included in 30k Indian wedding package',
+  'how to plan affordable Indian wedding Seattle',
   'how long does Indian wedding planning take',
   'what to look for in Indian wedding planner',
   'how to choose Indian wedding venue Seattle',
   'what are Indian wedding traditions',
   'how to plan Hindu wedding ceremony',
   'how to plan Sikh wedding ceremony',
-  'what is Indian wedding timeline'
+  'how to plan Punjabi wedding ceremony',
+  'how to plan Tamil wedding ceremony',
+  'how to plan Telugu wedding ceremony',
+  'how to plan Kannada wedding ceremony',
+  'how to plan Muslim Indian wedding',
+  'how to plan Bengali wedding ceremony',
+  'how to plan Gujarati wedding ceremony',
+  'how to plan Marathi wedding ceremony',
+  'what is difference between North and South Indian weddings',
+  'what is Nikah ceremony planning',
+  'what is Mehendi ceremony',
+  'what is Sangeet night planning',
+  'what is Haldi ceremony',
+  'what is Baraat ceremony',
+  'what is Indian wedding timeline',
+  'how to save money on Indian wedding',
+  'what is smart budget Indian wedding planning',
+  'how to plan value Indian wedding'
 ] as const;
 
 // All keywords combined for easy access
@@ -148,4 +227,3 @@ export const CONTENT_LENGTH_TARGETS = {
   blogPosts: 2000, // minimum words for blog posts
   locationPages: 1000, // minimum words for location-specific pages
 } as const;
-

@@ -22,32 +22,63 @@ export interface BlogPost {
 // High-priority blog posts for immediate SEO impact
 export const priorityBlogPosts: BlogPost[] = [
   {
-    slug: 'best-indian-wedding-planner-seattle-guide',
-    title: 'Best Indian Wedding Planner in Seattle: Complete 2024 Guide',
-    metaDescription: 'Find Seattle\'s top-rated Indian wedding planner. Expert Hindu & Sikh wedding coordination, venue selection, and authentic cultural celebrations. 127+ five-star reviews.',
+    slug: 'complete-indian-wedding-under-30k-seattle',
+    title: 'Complete Indian Wedding Under $30K in Seattle: Smart Budget Planning Guide 2024',
+    metaDescription: 'Plan your dream Indian wedding in Seattle for under $30,000. Expert budget planning for Hindu, Sikh, Punjabi, Tamil, Telugu & all Indian communities. Luxury touches included.',
+    primaryKeyword: 'complete Indian wedding under 30k Seattle',
+    secondaryKeywords: [
+      'budget Indian wedding planner Seattle',
+      'affordable Indian wedding Seattle',
+      'Indian wedding 30000 budget Seattle',
+      'smart budget Indian wedding planning'
+    ],
+    targetWordCount: 3500,
+    contentOutline: [
+      'How to Plan a Complete Indian Wedding Under $30K',
+      'What\'s Included in Our $30K Wedding Package',
+      'Smart Budget Allocation for Indian Weddings',
+      'Venue Selection for Budget Indian Weddings',
+      'Affordable Decoration Ideas with Luxury Touches',
+      'Catering Options Within Budget',
+      'Photography and Entertainment on a Budget',
+      'Money-Saving Tips Without Compromising Authenticity',
+      'Real Wedding Examples Under $30K',
+      'How to Book Your Budget Wedding Consultation'
+    ],
+    publishDate: '2024-01-10',
+    category: 'Budget Planning',
+    tags: ['Budget Wedding', 'Indian Wedding', 'Seattle', '$30K Wedding', 'Affordable'],
+    featured: true
+  },
+  
+  {
+    slug: 'best-indian-wedding-planner-seattle-all-communities',
+    title: 'Best Indian Wedding Planner Seattle: Hindu, Sikh, Punjabi, Tamil, Telugu & All Communities',
+    metaDescription: 'Seattle\'s top Indian wedding planner for all communities. Expert coordination for Hindu, Sikh, Punjabi, Tamil, Telugu, Kannada, Muslim Indian, Bengali & Gujarati weddings.',
     primaryKeyword: 'best Indian wedding planner Seattle',
     secondaryKeywords: [
-      'Indian wedding coordinator Seattle',
-      'Hindu wedding planner Seattle',
-      'Sikh wedding planner Seattle',
-      'Seattle Indian wedding services'
+      'Punjabi wedding planner Seattle',
+      'Tamil wedding planner Seattle',
+      'Telugu wedding planner Seattle',
+      'Muslim Indian wedding planner Seattle',
+      'South Indian wedding planner Seattle'
     ],
     targetWordCount: 3000,
     contentOutline: [
-      'Why Choose a Specialized Indian Wedding Planner in Seattle',
-      'What Makes Seattle Shaadi the Best Choice',
+      'Why Choose Seattle Shaadi for All Indian Communities',
       'Hindu Wedding Planning Services in Seattle',
-      'Sikh Wedding Planning Services in Seattle',
-      'Indian Wedding Venues in Seattle',
-      'Traditional Indian Wedding Decorations',
-      'Indian Wedding Catering Options in Seattle',
-      'Client Testimonials and Reviews',
-      'Pricing and Packages',
-      'How to Book Your Consultation'
+      'Sikh and Punjabi Wedding Coordination',
+      'South Indian Wedding Planning (Tamil, Telugu, Kannada)',
+      'Muslim Indian Wedding and Nikah Ceremony Planning',
+      'Bengali, Gujarati, and Marathi Wedding Services',
+      'Understanding Different Indian Wedding Traditions',
+      'Community-Specific Vendor Networks',
+      'Authentic Cultural Celebrations for Every Community',
+      'Client Testimonials from All Communities'
     ],
     publishDate: '2024-01-15',
     category: 'Wedding Planning',
-    tags: ['Indian Wedding', 'Seattle', 'Wedding Planner', 'Hindu Wedding', 'Sikh Wedding'],
+    tags: ['Indian Wedding', 'Seattle', 'All Communities', 'Hindu', 'Sikh', 'Tamil', 'Telugu'],
     featured: true
   },
   
@@ -171,30 +202,148 @@ export const priorityBlogPosts: BlogPost[] = [
 // Additional blog posts for long-term SEO strategy
 export const additionalBlogPosts: BlogPost[] = [
   {
+    slug: 'punjabi-wedding-planning-seattle-complete-guide',
+    title: 'Punjabi Wedding Planning in Seattle: Complete Guide to Vibrant Celebrations',
+    metaDescription: 'Plan your authentic Punjabi wedding in Seattle. Expert coordination for Sikh ceremonies, Bhangra, traditional music, and vibrant Punjabi wedding celebrations.',
+    primaryKeyword: 'Punjabi wedding planner Seattle',
+    secondaryKeywords: [
+      'Sikh wedding planner Seattle',
+      'Punjabi wedding traditions Seattle',
+      'Bhangra wedding Seattle',
+      'Punjabi wedding music Seattle'
+    ],
+    targetWordCount: 2800,
+    contentOutline: [
+      'Understanding Punjabi Wedding Traditions',
+      'Sikh Religious Ceremonies and Anand Karaj',
+      'Pre-Wedding Punjabi Celebrations',
+      'Traditional Punjabi Wedding Attire',
+      'Bhangra and Punjabi Music Coordination',
+      'Punjabi Wedding Food and Catering',
+      'Decoration Ideas for Punjabi Weddings',
+      'Working with Gurdwaras in Seattle',
+      'Budget Planning for Punjabi Weddings'
+    ],
+    publishDate: '2024-02-05',
+    category: 'Punjabi Weddings',
+    tags: ['Punjabi Wedding', 'Sikh Wedding', 'Seattle', 'Bhangra'],
+    featured: true
+  },
+  
+  {
+    slug: 'south-indian-wedding-planning-seattle-tamil-telugu-kannada',
+    title: 'South Indian Wedding Planning Seattle: Tamil, Telugu & Kannada Ceremonies',
+    metaDescription: 'Expert South Indian wedding planning in Seattle. Authentic Tamil, Telugu, and Kannada wedding coordination with traditional rituals and temple ceremonies.',
+    primaryKeyword: 'South Indian wedding planner Seattle',
+    secondaryKeywords: [
+      'Tamil wedding planner Seattle',
+      'Telugu wedding planner Seattle',
+      'Kannada wedding planner Seattle',
+      'South Indian wedding traditions Seattle'
+    ],
+    targetWordCount: 3200,
+    contentOutline: [
+      'Understanding South Indian Wedding Traditions',
+      'Tamil Wedding Ceremonies and Rituals',
+      'Telugu Wedding Customs and Traditions',
+      'Kannada Wedding Planning and Rituals',
+      'Temple Coordination for South Indian Weddings',
+      'Traditional South Indian Wedding Attire',
+      'Classical Music and Dance in South Indian Weddings',
+      'South Indian Wedding Food and Catering',
+      'Decoration Ideas for South Indian Weddings',
+      'Budget Planning for South Indian Weddings'
+    ],
+    publishDate: '2024-02-08',
+    category: 'South Indian Weddings',
+    tags: ['South Indian Wedding', 'Tamil', 'Telugu', 'Kannada', 'Seattle'],
+    featured: true
+  },
+  
+  {
+    slug: 'muslim-indian-wedding-planning-seattle-nikah-ceremony',
+    title: 'Muslim Indian Wedding Planning Seattle: Nikah Ceremony & Islamic Traditions',
+    metaDescription: 'Expert Muslim Indian wedding planning in Seattle. Authentic Nikah ceremony coordination, Islamic traditions, and cultural celebrations for Muslim families.',
+    primaryKeyword: 'Muslim Indian wedding planner Seattle',
+    secondaryKeywords: [
+      'Nikah ceremony planner Seattle',
+      'Islamic wedding coordinator Seattle',
+      'Muslim wedding traditions Seattle',
+      'Walima reception planning Seattle'
+    ],
+    targetWordCount: 2600,
+    contentOutline: [
+      'Understanding Muslim Indian Wedding Traditions',
+      'Nikah Ceremony Planning and Coordination',
+      'Islamic Wedding Customs and Rituals',
+      'Walima Reception Planning',
+      'Working with Mosques and Islamic Centers',
+      'Halal Catering for Muslim Weddings',
+      'Traditional Muslim Wedding Attire',
+      'Islamic Wedding Decorations and Themes',
+      'Budget Planning for Muslim Indian Weddings'
+    ],
+    publishDate: '2024-02-12',
+    category: 'Muslim Indian Weddings',
+    tags: ['Muslim Wedding', 'Nikah', 'Islamic Wedding', 'Seattle'],
+    featured: true
+  },
+  
+  {
+    slug: 'affordable-luxury-indian-wedding-seattle-budget-tips',
+    title: 'Affordable Luxury Indian Weddings Seattle: Smart Budget Tips & Value Planning',
+    metaDescription: 'Create luxury Indian weddings on a budget in Seattle. Expert tips for affordable luxury, smart spending, and maximum value without compromising authenticity.',
+    primaryKeyword: 'affordable luxury Indian wedding Seattle',
+    secondaryKeywords: [
+      'budget Indian wedding Seattle',
+      'value Indian wedding planning',
+      'smart budget Indian wedding',
+      'luxury Indian wedding on budget'
+    ],
+    targetWordCount: 2400,
+    contentOutline: [
+      'What is Affordable Luxury in Indian Weddings',
+      'Smart Budget Allocation Strategies',
+      'High-Impact vs Low-Impact Wedding Elements',
+      'Vendor Negotiation Tips',
+      'DIY Elements That Save Money',
+      'Seasonal Timing for Better Pricing',
+      'Venue Selection for Value',
+      'Decoration Ideas That Look Expensive',
+      'Real Examples of Affordable Luxury Weddings'
+    ],
+    publishDate: '2024-02-15',
+    category: 'Budget Planning',
+    tags: ['Affordable Luxury', 'Budget Wedding', 'Value Planning', 'Seattle'],
+    featured: false
+  },
+  
+  {
     slug: 'indian-wedding-decorations-seattle-trends-2024',
-    title: 'Indian Wedding Decorations in Seattle: 2024 Trends & Ideas',
-    metaDescription: 'Discover the latest Indian wedding decoration trends in Seattle. From traditional mandap designs to modern floral arrangements for your perfect celebration.',
+    title: 'Indian Wedding Decorations in Seattle: 2024 Trends & Budget-Friendly Ideas',
+    metaDescription: 'Discover the latest Indian wedding decoration trends in Seattle. From traditional mandap designs to budget-friendly luxury touches for your perfect celebration.',
     primaryKeyword: 'Indian wedding decorations Seattle',
     secondaryKeywords: [
       'Indian wedding decor Seattle',
       'mandap decoration Seattle',
-      'Indian wedding flowers Seattle',
+      'budget Indian wedding decorations',
       'wedding decoration services Seattle'
     ],
     targetWordCount: 2000,
     contentOutline: [
       'Traditional vs Modern Indian Wedding Decor',
       'Mandap Design Trends 2024',
+      'Budget-Friendly Decoration Ideas',
+      'Community-Specific Decoration Styles',
       'Floral Arrangements for Indian Weddings',
       'Color Schemes and Themes',
       'Lighting for Indian Wedding Ceremonies',
       'DIY vs Professional Decoration Services',
-      'Seasonal Decoration Considerations',
-      'Budget-Friendly Decoration Ideas'
+      'Seasonal Decoration Considerations'
     ],
-    publishDate: '2024-02-10',
+    publishDate: '2024-02-18',
     category: 'Decorations',
-    tags: ['Wedding Decorations', 'Indian Wedding', 'Trends', 'Seattle'],
+    tags: ['Wedding Decorations', 'Indian Wedding', 'Trends', 'Budget', 'Seattle'],
     featured: false
   },
   
@@ -292,4 +441,3 @@ export const ctaTemplates = [
     button: 'Explore Our Services'
   }
 ];
-
