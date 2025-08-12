@@ -12,7 +12,7 @@ interface SeoProps {
 }
 
 // This component now returns null as metadata should be handled at the page level
-export function Seo({ title, description, pathname, image }: SeoProps) {
+export function Seo({ title: _title, description: _description, pathname: _pathname, image: _image }: SeoProps) {
   // In development, warn about deprecated usage
   if (process.env.NODE_ENV === 'development') {
     console.warn(

@@ -29,7 +29,6 @@ export function SocialShare({
 
   const encodedUrl = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);
-  const encodedDescription = encodeURIComponent(description);
 
   const shareLinks = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
@@ -48,7 +47,7 @@ export function SocialShare({
       setCopied(true);
       // Simple success feedback with proper cleanup
       timeoutRef.current = setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
+    } catch (_err) {
       // Fallback for older browsers
       const textArea = document.createElement('textarea');
       textArea.value = url;

@@ -51,7 +51,9 @@ export function AnimationPreferencesProvider({ children }: { children: ReactNode
           reducedMotion: systemReducedMotion || parsed.reducedMotion,
         });
       } catch (error) {
-        console.warn('Failed to parse animation preferences:', error);
+        if (process.env.NODE_ENV === 'development') {
+          console.warn('Failed to parse animation preferences:', error);
+        }
         setPreferences({
           ...defaultPreferences,
           reducedMotion: systemReducedMotion,

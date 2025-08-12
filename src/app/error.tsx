@@ -16,7 +16,9 @@ export default function Error({
 }) {
   useEffect(() => {
     // Log the error to console in development
-    console.error('Application error:', error);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Application error:', error);
+    }
 
     // Track error in analytics
     if (typeof window !== 'undefined' && window.gtag) {
@@ -90,4 +92,3 @@ export default function Error({
     </div>
   );
 }
-

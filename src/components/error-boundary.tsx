@@ -27,7 +27,9 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 
   public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
-    console.error('ErrorBoundary caught an error:', error, errorInfo);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('ErrorBoundary caught an error:', error, errorInfo);
+    }
     
     // Call optional error handler
     if (this.props.onError) {
@@ -107,7 +109,9 @@ export class ErrorBoundary extends Component<Props, State> {
 // Hook version for functional components
 export function useErrorHandler() {
   return (error: Error, errorInfo?: ErrorInfo) => {
-    console.error('Error caught by useErrorHandler:', error, errorInfo);
+    if (process.env.NODE_ENV === 'development') {
+      console.error('Error caught by useErrorHandler:', error, errorInfo);
+    }
     
     // Track error in analytics
     if (typeof window !== 'undefined' && window.gtag) {
@@ -134,4 +138,3 @@ export function withErrorBoundary<P extends object>(
   
   return WrappedComponent;
 }
-

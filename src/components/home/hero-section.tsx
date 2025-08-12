@@ -11,7 +11,24 @@ const mainCarouselImages = [
     { src: "/images/hero/seattle-wedding-couple-outdoor-hero.jpg", alt: "Bride and groom in a beautiful outdoor setting" },
 ];
 
-const mobileCarouselContent = [
+// Define proper types for media content
+type ImageContent = {
+  type: 'image';
+  src: string;
+  alt: string;
+};
+
+type VideoContent = {
+  type: 'video';
+  src: string;
+  alt: string;
+  poster?: string;
+  preload?: 'none' | 'metadata' | 'auto';
+};
+
+type MediaContent = ImageContent | VideoContent;
+
+const mobileCarouselContent: MediaContent[] = [
     { 
       type: 'image' as const,
       src: "/images/hero/seattle-indian-wedding-reception-hero.jpeg", 
@@ -198,7 +215,6 @@ export function HeroSection() {
                                             poster={item.poster}
                                             preload={item.preload || "metadata"}
                                             onError={(e) => {
-                                                console.warn('Video failed to load, showing fallback image');
                                                 // Hide video and show fallback image
                                                 e.currentTarget.style.display = 'none';
                                             }}

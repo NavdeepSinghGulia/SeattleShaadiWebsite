@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { useMobileRoyalAnimations } from '@/hooks/use-mobile-royal-animations';
 import { RoyalTypography } from './royal-typography';
@@ -21,7 +20,7 @@ export function MobileRoyalFooter({ className }: MobileRoyalFooterProps) {
     { name: 'YouTube', icon: '📺', href: '#' }
   ];
 
-  const handleSocialClick = (name: string) => {
+  const handleSocialClick = (_name: string) => {
     if (isTouch && settings.enableHapticFeedback) {
       triggerHapticFeedback('medium');
     }
@@ -130,7 +129,7 @@ export function MobileRoyalFooter({ className }: MobileRoyalFooterProps) {
               Quick Links
             </h4>
             <ul className="space-y-3">
-              {['About', 'Services', 'Portfolio', 'Contact'].map((link, index) => (
+              {['About', 'Services', 'Portfolio', 'Contact'].map((link, _index) => (
                 <motion.li key={link}>
                   <motion.a
                     href={`#${link.toLowerCase()}`}

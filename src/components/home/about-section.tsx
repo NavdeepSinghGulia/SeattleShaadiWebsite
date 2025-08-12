@@ -1,6 +1,4 @@
-import { AnimatedDiv } from '@/components/animated-div';
 import { RoyalTypography } from '@/components/royal-typography';
-import { LuxuryCard } from '@/components/luxury-card';
 import { motion } from 'framer-motion';
 
 // Elegant animation variants following design principles

@@ -15,7 +15,7 @@ const submissionTracker = new Map<string, { count: number; lastSubmission: numbe
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 const MAX_SUBMISSIONS_PER_WINDOW = 3;
 
-const ContactFormInputSchema = z.object({
+const _ContactFormInputSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
   email: z.string().email({ message: 'Please enter a valid email.' }),
   phone: z.string().min(10, { message: 'Please enter a valid 10-digit phone number.' }),
@@ -24,14 +24,14 @@ const ContactFormInputSchema = z.object({
   budget: z.string().optional(),
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
-export type ContactFormInput = z.infer<typeof ContactFormInputSchema>;
+export type ContactFormInput = z.infer<typeof _ContactFormInputSchema>;
 
-const ContactFormOutputSchema = z.object({
+const _ContactFormOutputSchema = z.object({
     success: z.boolean(),
     message: z.string(),
     category: z.string().optional(),
 });
-export type ContactFormOutput = z.infer<typeof ContactFormOutputSchema>;
+export type ContactFormOutput = z.infer<typeof _ContactFormOutputSchema>;
 
 // Security utility functions
 function sanitizeHtml(input: string): string {
@@ -114,7 +114,9 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
   // Check rate limiting first
   const rateLimitCheck = checkRateLimit(input.email);
   if (!rateLimitCheck.allowed) {
-    console.warn(`Rate limit exceeded for email: ${input.email}`);
+    if (process.env.NODE_ENV === 'development') {
+      console.warn(`Rate limit exceeded for email: ${input.email}`);
+    }
     return {
       success: false,
       message: rateLimitCheck.message || "Too many requests. Please try again later.",
@@ -124,7 +126,9 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
   // Validate and sanitize input
   const validation = validateInput(input);
   if (!validation.isValid) {
-    console.warn('Invalid input detected:', validation.errors);
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('Invalid input detected:', validation.errors);
+    }
     return {
       success: false,
       message: "Invalid input detected. Please check your submission.",
@@ -133,7 +137,9 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
 
   // Validate environment variables
   if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY not configured');
+    if (process.env.NODE_ENV === 'development') {
+      console.error('RESEND_API_KEY not configured');
+    }
     return {
       success: false,
       message: "Service temporarily unavailable. Please try again later.",
@@ -211,7 +217,9 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
         category: category,
     };
   } catch (error) {
-      console.error("Failed to send email", error);
+      if (process.env.NODE_ENV === 'development') {
+        console.error("Failed to send email", error);
+      }
       return {
           success: false,
           message: "Sorry, we couldn't send your message. Please try again later.",

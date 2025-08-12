@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 import { useMobileRoyalAnimations } from '@/hooks/use-mobile-royal-animations';
 
 export default function MobileRoyalDemo() {
-  const { triggerHapticFeedback, settings, isMobile } = useMobileRoyalAnimations();
+  const { triggerHapticFeedback, settings, isMobile: _isMobile } = useMobileRoyalAnimations();
 
   const interactionExamples = [
     {

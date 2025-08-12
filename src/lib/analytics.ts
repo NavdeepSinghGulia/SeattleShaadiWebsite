@@ -12,7 +12,9 @@ export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID;
 // Initialize Google Analytics
 export const initGA = () => {
   if (!GA_TRACKING_ID) {
-    console.warn('Google Analytics tracking ID not found');
+    if (process.env.NODE_ENV === 'development') {
+      console.warn('Google Analytics tracking ID not found');
+    }
     return;
   }
 
