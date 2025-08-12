@@ -7,9 +7,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 
 import { toast } from '@/hooks/use-toast';
-import { type ContactFormInput, submitContactForm } from '@/ai/flows/contact-flow';
+import { submitContactForm } from '@/ai/flows/contact-flow';
 import { Loader2, Phone, Mail, Clock } from 'lucide-react';
-import { z } from 'zod';
 import { RoyalBackground } from '@/components/royal-background';
 import { RoyalTypography } from '@/components/royal-typography';
 import { LuxuryCard } from '@/components/luxury-card';
