@@ -21,7 +21,7 @@ interface SocialShareProps {
 export function SocialShare({ 
   url = typeof window !== 'undefined' ? window.location.href : '',
   title = 'Seattle Shaadi - Premier Wedding Planning',
-  description = 'Discover beautiful wedding planning services in Seattle',
+  description: _description = 'Discover beautiful wedding planning services in Seattle',
   className = ''
 }: SocialShareProps) {
   const [copied, setCopied] = React.useState(false);
@@ -47,7 +47,7 @@ export function SocialShare({
       setCopied(true);
       // Simple success feedback with proper cleanup
       timeoutRef.current = setTimeout(() => setCopied(false), 2000);
-    } catch (_err) {
+    } catch {
       // Fallback for older browsers
       const textArea = document.createElement('textarea');
       textArea.value = url;

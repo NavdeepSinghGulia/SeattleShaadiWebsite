@@ -177,7 +177,7 @@ export function useResponsiveAnimation() {
       
       // Estimate performance based on hardware concurrency and connection
       const hardwareConcurrency = navigator.hardwareConcurrency || 4;
-      const connection = (navigator as any).connection;
+      const connection = (navigator as Navigator & { connection?: { effectiveType: string } }).connection;
       const isSlowConnection = connection && (connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
       
       const isHighPerformance = hardwareConcurrency >= 4 && !isSlowConnection && !isMobile;
@@ -193,12 +193,12 @@ export function useResponsiveAnimation() {
 
     // Listen for connection changes
     if ('connection' in navigator) {
-      (navigator as any).connection.addEventListener('change', checkDeviceCapabilities);
+      (navigator as Navigator & { connection?: EventTarget }).connection?.addEventListener('change', checkDeviceCapabilities);
     }
 
     return () => {
       if ('connection' in navigator) {
-        (navigator as any).connection.removeEventListener('change', checkDeviceCapabilities);
+        (navigator as Navigator & { connection?: EventTarget }).connection?.removeEventListener('change', checkDeviceCapabilities);
       }
     };
   }, []);

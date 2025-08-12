@@ -2,8 +2,8 @@
 
 declare global {
   interface Window {
-    gtag: (...args: any[]) => void;
-    dataLayer: any[];
+    gtag: (...args: unknown[]) => void;
+    dataLayer: unknown[];
   }
 }
 
@@ -19,7 +19,7 @@ export const initGA = () => {
   }
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function gtag(...args: any[]) {
+  window.gtag = function gtag(...args: unknown[]) {
     window.dataLayer.push(args);
   };
   window.gtag('js', new Date());
@@ -58,13 +58,13 @@ export const trackEvent = (
 // Track wedding planning specific events
 export const trackWeddingEvent = (
   eventType: 'contact_form_submit' | 'service_inquiry' | 'consultation_request' | 'portfolio_view',
-  details?: Record<string, any>
+  details?: Record<string, unknown>
 ) => {
   trackEvent(eventType, 'wedding_planning', JSON.stringify(details));
 };
 
 // Track Core Web Vitals
-export const trackWebVitals = (metric: any) => {
+export const trackWebVitals = (metric: { name: string; value: number; id: string }) => {
   if (!GA_TRACKING_ID || typeof window.gtag !== 'function') return;
 
   window.gtag('event', metric.name, {

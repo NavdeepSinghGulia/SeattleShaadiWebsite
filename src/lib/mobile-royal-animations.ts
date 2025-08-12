@@ -279,8 +279,8 @@ export const mobileAnimationUtils = {
     
     // Check memory
     if ('memory' in performance) {
-      const memory = (performance as any).memory;
-      if (memory.usedJSHeapSize < memory.totalJSHeapSize * 0.5) {
+      const memory = (performance as Performance & { memory?: { usedJSHeapSize: number; totalJSHeapSize: number } }).memory;
+      if (memory && memory.usedJSHeapSize < memory.totalJSHeapSize * 0.5) {
         score += 0.2;
       }
     }
