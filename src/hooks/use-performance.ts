@@ -214,6 +214,40 @@ export const useResourcePreloader = () => {
   return { preloadImage, preloadFont, preloadScript };
 };
 
+// Loading state management hook
+export const useLoadingState = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const startLoading = useCallback(() => {
+    setIsLoading(true);
+    setError(null);
+  }, []);
+
+  const stopLoading = useCallback(() => {
+    setIsLoading(false);
+  }, []);
+
+  const setErrorState = useCallback((errorMessage: string) => {
+    setError(errorMessage);
+    setIsLoading(false);
+  }, []);
+
+  const reset = useCallback(() => {
+    setIsLoading(false);
+    setError(null);
+  }, []);
+
+  return {
+    isLoading,
+    error,
+    startLoading,
+    stopLoading,
+    setError: setErrorState,
+    reset
+  };
+};
+
 // Component render optimization
 export const useRenderOptimization = () => {
   const renderCount = useRef(0);
@@ -304,4 +338,3 @@ export const useNetworkStatus = () => {
 
   return networkStatus;
 };
-

@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { toast } from '@/hooks/use-toast';
 import { type ContactFormInput, submitContactForm } from '@/ai/flows/contact-flow';
 import { Loader2, Phone, Mail, MapPin, Clock, Shield, CheckCircle } from 'lucide-react';
@@ -23,21 +24,8 @@ import { AccessibleField, ScreenReaderOnly, useAnnouncement } from '@/components
 import { useDebounce, useLoadingState } from '@/hooks/use-performance';
 import ErrorBoundary from '@/components/error-boundary';
 
-export const ContactFormSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email.' }),
-  phone: z.string()
-    .min(1, { message: 'Phone number is required.' })
-    .refine((phone) => {
-      // Remove all non-digit characters and check if we have exactly 10 digits
-      const digits = phone.replace(/\D/g, '');
-      return digits.length === 10;
-    }, { message: 'Phone number must be exactly 10 digits.' }),
-  eventDate: z.string().optional(),
-  estimatedGuests: z.string().optional(),
-  budget: z.string().optional(),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
-});
+// Using the comprehensive contact form schema from form-validation.ts
+// This provides better validation and security features
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
@@ -105,29 +93,45 @@ export default function ContactPageClient() {
     fieldChange(formattedInput);
   };
 
-  async function onSubmit(values: ContactFormInput) {
-    setIsSubmitting(true);
+  async function onSubmit(values: ContactFormData) {
+    startLoading();
     trackEvent('contact_form_submit', 'engagement', 'web_form');
-    const result = await submitContactForm({
-        ...values,
-        phone: values.phone.replace(/\D/g, ''), // Send raw digits to backend
-    });
-    if (result.success) {
-      toast({
-        title: 'Message Sent!',
-        description: result.message,
+    
+    try {
+      const result = await submitContactForm({
+          ...values,
+          phone: values.phone.replace(/\D/g, ''), // Send raw digits to backend
       });
-      form.reset();
-      trackEvent('contact_form_success', 'conversion', result.category);
-    } else {
+      
+      if (result.success) {
+        toast({
+          title: 'Message Sent!',
+          description: result.message,
+        });
+        form.reset();
+        trackEvent('contact_form_success', 'conversion', result.category);
+        announce('Your message has been sent successfully!');
+      } else {
+        toast({
+          variant: 'destructive',
+          title: 'Uh oh! Something went wrong.',
+          description: result.message,
+        });
+        trackEvent('contact_form_error', 'error', result.message);
+        setError(result.message);
+      }
+    } catch (err) {
+      const errorMessage = 'Failed to send message. Please try again.';
       toast({
         variant: 'destructive',
-        title: 'Uh oh! Something went wrong.',
-        description: result.message,
+        title: 'Error',
+        description: errorMessage,
       });
-      trackEvent('contact_form_error', 'error', result.message);
+      setError(errorMessage);
+      trackEvent('contact_form_error', 'error', errorMessage);
+    } finally {
+      stopLoading();
     }
-    setIsSubmitting(false);
   }
 
   return (
@@ -248,19 +252,34 @@ export default function ContactPageClient() {
                 
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-semibold">Full Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your full name" {...field} className="bg-background" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="firstName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-semibold">First Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your first name" {...field} className="bg-background" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="lastName"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-semibold">Last Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Your last name" {...field} className="bg-background" />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
               <FormField
                 control={form.control}
                 name="email"
@@ -293,10 +312,10 @@ export default function ContactPageClient() {
               />
               <FormField
                 control={form.control}
-                name="eventDate"
+                name="weddingDate"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-semibold">Prospective Event Date</FormLabel>
+                    <FormLabel className="font-semibold">Wedding Date</FormLabel>
                     <FormControl>
                       <Input type="date" {...field} className="bg-background" />
                     </FormControl>
@@ -307,7 +326,7 @@ export default function ContactPageClient() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}
-                  name="estimatedGuests"
+                  name="guestCount"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="font-semibold">Estimated Guests</FormLabel>
@@ -332,6 +351,71 @@ export default function ContactPageClient() {
                   )}
                 />
               </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <FormField
+                  control={form.control}
+                  name="weddingType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-semibold">Wedding Type</FormLabel>
+                      <FormControl>
+                        <Select onValueChange={field.onChange} defaultValue={field.value}>
+                          <SelectTrigger className="bg-background">
+                            <SelectValue placeholder="Select wedding type" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="traditional">Traditional</SelectItem>
+                            <SelectItem value="modern">Modern</SelectItem>
+                            <SelectItem value="destination">Destination</SelectItem>
+                            <SelectItem value="intimate">Intimate</SelectItem>
+                            <SelectItem value="luxury">Luxury</SelectItem>
+                            <SelectItem value="cultural">Cultural</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
+                  name="preferredContact"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel className="font-semibold">Preferred Contact Method</FormLabel>
+                      <FormControl>
+                        <Select onValueChange={field.onChange} defaultValue={field.value || "email"}>
+                          <SelectTrigger className="bg-background">
+                            <SelectValue placeholder="How should we contact you?" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="email">Email</SelectItem>
+                            <SelectItem value="phone">Phone</SelectItem>
+                            <SelectItem value="text">Text Message</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+
+              <FormField
+                control={form.control}
+                name="venue"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-semibold">Venue (if known)</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Venue name or location preference" {...field} className="bg-background" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
               <FormField
                 control={form.control}
                 name="message"
@@ -350,10 +434,10 @@ export default function ContactPageClient() {
                       variant="royal" 
                       size="lg" 
                       className="w-full" 
-                      disabled={isSubmitting}
+                      disabled={isLoading}
                     >
-                      {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      {isSubmitting ? 'Sending Your Royal Request...' : 'Send Royal Message'}
+                      {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                      {isLoading ? 'Sending Your Royal Request...' : 'Send Royal Message'}
                     </InteractiveCtaButton>
                   </form>
                 </Form>

@@ -5,6 +5,8 @@
  * Supports multiple error reporting services (Sentry, LogRocket, etc.)
  */
 
+import React from 'react';
+
 interface ErrorContext {
   userId?: string;
   userEmail?: string;
@@ -98,7 +100,7 @@ class ErrorReportingService {
   reportError(error: Error, context?: ErrorContext, level: 'error' | 'warning' | 'info' = 'error') {
     const errorReport: ErrorReport = {
       error,
-      context,
+      ...(context && { context }),
       level,
       timestamp: new Date()
     };
@@ -271,7 +273,7 @@ export const withErrorReporting = <T extends Record<string, unknown>>(
 ) => {
   const WrappedComponent = (props: T) => {
     try {
-      return <Component {...props} />;
+      return React.createElement(Component, props);
     } catch (error) {
       reportError(error as Error, {
         component: componentName,
@@ -284,4 +286,3 @@ export const withErrorReporting = <T extends Record<string, unknown>>(
   WrappedComponent.displayName = `withErrorReporting(${componentName})`;
   return WrappedComponent;
 };
-

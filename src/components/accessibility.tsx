@@ -19,14 +19,16 @@ export const SkipToContent: React.FC = () => {
 interface ScreenReaderOnlyProps {
   children: React.ReactNode;
   className?: string;
+  id?: string;
 }
 
 export const ScreenReaderOnly: React.FC<ScreenReaderOnlyProps> = ({ 
   children, 
-  className 
+  className,
+  id
 }) => {
   return (
-    <span className={cn('sr-only', className)}>
+    <span className={cn('sr-only', className)} id={id}>
       {children}
     </span>
   );
@@ -88,7 +90,7 @@ export const FocusTrap: React.FC<FocusTrapProps> = ({
     // Focus the first focusable element
     const focusableElements = getFocusableElements();
     if (focusableElements.length > 0) {
-      focusableElements[0].focus();
+      focusableElements[0]?.focus();
     }
 
     document.addEventListener('keydown', handleKeyDown);
@@ -310,7 +312,7 @@ interface LiveRegionProps {
   children: React.ReactNode;
   politeness?: 'polite' | 'assertive' | 'off';
   atomic?: boolean;
-  relevant?: 'additions' | 'removals' | 'text' | 'all';
+  relevant?: 'additions' | 'removals' | 'text' | 'all' | 'additions text' | 'additions removals';
 }
 
 export const LiveRegion: React.FC<LiveRegionProps> = ({
@@ -444,7 +446,7 @@ export const checkColorContrast = (foreground: string, background: string): numb
       return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
     });
     
-    return 0.2126 * sRGB[0] + 0.7152 * sRGB[1] + 0.0722 * sRGB[2];
+    return 0.2126 * (sRGB[0] ?? 0) + 0.7152 * (sRGB[1] ?? 0) + 0.0722 * (sRGB[2] ?? 0);
   };
 
   const l1 = getLuminance(foreground);
@@ -474,4 +476,3 @@ export const useAnnouncement = () => {
     ),
   };
 };
-

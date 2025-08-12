@@ -223,18 +223,18 @@ export const validateForm = <T>(schema: z.ZodSchema<T>, data: unknown): {
 };
 
 // Field validation for real-time feedback
-export const validateField = <T>(
-  schema: z.ZodSchema<T>,
+export const validateField = <T extends Record<string, unknown>>(
+  schema: z.ZodObject<z.ZodRawShape>,
   fieldName: string,
   value: unknown,
   data: Partial<T> = {}
 ): string | null => {
   try {
     // Create a partial object with the field to validate
-    const testData = { ...data, [fieldName]: value };
+    const testData = { ...data, [fieldName]: value } as T;
     
     // Try to parse just this field
-    const fieldSchema = schema.shape?.[fieldName as keyof typeof schema.shape];
+    const fieldSchema = schema.shape[fieldName];
     if (fieldSchema) {
       fieldSchema.parse(value);
     } else {
@@ -263,16 +263,16 @@ export const sanitizeInput = (input: string): string => {
     .replace(/on\w+=/gi, ''); // Remove event handlers
 };
 
-export const sanitizeFormData = <T extends Record<string, any>>(data: T): T => {
-  const sanitized = { ...data };
+export const sanitizeFormData = <T extends Record<string, unknown>>(data: T): T => {
+  const sanitized = { ...data } as Record<string, unknown>;
   
   Object.keys(sanitized).forEach(key => {
     if (typeof sanitized[key] === 'string') {
-      sanitized[key] = sanitizeInput(sanitized[key]);
+      sanitized[key] = sanitizeInput(sanitized[key] as string);
     }
   });
   
-  return sanitized;
+  return sanitized as T;
 };
 
 // Form submission rate limiting
@@ -309,4 +309,3 @@ export const generateCSRFToken = (): string => {
 export const validateCSRFToken = (token: string, sessionToken: string): boolean => {
   return token === sessionToken && token.length > 10;
 };
-

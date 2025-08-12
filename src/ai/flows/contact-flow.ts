@@ -10,22 +10,15 @@
 import { z } from 'zod';
 import { Resend } from 'resend';
 import { reportError } from '@/lib/error-reporting';
+import { contactFormSchema, type ContactFormData } from '@/lib/form-validation';
 
 // Simple in-memory rate limiting (in production, use Redis or database)
 const submissionTracker = new Map<string, { count: number; lastSubmission: number }>();
 const RATE_LIMIT_WINDOW = 60 * 1000; // 1 minute
 const MAX_SUBMISSIONS_PER_WINDOW = 3;
 
-const _ContactFormInputSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email.' }),
-  phone: z.string().min(10, { message: 'Please enter a valid 10-digit phone number.' }),
-  eventDate: z.string().optional(),
-  estimatedGuests: z.string().optional(),
-  budget: z.string().optional(),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
-});
-export type ContactFormInput = z.infer<typeof _ContactFormInputSchema>;
+// Use the comprehensive contact form schema
+export type ContactFormInput = ContactFormData;
 
 const _ContactFormOutputSchema = z.object({
     success: z.boolean(),
@@ -52,8 +45,20 @@ function sanitizeHtml(input: string): string {
 function validateInput(input: ContactFormInput): { isValid: boolean; errors: string[] } {
   const errors: string[] = [];
   
+  // Use the comprehensive validation from form-validation.ts
+  const validationResult = contactFormSchema.safeParse(input);
+  if (!validationResult.success) {
+    validationResult.error.errors.forEach(err => {
+      errors.push(err.message);
+    });
+  }
+  
   // Additional security validations
-  if (input.name.length > 100) errors.push('Name too long');
+  const firstName = input.firstName || '';
+  const lastName = input.lastName || '';
+  const fullName = `${firstName} ${lastName}`.trim();
+  
+  if (fullName.length > 100) errors.push('Name too long');
   if (input.email.length > 254) errors.push('Email too long');
   if (input.message.length > 2000) errors.push('Message too long');
   
@@ -66,7 +71,7 @@ function validateInput(input: ContactFormInput): { isValid: boolean; errors: str
     /vbscript:/i
   ];
   
-  const allText = `${input.name} ${input.email} ${input.message}`;
+  const allText = `${fullName} ${input.email} ${input.message}`;
   for (const pattern of suspiciousPatterns) {
     if (pattern.test(allText)) {
       errors.push('Invalid characters detected');
@@ -164,14 +169,23 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
   }
 
   // Sanitize all inputs for logging and email with length limits
+  const firstName = input.firstName || '';
+  const lastName = input.lastName || '';
+  const fullName = `${firstName} ${lastName}`.trim();
+  
   const sanitizedInput = {
-    name: sanitizeHtml(input.name).substring(0, 100),
+    name: sanitizeHtml(fullName).substring(0, 100),
+    firstName: sanitizeHtml(firstName).substring(0, 50),
+    lastName: sanitizeHtml(lastName).substring(0, 50),
     email: sanitizeHtml(input.email).substring(0, 100),
     phone: sanitizeHtml(input.phone).substring(0, 20),
-    eventDate: input.eventDate ? sanitizeHtml(input.eventDate).substring(0, 50) : 'Not provided',
-    estimatedGuests: input.estimatedGuests ? sanitizeHtml(input.estimatedGuests).substring(0, 20) : 'Not provided',
+    weddingDate: input.weddingDate ? sanitizeHtml(input.weddingDate).substring(0, 50) : 'Not provided',
+    guestCount: input.guestCount ? sanitizeHtml(input.guestCount).substring(0, 20) : 'Not provided',
     budget: input.budget ? sanitizeHtml(input.budget).substring(0, 50) : 'Not provided',
+    weddingType: input.weddingType ? sanitizeHtml(input.weddingType).substring(0, 50) : 'Not provided',
+    venue: input.venue ? sanitizeHtml(input.venue).substring(0, 200) : 'Not provided',
     message: sanitizeHtml(input.message).substring(0, 2000),
+    preferredContact: input.preferredContact || 'email',
   };
 
   // In a production app, you would save this data to a database (like Firebase Firestore).
@@ -180,9 +194,12 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
     console.log(`Name: ${sanitizedInput.name}`);
     console.log(`Email: ${sanitizedInput.email}`);
     console.log(`Phone: ${sanitizedInput.phone}`);
-    console.log(`Event Date: ${sanitizedInput.eventDate}`);
-    console.log(`Estimated Guests: ${sanitizedInput.estimatedGuests}`);
+    console.log(`Wedding Date: ${sanitizedInput.weddingDate}`);
+    console.log(`Guest Count: ${sanitizedInput.guestCount}`);
     console.log(`Budget: ${sanitizedInput.budget}`);
+    console.log(`Wedding Type: ${sanitizedInput.weddingType}`);
+    console.log(`Venue: ${sanitizedInput.venue}`);
+    console.log(`Preferred Contact: ${sanitizedInput.preferredContact}`);
     console.log(`Message: ${sanitizedInput.message}`);
     console.log(`Categorized as: ${category}`);
     console.log('-------------------------------------------');
@@ -197,18 +214,36 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
       to: recipientEmail,
       subject: `New Contact Form Submission - ${category}`,
       html: `
-        <h1>New Contact Form Submission</h1>
-        <p><strong>Name:</strong> ${sanitizedInput.name}</p>
-        <p><strong>Email:</strong> ${sanitizedInput.email}</p>
-        <p><strong>Phone:</strong> ${sanitizedInput.phone}</p>
-        <p><strong>Event Date:</strong> ${sanitizedInput.eventDate}</p>
-        <p><strong>Estimated Guests:</strong> ${sanitizedInput.estimatedGuests}</p>
-        <p><strong>Budget:</strong> ${sanitizedInput.budget}</p>
-        <p><strong>Message:</strong></p>
-        <p>${sanitizedInput.message}</p>
-        <p><em>This message was categorized as: ${category}</em></p>
-        <hr>
-        <p><small>Submitted at: ${new Date().toISOString()}</small></p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h1 style="color: #e11d48; border-bottom: 2px solid #e11d48; padding-bottom: 10px;">New Contact Form Submission</h1>
+          
+          <div style="background-color: #f9fafb; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h2 style="color: #374151; margin-top: 0;">Contact Information</h2>
+            <p><strong>Name:</strong> ${sanitizedInput.name}</p>
+            <p><strong>Email:</strong> <a href="mailto:${sanitizedInput.email}">${sanitizedInput.email}</a></p>
+            <p><strong>Phone:</strong> <a href="tel:${sanitizedInput.phone}">${sanitizedInput.phone}</a></p>
+            <p><strong>Preferred Contact Method:</strong> ${sanitizedInput.preferredContact}</p>
+          </div>
+
+          <div style="background-color: #fef3f2; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h2 style="color: #374151; margin-top: 0;">Wedding Details</h2>
+            <p><strong>Wedding Date:</strong> ${sanitizedInput.weddingDate}</p>
+            <p><strong>Wedding Type:</strong> ${sanitizedInput.weddingType}</p>
+            <p><strong>Guest Count:</strong> ${sanitizedInput.guestCount}</p>
+            <p><strong>Budget:</strong> ${sanitizedInput.budget}</p>
+            <p><strong>Venue:</strong> ${sanitizedInput.venue}</p>
+          </div>
+
+          <div style="background-color: #fff7ed; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <h2 style="color: #374151; margin-top: 0;">Message</h2>
+            <p style="white-space: pre-wrap; line-height: 1.6;">${sanitizedInput.message}</p>
+          </div>
+
+          <div style="border-top: 1px solid #e5e7eb; padding-top: 20px; margin-top: 30px;">
+            <p style="color: #6b7280; font-style: italic;">This message was categorized as: ${category}</p>
+            <p style="color: #9ca3af; font-size: 12px;">Submitted at: ${new Date().toLocaleString()}</p>
+          </div>
+        </div>
       `,
     });
 

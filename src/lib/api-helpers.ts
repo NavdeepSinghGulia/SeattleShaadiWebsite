@@ -244,8 +244,8 @@ export const createResponse = <T>(
 
   const response: APIResponse<T> = {
     success,
-    data,
-    message,
+    ...(data !== undefined && { data }),
+    ...(message && { message }),
     timestamp: new Date().toISOString(),
     requestId: Math.random().toString(36).substring(2),
   };
@@ -465,4 +465,3 @@ export const createHealthCheck = (checks: Record<string, () => Promise<boolean>>
     );
   });
 };
-
