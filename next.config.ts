@@ -1,5 +1,10 @@
 import type {NextConfig} from 'next';
 
+// Bundle analyzer (optional)
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
+
 const securityHeaders = [
   {
     key: 'X-DNS-Prefetch-Control',
@@ -89,4 +94,4 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

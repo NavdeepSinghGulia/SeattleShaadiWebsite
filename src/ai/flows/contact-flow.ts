@@ -9,6 +9,7 @@
 
 import { z } from 'zod';
 import { Resend } from 'resend';
+import { reportError } from '@/lib/error-reporting';
 
 // Simple in-memory rate limiting (in production, use Redis or database)
 const submissionTracker = new Map<string, { count: number; lastSubmission: number }>();
@@ -217,6 +218,16 @@ export async function submitContactForm(input: ContactFormInput): Promise<Contac
         category: category,
     };
   } catch (error) {
+      // Report error to error reporting service
+      reportError(error as Error, {
+        component: 'ContactFlow',
+        action: 'send_email',
+        metadata: {
+          email: sanitizedInput.email,
+          category: category
+        }
+      });
+
       if (process.env.NODE_ENV === 'development') {
         console.error("Failed to send email", error);
       }

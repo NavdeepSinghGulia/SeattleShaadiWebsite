@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, createContext, useContext, ReactNode } from 'react';
+import { useState, useEffect, createContext, useContext, ReactNode, useMemo, useCallback } from 'react';
 
 interface AnimationPreferences {
   reducedMotion: boolean;
@@ -78,16 +78,16 @@ export function AnimationPreferencesProvider({ children }: { children: ReactNode
     return () => mediaQuery.removeEventListener('change', handleChange);
   }, []);
 
-  const updatePreferences = (updates: Partial<AnimationPreferences>) => {
+  const updatePreferences = useCallback((updates: Partial<AnimationPreferences>) => {
     const newPreferences = { ...preferences, ...updates };
     setPreferences(newPreferences);
     
     if (mounted) {
       localStorage.setItem('royal-animation-preferences', JSON.stringify(newPreferences));
     }
-  };
+  }, [preferences, mounted]);
 
-  const isAnimationEnabled = (type: 'motion' | 'particles' | 'glow' | 'sound'): boolean => {
+  const isAnimationEnabled = useCallback((type: 'motion' | 'particles' | 'glow' | 'sound'): boolean => {
     if (preferences.reducedMotion) {
       return false;
     }
@@ -104,9 +104,9 @@ export function AnimationPreferencesProvider({ children }: { children: ReactNode
       default:
         return true;
     }
-  };
+  }, [preferences]);
 
-  const getAnimationDuration = (baseDuration: number): number => {
+  const getAnimationDuration = useCallback((baseDuration: number): number => {
     if (preferences.reducedMotion) {
       return 0.01; // Nearly instant for reduced motion
     }
@@ -121,14 +121,14 @@ export function AnimationPreferencesProvider({ children }: { children: ReactNode
       default:
         return baseDuration;
     }
-  };
+  }, [preferences]);
 
-  const contextValue: AnimationPreferencesContextType = {
+  const contextValue: AnimationPreferencesContextType = useMemo(() => ({
     preferences,
     updatePreferences,
     isAnimationEnabled,
     getAnimationDuration,
-  };
+  }), [preferences, updatePreferences, isAnimationEnabled, getAnimationDuration]);
 
   return (
     <AnimationPreferencesContext.Provider value={contextValue}>
