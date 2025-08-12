@@ -20,10 +20,13 @@ import {
 } from '@/lib/schema';
 
 export const metadata: Metadata = {
-  ...generateMetadata(),
+  ...generateMetadata({
+    title: "Best Indian Wedding Planner in Seattle | Seattle Shaadi",
+    description: "Seattle's #1 rated Indian wedding planner with 127+ five-star reviews. Expert Hindu, Sikh & traditional Indian wedding coordination across Washington State. Free consultation available.",
+  }),
   title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
+    default: "Best Indian Wedding Planner in Seattle | Seattle Shaadi",
+    template: `%s | Seattle Shaadi - Best Indian Wedding Planner Seattle`,
   },
   icons: {
     icon: [

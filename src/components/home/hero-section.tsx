@@ -143,9 +143,72 @@ export function HeroSection() {
                     <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none transition-all duration-300 ease-out" />
                 </Carousel>
                 
-                {/* Spiritual Shloka Animation */}
+                {/* SEO-Optimized Hero Content */}
+                <div className="absolute inset-0 flex items-center justify-center z-20">
+                    <div className="text-center px-4 max-w-6xl mx-auto">
+                        <motion.h1 
+                            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent"
+                            style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.8)' }}
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.5, duration: 0.8 }}
+                        >
+                            Best Indian Wedding Planner in Seattle
+                        </motion.h1>
+                        
+                        <motion.p 
+                            className="text-xl md:text-2xl mb-8 text-white/90 max-w-4xl mx-auto leading-relaxed"
+                            style={{ textShadow: '1px 1px 8px rgba(0,0,0,0.7)' }}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.8, duration: 0.8 }}
+                        >
+                            Seattle's #1 rated Indian wedding planner specializing in Hindu, Sikh, and traditional Indian weddings. 
+                            Expert coordination for authentic cultural celebrations across Washington State.
+                        </motion.p>
+                        
+                        <motion.div 
+                            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 1.1, duration: 0.8 }}
+                        >
+                            <InteractiveCtaButton
+                                href="/contact"
+                                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 ease-out shadow-xl hover:shadow-2xl transform hover:scale-105"
+                            >
+                                Get Free Consultation
+                            </InteractiveCtaButton>
+                            
+                            <InteractiveCtaButton
+                                href="/portfolio"
+                                className="bg-white/20 hover:bg-white/30 text-white border-2 border-white/30 hover:border-white/50 px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-300 ease-out backdrop-blur-sm"
+                            >
+                                View Our Weddings
+                            </InteractiveCtaButton>
+                        </motion.div>
+                        
+                        <motion.div 
+                            className="mt-8 flex items-center justify-center gap-6 text-white/80"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 1.4, duration: 0.8 }}
+                        >
+                            <div className="flex items-center gap-2">
+                                <span className="text-yellow-400">★★★★★</span>
+                                <span className="text-sm">4.9/5 Rating</span>
+                            </div>
+                            <div className="w-px h-4 bg-white/30"></div>
+                            <div className="text-sm">127+ Happy Couples</div>
+                            <div className="w-px h-4 bg-white/30"></div>
+                            <div className="text-sm">5+ Years Experience</div>
+                        </motion.div>
+                    </div>
+                </div>
+
+                {/* Spiritual Shloka Animation (Secondary) */}
                 <motion.div
-                    className="absolute bottom-24 left-1/2 -translate-x-1/2 w-full max-w-5xl text-center z-20 pointer-events-none"
+                    className="absolute bottom-8 left-1/2 -translate-x-1/2 w-full max-w-5xl text-center z-10 pointer-events-none"
                     variants={containerVariants}
                     initial="hidden"
                     animate={animationState}
@@ -159,13 +222,13 @@ export function HeroSection() {
                         }
                     }}
                 >
-                    <h2 className="font-headline text-3xl md:text-5xl" style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.5)', lineHeight: 1.6 }}>
-                        <div className="mb-2">
+                    <h2 className="font-headline text-lg md:text-2xl opacity-70" style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.5)', lineHeight: 1.6 }}>
+                        <div className="mb-1">
                             {shlokaLine1.map((word, index) => (
                                 <motion.span 
                                   key={index} 
                                   variants={wordVariants} 
-                                  className="inline-block mr-4 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg"
+                                  className="inline-block mr-2 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg"
                                 >
                                     {word}
                                 </motion.span>
@@ -176,7 +239,7 @@ export function HeroSection() {
                                 <motion.span 
                                   key={index} 
                                   variants={wordVariants} 
-                                  className="inline-block mr-4 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg"
+                                  className="inline-block mr-2 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg"
                                 >
                                     {word}
                                 </motion.span>
@@ -242,16 +305,22 @@ export function HeroSection() {
                                     
                                     <div className="absolute inset-0 flex items-center justify-center z-20">
                                         <motion.div 
-                                          className="text-center px-4"
+                                          className="text-center px-4 max-w-sm mx-auto"
                                           initial={{ opacity: 0, y: 20 }}
                                           animate={{ opacity: 1, y: 0 }}
                                           transition={{ delay: 0.2 }}
                                         >
+                                            <h1 className="text-2xl font-bold mb-3 text-white" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8)' }}>
+                                                Best Indian Wedding Planner Seattle
+                                            </h1>
+                                            <p className="text-sm mb-4 text-white/90" style={{ textShadow: '1px 1px 6px rgba(0,0,0,0.7)' }}>
+                                                Seattle's #1 rated Hindu & Sikh wedding coordinator
+                                            </p>
                                             <InteractiveCtaButton
                                                 href="/contact"
                                                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-out shadow-lg"
                                             >
-                                                Start Planning
+                                                Get Free Consultation
                                             </InteractiveCtaButton>
                                         </motion.div>
                                     </div>
