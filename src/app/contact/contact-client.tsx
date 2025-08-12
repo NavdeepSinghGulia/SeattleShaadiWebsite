@@ -1,14 +1,14 @@
 'use client';
-import { useState, useCallback, useMemo } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+
 import { toast } from '@/hooks/use-toast';
 import { type ContactFormInput, submitContactForm } from '@/ai/flows/contact-flow';
-import { Loader2, Phone, Mail, MapPin, Clock, Shield, CheckCircle } from 'lucide-react';
+import { Loader2, Phone, Mail, Clock } from 'lucide-react';
 import { z } from 'zod';
 import { RoyalBackground } from '@/components/royal-background';
 import { RoyalTypography } from '@/components/royal-typography';
@@ -19,9 +19,8 @@ import { motion } from 'framer-motion';
 import { trackEvent } from '@/lib/analytics';
 import Script from 'next/script';
 import { siteConfig } from '@/lib/seo-config';
-import { contactFormSchema, type ContactFormData, validateField, sanitizeFormData } from '@/lib/form-validation';
-import { AccessibleField, ScreenReaderOnly, useAnnouncement } from '@/components/accessibility';
-import { useDebounce, useLoadingState } from '@/hooks/use-performance';
+import { contactFormSchema, type ContactFormData } from '@/lib/form-validation';
+import { useAnnouncement } from '@/components/accessibility';
 import ErrorBoundary from '@/components/error-boundary';
 
 // Using the comprehensive contact form schema from form-validation.ts
@@ -252,34 +251,20 @@ export default function ContactPageClient() {
                 
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField
-                  control={form.control}
-                  name="firstName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-semibold">First Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Your first name" {...field} className="bg-background" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="lastName"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-semibold">Last Name</FormLabel>
-                      <FormControl>
-                        <Input placeholder="Your last name" {...field} className="bg-background" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
+              <FormField
+                control={form.control}
+                name="name"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel className="font-semibold">Your Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Your full name" {...field} className="bg-background" />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              
               <FormField
                 control={form.control}
                 name="email"
@@ -293,123 +278,20 @@ export default function ContactPageClient() {
                   </FormItem>
                 )}
               />
-               <FormField
+              
+              <FormField
                 control={form.control}
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-semibold">Phone Number</FormLabel>
+                    <FormLabel className="font-semibold">Phone Number <span className="text-muted-foreground text-sm">(optional)</span></FormLabel>
                     <FormControl>
                       <Input 
                         type="tel"
+                        placeholder="(555) 123-4567"
                         {...field} 
                         onChange={(e) => handlePhoneChange(e, field.onChange)}
                         className="bg-background" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="weddingDate"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-semibold">Wedding Date</FormLabel>
-                    <FormControl>
-                      <Input type="date" {...field} className="bg-background" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField
-                  control={form.control}
-                  name="guestCount"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-semibold">Estimated Guests</FormLabel>
-                      <FormControl>
-                        <Input type="number" placeholder="e.g. 150" {...field} className="bg-background" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="budget"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-semibold">Budget Range</FormLabel>
-                      <FormControl>
-                        <Input placeholder="e.g. $50,000 - $75,000" {...field} className="bg-background" />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField
-                  control={form.control}
-                  name="weddingType"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-semibold">Wedding Type</FormLabel>
-                      <FormControl>
-                        <Select onValueChange={field.onChange} defaultValue={field.value}>
-                          <SelectTrigger className="bg-background">
-                            <SelectValue placeholder="Select wedding type" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="traditional">Traditional</SelectItem>
-                            <SelectItem value="modern">Modern</SelectItem>
-                            <SelectItem value="destination">Destination</SelectItem>
-                            <SelectItem value="intimate">Intimate</SelectItem>
-                            <SelectItem value="luxury">Luxury</SelectItem>
-                            <SelectItem value="cultural">Cultural</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="preferredContact"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="font-semibold">Preferred Contact Method</FormLabel>
-                      <FormControl>
-                        <Select onValueChange={field.onChange} defaultValue={field.value || "email"}>
-                          <SelectTrigger className="bg-background">
-                            <SelectValue placeholder="How should we contact you?" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="email">Email</SelectItem>
-                            <SelectItem value="phone">Phone</SelectItem>
-                            <SelectItem value="text">Text Message</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-
-              <FormField
-                control={form.control}
-                name="venue"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-semibold">Venue (if known)</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Venue name or location preference" {...field} className="bg-background" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -421,9 +303,14 @@ export default function ContactPageClient() {
                 name="message"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel className="font-semibold">Tell Us About Your Vision</FormLabel>
+                    <FormLabel className="font-semibold">Tell Us About Your Wedding Plans</FormLabel>
                     <FormControl>
-                      <Textarea rows={5} placeholder="Describe your dream wedding..." {...field} className="bg-background" />
+                      <Textarea 
+                        rows={5} 
+                        placeholder="Share your wedding vision, date, guest count, budget, or any questions you have..." 
+                        {...field} 
+                        className="bg-background" 
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>

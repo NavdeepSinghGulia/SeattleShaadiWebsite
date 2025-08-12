@@ -42,28 +42,15 @@ export const guestCountSchema = z
   .min(10, 'Minimum guest count is 10')
   .max(2000, 'Maximum guest count is 2000');
 
-// Contact form schema
+// Simplified contact form schema - keeping it simple for easy user engagement
 export const contactFormSchema = z.object({
-  firstName: nameSchema,
-  lastName: nameSchema,
+  name: nameSchema,
   email: emailSchema,
-  phone: phoneSchema,
-  weddingDate: dateSchema.optional(),
-  budget: z.string().min(1, 'Budget range is required'),
-  guestCount: z.string().min(1, 'Guest count is required'),
-  weddingType: z.string().min(1, 'Wedding type is required'),
-  venue: z.string().optional(),
+  phone: phoneSchema.optional(), // Making phone optional for easier signup
   message: z
     .string()
-    .min(10, 'Message must be at least 10 characters')
+    .min(10, 'Please tell us a bit about your wedding plans (at least 10 characters)')
     .max(1000, 'Message must be less than 1000 characters'),
-  preferredContact: z.enum(['email', 'phone', 'either'], {
-    required_error: 'Please select a preferred contact method',
-  }),
-  newsletter: z.boolean().optional(),
-  terms: z.boolean().refine((val) => val === true, {
-    message: 'You must agree to the terms and conditions',
-  }),
 });
 
 // Consultation booking schema
