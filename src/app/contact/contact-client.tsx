@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
@@ -7,7 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { toast } from '@/hooks/use-toast';
 import { type ContactFormInput, submitContactForm } from '@/ai/flows/contact-flow';
-import { Loader2, Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Loader2, Phone, Mail, MapPin, Clock, Shield, CheckCircle } from 'lucide-react';
 import { z } from 'zod';
 import { RoyalBackground } from '@/components/royal-background';
 import { RoyalTypography } from '@/components/royal-typography';
@@ -18,6 +18,10 @@ import { motion } from 'framer-motion';
 import { trackEvent } from '@/lib/analytics';
 import Script from 'next/script';
 import { siteConfig } from '@/lib/seo-config';
+import { contactFormSchema, type ContactFormData, validateField, sanitizeFormData } from '@/lib/form-validation';
+import { AccessibleField, ScreenReaderOnly, useAnnouncement } from '@/components/accessibility';
+import { useDebounce, useLoadingState } from '@/hooks/use-performance';
+import ErrorBoundary from '@/components/error-boundary';
 
 export const ContactFormSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -56,19 +60,29 @@ const localBusinessSchema = {
 };
 
 export default function ContactPageClient() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { isLoading, error, startLoading, stopLoading, setError, reset } = useLoadingState();
+  const { announce, AnnouncementRegion } = useAnnouncement();
+  const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [honeypot, setHoneypot] = useState('');
 
-  const form = useForm<ContactFormInput>({
-    resolver: zodResolver(ContactFormSchema),
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: '',
-      eventDate: '',
-      estimatedGuests: '',
+      weddingDate: '',
       budget: '',
+      guestCount: '',
+      weddingType: '',
+      venue: '',
       message: '',
+      preferredContact: 'email',
+      newsletter: false,
+      terms: false,
     },
+    mode: 'onChange', // Enable real-time validation
   });
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>, fieldChange: (value: string) => void) => {

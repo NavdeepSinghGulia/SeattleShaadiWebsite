@@ -18,6 +18,8 @@ import {
   websiteSchema, 
   weddingPlanningServiceSchema 
 } from '@/lib/schema';
+import ErrorBoundary from '@/components/error-boundary';
+import { PageLoadingFallback } from '@/components/loading-fallback';
 
 export const metadata: Metadata = {
   ...generateMetadata({
@@ -104,24 +106,40 @@ export default function RootLayout({
           />
       </head>
       <body className="font-body antialiased bg-background overflow-x-hidden">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <AnimationPreferencesProvider>
-            <ErrorReportingInitializer />
-            <Suspense fallback={null}>
-              <Analytics />
-            </Suspense>
-            <PerformanceMonitor />
-            <Header />
-            <main>{children}</main>
-            <Footer />
-            <Toaster />
-          </AnimationPreferencesProvider>
-        </ThemeProvider>
+        <ErrorBoundary>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <AnimationPreferencesProvider>
+              <ErrorReportingInitializer />
+              <Suspense fallback={null}>
+                <Analytics />
+              </Suspense>
+              <PerformanceMonitor />
+              
+              <ErrorBoundary>
+                <Header />
+              </ErrorBoundary>
+              
+              <main>
+                <ErrorBoundary>
+                  <Suspense fallback={<PageLoadingFallback />}>
+                    {children}
+                  </Suspense>
+                </ErrorBoundary>
+              </main>
+              
+              <ErrorBoundary>
+                <Footer />
+              </ErrorBoundary>
+              
+              <Toaster />
+            </AnimationPreferencesProvider>
+          </ThemeProvider>
+        </ErrorBoundary>
       </body>
     </html>
   );
