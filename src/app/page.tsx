@@ -1,6 +1,6 @@
-import React from 'react';
 'use client';
 
+import React from 'react';
 // Home page with improved SEO semantics and performance-aware visuals
 
 import { HeroSection } from '@/components/home/hero-section';
