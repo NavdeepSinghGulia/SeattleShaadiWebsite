@@ -1,190 +1,67 @@
-import { MetadataRoute } from 'next'
-import { siteConfig } from '@/lib/seo-config'
-import { priorityBlogPosts, additionalBlogPosts } from '@/content/blog-content-strategy'
+import { MetadataRoute } from 'next';
+import { enhancedSeoConfig } from '@/lib/enhanced-seo-config';
 
+/**
+ * Generate dynamic sitemap for Next.js
+ * This complements the static sitemap.xml in the public directory
+ * and ensures any dynamic routes are properly included
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = siteConfig.url
+  const baseUrl = enhancedSeoConfig.siteUrl;
+  const lastModified = new Date().toISOString();
 
-  // Static pages with high priority for SEO
-  const staticPages = [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 1.0, // Highest priority for homepage
-    },
-    {
-      url: `${baseUrl}/about`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9, // High priority for services page
-    },
-    {
-      url: `${baseUrl}/services/hindu-wedding-planning`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9, // High priority for Hindu wedding services
-    },
-    {
-      url: `${baseUrl}/services/sikh-wedding-planning`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9, // High priority for Sikh wedding services
-    },
-    {
-      url: `${baseUrl}/services/full-service-planning`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/venue-selection`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/wedding-decoration`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/services/catering-coordination`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/portfolio`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/testimonials`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/blog`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8, // High priority for blog index
-    },
-  ]
+  // Main pages
+  const mainRoutes = [
+    '',
+    '/about',
+    '/services',
+    '/work',
+    '/contact',
+    '/faq',
+    '/carriers',
+    '/spotlight',
+    '/fun',
+    '/blog',
+  ].map(route => ({
+    url: `${baseUrl}${route}`,
+    lastModified,
+    changeFrequency: route === '' ? 'weekly' : 'monthly' as 'weekly' | 'monthly',
+    priority: route === '' ? 1 : 0.8,
+  }));
 
-  // Location-specific pages for local SEO
-  const locationPages = [
-    {
-      url: `${baseUrl}/seattle-indian-wedding-planner`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.9, // High priority for main location page
-    },
-    {
-      url: `${baseUrl}/bellevue-indian-wedding-planner`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/tacoma-indian-wedding-planner`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/everett-indian-wedding-planner`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/spokane-indian-wedding-planner`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-  ]
+  // Blog posts
+  const blogPosts = [
+    '/blog/indian-wedding-traditions-seattle',
+    '/blog/baraat-ceremony-seattle-indian-wedding',
+    '/blog/haldi-ceremony-seattle-indian-wedding',
+    '/blog/mehndi-ceremony-seattle-indian-wedding',
+    '/blog/vidaai-ceremony-seattle-indian-wedding',
+    '/blog/seattle-wedding-planning-guide',
+    '/blog/south-asian-wedding-seattle',
+    '/blog/top-5-seattle-wedding-venues',
+  ].map(post => ({
+    url: `${baseUrl}${post}`,
+    lastModified,
+    changeFrequency: 'yearly' as 'yearly',
+    priority: 0.7,
+  }));
 
-  // Blog posts for content marketing SEO
-  const blogPosts = [...priorityBlogPosts, ...additionalBlogPosts].map(post => ({
-    url: `${baseUrl}/blog/${post.slug}`,
-    lastModified: new Date(post.publishDate),
-    changeFrequency: 'monthly' as const,
-    priority: post.featured ? 0.8 : 0.6,
-  }))
+  // Service pages from enhanced-seo-config
+  const servicePages = enhancedSeoConfig.services.map(service => ({
+    url: `${baseUrl}${service.url}`,
+    lastModified,
+    changeFrequency: 'monthly' as 'monthly',
+    priority: 0.8,
+  }));
 
-  // FAQ pages for voice search optimization
-  const faqPages = [
-    {
-      url: `${baseUrl}/faq/indian-wedding-planning`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/faq/hindu-wedding-ceremonies`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/faq/sikh-wedding-ceremonies`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/faq/wedding-venues-seattle`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.7,
-    },
-  ]
+  // Demo page
+  const demoPage = {
+    url: `${baseUrl}/mobile-royal-demo`,
+    lastModified,
+    changeFrequency: 'monthly' as 'monthly',
+    priority: 0.3,
+  };
 
-  // Resource pages for additional SEO value
-  const resourcePages = [
-    {
-      url: `${baseUrl}/resources/indian-wedding-checklist`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/resources/wedding-timeline-template`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly' as const,
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/resources/vendor-directory`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly' as const,
-      priority: 0.6,
-    },
-  ]
-
-  return [
-    ...staticPages,
-    ...locationPages,
-    ...blogPosts,
-    ...faqPages,
-    ...resourcePages,
-  ]
+  return [...mainRoutes, ...blogPosts, ...servicePages, demoPage];
 }
 
