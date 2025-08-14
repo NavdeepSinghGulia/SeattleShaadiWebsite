@@ -1,9 +1,15 @@
 import type {NextConfig} from 'next';
 
 // Bundle analyzer (optional)
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
+let withBundleAnalyzer = (config: NextConfig) => config;
+try {
+  // Only use bundle analyzer if it's available
+  withBundleAnalyzer = require('@next/bundle-analyzer')({
+    enabled: process.env.ANALYZE === 'true',
+  });
+} catch (e) {
+  console.log('Bundle analyzer not available, skipping...');
+}
 
 const securityHeaders = [
   {
