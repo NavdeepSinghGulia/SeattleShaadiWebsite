@@ -1,4 +1,6 @@
 import type { Metadata } from 'next';
+// Updated global layout with enhanced SEO, performance hints, and structured data
+
 import { Playfair_Display, Lato } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/header';
