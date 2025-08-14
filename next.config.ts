@@ -70,11 +70,9 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: true,
-  // Remove React Compiler in dev to avoid plugin load error
   experimental: {
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', 'framer-motion'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
-  // Allow Firebase Studio Dev origins
   allowedDevOrigins: [
     'http://localhost:9002',
     'http://0.0.0.0:9002',
