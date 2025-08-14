@@ -1,3 +1,5 @@
+'use client';
+
 import { RoyalTypography } from '@/components/royal-typography';
 import { motion } from 'framer-motion';
 
