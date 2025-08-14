@@ -20,6 +20,7 @@ import Script from 'next/script';
 import { siteConfig } from '@/lib/seo-config';
 import { contactFormSchema, type ContactFormData } from '@/lib/form-validation';
 import { useAnnouncement } from '@/components/accessibility';
+import { useLoadingState } from '@/hooks/use-performance';
 import ErrorBoundary from '@/components/error-boundary';
 
 // Using the comprehensive contact form schema from form-validation.ts
