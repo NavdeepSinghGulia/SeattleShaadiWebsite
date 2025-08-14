@@ -5,7 +5,7 @@
  * across the application. Supports accessibility and performance optimization.
  */
 
-import { Variants } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 
 // Base animation durations (in seconds)
 export const ANIMATION_DURATIONS = {

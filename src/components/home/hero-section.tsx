@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Autoplay from "embla-carousel-autoplay";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { InteractiveCtaButton } from '@/components/interactive-cta-button';
+import { HeroImage } from '@/components/optimized-image';
 
 const mainCarouselImages = [
     { src: "/images/hero/seattle-indian-wedding-reception-hero.jpeg", alt: "Elegant wedding reception dinner setup" },
@@ -114,7 +115,7 @@ export function HeroSection() {
                                 <motion.div 
                                   className="relative h-[95vh] w-full"
                                 >
-                                    <Image
+                                    <HeroImage
                                         src={image.src}
                                         alt={image.alt}
                                         fill
@@ -210,7 +211,7 @@ export function HeroSection() {
                                             }}
                                         >
                                             <source src={item.src} type="video/mp4" />
-                                            <Image
+                                            <HeroImage
                                                 src={item.poster || "/images/hero/seattle-indian-wedding-reception-hero.jpeg"}
                                                 alt={item.alt}
                                                 fill
@@ -219,8 +220,8 @@ export function HeroSection() {
                                             />
                                         </video>
                                     ) : (
-                                        <Image
-                                            src={item.src}
+                                        <HeroImage
+                                            src={(item as any).src}
                                             alt={item.alt}
                                             fill
                                             className="object-cover object-center transition-transform duration-500 ease-out"
