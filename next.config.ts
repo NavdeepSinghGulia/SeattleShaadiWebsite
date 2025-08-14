@@ -70,10 +70,16 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   generateEtags: true,
+  // Remove React Compiler in dev to avoid plugin load error
   experimental: {
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', 'framer-motion'],
-    reactCompiler: true,
   },
+  // Allow Firebase Studio Dev origins
+  allowedDevOrigins: [
+    'http://localhost:9002',
+    'http://0.0.0.0:9002',
+    'https://*.cloudworkstations.dev',
+  ] as any,
   turbopack: {
     rules: {
       '*.svg': { loaders: ['@svgr/webpack'], as: '*.js' },
