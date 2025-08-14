@@ -49,7 +49,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     setIsLoading(false);
     setHasError(true);
     
-    // Try fallback image if available and not already using it
     if (fallbackSrc && currentSrc !== fallbackSrc) {
       setCurrentSrc(fallbackSrc);
       setHasError(false);
@@ -60,20 +59,21 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
   }, [src, fallbackSrc, currentSrc, onError]);
 
-  // Don't render image until it's in viewport (if lazy loading is enabled)
   const shouldRender = !lazy || hasIntersected;
+
+  const wrapperFillClasses = (props as any).fill ? 'h-full w-full' : '';
 
   return (
     <div 
       ref={targetRef}
       className={cn(
         'relative overflow-hidden',
+        wrapperFillClasses,
         containerClassName
       )}
     >
       {shouldRender && (
         <>
-          {/* Loading spinner */}
           {isLoading && showLoadingSpinner && (
             <div className={cn(
               'absolute inset-0 flex items-center justify-center bg-gray-100',
@@ -83,7 +83,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
             </div>
           )}
 
-          {/* Error state */}
           {hasError && (
             <div className={cn(
               'absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500',
@@ -108,7 +107,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
             </div>
           )}
 
-          {/* Actual image */}
           <Image
             src={currentSrc}
             alt={alt}
@@ -125,7 +123,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
         </>
       )}
 
-      {/* Placeholder for lazy loading */}
       {!shouldRender && (
         <div className={cn(
           'w-full h-full bg-gray-200 animate-pulse',
@@ -136,7 +133,6 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   );
 };
 
-// Specialized components for common use cases
 export const HeroImage: React.FC<OptimizedImageProps> = (props) => (
   <OptimizedImage
     priority
@@ -160,7 +156,6 @@ export const GalleryImage: React.FC<OptimizedImageProps> = (props) => (
   />
 );
 
-// Image gallery component with optimized loading
 interface ImageGalleryProps {
   images: Array<{
     src: string;
@@ -216,7 +211,6 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
   );
 };
 
-// Progressive image loading component
 interface ProgressiveImageProps extends OptimizedImageProps {
   lowQualitySrc?: string;
 }
@@ -230,7 +224,6 @@ export const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
 
   return (
     <div className="relative">
-      {/* Low quality placeholder */}
       {lowQualitySrc && !highQualityLoaded && (
         <OptimizedImage
           src={lowQualitySrc}
@@ -241,7 +234,6 @@ export const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
         />
       )}
 
-      {/* High quality image */}
       <OptimizedImage
         src={src}
         {...props}
