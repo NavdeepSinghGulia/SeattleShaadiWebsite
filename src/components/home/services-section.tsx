@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { AnimatedDiv } from '@/components/animated-div';
@@ -127,8 +129,8 @@ export function ServicesSection() {
                                     >
                                         <InteractiveCtaButton
                                             href="/services"
-                                            variant="primary"
-                                            size="sm"
+                                            variant="royal"
+                                            size="lg"
                                             className="w-full"
                                         >
                                             Learn More
