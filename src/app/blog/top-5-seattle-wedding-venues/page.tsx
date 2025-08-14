@@ -16,7 +16,7 @@ const post = {
   description: "Discover Seattle's hidden gems. We unveil 5 unique, breathtaking wedding venues beyond the usual choices, perfect for a memorable South Asian wedding celebration.",
   author: "Soniya Arora",
   date: "2024-07-28",
-  image: "https://placehold.co/1200x630.png",
+  image: "/images/venues/seattle-resort-wedding-hall.jpg",
   imageHint: "seattle skyline",
   tags: ["Venues", "Seattle", "Planning"],
 };
@@ -56,7 +56,7 @@ export default function BlogPostPage() {
 
               <AnimatedDiv animation="royalEntrance">
                 <ShimmerEffect>
-                  <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-tight drop-shadow-sm">
+                  <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-tight drop-shadow-sm pb-2">
                     {post.title}
                   </h1>
                 </ShimmerEffect>
@@ -93,7 +93,7 @@ export default function BlogPostPage() {
                         Perched in Magnolia with sweeping views of the city skyline and Elliott Bay, this historic home offers unparalleled privacy and elegance. Its beautifully manicured gardens are perfect for an intimate outdoor ceremony, while the grand interiors provide a sophisticated setting for a reception.
                     </p>
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="https://placehold.co/800x450.png" alt="The Admiral's House" data-ai-hint="historic mansion" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/venues/seattle-wedding-hall-ceremony.jpg" alt="The Admiral's House" data-ai-hint="historic mansion" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">2. Fremont Foundry</h2>
@@ -106,7 +106,7 @@ export default function BlogPostPage() {
                         Nestled in Georgetown, The Corson Building feels like a secret European villa. With its lush gardens, charming patio, and intimate dining room, it's an ideal choice for couples seeking a romantic, food-focused celebration. The venue is renowned for its farm-to-table dining experiences, making it a true culinary destination.
                     </p>
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="https://placehold.co/800x450.png" alt="The Corson Building" data-ai-hint="italian villa" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/venues/traditional-phere-ceremony-hall.jpg" alt="The Corson Building" data-ai-hint="italian villa" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">4. The Center for Wooden Boats</h2>

@@ -58,7 +58,7 @@ export default function ServicesPage() {
           <div className="text-center">
              <AnimatedDiv animation="royalEntrance">
               <ShimmerEffect>
-                <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">
+                <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm pb-2">
                   Services Tailored for You
                 </h1>
               </ShimmerEffect>

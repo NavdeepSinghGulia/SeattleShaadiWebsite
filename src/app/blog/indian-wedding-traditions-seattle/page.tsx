@@ -97,7 +97,7 @@ export default function BlogPostPage() {
                         The mehendi ceremony is a joyous celebration where intricate henna designs adorn the bride's hands and feet. Seattle's indoor venues work perfectly for this tradition, especially during the rainy season. We recommend venues with natural light and comfortable seating for the extended application process.
                     </p>
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="https://placehold.co/800x450.png" alt="Mehendi ceremony" data-ai-hint="henna application" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg" alt="Mehendi ceremony" data-ai-hint="henna application" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Sangeet Night</h3>
@@ -117,7 +117,7 @@ export default function BlogPostPage() {
                         The sacred mandap represents the universe and serves as the altar for the wedding ceremony. Seattle's outdoor venues like the Washington Park Arboretum or Volunteer Park offer stunning natural backdrops, while indoor spaces can be transformed with elaborate floral arrangements and traditional decorations.
                     </p>
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="https://placehold.co/800x450.png" alt="Wedding mandap" data-ai-hint="indian wedding altar" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/ceremonies/hindu-wedding-photography-ceremony.jpg" alt="Wedding mandap" data-ai-hint="indian wedding altar" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Seven Sacred Vows (Saptapadi)</h3>

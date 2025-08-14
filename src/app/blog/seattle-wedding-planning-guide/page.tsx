@@ -16,7 +16,7 @@ const post = {
   description: "Complete guide to planning your dream wedding in Seattle. Expert tips on venues, vendors, timing, and making the most of the Pacific Northwest's natural beauty.",
   author: "Rajesh Patel",
   date: "2024-08-03",
-  image: "https://placehold.co/1200x630.png",
+  image: "/images/venues/seattle-wedding-garden-lawns.jpg",
   imageHint: "seattle skyline wedding",
   tags: ["Wedding Planning", "Seattle", "Guide", "Pacific Northwest"],
 };
@@ -56,7 +56,7 @@ export default function BlogPostPage() {
 
               <AnimatedDiv animation="royalEntrance">
                 <ShimmerEffect>
-                  <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-tight drop-shadow-sm">
+                  <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-tight drop-shadow-sm pb-2">
                     {post.title}
                   </h1>
                 </ShimmerEffect>

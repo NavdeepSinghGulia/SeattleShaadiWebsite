@@ -56,7 +56,7 @@ export default function BlogPostPage() {
 
               <AnimatedDiv animation="royalEntrance">
                 <ShimmerEffect>
-                  <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-tight drop-shadow-sm">
+                  <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-tight drop-shadow-sm pb-2">
                     {post.title}
                   </h1>
                 </ShimmerEffect>

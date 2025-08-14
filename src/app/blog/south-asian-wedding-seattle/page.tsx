@@ -105,7 +105,7 @@ export default function BlogPostPage() {
                     
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Pre-Wedding Events</h3>
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="https://placehold.co/800x450.png" alt="Mehendi ceremony" data-ai-hint="henna ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/ceremonies/mehndi/charlotte-mehndi-ceremony-bride.jpg" alt="Mehendi ceremony" data-ai-hint="henna ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
                     <p>
                         <strong>Engagement and Ring Ceremonies:</strong> Seattle's upscale venues like the Fairmont Olympic Hotel provide elegant settings for formal engagement announcements and ring exchanges.
@@ -152,7 +152,7 @@ export default function BlogPostPage() {
                         <li><strong>Chateau Lill:</strong> Vineyard setting in nearby Woodinville</li>
                     </ul>
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="https://placehold.co/800x450.png" alt="Outdoor mandap ceremony" data-ai-hint="outdoor wedding ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/images/venues/traditional-phere-ceremony-hall.jpg" alt="Outdoor mandap ceremony" data-ai-hint="outdoor wedding ceremony" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Cultural Elements and Decorations</h2>

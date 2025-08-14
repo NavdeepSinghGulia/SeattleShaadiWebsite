@@ -42,7 +42,7 @@ const blogPosts = [
     excerpt: "Discover how to beautifully blend traditional Indian wedding customs with modern Seattle celebrations. Expert tips for authentic ceremonies, rituals, and cultural elements.",
     author: "Priya Sharma",
     date: "2024-08-05",
-    image: "https://placehold.co/800x600.png",
+    image: "/images/ceremonies/hindu-wedding-photography-ceremony.jpg",
     imageHint: "indian wedding ceremony",
     tags: ["Indian Weddings", "Traditions", "Seattle", "Cultural"],
   },
@@ -62,7 +62,7 @@ const blogPosts = [
     excerpt: "Complete guide to planning your dream wedding in Seattle. Expert tips on venues, vendors, timing, and making the most of the Pacific Northwest's natural beauty.",
     author: "Rajesh Patel",
     date: "2024-08-03",
-    image: "https://placehold.co/800x600.png",
+    image: "/images/venues/elegant-wedding-hall-lighting.webp",
     imageHint: "seattle skyline wedding",
     tags: ["Wedding Planning", "Seattle", "Guide", "Pacific Northwest"],
   },
@@ -82,7 +82,7 @@ const blogPosts = [
     excerpt: "Discover how to plan an authentic Indian wedding in Seattle. From traditional ceremonies to modern celebrations, expert guidance for your multicultural wedding.",
     author: "Meera Kapoor",
     date: "2024-08-01",
-    image: "https://placehold.co/800x600.png",
+    image: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg",
     imageHint: "indian wedding celebration",
     tags: ["Indian Wedding", "Multicultural", "Seattle", "Wedding Traditions"],
   },
@@ -92,7 +92,7 @@ const blogPosts = [
     excerpt: "Move over, Space Needle! We're unveiling five hidden gems in the Emerald City that offer breathtaking backdrops for your unforgettable day.",
     author: "Soniya Arora",
     date: "2024-07-28",
-    image: "https://placehold.co/800x600.png",
+    image: "/images/venues/seattle-resort-wedding-hall.jpg",
     imageHint: "wedding venue",
     tags: ["Venues", "Seattle", "Planning"],
   },
@@ -114,7 +114,7 @@ export default function BlogPage() {
         <div className="text-center">
           <AnimatedDiv animation="royalEntrance">
             <ShimmerEffect>
-              <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">
+              <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm pb-2">
                 Royal Musings
               </h1>
             </ShimmerEffect>

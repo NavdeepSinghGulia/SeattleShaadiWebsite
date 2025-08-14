@@ -23,7 +23,7 @@ export default function SpotlightPage() {
     <div className="container mx-auto px-4 py-16 md:py-24">
       <div className="text-center">
         <AnimatedDiv>
-          <h1 className="font-headline text-4xl md:text-5xl font-bold">In The Spotlight</h1>
+          <h1 className="font-headline text-4xl md:text-5xl font-bold pb-2">In The Spotlight</h1>
         </AnimatedDiv>
         <AnimatedDiv delay={200}>
           <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
