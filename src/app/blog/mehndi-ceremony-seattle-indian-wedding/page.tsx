@@ -8,6 +8,7 @@ import { generateMetadata } from "@/lib/seo-config";
 import { SchemaMarkup } from '@/components/schema-markup';
 import { generateArticleSchema } from '@/lib/schema';
 import { Breadcrumb, BreadcrumbStructuredData } from "@/components/breadcrumb";
+import { PageHeading } from '@/components/page-heading';
 import type { Metadata } from 'next';
 
 const post = {
@@ -47,25 +48,18 @@ export default function BlogPostPage() {
 
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
           <article className="max-w-4xl mx-auto">
-            <header className="text-center mb-12">
+            <header>
                <Breadcrumb 
                 items={[{ label: "Blog", href: "/blog" }, { label: "Mehndi Ceremony Seattle" }]} 
                 className="justify-center mb-8"
               />
               <BreadcrumbStructuredData items={[{ label: "Blog", href: "/blog" }, { label: post.title }]} />
 
-              <AnimatedDiv animation="royalEntrance">
-                <ShimmerEffect>
-                  <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-tight drop-shadow-sm">
-                    {post.title}
-                  </h1>
-                </ShimmerEffect>
-              </AnimatedDiv>
-              <AnimatedDiv delay={300} animation="fadeInScale">
-                <p className="mt-4 text-muted-foreground text-lg">
-                  Posted on {post.date} by {post.author}
-                </p>
-              </AnimatedDiv>
+              <PageHeading 
+                title={post.title}
+                subtitle={`Posted on ${post.date} by ${post.author}`}
+                subtitleClassName="text-muted-foreground"
+              />
             </header>
 
             <AnimatedDiv delay={500} animation="fadeInScale">

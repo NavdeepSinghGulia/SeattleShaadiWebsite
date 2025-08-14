@@ -7,6 +7,7 @@ import { generateMetadata } from "@/lib/seo-config";
 import { SchemaMarkup } from "@/components/schema-markup";
 import { teamMemberSchemas } from "@/lib/schema";
 import { Breadcrumb, BreadcrumbStructuredData } from "@/components/breadcrumb";
+import { PageHeading } from "@/components/page-heading";
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateMetadata({
@@ -47,23 +48,10 @@ export default function AboutPage() {
             className="mb-8"
           />
           <BreadcrumbStructuredData items={[{ label: "About Us" }]} />
-          <div className="text-center">
-            <AnimatedDiv animation="royalEntrance">
-              <ShimmerEffect>
-                <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">
-                  Meet the Dream Weavers
-                </h1>
-              </ShimmerEffect>
-            </AnimatedDiv>
-            <AnimatedDiv delay={300} animation="fadeInScale">
-              <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-                We are a team of passionate, creative, and
-                slightly-obsessed-with-details individuals who
-                believe in the magic of weddings. Get to know the
-                faces behind Seattle Shaadi.
-              </p>
-            </AnimatedDiv>
-          </div>
+          <PageHeading 
+            title="Meet the Dream Weavers"
+            subtitle="We are a team of passionate, creative, and slightly-obsessed-with-details individuals who believe in the magic of weddings. Get to know the faces behind Seattle Shaadi."
+          />
 
           <div className="mt-16 max-w-4xl mx-auto space-y-12">
             {teamMembers.map((member, index) => (
