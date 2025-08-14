@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { AnimatedDiv } from '@/components/animated-div';
 import { generateMetadata } from "@/lib/seo-config";
+import { PageHeading } from '@/components/page-heading';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateMetadata({
@@ -21,16 +22,10 @@ const publications = [
 export default function SpotlightPage() {
   return (
     <div className="container mx-auto px-4 py-16 md:py-24">
-      <div className="text-center">
-        <AnimatedDiv>
-          <h1 className="font-headline text-4xl md:text-5xl font-bold">In The Spotlight</h1>
-        </AnimatedDiv>
-        <AnimatedDiv delay={200}>
-          <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-            We're honored to be featured in some of the most prestigious publications for our work in creating exceptional weddings.
-          </p>
-        </AnimatedDiv>
-      </div>
+      <PageHeading 
+        title="In The Spotlight"
+        subtitle="We're honored to be featured in some of the most prestigious publications for our work in creating exceptional weddings."
+      />
 
       <div className="mt-16 grid grid-cols-2 md:grid-cols-3 gap-8 items-center">
         {publications.map((pub, index) => (

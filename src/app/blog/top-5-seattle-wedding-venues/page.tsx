@@ -16,7 +16,7 @@ const post = {
   description: "Discover Seattle's hidden gems. We unveil 5 unique, breathtaking wedding venues beyond the usual choices, perfect for a memorable South Asian wedding celebration.",
   author: "Soniya Arora",
   date: "2024-07-28",
-  image: "https://placehold.co/1200x630.png",
+  image: "/images/blog/top-5-seattle-wedding-venues.jpg",
   imageHint: "seattle skyline",
   tags: ["Venues", "Seattle", "Planning"],
 };
