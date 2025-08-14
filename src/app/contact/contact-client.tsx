@@ -8,7 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 
 import { toast } from '@/hooks/use-toast';
 import { submitContactForm } from '@/ai/flows/contact-flow';
-import { Loader2, Phone, Mail, Clock } from 'lucide-react';
+import { Loader2, Phone, Mail, Clock, MapPin } from 'lucide-react';
 import { RoyalBackground } from '@/components/royal-background';
 import { RoyalTypography } from '@/components/royal-typography';
 import { LuxuryCard } from '@/components/luxury-card';
