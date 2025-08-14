@@ -1,5 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
+import { useAnimation } from '@/hooks/use-animation-preferences';
 
 interface Particle {
   id: number;
@@ -9,6 +10,7 @@ interface Particle {
 export function FloatingParticles() {
   const [particles, setParticles] = useState<Particle[]>([]);
   const [isMobile, setIsMobile] = useState(false);
+  const { shouldAnimate, shouldShowParticles } = useAnimation();
 
   useEffect(() => {
     // Check if mobile
@@ -25,7 +27,7 @@ export function FloatingParticles() {
     
     // This code now runs only on the client, after the initial render.
     const generateParticles = () => {
-      const particleCount = isMobile ? 8 : 25; // Reduce particles on mobile
+      const particleCount = isMobile ? 6 : 18; // Slightly reduced for performance
       return Array.from({ length: particleCount }).map((_, i) => ({
         id: i,
         style: {
@@ -46,6 +48,10 @@ export function FloatingParticles() {
       }
     };
   }, [isMobile]);
+
+  if (!shouldAnimate || !shouldShowParticles) {
+    return null;
+  }
 
   return (
     <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">

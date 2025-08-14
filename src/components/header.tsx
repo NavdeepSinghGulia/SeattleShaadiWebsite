@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/sheet';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import { ThumbnailImage } from '@/components/optimized-image';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -28,7 +29,7 @@ const navLinks = [
 function Logo({ className }: { className?: string }) {
   return (
     <div className={cn("relative group", className)}>
-      <Image
+      <ThumbnailImage
         src="/images/branding/logos/shaadi-squad-main-logo.webp"
         alt="Seattle Shaadi Logo"
         width={150}

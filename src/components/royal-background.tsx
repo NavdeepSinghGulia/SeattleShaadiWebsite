@@ -1,6 +1,8 @@
 'use client';
+
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
+import { useAnimation } from '@/hooks/use-animation-preferences';
 
 interface RoyalParticle {
   id: number;
@@ -14,24 +16,27 @@ interface RoyalParticle {
 export function RoyalBackground() {
   const [royalParticles, setRoyalParticles] = useState<RoyalParticle[]>([]);
   const [isClient, setIsClient] = useState(false);
+  const { shouldAnimate, shouldShowParticles, intensity } = useAnimation();
 
   useEffect(() => {
     setIsClient(true);
-    const particles = Array.from({ length: 15 }, (_, i) => ({
+    const baseCount = intensity === 'high' ? 15 : intensity === 'medium' ? 8 : 0;
+    const count = shouldShowParticles ? baseCount : 0;
+    const particles = Array.from({ length: count }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
       size: Math.random() * 2 + 1,
       delay: Math.random() * 5,
-      duration: Math.random() * 20 + 15,
+      duration: Math.random() * (intensity === 'high' ? 20 : 12) + (intensity === 'high' ? 15 : 10),
     }));
     setRoyalParticles(particles);
-  }, []);
+  }, [intensity, shouldShowParticles]);
 
-  if (!isClient) {
+  if (!isClient || !shouldAnimate) {
     return (
       <div className="absolute inset-0 z-0 overflow-hidden bg-secondary">
-        {/* Static background for SSR */}
+        {/* Static background for SSR and reduced motion */}
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-accent/5" />
       </div>
     );

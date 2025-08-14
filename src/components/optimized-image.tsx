@@ -37,7 +37,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const { targetRef, hasIntersected } = useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '50px',
-  });
+  }) as unknown as { targetRef: React.RefObject<HTMLDivElement>; hasIntersected: boolean };
 
   const handleLoad = useCallback(() => {
     setIsLoading(false);
@@ -137,7 +137,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
 };
 
 // Specialized components for common use cases
-export const HeroImage: React.FC<Omit<OptimizedImageProps, 'priority' | 'sizes'>> = (props) => (
+export const HeroImage: React.FC<OptimizedImageProps> = (props) => (
   <OptimizedImage
     priority
     sizes="100vw"
@@ -146,14 +146,14 @@ export const HeroImage: React.FC<Omit<OptimizedImageProps, 'priority' | 'sizes'>
   />
 );
 
-export const ThumbnailImage: React.FC<Omit<OptimizedImageProps, 'sizes'>> = (props) => (
+export const ThumbnailImage: React.FC<OptimizedImageProps> = (props) => (
   <OptimizedImage
     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
     {...props}
   />
 );
 
-export const GalleryImage: React.FC<Omit<OptimizedImageProps, 'sizes'>> = (props) => (
+export const GalleryImage: React.FC<OptimizedImageProps> = (props) => (
   <OptimizedImage
     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
     {...props}
@@ -240,16 +240,12 @@ export const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
           {...props}
         />
       )}
-      
+
       {/* High quality image */}
       <OptimizedImage
         src={src}
-        onLoadComplete={() => setHighQualityLoaded(true)}
-        className={cn(
-          'transition-opacity duration-500',
-          highQualityLoaded ? 'opacity-100' : 'opacity-0'
-        )}
         {...props}
+        onLoadComplete={() => setHighQualityLoaded(true)}
       />
     </div>
   );

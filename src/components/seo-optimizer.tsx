@@ -2,7 +2,6 @@
 
 import React from 'react';
 import Head from 'next/head';
-import { useRouter } from 'next/navigation';
 
 interface SEOOptimizerProps {
   title?: string;
@@ -31,7 +30,6 @@ export const SEOOptimizer: React.FC<SEOOptimizerProps> = ({
   noFollow = false,
   alternateLanguages = [],
 }) => {
-  const router = useRouter();
   const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
   const finalCanonicalUrl = canonicalUrl || currentUrl;
 
@@ -71,10 +69,10 @@ export const SEOOptimizer: React.FC<SEOOptimizerProps> = ({
       <meta name="description" content={finalDescription} />
       <meta name="keywords" content={finalKeywords.join(', ')} />
       <meta name="robots" content={robotsContent} />
-      
+
       {/* Canonical URL */}
       {finalCanonicalUrl && <link rel="canonical" href={finalCanonicalUrl} />}
-      
+
       {/* Open Graph Tags */}
       <meta property="og:title" content={finalTitle} />
       <meta property="og:description" content={finalDescription} />
@@ -84,7 +82,7 @@ export const SEOOptimizer: React.FC<SEOOptimizerProps> = ({
       <meta property="og:image:alt" content={finalTitle} />
       <meta property="og:site_name" content="Seattle Shaadi" />
       <meta property="og:locale" content="en_US" />
-      
+
       {/* Twitter Card Tags */}
       <meta name="twitter:card" content={twitterCard} />
       <meta name="twitter:title" content={finalTitle} />
@@ -93,29 +91,13 @@ export const SEOOptimizer: React.FC<SEOOptimizerProps> = ({
       <meta name="twitter:image:alt" content={finalTitle} />
       <meta name="twitter:site" content="@SeattleShaadi" />
       <meta name="twitter:creator" content="@SeattleShaadi" />
-      
+
       {/* Additional Meta Tags */}
       <meta name="author" content="Seattle Shaadi" />
       <meta name="publisher" content="Seattle Shaadi" />
       <meta name="copyright" content="© 2024 Seattle Shaadi. All rights reserved." />
       <meta name="language" content="English" />
-      <meta name="revisit-after" content="7 days" />
-      <meta name="distribution" content="global" />
-      <meta name="rating" content="general" />
-      
-      {/* Geographic Meta Tags */}
-      <meta name="geo.region" content="US-WA" />
-      <meta name="geo.placename" content="Seattle, Washington" />
-      <meta name="geo.position" content="47.6062;-122.3321" />
-      <meta name="ICBM" content="47.6062, -122.3321" />
-      
-      {/* Business Meta Tags */}
-      <meta name="business:contact_data:street_address" content="Seattle, WA" />
-      <meta name="business:contact_data:locality" content="Seattle" />
-      <meta name="business:contact_data:region" content="WA" />
-      <meta name="business:contact_data:postal_code" content="98101" />
-      <meta name="business:contact_data:country_name" content="USA" />
-      
+
       {/* Alternate Language Links */}
       {alternateLanguages.map((lang, index) => (
         <link
@@ -125,7 +107,7 @@ export const SEOOptimizer: React.FC<SEOOptimizerProps> = ({
           href={lang.href}
         />
       ))}
-      
+
       {/* Structured Data */}
       {structuredData.map((data, index) => (
         <script
@@ -136,43 +118,6 @@ export const SEOOptimizer: React.FC<SEOOptimizerProps> = ({
           }}
         />
       ))}
-      
-      {/* Preconnect to External Domains */}
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link rel="preconnect" href="https://www.google-analytics.com" />
-      <link rel="preconnect" href="https://www.googletagmanager.com" />
-      
-      {/* DNS Prefetch */}
-      <link rel="dns-prefetch" href="//images.unsplash.com" />
-      <link rel="dns-prefetch" href="//cdn.pixabay.com" />
-      
-      {/* Favicon and App Icons */}
-      <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png" />
-      <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
-      <link rel="manifest" href="/favicon/site.webmanifest" />
-      
-      {/* Theme Color */}
-      <meta name="theme-color" content="#e11d48" />
-      <meta name="msapplication-TileColor" content="#e11d48" />
-      
-      {/* Viewport and Mobile Optimization */}
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-      <meta name="mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-      <meta name="apple-mobile-web-app-title" content="Seattle Shaadi" />
-      
-      {/* Security Headers */}
-      <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-      <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
-      <meta httpEquiv="X-XSS-Protection" content="1; mode=block" />
-      
-      {/* Performance Hints */}
-      <link rel="preload" href="/fonts/playfair-display-v30-latin-regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
-      <link rel="preload" href="/fonts/lato-v24-latin-regular.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
     </Head>
   );
 };

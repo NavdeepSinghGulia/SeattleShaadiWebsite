@@ -4,6 +4,7 @@ import { useRef, ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { useOnScreen } from '@/hooks/use-on-screen';
 import { cn } from '@/lib/utils';
+import { useAnimation } from '@/hooks/use-animation-preferences';
 
 type AnimationType = 'slideIn' | 'royalEntrance' | 'fadeInScale' | 'goldenCurtain' | 'crownDrop' | 'royalFanfare';
 
@@ -15,6 +16,7 @@ interface AnimatedDivProps {
   animation?: AnimationType;
   staggerChildren?: boolean;
   staggerDelay?: number;
+  disableOverlay?: boolean;
 }
 
 export function AnimatedDiv({ 
@@ -24,10 +26,12 @@ export function AnimatedDiv({
   delay = 0,
   animation = 'slideIn',
   staggerChildren = false,
-  staggerDelay = 0.1
+  staggerDelay = 0.1,
+  disableOverlay = false,
 }: AnimatedDivProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isVisible = useOnScreen(ref, '-100px');
+  const { shouldAnimate, intensity } = useAnimation();
 
   const animationVariants = {
     slideIn: {
@@ -148,17 +152,19 @@ export function AnimatedDiv({
     visible: { opacity: 1 }
   };
 
+  const effectiveVariants = shouldAnimate ? (staggerChildren ? containerVariants : animationVariants[animation]) : { hidden: { opacity: 1 }, visible: { opacity: 1 } };
+
   return (
     <motion.div
       ref={ref}
       className={cn("relative", className)}
-      style={style}
-      variants={staggerChildren ? containerVariants : animationVariants[animation]}
+      style={style as any}
+      variants={effectiveVariants}
       initial="hidden"
       animate={isVisible ? "visible" : "hidden"}
     >
       {/* Golden particle trail effect for royal animations */}
-      {(animation === 'royalEntrance' || animation === 'royalFanfare') && isVisible && (
+      {!disableOverlay && (animation === 'royalEntrance' || animation === 'royalFanfare') && isVisible && shouldAnimate && intensity === 'high' && (
         <motion.div
           className="absolute inset-0 pointer-events-none"
           initial={{ opacity: 0 }}
