@@ -143,7 +143,7 @@ export default function ContactPageClient() {
               <RoyalTypography
                 variant="h1"
                 animation="crownTitle"
-                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent"
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent pb-2"
               >
                 Let's Create Magic Together
               </RoyalTypography>
@@ -226,134 +226,148 @@ export default function ContactPageClient() {
                     </div>
                     <div>
                       <p className="font-semibold">Hours</p>
-                      <p className="text-muted-foreground">Mon - Fri, 10am - 6pm</p>
+                      <p className="text-muted-foreground">Mon–Fri, 10am–6pm</p>
                     </div>
                   </motion.div>
                 </div>
               </LuxuryCard>
             </AnimatedDiv>
-            <AnimatedDiv delay={600} animation="fadeInScale">
-              <LuxuryCard variant="elegant" className="p-8" glowEffect>
-                <RoyalTypography
-                  variant="h2"
-                  animation="goldenGlow"
-                  className="text-2xl md:text-3xl font-bold mb-8 text-center"
-                  delay={0.8}
-                >
-                  Get Your Royal Quote
-                </RoyalTypography>
-                
+
+            <ErrorBoundary>
+              <LuxuryCard variant="royal" className="p-6 md:p-8" glowEffect>
                 <Form {...form}>
                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <FormField
-                control={form.control}
-                name="name"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-semibold">Full Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Your full name" {...field} className="bg-background" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-semibold">Email Address</FormLabel>
-                    <FormControl>
-                      <Input type="email" placeholder="your@email.com" {...field} className="bg-background" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-semibold">Phone Number</FormLabel>
-                    <FormControl>
-                      <Input 
-                        type="tel"
-                        {...field} 
-                        onChange={(e) => handlePhoneChange(e, field.onChange)}
-                        className="bg-background" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="eventDate"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-semibold">Prospective Event Date</FormLabel>
-                    <FormControl>
-                      <Input type="date" placeholder="mm/dd/yyyy" {...field} className="bg-background" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="guestCount"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-semibold">Estimated Guests</FormLabel>
-                    <FormControl>
-                      <Input type="number" placeholder="e.g. 150" {...field} className="bg-background" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="budget"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-semibold">Budget Range</FormLabel>
-                    <FormControl>
-                      <Input placeholder="e.g. $50,000 - $75,000" {...field} className="bg-background" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="font-semibold">Tell Us About Your Vision</FormLabel>
-                    <FormControl>
-                      <Textarea rows={5} placeholder="Describe your dream wedding..." {...field} className="bg-background" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-                    <InteractiveCtaButton 
-                      type="submit" 
-                      variant="royal" 
-                      size="lg" 
-                      className="w-full" 
-                      disabled={isLoading}
-                    >
-                      {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                      {isLoading ? 'Sending Your Royal Request...' : 'Send Royal Message'}
-                    </InteractiveCtaButton>
+                    <AnnouncementRegion />
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Name</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Your full name" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email</FormLabel>
+                          <FormControl>
+                            <Input placeholder="you@example.com" type="email" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    
+                    <FormField
+                      control={form.control}
+                      name="phone"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Phone</FormLabel>
+                          <FormControl>
+                            <Input placeholder="(555) 123-4567" {...field} onChange={(e) => handlePhoneChange(e, field.onChange)} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <FormField
+                        control={form.control}
+                        name="eventDate"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Event Date</FormLabel>
+                            <FormControl>
+                              <Input type="date" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="guestCount"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Guest Count</FormLabel>
+                            <FormControl>
+                              <Input placeholder="e.g., 250" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <FormField
+                        control={form.control}
+                        name="budget"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Budget (USD)</FormLabel>
+                            <FormControl>
+                              <Input placeholder="e.g., 20000" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={form.control}
+                        name="honeypot"
+                        render={() => (
+                          <FormItem className="hidden">
+                            <FormControl>
+                              <Input value={honeypot} onChange={(e) => setHoneypot(e.target.value)} tabIndex={-1} aria-hidden="true" />
+                            </FormControl>
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <FormField
+                      control={form.control}
+                      name="message"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Message</FormLabel>
+                          <FormControl>
+                            <Textarea placeholder="Tell us about your dream wedding..." className="min-h-[120px]" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+
+                    <div className="flex justify-center">
+                      <InteractiveCtaButton type="submit" variant="royal" size="lg" className="w-full md:w-auto">
+                        {isLoading ? (
+                          <>
+                            <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          'Get a Quote'
+                        )}
+                      </InteractiveCtaButton>
+                    </div>
                   </form>
                 </Form>
               </LuxuryCard>
-            </AnimatedDiv>
+            </ErrorBoundary>
           </div>
         </div>
       </div>

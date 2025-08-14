@@ -85,7 +85,6 @@ const nextConfig: NextConfig = {
   },
   serverExternalPackages: ['sharp'],
   reactStrictMode: true,
-  trailingSlash: true,
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,

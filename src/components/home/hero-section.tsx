@@ -150,13 +150,13 @@ export function HeroSection() {
                             </CarouselItem>
                         ))}
                     </CarouselContent>
-                    <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none transition-all duration-300 ease-out" />
-                    <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-30 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none transition-all duration-300 ease-out" />
+                    <CarouselPrevious className="absolute left-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none transition-all duration-300 ease-out" />
+                    <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none transition-all duration-300 ease-out" />
                 </Carousel>
                 
                 {/* Sanskrit Shloka - Letter by letter */}
                 <motion.div
-                    className="absolute inset-0 flex items-center justify-center z-20"
+                    className="absolute inset-0 flex items-center justify-center z-30"
                     variants={shlokaContainer}
                     initial="hidden"
                     animate={["visible", "fadeOut"]}
@@ -199,27 +199,24 @@ export function HeroSection() {
                     <CarouselContent>
                         {mobileCarouselContent.map((item, index) => (
                             <CarouselItem key={index}>
-                                <div className="relative h-[70vh] w-full">
+                                <div className="relative h-[65vh] w-full">
                                     {item.type === 'video' ? (
                                         <video
-                                            className="w-full h-full object-cover"
+                                            className="w-full h-full object-contain bg-black"
                                             autoPlay
                                             muted
                                             loop
                                             playsInline
                                             poster={item.poster}
                                             preload={item.preload || "metadata"}
-                                            onError={(e) => {
-                                                // Hide video and show fallback image
-                                                e.currentTarget.style.display = 'none';
-                                            }}
+                                            onError={(e) => { e.currentTarget.style.display = 'none'; }}
                                         >
                                             <source src={item.src} type="video/mp4" />
                                             <HeroImage
                                                 src={item.poster || "/images/hero/seattle-indian-wedding-reception-hero.jpeg"}
                                                 alt={item.alt}
                                                 fill
-                                                className="object-cover object-center"
+                                                className="object-contain object-center bg-black"
                                                 priority={index === 0}
                                             />
                                         </video>
@@ -228,47 +225,11 @@ export function HeroSection() {
                                             src={(item as any).src}
                                             alt={item.alt}
                                             fill
-                                            className="object-cover object-center transition-transform duration-500 ease-out"
+                                            className="object-contain object-center bg-black"
                                             priority={index === 0}
                                             sizes="100vw"
                                         />
                                     )}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                                    
-                                    {/* Sanskrit Shloka for Mobile */}
-                                    <div className="absolute inset-0 flex items-center justify-center z-20">
-                                        <motion.div 
-                                            className="text-center px-4 max-w-sm mx-auto"
-                                            variants={containerVariants}
-                                            initial="hidden"
-                                            animate="visible"
-                                        >
-                                            <h2 className="font-headline text-xl" style={{ lineHeight: 1.8 }}>
-                                                <div className="mb-2">
-                                                    {shlokaLine1.map((word, index) => (
-                                                        <motion.span 
-                                                            key={index} 
-                                                            variants={wordVariants} 
-                                                            className="inline-block mr-2 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg"
-                                                        >
-                                                            {word}
-                                                        </motion.span>
-                                                    ))}
-                                                </div>
-                                                <div>
-                                                    {shlokaLine2.map((word, index) => (
-                                                        <motion.span 
-                                                            key={index} 
-                                                            variants={wordVariants} 
-                                                            className="inline-block mr-2 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg"
-                                                        >
-                                                            {word}
-                                                        </motion.span>
-                                                    ))}
-                                                </div>
-                                            </h2>
-                                        </motion.div>
-                                    </div>
                                 </div>
                             </CarouselItem>
                         ))}
