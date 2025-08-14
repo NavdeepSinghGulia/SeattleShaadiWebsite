@@ -7,6 +7,7 @@ import { FloatingParticles } from '@/components/floating-particles';
 import { ShimmerEffect } from '@/components/shimmer-effect';
 import { generateMetadata } from "@/lib/seo-config";
 import { Breadcrumb, BreadcrumbStructuredData } from "@/components/breadcrumb";
+import { PageHeading } from '@/components/page-heading';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateMetadata({
@@ -55,20 +56,10 @@ export default function ServicesPage() {
             className="mb-8"
           />
           <BreadcrumbStructuredData items={[{ label: "Services" }]} />
-          <div className="text-center">
-             <AnimatedDiv animation="royalEntrance">
-              <ShimmerEffect>
-                <h1 className="font-headline text-4xl md:text-5xl font-bold bg-gradient-to-r from-amber-600 via-rose-600 to-amber-600 bg-clip-text text-transparent leading-normal drop-shadow-sm">
-                  Services Tailored for You
-                </h1>
-              </ShimmerEffect>
-            </AnimatedDiv>
-            <AnimatedDiv delay={300} animation="fadeInScale">
-              <p className="mt-4 max-w-3xl mx-auto text-lg text-muted-foreground">
-                 Whether you need us to orchestrate your entire wedding or just add the finishing touches, we have a service to fit your needs.
-              </p>
-            </AnimatedDiv>
-          </div>
+          <PageHeading 
+            title="Services Tailored for You"
+            subtitle="Whether you need us to orchestrate your entire wedding or just add the finishing touches, we have a service to fit your needs."
+          />
 
           <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
             {services.map((service, index) => (
