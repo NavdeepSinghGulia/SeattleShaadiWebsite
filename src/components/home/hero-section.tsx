@@ -45,28 +45,7 @@ const mobileCarouselContent: MediaContent[] = [
 const shlokaLine1 = "वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।".split(' ');
 const shlokaLine2 = "निर्विघ्नम् कुरु मे देव सर्वकार्येषु सर्वदा॥".split(' ');
 
-const shlokaText = "वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ। निर्विघ्नम् कुरु मे देव सर्वकार्येषु सर्वदा॥";
-const shlokaChars = shlokaText.split("");
 
-const shlokaContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.04, delayChildren: 0.8 }
-  },
-  fadeOut: {
-    opacity: 0,
-    transition: { duration: 1.8, delay: 4.8, ease: 'easeOut' }
-  }
-};
-
-const shlokaChar = {
-  hidden: { opacity: 0, y: 10, filter: 'blur(4px)' },
-  visible: {
-    opacity: 1, y: 0, filter: 'blur(0px)',
-    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] }
-  }
-};
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -113,6 +92,8 @@ export function HeroSection() {
         Autoplay({ delay: 6000, stopOnInteraction: true })
     );
 
+    const [animationState, setAnimationState] = React.useState("visible");
+
     return (
         <>
             {/* Desktop Hero Carousel */}
@@ -135,7 +116,7 @@ export function HeroSection() {
                         {mainCarouselImages.map((image, index) => (
                             <CarouselItem key={index}>
                                 <motion.div 
-                                  className="relative h-[100vh] w-full"
+                                  className="relative h-[95vh] w-full"
                                 >
                                     <HeroImage
                                         src={image.src}
@@ -154,31 +135,42 @@ export function HeroSection() {
                     <CarouselNext className="absolute right-4 top-1/2 -translate-y-1/2 z-20 h-10 w-10 sm:h-12 sm:w-12 bg-white/20 hover:bg-white/40 text-white border-none transition-all duration-300 ease-out" />
                 </Carousel>
                 
-                {/* Sanskrit Shloka - Letter by letter */}
+                {/* Spiritual Shloka Animation */}
                 <motion.div
-                    className="absolute inset-0 flex items-center justify-center z-30"
-                    variants={shlokaContainer}
+                    className="absolute bottom-24 left-1/2 -translate-x-1/2 w-full max-w-5xl text-center z-20 pointer-events-none"
+                    variants={containerVariants}
                     initial="hidden"
-                    animate={["visible", "fadeOut"]}
+                    animate={animationState}
+                    onAnimationComplete={(definition) => {
+                        if (definition === "visible") {
+                           setTimeout(() => setAnimationState("fadeOut"), 6000); 
+                        }
+                    }}
                 >
-                  <div className="text-center px-4 max-w-5xl mx-auto">
-                    <h2 className="font-headline text-2xl md:text-4xl lg:text-5xl leading-[1.8] pb-2">
-                      {shlokaChars.map((ch, i) => (
-                        <motion.span key={i} variants={shlokaChar} className="inline-block mr-1 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg">
-                          {ch}
-                        </motion.span>
-                      ))}
+                    <h2 className="font-headline text-3xl md:text-5xl" style={{ textShadow: '2px 2px 12px rgba(0,0,0,0.5)', lineHeight: 1.6 }}>
+                        <div className="mb-2">
+                            {shlokaLine1.map((word, index) => (
+                                <motion.span 
+                                  key={index} 
+                                  variants={wordVariants} 
+                                  className="inline-block mr-4 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg"
+                                >
+                                    {word}
+                                </motion.span>
+                            ))}
+                        </div>
+                        <div>
+                             {shlokaLine2.map((word, index) => (
+                                <motion.span 
+                                  key={index} 
+                                  variants={wordVariants} 
+                                  className="inline-block mr-4 bg-gradient-to-r from-amber-200 via-white to-amber-200 bg-clip-text text-transparent drop-shadow-lg"
+                                >
+                                    {word}
+                                </motion.span>
+                            ))}
+                        </div>
                     </h2>
-                    <motion.p 
-                      className="mt-4 md:mt-6 text-base md:text-lg text-white max-w-2xl mx-auto"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 2.6, duration: 1 }}
-                      style={{ textShadow: '1px 1px 8px rgba(0,0,0,0.7)' }}
-                    >
-                      "O Lord Ganesha of the curved trunk and massive body, the one whose splendor is equal to millions of suns, please bless me so that there are no obstacles in all my endeavors, always."
-                    </motion.p>
-                  </div>
                 </motion.div>
             </motion.section>
 
@@ -199,10 +191,10 @@ export function HeroSection() {
                     <CarouselContent>
                         {mobileCarouselContent.map((item, index) => (
                             <CarouselItem key={index}>
-                                <div className="relative h-[65vh] w-full">
+                                <div className="relative h-[40vh] w-full">
                                     {item.type === 'video' ? (
                                         <video
-                                            className="w-full h-full object-contain bg-black"
+                                            className="w-full h-full object-cover"
                                             autoPlay
                                             muted
                                             loop
@@ -216,7 +208,7 @@ export function HeroSection() {
                                                 src={item.poster || "/images/hero/seattle-indian-wedding-reception-hero.jpeg"}
                                                 alt={item.alt}
                                                 fill
-                                                className="object-contain object-center bg-black"
+                                                className="object-cover object-center"
                                                 priority={index === 0}
                                             />
                                         </video>
@@ -225,11 +217,28 @@ export function HeroSection() {
                                             src={(item as any).src}
                                             alt={item.alt}
                                             fill
-                                            className="object-contain object-center bg-black"
+                                            className="object-cover object-center transition-transform duration-500 ease-out"
                                             priority={index === 0}
                                             sizes="100vw"
                                         />
                                     )}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                                    
+                                    <div className="absolute inset-0 flex items-center justify-center z-20">
+                                        <motion.div 
+                                          className="text-center px-4"
+                                          initial={{ opacity: 0, y: 20 }}
+                                          animate={{ opacity: 1, y: 0 }}
+                                          transition={{ delay: 0.2 }}
+                                        >
+                                            <InteractiveCtaButton
+                                                href="/contact"
+                                                className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-3 rounded-lg font-semibold transition-all duration-300 ease-out shadow-lg"
+                                            >
+                                                Start Planning
+                                            </InteractiveCtaButton>
+                                        </motion.div>
+                                    </div>
                                 </div>
                             </CarouselItem>
                         ))}
