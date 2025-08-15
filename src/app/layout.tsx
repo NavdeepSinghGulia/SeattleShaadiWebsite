@@ -1,6 +1,7 @@
 import './globals.css';
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Inter, Playfair_Display } from 'next/font/google';
+import { enhancedSeoConfig } from '@/lib/enhanced-seo-config';
 import { AnimationProvider } from '@/hooks/use-animation-preferences';
 
 const inter = Inter({ 
@@ -9,7 +10,7 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-const playfair = Playfair_Display({ 
+const playfair = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-playfair',
@@ -17,20 +18,20 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: 'Indian Wedding Planner | Luxury Wedding Services in Seattle',
-    template: '%s | Indian Wedding Planner',
+    default: enhancedSeoConfig.defaultTitle,
+    template: `%s | ${enhancedSeoConfig.siteName}`,
   },
-  description: 'Luxury Indian wedding planning services in Seattle. Specializing in traditional Hindu, Sikh, Muslim, and South Indian wedding ceremonies with modern touches.',
-  keywords: 'Indian wedding, wedding planner, Seattle, luxury wedding, Hindu wedding, Sikh wedding, Muslim wedding, South Indian wedding',
-  authors: [{ name: 'Indian Wedding Planner Team' }],
-  creator: 'Indian Wedding Planner',
-  publisher: 'Indian Wedding Planner',
+  description: enhancedSeoConfig.defaultDescription,
+  keywords: enhancedSeoConfig.keywords.join(', '),
+  authors: [{ name: 'Seattle Shaadi Team' }],
+  creator: 'Seattle Shaadi',
+  publisher: 'Seattle Shaadi',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://indianweddingsite.com'),
+  metadataBase: new URL(enhancedSeoConfig.siteUrl),
   alternates: {
     canonical: '/',
     languages: {
@@ -38,20 +39,14 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: 'Indian Wedding Planner | Luxury Wedding Services in Seattle',
-    description: 'Luxury Indian wedding planning services in Seattle. Specializing in traditional Hindu, Sikh, Muslim, and South Indian wedding ceremonies with modern touches.',
-    url: 'https://indianweddingsite.com',
-    siteName: 'Indian Wedding Planner',
-    images: [
-      {
-        url: '/images/og-default.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Indian Wedding Planner',
-      },
-    ],
-    locale: 'en_US',
-    type: 'website',
+    ...enhancedSeoConfig.openGraph,
+    title: enhancedSeoConfig.defaultTitle,
+    description: enhancedSeoConfig.defaultDescription,
+  },
+  twitter: {
+    ...enhancedSeoConfig.twitter,
+    title: enhancedSeoConfig.defaultTitle,
+    description: enhancedSeoConfig.defaultDescription,
   },
   robots: {
     index: true,
@@ -64,69 +59,33 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Indian Wedding Planner | Luxury Wedding Services in Seattle',
-    description: 'Luxury Indian wedding planning services in Seattle. Specializing in traditional Hindu, Sikh, Muslim, and South Indian wedding ceremonies with modern touches.',
-    creator: '@IndianWeddingPlanner',
-    images: ['/images/og-default.jpg'],
-  },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
-  verification: {
-    google: 'google-site-verification-code',
-    yandex: 'yandex-verification-code',
-    yahoo: 'yahoo-verification-code',
-    other: {
-      me: ['support@indianweddingsite.com'],
-    },
-  },
-  category: 'Wedding Planning',
+};
+
+// Add viewport export to fix warnings
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: dark)', color: '#111827' },
+  ],
 };
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <head>
-        {/* Preload critical fonts */}
-        <link
-          rel="preload"
-          href="/fonts/inter-var.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/playfair-display-var.woff2"
-          as="font"
-          type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        
-        {/* Preconnect to important domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* Meta tags for better SEO and social sharing */}
-        <meta name="theme-color" content="#d4af37" />
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-        <meta name="format-detection" content="telephone=no" />
-      </head>
       <body className="min-h-screen bg-background font-sans antialiased">
         <AnimationProvider>
           {children}
         </AnimationProvider>
       </body>
     </html>
-  )
+  );
 }
 

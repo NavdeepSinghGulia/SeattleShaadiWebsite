@@ -25,12 +25,14 @@ export async function GET() {
       sitemapUrl
     });
   } catch (error) {
-    console.error('Error pinging search engines:', error);
+    // Log error but don't expose in response
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    
     return NextResponse.json(
       { 
         success: false, 
         message: 'Failed to ping search engines',
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: errorMessage
       },
       { status: 500 }
     );
