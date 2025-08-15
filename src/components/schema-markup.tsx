@@ -255,3 +255,14 @@ function generateBreadcrumbListSchema(items: Array<{ name: string; url: string }
   };
 }
 
+// For backward compatibility with existing code
+export const TraditionsSchemaMarkup = (props: any) => {
+  return (
+    <SchemaMarkup
+      type="WeddingTradition"
+      data={props.tradition}
+      url={props.url}
+    />
+  );
+};
+

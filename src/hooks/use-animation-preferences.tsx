@@ -139,3 +139,6 @@ export function useAnimationPreferences() {
   return context;
 }
 
+// For backward compatibility with existing code
+export const useAnimation = useAnimationPreferences;
+
