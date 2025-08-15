@@ -54,15 +54,17 @@ export function Footer() {
                 transition={{ delay: 0.7, staggerChildren: 0.1 }}
               >
                 {[
-                  { icon: Facebook, label: "Facebook", color: "hover:text-blue-500" },
-                  { icon: Instagram, label: "Instagram", color: "hover:text-pink-500" },
-                  { icon: Twitter, label: "Twitter", color: "hover:text-blue-400" },
-                  { icon: Linkedin, label: "LinkedIn", color: "hover:text-blue-600" }
-                ].map(({ icon: Icon, label, color }) => (
+                  { icon: Facebook, label: "Facebook", color: "hover:text-blue-500", href: "https://www.facebook.com/seattleshaadi" },
+                  { icon: Instagram, label: "Instagram", color: "hover:text-pink-500", href: "https://www.instagram.com/seattleshaadi" },
+                  { icon: Twitter, label: "Twitter", color: "hover:text-blue-400", href: "https://x.com/SeattleShaadi" },
+                  { icon: Linkedin, label: "LinkedIn", color: "hover:text-blue-600", href: "https://www.linkedin.com/company/seattle-shaadi" }
+                ].map(({ icon: Icon, label, color, href }) => (
                   <motion.div key={label} whileHover={{ scale: 1.2, rotate: 5 }} whileTap={{ scale: 0.95 }}>
                     <Link
-                      href="#"
+                      href={href}
                       aria-label={label}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className={`text-muted-foreground ${color} transition-all duration-300 hover:scale-125 p-2 block rounded-full hover:bg-primary/10`}
                     >
                       <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -103,7 +105,8 @@ export function Footer() {
                   { href: "/about", text: "About Us" },
                   { href: "/services", text: "Services" },
                   { href: "/work", text: "Our Work" },
-                  { href: "/faq", text: "FAQs" }
+                  { href: "/faq", text: "FAQs" },
+                  { href: "/careers", text: "Careers" }
                 ].map((link) => (
                   <motion.li
                     key={link.href}

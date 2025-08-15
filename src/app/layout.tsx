@@ -5,6 +5,8 @@ import { enhancedSeoConfig } from '@/lib/enhanced-seo-config';
 import { AnimationProvider } from '@/hooks/use-animation-preferences';
 import { MobileNav } from '@/components/mobile-nav';
 import Script from 'next/script';
+import { Header } from '@/components/header';
+import { Footer } from '@/components/footer';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -128,8 +130,10 @@ export default function RootLayout({
       <body className="min-h-screen bg-background font-sans antialiased">
         <AnimationProvider>
           <div className="paisley-pattern">
+            <Header />
             {children}
             <MobileNav />
+            <Footer />
           </div>
         </AnimationProvider>
       </body>
