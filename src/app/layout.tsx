@@ -1,148 +1,132 @@
-import type { Metadata } from 'next';
-// Updated global layout with enhanced SEO, performance hints, and structured data
-
-import { Playfair_Display, Lato } from 'next/font/google';
 import './globals.css';
-import { Header } from '@/components/header';
-import { Footer } from '@/components/footer';
-import { Toaster } from "@/components/ui/toaster";
-import { ThemeProvider } from "@/components/theme-provider";
-import { AnimationPreferencesProvider } from "@/hooks/use-animation-preferences";
-import { Analytics, PerformanceMonitor } from "@/components/analytics";
-import Script from 'next/script';
-import { Suspense } from 'react';
-import { ErrorReportingInitializer } from "@/components/error-reporting-initializer";
-import { siteConfig, generateMetadata } from '@/lib/seo-config';
-import { SchemaMarkup } from '@/components/schema-markup';
-import { 
-  organizationSchema, 
-  localBusinessSchema, 
-  websiteSchema, 
-  weddingPlanningServiceSchema 
-} from '@/lib/schema';
-import ErrorBoundary from '@/components/error-boundary';
-import { PageLoadingFallback } from '@/components/loading-fallback';
+import type { Metadata } from 'next';
+import { Inter, Playfair_Display } from 'next/font/google';
+import { AnimationProvider } from '@/hooks/use-animation-preferences';
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const playfair = Playfair_Display({ 
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-playfair',
+});
 
 export const metadata: Metadata = {
-  ...generateMetadata({
-    title: "Best Indian Wedding Planner in Seattle | Seattle Shaadi",
-    description: "Seattle's #1 rated Indian wedding planner with 127+ five-star reviews. Expert Hindu, Sikh & traditional Indian wedding coordination across Washington State. Free consultation available.",
-  }),
   title: {
-    default: "Best Indian Wedding Planner in Seattle | Seattle Shaadi",
-    template: `%s | Seattle Shaadi - Best Indian Wedding Planner Seattle`,
+    default: 'Indian Wedding Planner | Luxury Wedding Services in Seattle',
+    template: '%s | Indian Wedding Planner',
   },
-  icons: {
-    icon: [
-      { url: "/favicon/favicon.ico", sizes: "any" },
-      { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-    ],
-    shortcut: "/favicon/favicon.ico",
-    apple: [
-      { url: "/favicon/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
-    ],
+  description: 'Luxury Indian wedding planning services in Seattle. Specializing in traditional Hindu, Sikh, Muslim, and South Indian wedding ceremonies with modern touches.',
+  keywords: 'Indian wedding, wedding planner, Seattle, luxury wedding, Hindu wedding, Sikh wedding, Muslim wedding, South Indian wedding',
+  authors: [{ name: 'Indian Wedding Planner Team' }],
+  creator: 'Indian Wedding Planner',
+  publisher: 'Indian Wedding Planner',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
   },
-  manifest: "/favicon/site.webmanifest",
+  metadataBase: new URL('https://indianweddingsite.com'),
+  alternates: {
+    canonical: '/',
+    languages: {
+      'en-US': '/',
+    },
+  },
+  openGraph: {
+    title: 'Indian Wedding Planner | Luxury Wedding Services in Seattle',
+    description: 'Luxury Indian wedding planning services in Seattle. Specializing in traditional Hindu, Sikh, Muslim, and South Indian wedding ceremonies with modern touches.',
+    url: 'https://indianweddingsite.com',
+    siteName: 'Indian Wedding Planner',
+    images: [
+      {
+        url: '/images/og-default.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Indian Wedding Planner',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Indian Wedding Planner | Luxury Wedding Services in Seattle',
+    description: 'Luxury Indian wedding planning services in Seattle. Specializing in traditional Hindu, Sikh, Muslim, and South Indian wedding ceremonies with modern touches.',
+    creator: '@IndianWeddingPlanner',
+    images: ['/images/og-default.jpg'],
+  },
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 5,
+  },
+  verification: {
+    google: 'google-site-verification-code',
+    yandex: 'yandex-verification-code',
+    yahoo: 'yahoo-verification-code',
+    other: {
+      me: ['support@indianweddingsite.com'],
+    },
+  },
+  category: 'Wedding Planning',
 };
-
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair-display',
-  display: 'swap',
-  weight: ['400', '700'],
-});
-
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-lato',
-  display: 'swap',
-});
-
-// Schema markup is now imported from /lib/schema.ts
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <html lang="en" className={`${playfairDisplay.variable} ${lato.variable} !scroll-smooth`} suppressHydrationWarning>
-       <head>
-          {/* Preload critical resources for better performance */}
-          <link rel="preload" href="/images/seo/shaadi-squad-og-image.png" as="image" type="image/png" />
-          <link rel="preload" href="/images/branding/logos/shaadi-squad-high-resolution-logo-transparent.png" as="image" type="image/png" />
-          <link rel="dns-prefetch" href="//fonts.googleapis.com" />
-          <link rel="dns-prefetch" href="//www.googletagmanager.com" />
-          <link rel="dns-prefetch" href="//www.google-analytics.com" />
-          
-          {/* Comprehensive Schema Markup */}
-          <SchemaMarkup 
-            schema={[
-              organizationSchema,
-              localBusinessSchema,
-              websiteSchema,
-              weddingPlanningServiceSchema
-            ]} 
-            id="global-schema"
-          />
-          
-          {/* Google Analytics */}
-          <Script
-            async
-            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
-          />
-          <Script
-            id="ga-init"
-            dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}', {
-                  page_path: window.location.pathname,
-                });
-              `,
-            }}
-          />
+    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        {/* Preload critical fonts */}
+        <link
+          rel="preload"
+          href="/fonts/inter-var.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/playfair-display-var.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        
+        {/* Preconnect to important domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Meta tags for better SEO and social sharing */}
+        <meta name="theme-color" content="#d4af37" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="format-detection" content="telephone=no" />
       </head>
-      <body className="font-body antialiased bg-background overflow-x-hidden">
-        <ErrorBoundary>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <AnimationPreferencesProvider>
-              <ErrorReportingInitializer />
-              <Suspense fallback={null}>
-                <Analytics />
-              </Suspense>
-              <PerformanceMonitor />
-              
-              <ErrorBoundary>
-                <Header />
-              </ErrorBoundary>
-              
-              <main>
-                <ErrorBoundary>
-                  <Suspense fallback={<PageLoadingFallback />}>
-                    {children}
-                  </Suspense>
-                </ErrorBoundary>
-              </main>
-              
-              <ErrorBoundary>
-                <Footer />
-              </ErrorBoundary>
-              
-              <Toaster />
-            </AnimationPreferencesProvider>
-          </ThemeProvider>
-        </ErrorBoundary>
+      <body className="min-h-screen bg-background font-sans antialiased">
+        <AnimationProvider>
+          {children}
+        </AnimationProvider>
       </body>
     </html>
-  );
+  )
 }
+
