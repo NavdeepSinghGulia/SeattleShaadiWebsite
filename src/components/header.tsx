@@ -31,7 +31,7 @@ function Logo({ className }: { className?: string }) {
     <div className={cn("relative group", className)}>
       <ThumbnailImage
         src="/images/branding/logos/shaadi-squad-main-logo.webp"
-        alt="Seattle Shaadi Logo"
+        alt="Seattle Shaadi - Indian Wedding Planner Logo"
         width={150}
         height={50}
         className="h-12 w-auto md:h-16 transition-all duration-300 ease-out group-hover:scale-105 filter drop-shadow-sm"
@@ -98,7 +98,7 @@ export function Header() {
               {link.label}
             </Link>
           ))}
-          <Button asChild>
+          <Button asChild className="royal-button">
             <Link href="/contact">Get a Quote</Link>
           </Button>
         </nav>
@@ -159,7 +159,7 @@ export function Header() {
 
               <div className="mt-auto">
                 <SheetClose asChild>
-                  <Button asChild className="w-full">
+                  <Button asChild className="w-full royal-button">
                     <Link href="/contact">
                       Get a Quote
                     </Link>

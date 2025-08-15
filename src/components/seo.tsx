@@ -53,7 +53,7 @@ export function Seo({
   structuredData,
   additionalMetaTags = [],
 }: SeoProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://indianweddingsite.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://seattleshaadi.com';
   const fullCanonical = canonical ? `${baseUrl}${canonical}` : baseUrl;
   
   // Default OpenGraph data if not provided
@@ -62,13 +62,13 @@ export function Seo({
     description: description,
     url: fullCanonical,
     type: 'website',
-    siteName: 'Indian Wedding Planner',
+    siteName: 'Seattle Shaadi',
     images: [
       {
-        url: `${baseUrl}/images/og-default.jpg`,
+        url: `${baseUrl}/images/branding/shaadi-squad-og-image.png`,
         width: 1200,
         height: 630,
-        alt: 'Indian Wedding Planner',
+        alt: 'Seattle Shaadi',
       },
     ],
   };
@@ -83,7 +83,7 @@ export function Seo({
   // Default Twitter data if not provided
   const defaultTwitter = {
     card: 'summary_large_image' as const,
-    site: '@IndianWeddingPlanner',
+    site: '@SeattleShaadi',
     title: title,
     description: description,
     image: mergedOpenGraph.images?.[0]?.url,

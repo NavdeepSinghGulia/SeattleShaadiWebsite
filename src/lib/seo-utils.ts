@@ -8,7 +8,7 @@
  * @param baseUrl - The base URL of the site
  * @returns Full canonical URL
  */
-export function getCanonicalUrl(path: string, baseUrl: string = 'https://indianweddingsite.com'): string {
+export function getCanonicalUrl(path: string, baseUrl: string = 'https://seattleshaadi.com'): string {
   // Remove trailing slash from baseUrl if present
   const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
   
