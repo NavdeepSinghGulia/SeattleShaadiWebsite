@@ -1,247 +1,193 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
-import Image, { ImageProps } from 'next/image';
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { cn } from '@/lib/utils';
-import { useIntersectionObserver } from '@/hooks/use-performance';
+import { motion } from 'framer-motion';
 
-interface OptimizedImageProps extends Omit<ImageProps, 'onLoad' | 'onError'> {
-  fallbackSrc?: string;
-  loadingClassName?: string;
-  errorClassName?: string;
-  containerClassName?: string;
-  lazy?: boolean;
-  showLoadingSpinner?: boolean;
-  onLoadComplete?: () => void;
-  onError?: (error: Error) => void;
+interface OptimizedImageProps {
+  src: string;
+  alt: string;
+  width?: number;
+  height?: number;
+  className?: string;
+  priority?: boolean;
+  quality?: number;
+  fill?: boolean;
+  sizes?: string;
+  loading?: 'lazy' | 'eager';
+  blurEffect?: boolean;
+  fadeIn?: boolean;
+  hoverEffect?: 'zoom' | 'glow' | 'none';
+  aspectRatio?: string;
+  objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
+  objectPosition?: string;
+  placeholder?: 'blur' | 'empty';
+  blurDataURL?: string;
+  decorativeBorder?: boolean;
 }
 
-const OptimizedImage: React.FC<OptimizedImageProps> = ({
+export function OptimizedImage({
   src,
   alt,
-  fallbackSrc = '/images/placeholder.jpg',
+  width,
+  height,
   className,
-  loadingClassName,
-  errorClassName,
-  containerClassName,
-  lazy = true,
-  showLoadingSpinner = true,
-  onLoadComplete,
-  onError,
-  ...props
-}) => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [hasError, setHasError] = useState(false);
-  const [currentSrc, setCurrentSrc] = useState(src);
-  
-  const { targetRef, hasIntersected } = useIntersectionObserver({
-    threshold: 0.1,
-    rootMargin: '50px',
-  }) as unknown as { targetRef: React.RefObject<HTMLDivElement>; hasIntersected: boolean };
+  priority = false,
+  quality = 85,
+  fill = false,
+  sizes = '(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw',
+  loading = 'lazy',
+  blurEffect = true,
+  fadeIn = true,
+  hoverEffect = 'none',
+  aspectRatio = 'aspect-square',
+  objectFit = 'cover',
+  objectPosition = 'center',
+  placeholder = 'blur',
+  blurDataURL,
+  decorativeBorder = false,
+}: OptimizedImageProps) {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [generatedBlurDataURL, setGeneratedBlurDataURL] = useState<string | undefined>(blurDataURL);
 
-  const handleLoad = useCallback(() => {
-    setIsLoading(false);
-    setHasError(false);
-    onLoadComplete?.();
-  }, [onLoadComplete]);
-
-  const handleError = useCallback(() => {
-    setIsLoading(false);
-    setHasError(true);
-    
-    if (fallbackSrc && currentSrc !== fallbackSrc) {
-      setCurrentSrc(fallbackSrc);
-      setHasError(false);
-      setIsLoading(true);
-    } else {
-      const error = new Error(`Failed to load image: ${src}`);
-      onError?.(error);
+  // Generate a placeholder blur data URL if not provided
+  useEffect(() => {
+    if (!blurDataURL && placeholder === 'blur') {
+      // Simple SVG-based blur placeholder with a gold gradient
+      const svgString = `
+        <svg width="400" height="400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop stop-color="#f5e7c1" offset="0%"/>
+              <stop stop-color="#d4af37" offset="50%"/>
+              <stop stop-color="#f5e7c1" offset="100%"/>
+            </linearGradient>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#g)"/>
+          <filter id="b" x="0" y="0" width="100%" height="100%">
+            <feGaussianBlur stdDeviation="20"/>
+          </filter>
+          <rect width="100%" height="100%" fill="url(#g)" filter="url(#b)"/>
+        </svg>
+      `;
+      const encodedSvg = Buffer.from(svgString).toString('base64');
+      setGeneratedBlurDataURL(`data:image/svg+xml;base64,${encodedSvg}`);
     }
-  }, [src, fallbackSrc, currentSrc, onError]);
+  }, [blurDataURL, placeholder]);
 
-  const shouldRender = !lazy || hasIntersected;
+  // Determine object fit class
+  const objectFitClass = 
+    objectFit === 'cover' ? 'object-cover' :
+    objectFit === 'contain' ? 'object-contain' :
+    objectFit === 'fill' ? 'object-fill' :
+    objectFit === 'none' ? 'object-none' :
+    'object-scale-down';
 
-  const wrapperFillClasses = (props as any).fill ? 'h-full w-full' : '';
+  // Determine hover effect classes
+  const hoverEffectClass = 
+    hoverEffect === 'zoom' ? 'group-hover:scale-110 transition-transform duration-500' :
+    hoverEffect === 'glow' ? 'transition-all duration-300' :
+    '';
 
   return (
     <div 
-      ref={targetRef}
       className={cn(
         'relative overflow-hidden',
-        wrapperFillClasses,
-        containerClassName
+        !fill && aspectRatio,
+        hoverEffect === 'zoom' && 'group',
+        decorativeBorder && 'border-2 border-primary/20 p-1 rounded-lg',
+        className
       )}
     >
-      {shouldRender && (
-        <>
-          {isLoading && showLoadingSpinner && (
-            <div className={cn(
-              'absolute inset-0 flex items-center justify-center bg-gray-100',
-              loadingClassName
-            )}>
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-rose-600" />
-            </div>
-          )}
-
-          {hasError && (
-            <div className={cn(
-              'absolute inset-0 flex items-center justify-center bg-gray-100 text-gray-500',
-              errorClassName
-            )}>
-              <div className="text-center">
-                <svg
-                  className="mx-auto h-12 w-12 text-gray-400"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                <p className="mt-2 text-sm">Failed to load image</p>
-              </div>
-            </div>
-          )}
-
-          <Image
-            src={currentSrc}
-            alt={alt}
-            onLoad={handleLoad}
-            onError={handleError}
-            className={cn(
-              'transition-opacity duration-300',
-              isLoading ? 'opacity-0' : 'opacity-100',
-              hasError && 'opacity-0',
-              className
-            )}
-            {...props}
-          />
-        </>
+      {hoverEffect === 'glow' && (
+        <div className="absolute inset-0 opacity-0 bg-primary/20 transition-opacity duration-300 group-hover:opacity-100 z-10" />
       )}
+      
+      <motion.div
+        initial={fadeIn ? { opacity: 0 } : { opacity: 1 }}
+        animate={isLoaded ? { opacity: 1 } : {}}
+        transition={{ duration: 0.5 }}
+        className="relative h-full w-full"
+      >
+        <Image
+          src={src}
+          alt={alt}
+          width={!fill ? width : undefined}
+          height={!fill ? height : undefined}
+          className={cn(
+            objectFitClass,
+            objectPosition && `object-${objectPosition}`,
+            hoverEffectClass,
+            'transition-opacity duration-500',
+            !isLoaded && blurEffect ? 'opacity-0' : 'opacity-100',
+          )}
+          style={{ objectPosition }}
+          quality={quality}
+          priority={priority}
+          fill={fill}
+          sizes={sizes}
+          loading={loading}
+          placeholder={placeholder === 'blur' ? 'blur' : 'empty'}
+          blurDataURL={generatedBlurDataURL}
+          onLoad={() => setIsLoaded(true)}
+        />
+      </motion.div>
 
-      {!shouldRender && (
-        <div className={cn(
-          'w-full h-full bg-gray-200 animate-pulse',
-          className
-        )} />
+      {/* Decorative elements for luxury look */}
+      {decorativeBorder && (
+        <>
+          <div className="absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 border-primary/40" />
+          <div className="absolute top-0 right-0 w-4 h-4 border-t-2 border-r-2 border-primary/40" />
+          <div className="absolute bottom-0 left-0 w-4 h-4 border-b-2 border-l-2 border-primary/40" />
+          <div className="absolute bottom-0 right-0 w-4 h-4 border-b-2 border-r-2 border-primary/40" />
+        </>
       )}
     </div>
   );
-};
-
-export const HeroImage: React.FC<OptimizedImageProps> = (props) => (
-  <OptimizedImage
-    priority
-    sizes="100vw"
-    lazy={false}
-    {...props}
-  />
-);
-
-export const ThumbnailImage: React.FC<OptimizedImageProps> = (props) => (
-  <OptimizedImage
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-    {...props}
-  />
-);
-
-export const GalleryImage: React.FC<OptimizedImageProps> = (props) => (
-  <OptimizedImage
-    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-    {...props}
-  />
-);
-
-interface ImageGalleryProps {
-  images: Array<{
-    src: string;
-    alt: string;
-    caption?: string;
-  }>;
-  className?: string;
-  imageClassName?: string;
-  columns?: number;
 }
 
-export const ImageGallery: React.FC<ImageGalleryProps> = ({
+export function OptimizedImageGallery({
   images,
   className,
   imageClassName,
   columns = 3,
-}) => {
-  const [loadedImages, setLoadedImages] = useState(new Set<number>());
+  gap = 4,
+  aspectRatio = 'aspect-square',
+  hoverEffect = 'zoom',
+}: {
+  images: { src: string; alt: string; width?: number; height?: number }[];
+  className?: string;
+  imageClassName?: string;
+  columns?: 1 | 2 | 3 | 4;
+  gap?: 2 | 4 | 6 | 8;
+  aspectRatio?: string;
+  hoverEffect?: 'zoom' | 'glow' | 'none';
+}) {
+  const gridCols = 
+    columns === 1 ? 'grid-cols-1' :
+    columns === 2 ? 'grid-cols-1 md:grid-cols-2' :
+    columns === 3 ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3' :
+    'grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4';
 
-  const handleImageLoad = useCallback((index: number) => {
-    setLoadedImages(prev => new Set(prev).add(index));
-  }, []);
+  const gapClass = `gap-${gap}`;
 
   return (
-    <div className={cn(
-      'grid gap-4',
-      columns === 2 && 'grid-cols-1 md:grid-cols-2',
-      columns === 3 && 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3',
-      columns === 4 && 'grid-cols-1 md:grid-cols-2 lg:grid-cols-4',
-      className
-    )}>
+    <div className={cn('grid', gridCols, gapClass, className)}>
       {images.map((image, index) => (
-        <div key={index} className="relative group">
-          <GalleryImage
-            src={image.src}
-            alt={image.alt}
-            fill
-            className={cn(
-              'object-cover rounded-lg transition-transform duration-300 group-hover:scale-105',
-              imageClassName
-            )}
-            containerClassName="aspect-square"
-            onLoadComplete={() => handleImageLoad(index)}
-          />
-          {image.caption && (
-            <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-50 text-white p-2 rounded-b-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <p className="text-sm">{image.caption}</p>
-            </div>
-          )}
-        </div>
+        <OptimizedImage
+          key={index}
+          src={image.src}
+          alt={image.alt}
+          width={image.width}
+          height={image.height}
+          className={cn('w-full h-full', imageClassName)}
+          aspectRatio={aspectRatio}
+          hoverEffect={hoverEffect}
+          decorativeBorder={true}
+        />
       ))}
     </div>
   );
-};
-
-interface ProgressiveImageProps extends OptimizedImageProps {
-  lowQualitySrc?: string;
 }
-
-export const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
-  src,
-  lowQualitySrc,
-  ...props
-}) => {
-  const [highQualityLoaded, setHighQualityLoaded] = useState(false);
-
-  return (
-    <div className="relative">
-      {lowQualitySrc && !highQualityLoaded && (
-        <OptimizedImage
-          src={lowQualitySrc}
-          className="absolute inset-0 filter blur-sm"
-          lazy={false}
-          showLoadingSpinner={false}
-          {...props}
-        />
-      )}
-
-      <OptimizedImage
-        src={src}
-        {...props}
-        onLoadComplete={() => setHighQualityLoaded(true)}
-      />
-    </div>
-  );
-};
-
-export default OptimizedImage;
 
