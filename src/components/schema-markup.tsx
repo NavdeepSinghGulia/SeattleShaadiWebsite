@@ -1,77 +1,71 @@
 'use client';
 
 import React from 'react';
-import Head from 'next/head';
 
-interface WeddingTraditionSchema {
+interface WeddingTradition {
   name: string;
   description: string;
-  image?: string;
   culture: string;
   significance: string;
+  imageUrl?: string;
   modernAdaptations?: string;
 }
 
-interface WeddingServiceSchema {
-  name: string;
-  description: string;
-  image?: string;
-  price?: {
-    amount: number;
-    currency: string;
-  };
-  url?: string;
+interface FAQItem {
+  question: string;
+  answer: string;
 }
 
 interface SchemaMarkupProps {
-  type: 'WeddingTradition' | 'WeddingService' | 'WeddingPlanner' | 'FAQPage' | 'Article';
+  type: 'WeddingTradition' | 'FAQ' | 'LocalBusiness' | 'WebPage' | 'Article' | 'BreadcrumbList';
   data: any;
   url?: string;
 }
 
-export function SchemaMarkup({ type, data, url }: SchemaMarkupProps) {
+export function SchemaMarkup({ type, data, url = '' }: SchemaMarkupProps) {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://indianweddingsite.com';
   const fullUrl = url ? `${baseUrl}${url}` : baseUrl;
-
-  let schema;
-
+  
+  let schemaData;
+  
   switch (type) {
     case 'WeddingTradition':
-      schema = generateWeddingTraditionSchema(data as WeddingTraditionSchema, fullUrl);
+      schemaData = generateWeddingTraditionSchema(data as WeddingTradition, fullUrl);
       break;
-    case 'WeddingService':
-      schema = generateWeddingServiceSchema(data as WeddingServiceSchema, fullUrl);
+    case 'FAQ':
+      schemaData = generateFAQSchema(data as FAQItem[]);
       break;
-    case 'WeddingPlanner':
-      schema = generateWeddingPlannerSchema(data, fullUrl);
+    case 'LocalBusiness':
+      schemaData = generateLocalBusinessSchema(data, fullUrl);
       break;
-    case 'FAQPage':
-      schema = generateFAQPageSchema(data, fullUrl);
+    case 'WebPage':
+      schemaData = generateWebPageSchema(data, fullUrl);
       break;
     case 'Article':
-      schema = generateArticleSchema(data, fullUrl);
+      schemaData = generateArticleSchema(data, fullUrl);
+      break;
+    case 'BreadcrumbList':
+      schemaData = generateBreadcrumbListSchema(data, baseUrl);
       break;
     default:
-      schema = {};
+      schemaData = {};
   }
-
+  
   return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-      />
-    </Head>
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
+    />
   );
 }
 
-function generateWeddingTraditionSchema(tradition: WeddingTraditionSchema, url: string) {
+function generateWeddingTraditionSchema(tradition: WeddingTradition, url: string): Record<string, any> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     'headline': `${tradition.name} - Indian Wedding Tradition`,
     'description': tradition.description,
-    'image': tradition.image ? tradition.image : `${url.split('/').slice(0, -1).join('/')}/images/traditions/default.jpg`,
+    'image': tradition.imageUrl || `${url.split('/').slice(0, -1).join('/')}/images/traditions/default.jpg`,
     'author': {
       '@type': 'Organization',
       'name': 'Indian Wedding Planner',
@@ -116,40 +110,22 @@ function generateWeddingTraditionSchema(tradition: WeddingTraditionSchema, url: 
   };
 }
 
-function generateWeddingServiceSchema(service: WeddingServiceSchema, url: string) {
+function generateFAQSchema(questions: FAQItem[]): Record<string, any> {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Service',
-    'name': service.name,
-    'description': service.description,
-    'provider': {
-      '@type': 'LocalBusiness',
-      'name': 'Indian Wedding Planner',
-      'image': `${url.split('/').slice(0, 3).join('/')}/logo.png`,
-      'address': {
-        '@type': 'PostalAddress',
-        'addressLocality': 'Seattle',
-        'addressRegion': 'WA',
-        'addressCountry': 'US'
-      },
-      'telephone': '+1-206-555-0100',
-      'priceRange': '$$'
-    },
-    'offers': {
-      '@type': 'Offer',
-      'price': service.price?.amount || '',
-      'priceCurrency': service.price?.currency || 'USD',
-      'url': service.url || url
-    },
-    'areaServed': {
-      '@type': 'City',
-      'name': 'Seattle'
-    },
-    'serviceType': 'Wedding Planning'
+    '@type': 'FAQPage',
+    'mainEntity': questions.map(item => ({
+      '@type': 'Question',
+      'name': item.question,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': item.answer
+      }
+    }))
   };
 }
 
-function generateWeddingPlannerSchema(data: any, url: string) {
+function generateLocalBusinessSchema(data: any, url: string): Record<string, any> {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
@@ -196,31 +172,58 @@ function generateWeddingPlannerSchema(data: any, url: string) {
   };
 }
 
-function generateFAQPageSchema(data: { questions: { question: string; answer: string }[] }, url: string) {
+function generateWebPageSchema(data: any, url: string): Record<string, any> {
   return {
     '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': data.questions.map(item => ({
-      '@type': 'Question',
-      'name': item.question,
-      'acceptedAnswer': {
-        '@type': 'Answer',
-        'text': item.answer
-      }
-    }))
+    '@type': 'WebPage',
+    'name': data.title || 'Indian Wedding Planner',
+    'description': data.description || 'Luxury Indian wedding planning services in Seattle.',
+    'url': url,
+    'isPartOf': {
+      '@type': 'WebSite',
+      'name': 'Indian Wedding Planner',
+      'url': url.split('/').slice(0, 3).join('/')
+    },
+    'about': {
+      '@type': 'Thing',
+      'name': 'Indian Wedding Planning'
+    },
+    'primaryImageOfPage': {
+      '@type': 'ImageObject',
+      'url': data.image || `${url.split('/').slice(0, 3).join('/')}/images/og-default.jpg`
+    },
+    'datePublished': data.datePublished || new Date().toISOString(),
+    'dateModified': data.dateModified || new Date().toISOString(),
+    'breadcrumb': {
+      '@type': 'BreadcrumbList',
+      'itemListElement': [
+        {
+          '@type': 'ListItem',
+          'position': 1,
+          'name': 'Home',
+          'item': url.split('/').slice(0, 3).join('/')
+        },
+        {
+          '@type': 'ListItem',
+          'position': 2,
+          'name': data.breadcrumb || 'Page',
+          'item': url
+        }
+      ]
+    }
   };
 }
 
-function generateArticleSchema(data: any, url: string) {
+function generateArticleSchema(data: any, url: string): Record<string, any> {
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    'headline': data.title,
-    'description': data.description,
-    'image': data.image || `${url.split('/').slice(0, 3).join('/')}/images/blog/default.jpg`,
+    'headline': data.title || 'Indian Wedding Planning Article',
+    'description': data.description || 'Information about Indian wedding planning and traditions.',
+    'image': data.image || `${url.split('/').slice(0, 3).join('/')}/images/og-default.jpg`,
     'author': {
       '@type': 'Person',
-      'name': data.author?.name || 'Indian Wedding Planner Team'
+      'name': data.author || 'Indian Wedding Planner Team'
     },
     'publisher': {
       '@type': 'Organization',
@@ -239,139 +242,16 @@ function generateArticleSchema(data: any, url: string) {
   };
 }
 
-export function TraditionsSchemaMarkup({ traditions }: { traditions: Record<string, any[]> }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://indianweddingsite.com';
-  const traditionsUrl = `${baseUrl}/traditions`;
-  
-  // Create an array of all traditions
-  const allTraditions = Object.entries(traditions).flatMap(([culture, items]) => 
-    items.map(tradition => ({
-      ...tradition,
-      culture: culture === 'hindu' ? 'Hindu' : 
-               culture === 'sikh' ? 'Sikh' : 
-               culture === 'muslim' ? 'Muslim' : 
-               'South Indian'
+function generateBreadcrumbListSchema(items: Array<{ name: string; url: string }>, baseUrl: string): Record<string, any> {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    'itemListElement': items.map((item, index) => ({
+      '@type': 'ListItem',
+      'position': index + 1,
+      'name': item.name,
+      'item': item.url.startsWith('http') ? item.url : `${baseUrl}${item.url}`
     }))
-  );
-  
-  // Generate schema for each tradition
-  const traditionSchemas = allTraditions.map(tradition => ({
-    '@type': 'Article',
-    'headline': `${tradition.name} - Indian Wedding Tradition`,
-    'description': tradition.description,
-    'image': tradition.imageUrl || `${baseUrl}/images/traditions/default.jpg`,
-    'author': {
-      '@type': 'Organization',
-      'name': 'Indian Wedding Planner',
-      'url': baseUrl
-    },
-    'publisher': {
-      '@type': 'Organization',
-      'name': 'Indian Wedding Planner',
-      'logo': {
-        '@type': 'ImageObject',
-        'url': `${baseUrl}/logo.png`
-      }
-    },
-    'mainEntityOfPage': {
-      '@type': 'WebPage',
-      '@id': `${traditionsUrl}#${tradition.id}`
-    },
-    'datePublished': new Date().toISOString().split('T')[0],
-    'dateModified': new Date().toISOString().split('T')[0],
-    'about': {
-      '@type': 'Thing',
-      'name': tradition.name,
-      'description': tradition.description,
-      'additionalProperty': [
-        {
-          '@type': 'PropertyValue',
-          'name': 'Culture',
-          'value': tradition.culture
-        },
-        {
-          '@type': 'PropertyValue',
-          'name': 'Significance',
-          'value': tradition.significance
-        },
-        {
-          '@type': 'PropertyValue',
-          'name': 'Modern Adaptations',
-          'value': tradition.modernAdaptations
-        }
-      ]
-    }
-  }));
-  
-  // Generate FAQ schema from the FAQ section
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    'mainEntity': [
-      {
-        '@type': 'Question',
-        'name': 'Can we blend traditions from different Indian cultures?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Absolutely! Many modern Indian weddings incorporate elements from various traditions, especially in intercultural marriages. Our planners can help you create a meaningful ceremony that honors both families\' backgrounds.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'How can we make traditional ceremonies more accessible to non-Indian guests?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'We recommend creating custom ceremony programs that explain the significance of each ritual, having a bilingual officiant who can provide brief explanations, or incorporating a narrator who guides guests through the ceremony.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'How long do traditional Indian wedding ceremonies typically last?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Traditional ceremonies can range from 1-3 hours depending on the cultural background and specific rituals included. Many couples today choose to streamline certain elements while preserving the most meaningful traditions.'
-        }
-      },
-      {
-        '@type': 'Question',
-        'name': 'Can we incorporate Western elements alongside traditional Indian customs?',
-        'acceptedAnswer': {
-          '@type': 'Answer',
-          'text': 'Yes! Many couples successfully blend Indian traditions with Western elements like a white dress reception, first dance, cake cutting, or bouquet toss. Our planners specialize in creating harmonious fusion celebrations.'
-        }
-      }
-    ]
   };
-  
-  // Combine all schemas
-  const combinedSchema = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'WebPage',
-        '@id': traditionsUrl,
-        'url': traditionsUrl,
-        'name': 'Indian Wedding Traditions & Customs',
-        'description': 'Explore the rich cultural heritage of Indian wedding traditions. Learn about Hindu, Sikh, Muslim, and South Indian wedding rituals and their modern adaptations.',
-        'isPartOf': {
-          '@type': 'WebSite',
-          'url': baseUrl,
-          'name': 'Indian Wedding Planner',
-          'description': 'Luxury Indian wedding planning services in Seattle.'
-        }
-      },
-      ...traditionSchemas,
-      faqSchema
-    ]
-  };
-
-  return (
-    <Head>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(combinedSchema) }}
-      />
-    </Head>
-  );
 }
 

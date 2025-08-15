@@ -1,105 +1,127 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 
-type AnimationIntensity = 'low' | 'medium' | 'high' | 'luxury';
+type AnimationPreferences = {
+  reducedMotion: boolean;
+  highPerformance: boolean;
+  prefersReducedData: boolean;
+};
 
-interface AnimationPreferences {
-  shouldAnimate: boolean;
-  shouldShowParticles: boolean;
-  intensity: AnimationIntensity;
-  setAnimationEnabled: (enabled: boolean) => void;
-  setParticlesEnabled: (enabled: boolean) => void;
-  setIntensity: (intensity: AnimationIntensity) => void;
-}
+type AnimationContextType = {
+  preferences: AnimationPreferences;
+  setReducedMotion: (value: boolean) => void;
+  setHighPerformance: (value: boolean) => void;
+  setPrefersReducedData: (value: boolean) => void;
+  toggleReducedMotion: () => void;
+  toggleHighPerformance: () => void;
+  togglePrefersReducedData: () => void;
+};
 
-const AnimationContext = createContext<AnimationPreferences>({
-  shouldAnimate: true,
-  shouldShowParticles: true,
-  intensity: 'medium',
-  setAnimationEnabled: () => {},
-  setParticlesEnabled: () => {},
-  setIntensity: () => {},
-});
+const defaultPreferences: AnimationPreferences = {
+  reducedMotion: false,
+  highPerformance: true,
+  prefersReducedData: false,
+};
 
-export function AnimationProvider({ children }: { children: ReactNode }) {
-  const [shouldAnimate, setShouldAnimate] = useState(true);
-  const [shouldShowParticles, setShouldShowParticles] = useState(true);
-  const [intensity, setIntensity] = useState<AnimationIntensity>('medium');
-  const [isClient, setIsClient] = useState(false);
+const AnimationContext = createContext<AnimationContextType | undefined>(undefined);
 
+export function AnimationProvider({ children }: { children: React.ReactNode }) {
+  const [preferences, setPreferences] = useState<AnimationPreferences>(defaultPreferences);
+
+  // Check for user's system preferences on initial load
   useEffect(() => {
-    setIsClient(true);
-    
-    // Check for saved preferences
-    const savedAnimationPref = localStorage.getItem('animation-enabled');
-    const savedParticlesPref = localStorage.getItem('particles-enabled');
-    const savedIntensityPref = localStorage.getItem('animation-intensity');
-    
-    if (savedAnimationPref !== null) {
-      setShouldAnimate(savedAnimationPref === 'true');
-    }
-    
-    if (savedParticlesPref !== null) {
-      setShouldShowParticles(savedParticlesPref === 'true');
-    }
-    
-    if (savedIntensityPref !== null && 
-        (savedIntensityPref === 'low' || 
-         savedIntensityPref === 'medium' || 
-         savedIntensityPref === 'high' ||
-         savedIntensityPref === 'luxury')) {
-      setIntensity(savedIntensityPref as AnimationIntensity);
-    } else {
-      // Default to luxury for a more opulent experience
-      setIntensity('luxury');
-      localStorage.setItem('animation-intensity', 'luxury');
-    }
-    
-    // Check for reduced motion preference
+    // Check for prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (prefersReducedMotion) {
-      setShouldAnimate(false);
-      setShouldShowParticles(false);
-      localStorage.setItem('animation-enabled', 'false');
-      localStorage.setItem('particles-enabled', 'false');
-    }
-  }, []);
-
-  // Only enable animations on client-side
-  const effectiveShouldAnimate = isClient && shouldAnimate;
-  const effectiveShouldShowParticles = isClient && shouldAnimate && shouldShowParticles;
-
-  const setAnimationEnabled = (enabled: boolean) => {
-    setShouldAnimate(enabled);
-    localStorage.setItem('animation-enabled', String(enabled));
     
-    // If animations are disabled, also disable particles
-    if (!enabled) {
-      setShouldShowParticles(false);
-      localStorage.setItem('particles-enabled', 'false');
+    // Check for saved preferences in localStorage
+    const savedPreferences = localStorage.getItem('animationPreferences');
+    
+    if (savedPreferences) {
+      setPreferences(JSON.parse(savedPreferences));
+    } else {
+      // If no saved preferences, respect system preference for reduced motion
+      setPreferences(prev => ({
+        ...prev,
+        reducedMotion: prefersReducedMotion
+      }));
     }
+    
+    // Listen for changes in system preference
+    const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    
+    const handleReducedMotionChange = (e: MediaQueryListEvent) => {
+      setPreferences(prev => ({
+        ...prev,
+        reducedMotion: e.matches
+      }));
+    };
+    
+    reducedMotionQuery.addEventListener('change', handleReducedMotionChange);
+    
+    return () => {
+      reducedMotionQuery.removeEventListener('change', handleReducedMotionChange);
+    };
+  }, []);
+  
+  // Save preferences to localStorage when they change
+  useEffect(() => {
+    localStorage.setItem('animationPreferences', JSON.stringify(preferences));
+    
+    // Apply classes to document based on preferences
+    if (preferences.reducedMotion) {
+      document.documentElement.classList.add('reduce-motion');
+    } else {
+      document.documentElement.classList.remove('reduce-motion');
+    }
+    
+    if (preferences.highPerformance) {
+      document.documentElement.classList.add('high-performance');
+    } else {
+      document.documentElement.classList.remove('high-performance');
+    }
+    
+    if (preferences.prefersReducedData) {
+      document.documentElement.classList.add('reduced-data');
+    } else {
+      document.documentElement.classList.remove('reduced-data');
+    }
+  }, [preferences]);
+
+  const setReducedMotion = (value: boolean) => {
+    setPreferences(prev => ({ ...prev, reducedMotion: value }));
   };
 
-  const setParticlesEnabled = (enabled: boolean) => {
-    setShouldShowParticles(enabled);
-    localStorage.setItem('particles-enabled', String(enabled));
+  const setHighPerformance = (value: boolean) => {
+    setPreferences(prev => ({ ...prev, highPerformance: value }));
   };
 
-  const setAnimationIntensity = (newIntensity: AnimationIntensity) => {
-    setIntensity(newIntensity);
-    localStorage.setItem('animation-intensity', newIntensity);
+  const setPrefersReducedData = (value: boolean) => {
+    setPreferences(prev => ({ ...prev, prefersReducedData: value }));
+  };
+
+  const toggleReducedMotion = () => {
+    setPreferences(prev => ({ ...prev, reducedMotion: !prev.reducedMotion }));
+  };
+
+  const toggleHighPerformance = () => {
+    setPreferences(prev => ({ ...prev, highPerformance: !prev.highPerformance }));
+  };
+
+  const togglePrefersReducedData = () => {
+    setPreferences(prev => ({ ...prev, prefersReducedData: !prev.prefersReducedData }));
   };
 
   return (
     <AnimationContext.Provider
       value={{
-        shouldAnimate: effectiveShouldAnimate,
-        shouldShowParticles: effectiveShouldShowParticles,
-        intensity,
-        setAnimationEnabled,
-        setParticlesEnabled,
-        setIntensity: setAnimationIntensity,
+        preferences,
+        setReducedMotion,
+        setHighPerformance,
+        setPrefersReducedData,
+        toggleReducedMotion,
+        toggleHighPerformance,
+        togglePrefersReducedData,
       }}
     >
       {children}
@@ -107,7 +129,13 @@ export function AnimationProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useAnimation() {
-  return useContext(AnimationContext);
+export function useAnimationPreferences() {
+  const context = useContext(AnimationContext);
+  
+  if (context === undefined) {
+    throw new Error('useAnimationPreferences must be used within an AnimationProvider');
+  }
+  
+  return context;
 }
 

@@ -4,53 +4,65 @@
 
 @layer base {
   :root {
-    --background: 45 44% 95%; /* Elegant Off-White */
-    --foreground: 240 10% 15%; 
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
 
-    --primary: 45 86% 47%; /* Rich Gold */
-    --primary-foreground: 45 44% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
 
-    --secondary: 45 44% 97%;
-    --secondary-foreground: 240 10% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
 
-    --muted: 45 44% 97%;
-    --muted-foreground: 240 10% 30%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
 
-    --accent: 215 39% 35%; /* Muted Navy for Light Mode */
-    --accent-foreground: 0 0% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 45 44% 90%;
-    --input: 45 44% 92%;
-    --ring: 45 86% 47%;
-    
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 220 25% 10%; /* Deep Navy */
-    --foreground: 45 50% 98%;
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
 
-    --primary: 45 85% 55%;
-    --primary-foreground: 240 10% 15%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
 
-    --secondary: 220 20% 15%;
-    --secondary-foreground: 45 50% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
 
-    --muted: 220 20% 15%;
-    --muted-foreground: 45 50% 90%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
 
-    --accent: 40 90% 65%;
-    --accent-foreground: 240 10% 15%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 220 20% 20%;
-    --input: 220 20% 18%;
-    --ring: 45 85% 55%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
   }
 }
 
@@ -60,440 +72,76 @@
   }
   body {
     @apply bg-background text-foreground;
-    text-rendering: optimizeLegibility;
-  }
-  html, body {
-    @apply overflow-x-hidden;
-    scroll-behavior: smooth;
   }
   
-  /* Enhanced Typography */
+  /* Custom styles for Playfair Display font */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-playfair tracking-tight;
+    @apply font-playfair;
   }
   
-  h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
-  }
-  
-  h2 {
-    @apply text-3xl md:text-4xl font-bold leading-tight;
-  }
-  
-  h3 {
-    @apply text-2xl md:text-3xl font-semibold leading-snug;
-  }
-  
-  p {
-    @apply leading-relaxed;
-  }
-  
-  /* Luxury Link Styles */
-  .luxury-link {
-    @apply relative inline-block text-primary font-medium;
-  }
-  
-  .luxury-link::after {
-    @apply content-[''] absolute left-0 bottom-0 w-0 h-0.5 bg-primary/40 transition-all duration-300 ease-in-out;
-  }
-  
-  .luxury-link:hover::after {
-    @apply w-full;
-  }
-}
-
-@layer utilities {
-  .clip-arch {
-    clip-path: ellipse(100% 100% at 50% 100%);
-  }
-  .aspect-4\/3 {
-    aspect-ratio: 4 / 3;
-  }
-  
-  /* Luxury Utilities */
-  .text-shadow-sm {
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  }
-  
-  .text-shadow-md {
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .text-shadow-lg {
-    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .text-shadow-gold {
-    text-shadow: 0 1px 3px rgba(212, 175, 55, 0.3);
-  }
-  
-  .gold-gradient-text {
-    @apply text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-500;
-  }
-  
-  .royal-shadow {
-    box-shadow: 0 4px 20px -5px rgba(212, 175, 55, 0.25);
-  }
-  
-  .royal-border {
-    @apply border border-primary/30 rounded-md;
+  /* Luxury styling elements */
+  .luxury-border {
+    @apply border-2 border-amber-600;
+    background-image: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.2), transparent);
   }
   
   .luxury-card {
-    @apply bg-white/80 backdrop-blur-sm border border-primary/20 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden;
+    @apply bg-white shadow-lg rounded-lg overflow-hidden;
+    box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.1), 0 8px 10px -6px rgba(212, 175, 55, 0.1);
   }
   
-  .luxury-input {
-    @apply bg-white/80 backdrop-blur-sm border border-primary/20 rounded-md focus:border-primary/50 focus:ring focus:ring-primary/20 transition-all duration-300;
-  }
-
-  /* ELEGANT ANIMATION SYSTEM - Following Design Principles */
-  
-  /* Purposeful: Provides feedback for loading states */
-  /* Subtle & Swift: 400ms duration */
-  /* Organic Motion: Natural easing curves */
-  .animate-elegant-glow {
-    animation: elegant-glow 2s ease-out infinite;
+  .luxury-card:hover {
+    box-shadow: 0 20px 25px -5px rgba(212, 175, 55, 0.2), 0 8px 10px -6px rgba(212, 175, 55, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
   }
   
-  /* Purposeful: Celebrates special moments (mala ceremony) */
-  /* Swift: 500ms for quick feedback */
-  .animate-elegant-mala {
-    animation: elegant-mala 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  /* Decorative elements */
+  .decorative-divider {
+    position: relative;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.5), transparent);
   }
   
-  /* Purposeful: Guides attention to interactive elements */
-  /* Subtle: Gentle shimmer effect */
-  .animate-elegant-shimmer {
-    animation: elegant-shimmer 3s ease-in-out infinite;
+  .decorative-divider::before,
+  .decorative-divider::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(212, 175, 55, 0.8);
+    top: -4px;
   }
   
-  /* Purposeful: Adds life to decorative elements */
-  /* Organic Motion: Natural floating movement */
-  .animate-elegant-float {
-    animation: elegant-float 4s ease-in-out infinite;
+  .decorative-divider::before {
+    left: calc(50% - 50px);
   }
   
-  /* Purposeful: Highlights important interactive elements */
-  /* Subtle: Gentle pulsing without distraction */
-  .animate-elegant-pulse {
-    animation: elegant-pulse 3s ease-in-out infinite;
-  }
-  
-  /* Purposeful: Provides visual feedback for content loading */
-  /* Swift: 400ms entrance animation */
-  .animate-elegant-entrance {
-    animation: elegant-entrance 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-  
-  /* Purposeful: Adds subtle sparkle to premium elements */
-  /* Consistent: Matches overall timing patterns */
-  .animate-elegant-sparkle {
-    animation: elegant-sparkle 6s ease-in-out infinite;
-  }
-  
-  /* Purposeful: Creates dynamic backgrounds */
-  /* Organic Motion: Smooth gradient transitions */
-  .animate-elegant-gradient {
-    animation: elegant-gradient 8s ease-in-out infinite;
-    background-size: 200% 200%;
-  }
-  
-  /* New luxury animations */
-  .animate-luxury-reveal {
-    animation: luxury-reveal 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  }
-  
-  .animate-luxury-border {
-    animation: luxury-border 4s ease-in-out infinite;
-  }
-  
-  .animate-luxury-shimmer {
-    animation: luxury-shimmer 5s ease-in-out infinite;
-    background: linear-gradient(
-      to right,
-      transparent 0%,
-      rgba(212, 175, 55, 0.1) 15%,
-      transparent 30%
-    );
-    background-size: 200% 100%;
-  }
-
-  /* Utility classes for consistent timing */
-  .animation-delay-100 { animation-delay: 0.1s; }
-  .animation-delay-200 { animation-delay: 0.2s; }
-  .animation-delay-300 { animation-delay: 0.3s; }
-  .animation-delay-400 { animation-delay: 0.4s; }
-  .animation-delay-500 { animation-delay: 0.5s; }
-  .animation-delay-1000 { animation-delay: 1s; }
-  .animation-delay-2000 { animation-delay: 2s; }
-
-  .bg-gradient-radial {
-    background-image: radial-gradient(circle, var(--tw-gradient-stops));
-  }
-  
-  .bg-gradient-conic {
-    background-image: conic-gradient(from 0deg, var(--tw-gradient-stops));
-  }
-  
-  .bg-luxury-pattern {
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  }
-
-  /* Legacy animations - kept for backward compatibility but deprecated */
-  .animate-glow { animation: elegant-glow 2s ease-out infinite; }
-  .animate-mala { animation: elegant-mala 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
-  .animate-shimmer { animation: elegant-shimmer 3s ease-in-out infinite; }
-  .animate-royal-float { animation: elegant-float 4s ease-in-out infinite; }
-  .animate-golden-pulse { animation: elegant-pulse 3s ease-in-out infinite; }
-  .animate-crown-bounce { animation: elegant-float 4s ease-in-out infinite; }
-  .animate-royal-entrance { animation: elegant-entrance 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
-  .animate-jewel-sparkle { animation: elegant-sparkle 6s ease-in-out infinite; }
-  .animate-royal-gradient { animation: elegant-gradient 8s ease-in-out infinite; background-size: 200% 200%; }
-  .animation-delay-3000 { animation-delay: 3s; }
-
-  /* ELEGANT KEYFRAMES - Following Design Principles */
-  
-  /* Purposeful: Subtle glow for feedback, not decoration */
-  /* Organic Motion: Natural ease curves */
-  @keyframes elegant-glow {
-    0%, 100% {
-      box-shadow: 0 0 8px hsl(var(--primary) / 0.1);
-    }
-    50% {
-      box-shadow: 0 0 16px hsl(var(--primary) / 0.3), 0 0 24px hsl(var(--primary) / 0.1);
-    }
-  }
-  
-  /* Purposeful: Celebrates mala ceremony moment */
-  /* Swift: Quick 500ms animation */
-  @keyframes elegant-mala {
-    0% {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-    60% {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-    100% {
-      opacity: 0.8;
-      transform: scale(1);
-    }
-  }
-
-  /* Purposeful: Guides attention without distraction */
-  /* Subtle: Gentle movement within bounds */
-  @keyframes elegant-shimmer {
-    0% {
-      transform: translateX(-100%) skewX(-8deg);
-      opacity: 0;
-    }
-    50% {
-      opacity: 0.6;
-    }
-    100% {
-      transform: translateX(200%) skewX(-8deg);
-      opacity: 0;
-    }
-  }
-
-  /* Purposeful: Adds life to decorative elements */
-  /* Organic Motion: Natural floating with subtle rotation */
-  @keyframes elegant-float {
-    0%, 100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    33% {
-      transform: translateY(-8px) rotate(2deg);
-    }
-    66% {
-      transform: translateY(-4px) rotate(-1deg);
-    }
-  }
-
-  /* Purposeful: Highlights interactive elements */
-  /* Subtle: Gentle scale and glow changes */
-  @keyframes elegant-pulse {
-    0%, 100% {
-      box-shadow: 0 0 4px hsl(var(--primary) / 0.2);
-      transform: scale(1);
-    }
-    50% {
-      box-shadow: 0 0 12px hsl(var(--primary) / 0.4), 0 0 20px hsl(var(--primary) / 0.2);
-      transform: scale(1.01);
-    }
-  }
-
-  /* Purposeful: Smooth content entrance */
-  /* Swift: 400ms with organic easing */
-  @keyframes elegant-entrance {
-    0% {
-      opacity: 0;
-      transform: translateY(16px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Purposeful: Premium element enhancement */
-  /* Consistent: Matches overall timing patterns */
-  @keyframes elegant-sparkle {
-    0%, 100% {
-      opacity: 0.4;
-      transform: scale(1) rotate(0deg);
-    }
-    25% {
-      opacity: 0.8;
-      transform: scale(1.05) rotate(90deg);
-    }
-    50% {
-      opacity: 0.6;
-      transform: scale(0.95) rotate(180deg);
-    }
-    75% {
-      opacity: 0.9;
-      transform: scale(1.02) rotate(270deg);
-    }
-  }
-
-  /* Purposeful: Dynamic background interest */
-  /* Organic Motion: Smooth, natural transitions */
-  @keyframes elegant-gradient {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    25% {
-      background-position: 100% 25%;
-    }
-    50% {
-      background-position: 100% 75%;
-    }
-    75% {
-      background-position: 0% 75%;
-    }
-  }
-  
-  /* New luxury animations */
-  @keyframes luxury-reveal {
-    0% {
-      opacity: 0;
-      transform: scale(0.98);
-      box-shadow: 0 0 0 rgba(212, 175, 55, 0);
-    }
-    70% {
-      opacity: 1;
-      transform: scale(1.01);
-      box-shadow: 0 10px 25px -5px rgba(212, 175, 55, 0.2);
-    }
-    100% {
-      opacity: 1;
-      transform: scale(1);
-      box-shadow: 0 5px 15px -5px rgba(212, 175, 55, 0.1);
-    }
-  }
-  
-  @keyframes luxury-border {
-    0%, 100% {
-      border-color: rgba(212, 175, 55, 0.2);
-      box-shadow: 0 0 5px rgba(212, 175, 55, 0.1);
-    }
-    50% {
-      border-color: rgba(212, 175, 55, 0.4);
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-    }
-  }
-  
-  @keyframes luxury-shimmer {
-    0% {
-      background-position: -100% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
-  }
-
-  /* Utility animation for particles */
-  @keyframes particle {
-    0% {
-      transform: translate3d(0, 0, 0);
-      opacity: 1;
-    }
-    100% {
-      transform: translate3d(
-        calc(cos(rad(var(--angle))) * 40px),
-        -160px,
-        0
-      );
-      opacity: 0;
-    }
-  }
-
-  /* Legacy keyframes - kept for backward compatibility */
-  @keyframes glow { 
-    0%, 100% { box-shadow: 0 0 8px hsl(var(--primary) / 0.1); }
-    50% { box-shadow: 0 0 16px hsl(var(--primary) / 0.3), 0 0 24px hsl(var(--primary) / 0.1); }
-  }
-  @keyframes mala-animation { 
-    0% { opacity: 0; transform: scale(0.8); }
-    60% { opacity: 1; transform: scale(1.05); }
-    100% { opacity: 0.8; transform: scale(1); }
-  }
-  @keyframes shimmer { 
-    0% { transform: translateX(-100%) skewX(-8deg); opacity: 0; }
-    50% { opacity: 0.6; }
-    100% { transform: translateX(200%) skewX(-8deg); opacity: 0; }
-  }
-  @keyframes royal-float { 
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-8px) rotate(2deg); }
-    66% { transform: translateY(-4px) rotate(-1deg); }
-  }
-  @keyframes golden-pulse { 
-    0%, 100% { box-shadow: 0 0 4px hsl(var(--primary) / 0.2); transform: scale(1); }
-    50% { box-shadow: 0 0 12px hsl(var(--primary) / 0.4), 0 0 20px hsl(var(--primary) / 0.2); transform: scale(1.01); }
-  }
-  @keyframes crown-bounce { 
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-8px) rotate(2deg); }
-    66% { transform: translateY(-4px) rotate(-1deg); }
-  }
-  @keyframes royal-entrance { 
-    0% { opacity: 0; transform: translateY(16px); }
-    100% { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes jewel-sparkle { 
-    0%, 100% { opacity: 0.4; transform: scale(1) rotate(0deg); }
-    25% { opacity: 0.8; transform: scale(1.05) rotate(90deg); }
-    50% { opacity: 0.6; transform: scale(0.95) rotate(180deg); }
-    75% { opacity: 0.9; transform: scale(1.02) rotate(270deg); }
-  }
-  @keyframes royal-gradient { 
-    0%, 100% { background-position: 0% 50%; }
-    25% { background-position: 100% 25%; }
-    50% { background-position: 100% 75%; }
-    75% { background-position: 0% 75%; }
-  }
-  
-  .preserve-3d {
-    transform-style: preserve-3d;
-    perspective: 1000px;
+  .decorative-divider::after {
+    right: calc(50% - 50px);
   }
   
   /* Performance optimizations */
-  .will-change-transform {
-    will-change: transform;
-  }
-  
-  .will-change-opacity {
-    will-change: opacity;
-  }
-  
   .hardware-accelerated {
     transform: translateZ(0);
     backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  /* Responsive optimizations */
+  @media (max-width: 640px) {
+    .luxury-card {
+      @apply rounded-md;
+    }
+    
+    .decorative-divider::before {
+      left: calc(50% - 30px);
+    }
+    
+    .decorative-divider::after {
+      right: calc(50% - 30px);
+    }
   }
 }
 
