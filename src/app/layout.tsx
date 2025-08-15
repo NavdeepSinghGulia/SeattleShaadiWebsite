@@ -1,9 +1,10 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+import { Inter, Playfair_Display, Cormorant_Garamond } from 'next/font/google';
 import { enhancedSeoConfig } from '@/lib/enhanced-seo-config';
 import { AnimationProvider } from '@/hooks/use-animation-preferences';
 import { MobileNav } from '@/components/mobile-nav';
+import Script from 'next/script';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -15,6 +16,13 @@ const playfair = Playfair_Display({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-playfair',
+});
+
+const cormorant = Cormorant_Garamond({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-cormorant',
+  weight: ['300', '400', '500', '600', '700'],
 });
 
 export const metadata: Metadata = {
@@ -69,7 +77,7 @@ export const viewport: Viewport = {
   maximumScale: 5,
   userScalable: true,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
+    { media: '(prefers-color-scheme: light)', color: '#f8f0e3' },
     { media: '(prefers-color-scheme: dark)', color: '#111827' },
   ],
 };
@@ -80,11 +88,49 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${inter.variable} ${playfair.variable} ${cormorant.variable}`}>
+      <head>
+        {/* Preconnect to important domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        
+        {/* Preload critical assets */}
+        <link rel="preload" as="image" href="/patterns/mandala-pattern.svg" />
+        <link rel="preload" as="image" href="/patterns/paisley-pattern.svg" />
+        
+        {/* Structured data for wedding service */}
+        <Script
+          id="structured-data-wedding"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(enhancedSeoConfig.weddingSchema)
+          }}
+        />
+        
+        {/* Structured data for FAQ */}
+        <Script
+          id="structured-data-faq"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(enhancedSeoConfig.structuredData.faq)
+          }}
+        />
+        
+        {/* Structured data for local business */}
+        <Script
+          id="structured-data-local-business"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(enhancedSeoConfig.structuredData.localBusiness)
+          }}
+        />
+      </head>
       <body className="min-h-screen bg-background font-sans antialiased">
         <AnimationProvider>
-          {children}
-          <MobileNav />
+          <div className="paisley-pattern">
+            {children}
+            <MobileNav />
+          </div>
         </AnimationProvider>
       </body>
     </html>

@@ -17,6 +17,7 @@ interface MobileTouchCarouselProps {
   autoplayInterval?: number;
   showIndicators?: boolean;
   className?: string;
+  isRoyal?: boolean;
 }
 
 export function MobileTouchCarousel({
@@ -25,6 +26,7 @@ export function MobileTouchCarousel({
   autoplayInterval = 5000,
   showIndicators = true,
   className = '',
+  isRoyal = false,
 }: MobileTouchCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
@@ -117,7 +119,7 @@ export function MobileTouchCarousel({
   
   return (
     <div 
-      className={`relative overflow-hidden ${className}`}
+      className={`relative overflow-hidden ${isRoyal ? 'royal-border' : ''} ${className}`}
       ref={containerRef}
     >
       <motion.div
@@ -144,17 +146,18 @@ export function MobileTouchCarousel({
               priority={index === 0}
               index={index}
               className="w-full h-full"
+              isRoyal={isRoyal}
             />
           </div>
         ))}
       </motion.div>
       
-      {/* Navigation Arrows - Only show on tablet and desktop */}
+      {/* Navigation Arrows - Only show on tablet and desktop or when there are multiple images */}
       {(!isMobile || images.length > 1) && (
         <>
           <button
             onClick={prevSlide}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md z-10"
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md z-10 hover:bg-white/90 transition-all duration-300 touch-feedback focus-visible"
             aria-label="Previous slide"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -164,7 +167,7 @@ export function MobileTouchCarousel({
           
           <button
             onClick={nextSlide}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md z-10"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm rounded-full p-2 shadow-md z-10 hover:bg-white/90 transition-all duration-300 touch-feedback focus-visible"
             aria-label="Next slide"
           >
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -181,12 +184,13 @@ export function MobileTouchCarousel({
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              className={`w-2 h-2 rounded-full transition-all duration-300 focus-visible ${
                 index === currentIndex 
                   ? 'bg-amber-600 w-4' 
-                  : 'bg-white/70'
+                  : 'bg-white/70 hover:bg-white/90'
               }`}
               aria-label={`Go to slide ${index + 1}`}
+              aria-current={index === currentIndex ? 'true' : 'false'}
             />
           ))}
         </div>
@@ -199,6 +203,16 @@ export function MobileTouchCarousel({
             Swipe to navigate
           </div>
         </div>
+      )}
+      
+      {/* Royal corner decorations */}
+      {isRoyal && (
+        <>
+          <div className="absolute top-2 left-2 w-6 h-6 border-t-2 border-l-2 border-amber-600 opacity-70"></div>
+          <div className="absolute top-2 right-2 w-6 h-6 border-t-2 border-r-2 border-amber-600 opacity-70"></div>
+          <div className="absolute bottom-2 left-2 w-6 h-6 border-b-2 border-l-2 border-amber-600 opacity-70"></div>
+          <div className="absolute bottom-2 right-2 w-6 h-6 border-b-2 border-r-2 border-amber-600 opacity-70"></div>
+        </>
       )}
     </div>
   );
