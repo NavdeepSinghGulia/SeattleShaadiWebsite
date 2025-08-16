@@ -3,16 +3,18 @@
 import React from 'react';
 import Image from 'next/image';
 import { generateBlurPlaceholder, getResponsiveSizes, shouldLoadWithPriority } from '@/lib/image-utils';
+import { cn } from '@/lib/utils';
+import type { StaticImageData } from 'next/image';
 
 interface OptimizedImageProps {
-  src: string;
+  src: string | StaticImageData;
   alt: string;
   width?: number;
   height?: number;
   className?: string;
   priority?: boolean;
   quality?: number;
-  layout?: 'fill' | 'responsive' | 'intrinsic' | 'fixed';
+  fill?: boolean;
   objectFit?: 'cover' | 'contain' | 'fill' | 'none' | 'scale-down';
   objectPosition?: string;
   index?: number;
@@ -29,7 +31,7 @@ export function OptimizedImage({
   className = '',
   priority = false,
   quality = 85,
-  layout = 'responsive',
+  fill = false,
   objectFit = 'cover',
   objectPosition = 'center',
   index = 0,
@@ -37,53 +39,51 @@ export function OptimizedImage({
   decorativeBorder = false,
   animation = 'none',
 }: OptimizedImageProps) {
-  // Generate blur placeholder
   const blurDataURL = generateBlurPlaceholder();
-  
-  // Determine if image should be loaded with priority
   const shouldPrioritize = priority || shouldLoadWithPriority(index, isHero);
-  
-  // Get responsive sizes attribute
-  const sizes = getResponsiveSizes(layout);
-  
-  // Animation classes
+  const sizes = getResponsiveSizes(fill);
+
   const animationClasses = {
     fade: 'transition-opacity duration-700 ease-in-out',
     zoom: 'transition-transform duration-700 ease-in-out hover:scale-105',
     slide: 'transition-transform duration-500 ease-in-out hover:translate-x-2',
     none: '',
   };
-  
-  // Decorative border styles
+
   const borderStyles = decorativeBorder
     ? 'border-4 border-amber-600 shadow-lg rounded-md overflow-hidden'
     : '';
-  
-  // Combined classes
+
   const combinedClasses = `hardware-accelerated ${animationClasses[animation]} ${borderStyles} ${className}`;
+
+  const imageProps = {
+    src: src,
+    alt: alt,
+    className: combinedClasses,
+    priority: shouldPrioritize,
+    quality: quality,
+    placeholder: 'blur' as const,
+    blurDataURL: blurDataURL,
+    sizes: sizes,
+    style: {
+      objectFit,
+      objectPosition,
+    },
+  };
   
+  if (fill) {
+    // If fill is true, do not pass width and height
+    return (
+      <div className={`relative ${decorativeBorder ? 'p-1 bg-gradient-to-r from-amber-100 via-amber-600 to-amber-100 rounded-lg' : ''}`}>
+        <Image {...imageProps} fill />
+      </div>
+    );
+  }
+
+  // If fill is false, pass width and height
   return (
     <div className={`relative ${decorativeBorder ? 'p-1 bg-gradient-to-r from-amber-100 via-amber-600 to-amber-100 rounded-lg' : ''}`}>
-      <Image
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        className={combinedClasses}
-        priority={shouldPrioritize}
-        quality={quality}
-        placeholder="blur"
-        blurDataURL={blurDataURL}
-        sizes={sizes}
-        style={{
-          objectFit,
-          objectPosition,
-        }}
-      />
-      
-      {decorativeBorder && (
-        <div className="absolute inset-0 pointer-events-none border-2 border-amber-600 rounded-lg opacity-50"></div>
-      )}
+      <Image {...imageProps} width={width} height={height} />
     </div>
   );
 }
@@ -92,10 +92,11 @@ export function HeroImage(props: OptimizedImageProps) {
   return (
     <OptimizedImage
       {...props}
+      fill={true}
       isHero={true}
       priority={true}
       quality={90}
-      className={`w-full h-[70vh] ${props.className || ''}`}
+      className={`w-full h-full ${props.className || ''}`}
     />
   );
 }
@@ -136,4 +137,3 @@ export function TraditionImage(props: OptimizedImageProps) {
     />
   );
 }
-

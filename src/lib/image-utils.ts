@@ -28,19 +28,11 @@ export function shouldLoadWithPriority(index: number, isHero: boolean): boolean 
  * Get responsive sizes attribute for different image layouts
  * This helps the browser select the appropriate image size based on viewport
  */
-export function getResponsiveSizes(layout: string): string {
-  switch (layout) {
-    case 'fill':
-      return '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
-    case 'responsive':
-      return '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
-    case 'intrinsic':
-      return '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
-    case 'fixed':
-      return '100vw';
-    default:
-      return '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
+export function getResponsiveSizes(fill: boolean): string {
+  if (fill) {
+    return '100vw';
   }
+  return '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw';
 }
 
 /**
@@ -95,4 +87,3 @@ export function getImageFormat(src: string): string {
       return 'jpeg';
   }
 }
-
