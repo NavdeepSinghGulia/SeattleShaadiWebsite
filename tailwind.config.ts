@@ -17,8 +17,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['var(--font-lato)'],
-        headline: ['var(--font-playfair-display)'],
+        sans: ['system-ui', 'sans-serif'],
+        playfair: ['serif'],
+        body: ['system-ui', 'sans-serif'],
+        headline: ['serif'],
         code: ['monospace'],
       },
       colors: {

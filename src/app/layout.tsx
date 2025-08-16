@@ -1,20 +1,21 @@
 import './globals.css';
 import type { Metadata, Viewport } from 'next';
-import { Inter, Playfair_Display } from 'next/font/google';
+// import { Inter, Playfair_Display } from 'next/font/google';
 import { enhancedSeoConfig } from '@/lib/enhanced-seo-config';
 import { AnimationProvider } from '@/hooks/use-animation-preferences';
 
-const inter = Inter({ 
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-inter',
-});
+// Temporarily comment out fonts due to connectivity issues
+// const inter = Inter({ 
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-inter',
+// });
 
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  display: 'swap',
-  variable: '--font-playfair',
-});
+// const playfair = Playfair_Display({
+//   subsets: ['latin'],
+//   display: 'swap',
+//   variable: '--font-playfair',
+// });
 
 export const metadata: Metadata = {
   title: {
@@ -68,8 +69,8 @@ export const viewport: Viewport = {
   maximumScale: 5,
   userScalable: true,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#ffffff' },
-    { media: '(prefers-color-scheme: dark)', color: '#111827' },
+    { media: '(prefers-color-scheme: light)', color: '#faf9f7' },
+    { media: '(prefers-color-scheme: dark)', color: '#1a1e2e' },
   ],
 };
 
@@ -79,7 +80,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+    <html lang="en" className="font-sans">
       <body className="min-h-screen bg-background font-sans antialiased">
         <AnimationProvider>
           {children}
