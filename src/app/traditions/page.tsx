@@ -190,7 +190,7 @@ const traditions: Record<string, Tradition[]> = {
       description:
         'The couple sits on a decorated swing while women from both families sing traditional songs and gently rock them.',
       significance:
-        'Represents life's ups and downs and the couple's mutual support; elders bless the couple with rice and turmeric.',
+        "Represents life's ups and downs and the couple's mutual support; elders bless the couple with rice and turmeric.",
       modernAdaptations:
         'Custom floral swings, curated Carnatic playlists, and photography-centered setups are common today.',
       imageUrl: '/images/traditions/tamil/oonjal-ceremony.jpg',
@@ -199,12 +199,23 @@ const traditions: Record<string, Tradition[]> = {
       id: 'kanyadaanam',
       name: 'Kanyadaanam',
       description:
-        'The formal giving of the bride by her parents to the groom, seeking blessings for a harmonious married life.',
+        'A sacred ritual where the father of the bride gives her hand to the groom, entrusting her to his care.',
       significance:
-        'Symbolizes blessings and the uniting of two families in the presence of sacred fire and mantras.',
+        "Symbolizes the father's blessing and the transfer of responsibility for the bride's well-being to the groom.",
       modernAdaptations:
-        'Families emphasize partnership and equality while retaining the ritual's sanctity.',
+        'Contemporary ceremonies often include both parents or even grandparents in this ritual, emphasizing family unity.',
       imageUrl: '/images/traditions/tamil/kanyadaanam-ceremony.jpg',
+    },
+    {
+      id: 'nalangu',
+      name: 'Nalangu',
+      description:
+        'A playful pre-wedding ritual where the bride and groom sit back-to-back and play games with turmeric-colored water and rice.',
+      significance:
+        'Symbolizes the playful aspect of marriage and helps the couple and families bond through fun activities before the serious ceremony.',
+      modernAdaptations:
+        'Modern celebrations include creative games, professional photography, and sometimes even water balloon fights in upscale venues.',
+      imageUrl: '/images/traditions/kannada/nalangu-ceremony.jpg',
     },
   ],
   telugu: [
@@ -438,4 +449,3 @@ const TraditionsPage = () => {
 };
 
 export default TraditionsPage;
-
