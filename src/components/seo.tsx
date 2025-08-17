@@ -1,27 +1,78 @@
-// This component is deprecated in favor of Next.js metadata API
-// Individual pages should export metadata objects instead
-// This component is kept for backward compatibility but should not be used in new pages
+'use client';
 
-import { generateMetadata } from '@/lib/seo-config';
+import React from 'react';
 
-interface SeoProps {
+interface OpenGraphImage {
+  url: string;
+  width?: number;
+  height?: number;
+  alt?: string;
+}
+
+interface OpenGraphData {
   title?: string;
   description?: string;
-  pathname?: string;
+  url?: string;
+  type?: string;
+  images?: OpenGraphImage[];
+  siteName?: string;
+}
+
+interface TwitterData {
+  card?: 'summary' | 'summary_large_image' | 'app' | 'player';
+  site?: string;
+  creator?: string;
+  title?: string;
+  description?: string;
   image?: string;
 }
 
-// This component now returns null as metadata should be handled at the page level
-export function Seo({ title: _title, description: _description, pathname: _pathname, image: _image }: SeoProps) {
-  // In development, warn about deprecated usage
-  if (process.env.NODE_ENV === 'development') {
-    console.warn(
-      'The <Seo> component is deprecated. Use the generateMetadata function and export metadata from your page component instead.'
-    );
-  }
-  
-  return null;
+interface SeoProps {
+  title: string;
+  description: string;
+  canonical?: string;
+  keywords?: string;
+  openGraph?: OpenGraphData;
+  twitter?: TwitterData;
+  noindex?: boolean;
+  nofollow?: boolean;
+  structuredData?: Record<string, any>;
+  additionalMetaTags?: Array<{ name: string; content: string }>;
 }
 
-// Export the generateMetadata function for easy access
-export { generateMetadata };
+export function Seo({
+  title,
+  description,
+  canonical,
+  keywords,
+  openGraph,
+  twitter,
+  noindex = false,
+  nofollow = false,
+  structuredData,
+  additionalMetaTags = [],
+}: SeoProps) {
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://seattleshaadi.com';
+  
+  // In app directory, SEO should be handled via metadata export from pages
+  // This component is for compatibility but should use metadata API instead
+  
+  React.useEffect(() => {
+    // Add structured data to head if provided
+    if (structuredData) {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.textContent = JSON.stringify(structuredData);
+      document.head.appendChild(script);
+      
+      // Cleanup on unmount
+      return () => {
+        if (script.parentNode) {
+          script.parentNode.removeChild(script);
+        }
+      };
+    }
+  }, [structuredData]);
+  
+  return null; // In app directory, use metadata API instead
+}
