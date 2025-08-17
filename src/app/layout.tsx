@@ -77,6 +77,12 @@ export default function RootLayout({
           <link rel="dns-prefetch" href="//www.googletagmanager.com" />
           <link rel="dns-prefetch" href="//www.google-analytics.com" />
           
+          {/* Additional SEO meta tags */}
+          <meta name="theme-color" content="#d4af37" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <meta name="format-detection" content="telephone=no" />
+          
           {/* Comprehensive Schema Markup */}
           <SchemaMarkup 
             schema={[
