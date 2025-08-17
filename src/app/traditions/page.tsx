@@ -258,7 +258,7 @@ const traditions: Record<string, Tradition[]> = {
       id: 'kashi-yatra',
       name: 'Kashi Yatra',
       description:
-        'A humorous ritual where the groom pretends to leave for Kashi (Varanasi) to pursue spiritual life, and the bride's father convinces him to return and accept married life.',
+        "A humorous ritual where the groom pretends to leave for Kashi (Varanasi) to pursue spiritual life, and the bride's father convinces him to return and accept married life.",
       significance:
         'Represents the balance between spiritual pursuits and worldly responsibilities in Hindu philosophy.',
       modernAdaptations:
@@ -282,9 +282,9 @@ const traditions: Record<string, Tradition[]> = {
       id: 'pudamuri',
       name: 'Pudamuri',
       description:
-        'The groom presents a new mundu (traditional clothing) to the bride's father, who then gives it to the bride.',
+        "The groom presents a new mundu (traditional clothing) to the bride's father, who then gives it to the bride.",
       significance:
-        'Symbolizes the groom's commitment to provide for his wife and respect her family.',
+        "Symbolizes the groom's commitment to provide for his wife and respect her family.",
       modernAdaptations:
         'Contemporary ceremonies may include designer sarees or other luxury items instead of the traditional mundu.',
       imageUrl: '/images/traditions/malayalam/pudamuri-ceremony.jpg',
