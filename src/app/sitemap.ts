@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about',
     '/services',
     '/work',
+    '/traditions',
     '/contact',
     '/faq',
     '/carriers',
@@ -64,4 +65,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...mainRoutes, ...blogPosts, ...servicePages, demoPage];
 }
-

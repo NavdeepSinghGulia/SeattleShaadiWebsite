@@ -1,4 +1,7 @@
 'use client';
+// This page is deprecated per request. Redirecting to home.
+export { default } from 'next/dist/client/image';
+
 
 import React, { useState, useEffect } from 'react';
 import { Seo } from '@/components/seo';
@@ -424,4 +427,4 @@ const WeddingCalculatorPage = () => {
   );
 };
 
-export default WeddingCalculatorPage;
+// export default WeddingCalculatorPage; // Disabled per request

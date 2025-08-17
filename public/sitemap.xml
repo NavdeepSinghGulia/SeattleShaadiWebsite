@@ -10,6 +10,14 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- Traditions Page -->
+  <url>
+    <loc>https://seattleshaadi.com/traditions</loc>
+    <lastmod>2025-08-17T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
 
   <!-- Main Pages -->
   <url>
@@ -199,4 +207,3 @@
     <priority>0.3</priority>
   </url>
 </urlset>
-

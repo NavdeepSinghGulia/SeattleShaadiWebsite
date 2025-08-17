@@ -186,17 +186,12 @@ export const enhancedSeoConfig = {
   
   // New Pages
   newPages: [
-    {
-      title: 'Indian Wedding Budget Calculator | Plan Your Seattle Wedding',
-      description: 'Plan your perfect Indian wedding with our interactive budget calculator. Estimate costs for venue, catering, decor, attire, and more based on your guest count.',
-      url: '/wedding-calculator',
-      keywords: ['Indian wedding budget', 'wedding cost calculator', 'Indian wedding planning tool'],
-    },
+    // Removed Calculator page per request
     {
       title: 'Indian Wedding Traditions & Customs | Cultural Wedding Guide',
-      description: 'Explore the rich cultural heritage of Indian wedding traditions. Learn about Hindu, Sikh, Muslim, and South Indian wedding rituals and their modern adaptations.',
+      description: 'Explore the rich cultural heritage of Indian wedding traditions. Learn about Hindu, Sikh (including Jago), Muslim, and distinct South Indian traditions like Tamil (Oonjal, Kanyadaanam) and Telugu (Talambralu, Jeelakarra-Bellam) with their modern adaptations.',
       url: '/traditions',
-      keywords: ['Indian wedding traditions', 'Hindu wedding customs', 'Indian wedding rituals'],
+      keywords: ['Indian wedding traditions', 'Sikh Jago ceremony', 'Tamil Oonjal', 'Tamil Kanyadaanam', 'Telugu Talambralu', 'Telugu Jeelakarra-Bellam'],
     },
     {
       title: 'Indian Wedding Gallery | Inspiration for Your Special Day',
