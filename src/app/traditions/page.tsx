@@ -263,6 +263,17 @@ const traditions: Record<string, Tradition[]> = {
         'Often accompanied by explanatory cards or a brief narration for guests.',
       imageUrl: '/images/traditions/telugu/jeelakarra-bellam-ceremony.jpg',
     },
+    {
+      id: 'arundhati-nakshatra',
+      name: 'Arundhati Nakshatra',
+      description:
+        'The couple gazes at the Arundhati star (in the Ursa Major constellation) as a symbol of marital fidelity.',
+      significance:
+        'Arundhati, wife of sage Vasishtha, is revered for her devotion and purity. Viewing her star symbolizes the couple aspiring to have a relationship like hers.',
+      modernAdaptations:
+        'Modern ceremonies may use a telescope or star-projector when the actual star is not visible, or incorporate the ritual during daytime with symbolic representations.',
+      imageUrl: '/images/traditions/telugu/arundhati-nakshatra-ceremony.jpg',
+    },
   ],
   kannada: [
     {
@@ -321,8 +332,8 @@ const TraditionsPage = () => {
     <>
       <Seo
         title="Indian Wedding Traditions & Customs | Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam"
-        description="Explore Indian wedding traditions across Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam, and Muslim cultures. Discover Jago, Oonjal, Talambralu, Thalikettu, Nalangu & more with modern adaptations."
-        keywords="Indian wedding traditions, Sikh Jago, Tamil Oonjal, Telugu Talambralu, Kannada Nalangu, Malayalam Thalikettu, Hindu pheras, Muslim Nikah, Seattle Indian wedding rituals"
+        description="Explore Indian wedding traditions across Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam, and Muslim cultures. Discover Jago, Choora, Arundhati Nakshatra, Oonjal, Talambralu, Thalikettu, Nalangu & more with modern adaptations."
+        keywords="Indian wedding traditions, Sikh Jago, Sikh Choora, Telugu Arundhati Nakshatra, Tamil Oonjal, Telugu Talambralu, Kannada Nalangu, Malayalam Thalikettu, Hindu pheras, Muslim Nikah, Seattle Indian wedding rituals"
       />
       <div className="flex flex-col relative min-h-screen">
         {shouldAnimate && <RoyalBackground />}
