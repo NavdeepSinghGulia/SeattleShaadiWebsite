@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/spotlight',
     '/fun',
     '/blog',
+    '/traditions',
   ].map(route => ({
     url: `${baseUrl}${route}`,
     lastModified,
@@ -64,4 +65,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...mainRoutes, ...blogPosts, ...servicePages, demoPage];
 }
-

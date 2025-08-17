@@ -23,7 +23,6 @@ const navLinks = [
   { href: '/work', label: 'Our Work' },
   { href: '/gallery', label: 'Gallery' },
   { href: '/traditions', label: 'Traditions' },
-  { href: '/wedding-calculator', label: 'Budget Calculator' },
   { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'About' },
   { href: '/faq', label: 'FAQs' },
