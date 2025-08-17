@@ -1,24 +1,306 @@
-import TraditionsContent from '@/components/traditions-content';
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Indian Wedding Traditions & Customs | Cultural Heritage & Modern Adaptations',
-  description: 'Explore the rich cultural heritage of Indian wedding traditions. Learn about Hindu, Sikh, Muslim, and South Indian wedding rituals, their significance, and modern adaptations.',
-  keywords: 'Indian wedding traditions, Hindu wedding customs, Sikh wedding traditions, Muslim wedding ceremonies, South Indian wedding rituals',
-  openGraph: {
-    title: 'Indian Wedding Traditions & Customs | Cultural Heritage',
-    description: 'Explore the rich cultural heritage of Indian wedding traditions. Learn about Hindu, Sikh, Muslim, and South Indian wedding rituals and their modern adaptations.',
-    images: [
-      {
-        url: '/images/traditions/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Indian Wedding Traditions'
-      }
-    ]
-  }
+import React from 'react';
+import { Seo } from '@/components/seo';
+import { RoyalBackground } from '@/components/royal-background';
+import { useAnimation } from '@/hooks/use-animation-preferences';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
+
+interface Tradition {
+  id: string;
+  name: string;
+  description: string;
+  significance: string;
+  modernAdaptations: string;
+  imageUrl: string;
+}
+
+const traditions: Record<string, Tradition[]> = {
+  hindu: [
+    {
+      id: 'haldi',
+      name: 'Haldi Ceremony',
+      description: 'A pre-wedding ritual where turmeric paste is applied to the bride and groom for blessing and beautification.',
+      significance: 'Turmeric is known for its medicinal properties and is believed to purify the body and bring good fortune.',
+      modernAdaptations: 'Modern Haldi ceremonies often include music, dancing, and themed decorations, turning it into a festive pre-wedding celebration.',
+      imageUrl: '/images/traditions/haldi.jpg',
+    },
+    {
+      id: 'mehndi',
+      name: 'Mehndi Ceremony',
+      description: 'Intricate henna designs are applied to the bride\'s hands and feet, symbolizing beauty and joy.',
+      significance: 'The darker the mehndi color, the stronger the love between the couple. It\'s also believed that the bride won\'t have to do housework until the mehndi fades.',
+      modernAdaptations: 'Contemporary mehndi parties often include professional artists, music, dancing, and themed decorations.',
+      imageUrl: '/images/traditions/mehndi.jpg',
+    },
+    {
+      id: 'sangeet',
+      name: 'Sangeet',
+      description: 'A musical evening where families come together to sing, dance, and celebrate the upcoming union.',
+      significance: 'The Sangeet brings both families together in a joyful celebration before the wedding ceremonies begin.',
+      modernAdaptations: 'Modern Sangeet events often include choreographed performances, professional DJs, and elaborate stage setups.',
+      imageUrl: '/images/traditions/sangeet.jpg',
+    },
+    {
+      id: 'baraat',
+      name: 'Baraat',
+      description: 'The groom\'s procession to the wedding venue, traditionally on a horse or elephant, accompanied by family and friends dancing.',
+      significance: 'The Baraat symbolizes the groom\'s journey to begin a new life and the joy of his family in welcoming a new member.',
+      modernAdaptations: 'Contemporary Baraats may include luxury cars, motorcycles, or even helicopters instead of traditional animals.',
+      imageUrl: '/images/traditions/baraat.jpg',
+    },
+    {
+      id: 'jaimala',
+      name: 'Jaimala (Garland Exchange)',
+      description: 'The bride and groom exchange flower garlands, symbolizing their acceptance of each other.',
+      significance: 'This ritual marks the beginning of the wedding ceremony and represents the couple\'s mutual choice and acceptance.',
+      modernAdaptations: 'Modern couples often add personal touches like custom garlands or special music during this exchange.',
+      imageUrl: '/images/traditions/jaimala.jpg',
+    },
+    {
+      id: 'pheras',
+      name: 'Saat Pheras (Seven Vows)',
+      description: 'The couple takes seven rounds around the sacred fire, making vows to each other with each round.',
+      significance: 'Each phera represents a specific promise and prayer for their married life together.',
+      modernAdaptations: 'Some couples now personalize their vows while maintaining the traditional structure of the seven rounds.',
+      imageUrl: '/images/traditions/pheras.jpg',
+    },
+    {
+      id: 'vidaai',
+      name: 'Vidaai',
+      description: 'The emotional farewell ceremony where the bride leaves her parental home to join her husband\'s family.',
+      significance: 'This ritual symbolizes the bride\'s transition from her birth family to her new family.',
+      modernAdaptations: 'Modern Vidaai ceremonies may be less formal and emotional, reflecting changing family dynamics.',
+      imageUrl: '/images/traditions/vidaai.jpg',
+    },
+  ],
+  sikh: [
+    {
+      id: 'anand-karaj',
+      name: 'Anand Karaj',
+      description: 'The Sikh marriage ceremony performed in the presence of the Guru Granth Sahib.',
+      significance: 'The ceremony emphasizes equality and spiritual union, with the couple circling the holy scripture four times.',
+      modernAdaptations: 'While the core ceremony remains traditional, many couples incorporate personal touches in the celebrations before and after.',
+      imageUrl: '/images/traditions/anand-karaj.jpg',
+    },
+    {
+      id: 'milni',
+      name: 'Milni',
+      description: 'A ceremony where male family members from both sides meet and exchange garlands and gifts.',
+      significance: 'This ritual symbolizes the union of two families and the building of new relationships.',
+      modernAdaptations: 'Modern Milni ceremonies often include creative introductions and personalized gifts.',
+      imageUrl: '/images/traditions/milni.jpg',
+    },
+    {
+      id: 'laavan',
+      name: 'Laavan Pheras',
+      description: 'The four rounds around the Guru Granth Sahib, each with a specific hymn and meaning.',
+      significance: 'Each phera represents a stage in spiritual development and married life.',
+      modernAdaptations: 'The ceremony remains largely traditional, though some couples choose to have translations of the hymns read for guests.',
+      imageUrl: '/images/traditions/laavan.jpg',
+    },
+  ],
+  muslim: [
+    {
+      id: 'nikah',
+      name: 'Nikah',
+      description: 'The Islamic marriage contract ceremony, where the couple consents to marriage in front of witnesses.',
+      significance: 'The Nikah is a sacred contract that establishes the rights and obligations of the bride and groom.',
+      modernAdaptations: 'Modern Nikahs may be held in wedding halls rather than mosques, with decorative elements added to the ceremony.',
+      imageUrl: '/images/traditions/nikah.jpg',
+    },
+    {
+      id: 'mehndi-muslim',
+      name: 'Mehndi',
+      description: 'Similar to Hindu traditions, intricate henna designs are applied to the bride\'s hands and feet.',
+      significance: 'The mehndi symbolizes beauty, joy, and good fortune for the bride.',
+      modernAdaptations: 'Contemporary Muslim mehndi ceremonies often include professional artists and festive celebrations.',
+      imageUrl: '/images/traditions/mehndi-muslim.jpg',
+    },
+    {
+      id: 'walima',
+      name: 'Walima',
+      description: 'The wedding reception hosted by the groom\'s family after the Nikah.',
+      significance: 'The Walima is a celebration to publicly announce the marriage and share joy with the community.',
+      modernAdaptations: 'Modern Walima celebrations often include elaborate decorations, entertainment, and catering.',
+      imageUrl: '/images/traditions/walima.jpg',
+    },
+  ],
+  south: [
+    {
+      id: 'kashi-yatra',
+      name: 'Kashi Yatra',
+      description: 'A symbolic ritual where the groom pretends to leave for Kashi (Varanasi) to pursue spiritual life.',
+      significance: 'This playful ritual ends when the bride\'s father convinces the groom to return and marry his daughter instead.',
+      modernAdaptations: 'Modern interpretations often add humor and theatrical elements to this tradition.',
+      imageUrl: '/images/traditions/kashi-yatra.jpg',
+    },
+    {
+      id: 'oonjal',
+      name: 'Oonjal (Swing) Ceremony',
+      description: 'The bride and groom are seated on a decorated swing and rocked gently by female relatives.',
+      significance: 'This ritual symbolizes the ups and downs of married life and how the couple should face them together.',
+      modernAdaptations: 'Contemporary Oonjal ceremonies often feature elaborately decorated swings and professional photography.',
+      imageUrl: '/images/traditions/oonjal.jpg',
+    },
+    {
+      id: 'kanya-daan',
+      name: 'Kanya Daan',
+      description: 'The giving away of the bride by her father to the groom, a significant moment in South Indian weddings.',
+      significance: 'This ritual symbolizes the father entrusting his daughter to her husband with blessings for their future.',
+      modernAdaptations: 'While the core ritual remains traditional, some families now emphasize partnership rather than "giving away."',
+      imageUrl: '/images/traditions/kanya-daan.jpg',
+    },
+    {
+      id: 'talambralu',
+      name: 'Talambralu',
+      description: 'The couple showers each other with a mixture of rice, turmeric, and saffron.',
+      significance: 'This ritual symbolizes prosperity, fertility, and the couple\'s commitment to care for each other.',
+      modernAdaptations: 'Modern ceremonies sometimes use flower petals or eco-friendly alternatives to rice.',
+      imageUrl: '/images/traditions/talambralu.jpg',
+    },
+  ],
 };
 
-export default function TraditionsPage() {
-  return <TraditionsContent />;
-}
+const TraditionsPage = () => {
+  const { shouldAnimate } = useAnimation();
+
+  return (
+    <>
+      <Seo 
+        title="Indian Wedding Traditions & Customs" 
+        description="Explore the rich cultural heritage of Indian wedding traditions. Learn about Hindu, Sikh, Muslim, and South Indian wedding rituals and their modern adaptations."
+      />
+      <div className="flex flex-col relative min-h-screen">
+        {shouldAnimate && <RoyalBackground />}
+        <div className="relative z-10 container mx-auto px-4 py-12 mt-20">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <h1 className="text-3xl md:text-4xl font-playfair font-bold text-primary mb-4">
+                Indian Wedding Traditions & Customs
+              </h1>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+                Explore the rich cultural heritage and beautiful traditions that make Indian weddings 
+                so unique and meaningful. Discover how these ancient customs are being adapted for modern celebrations.
+              </p>
+            </div>
+
+            <Tabs defaultValue="hindu" className="mb-12">
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
+                <TabsTrigger value="hindu">Hindu</TabsTrigger>
+                <TabsTrigger value="sikh">Sikh</TabsTrigger>
+                <TabsTrigger value="muslim">Muslim</TabsTrigger>
+                <TabsTrigger value="south">South Indian</TabsTrigger>
+              </TabsList>
+              
+              {Object.entries(traditions).map(([key, traditionsList]) => (
+                <TabsContent key={key} value={key} className="mt-6">
+                  <div className="space-y-8">
+                    {traditionsList.map((tradition) => (
+                      <Card key={tradition.id} className="p-6 bg-card/95 backdrop-blur-sm border-primary/20 overflow-hidden">
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          <div className="md:col-span-1 relative h-60 md:h-full rounded-lg overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
+                            <div className="relative h-full w-full">
+                              {/* Placeholder for image - in production, use actual images */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
+                                <span className="text-xl font-medium text-white">{tradition.name}</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="md:col-span-2">
+                            <h2 className="text-2xl font-playfair font-bold text-primary mb-2">{tradition.name}</h2>
+                            <p className="text-muted-foreground mb-4">{tradition.description}</p>
+                            
+                            <div className="space-y-4">
+                              <div>
+                                <h3 className="font-medium text-primary">Significance</h3>
+                                <p className="text-sm">{tradition.significance}</p>
+                              </div>
+                              
+                              <Separator />
+                              
+                              <div>
+                                <h3 className="font-medium text-primary">Modern Adaptations</h3>
+                                <p className="text-sm">{tradition.modernAdaptations}</p>
+                              </div>
+                            </div>
+                            
+                            <div className="mt-6">
+                              <Button variant="outline" size="sm" asChild>
+                                <a href={`/blog/${tradition.id}-ceremony-seattle-indian-wedding`}>
+                                  Read More About {tradition.name}
+                                </a>
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                </TabsContent>
+              ))}
+            </Tabs>
+
+            <div className="text-center mb-12">
+              <h2 className="text-2xl font-playfair font-bold mb-4">Incorporate These Traditions in Your Wedding</h2>
+              <p className="text-muted-foreground mb-6">
+                Our expert wedding planners can help you blend traditional elements with modern touches
+                to create a wedding that honors your heritage while reflecting your personal style.
+              </p>
+              <Button size="lg" asChild>
+                <a href="/contact">Schedule a Consultation</a>
+              </Button>
+            </div>
+
+            <Card className="p-6 bg-card/95 backdrop-blur-sm border-primary/20">
+              <h2 className="text-xl font-semibold mb-4">Frequently Asked Questions</h2>
+              <div className="space-y-4">
+                <div>
+                  <h3 className="font-medium">Can we blend traditions from different Indian cultures?</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Absolutely! Many modern Indian weddings incorporate elements from various traditions, 
+                    especially in intercultural marriages. Our planners can help you create a meaningful 
+                    ceremony that honors both families' backgrounds.
+                  </p>
+                </div>
+                <Separator />
+                <div>
+                  <h3 className="font-medium">How can we make traditional ceremonies more accessible to non-Indian guests?</h3>
+                  <p className="text-sm text-muted-foreground">
+                    We recommend creating custom ceremony programs that explain the significance of each ritual, 
+                    having a bilingual officiant who can provide brief explanations, or incorporating a narrator 
+                    who guides guests through the ceremony.
+                  </p>
+                </div>
+                <Separator />
+                <div>
+                  <h3 className="font-medium">How long do traditional Indian wedding ceremonies typically last?</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Traditional ceremonies can range from 1-3 hours depending on the cultural background and 
+                    specific rituals included. Many couples today choose to streamline certain elements while 
+                    preserving the most meaningful traditions.
+                  </p>
+                </div>
+                <Separator />
+                <div>
+                  <h3 className="font-medium">Can we incorporate Western elements alongside traditional Indian customs?</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Yes! Many couples successfully blend Indian traditions with Western elements like a white dress 
+                    reception, first dance, cake cutting, or bouquet toss. Our planners specialize in creating 
+                    harmonious fusion celebrations.
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default TraditionsPage;

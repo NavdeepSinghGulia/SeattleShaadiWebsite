@@ -1,335 +1,220 @@
 /**
  * Enhanced SEO Configuration
- * 
- * Advanced SEO settings optimized for Indian wedding planning
- * in Seattle and USA markets with focus on local search dominance.
+ * This file contains comprehensive SEO settings for the website
  */
 
-import { PRIMARY_KEYWORDS, LOCATION_KEYWORDS } from './seo-keywords';
-
-// Enhanced site configuration for SEO
 export const enhancedSeoConfig = {
-  // Core site information
-  siteName: 'Seattle Shaadi - Premier Indian Wedding Planner',
-  siteUrl: process.env.NEXT_PUBLIC_SITE_URL || 'https://seattleshaadi.com',
+  siteUrl: 'https://seattleshaadi.com',
+  siteName: 'Seattle Shaadi - Indian Wedding Planner',
+  defaultTitle: 'Best Indian Wedding Planner in Seattle | Seattle Shaadi',
+  defaultDescription: 'Seattle\'s premier Indian wedding planning service. We create luxurious, culturally authentic weddings with a modern touch for South Asian couples in the Pacific Northwest.',
   
-  // Primary business information
-  businessName: 'Seattle Shaadi',
-  businessLegalName: 'Seattle Shaadi Wedding Planners LLC',
-  foundedYear: '2020',
-  
-  // Contact information
-  phone: '+1 (206) 555-0123', // Update with real phone
-  email: 'contact@seattleshaadi.com',
-  
-  // Address information (critical for local SEO)
-  address: {
-    streetAddress: '123 Main Street', // Update with real address
-    addressLocality: 'Seattle',
-    addressRegion: 'WA',
-    postalCode: '98101',
-    addressCountry: 'US'
+  // Open Graph
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://seattleshaadi.com',
+    siteName: 'Seattle Shaadi',
+    images: [
+      {
+        url: 'https://seattleshaadi.com/images/og-image.jpg',
+        width: 1200,
+        height: 630,
+        alt: 'Seattle Shaadi - Indian Wedding Planner',
+      },
+    ],
   },
   
-  // Service areas (for local SEO)
-  serviceAreas: [
-    'Seattle, WA',
-    'Bellevue, WA',
-    'Tacoma, WA',
-    'Everett, WA',
-    'Spokane, WA',
-    'Redmond, WA',
-    'Kirkland, WA',
-    'Renton, WA',
-    'Kent, WA',
-    'Federal Way, WA',
-    'King County, WA',
-    'Pierce County, WA',
-    'Snohomish County, WA',
-    'Washington State',
-    'Pacific Northwest'
+  // Twitter
+  twitter: {
+    handle: '@seattleshaadi',
+    site: '@seattleshaadi',
+    cardType: 'summary_large_image',
+  },
+  
+  // Structured Data (JSON-LD)
+  structuredData: {
+    organization: {
+      '@type': 'Organization',
+      name: 'Seattle Shaadi',
+      url: 'https://seattleshaadi.com',
+      logo: 'https://seattleshaadi.com/images/logo.png',
+      sameAs: [
+        'https://www.facebook.com/seattleshaadi',
+        'https://www.instagram.com/seattleshaadi',
+        'https://www.pinterest.com/seattleshaadi',
+      ],
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+1-206-555-0123',
+        contactType: 'customer service',
+        areaServed: 'Seattle, WA',
+        availableLanguage: ['English', 'Hindi', 'Punjabi'],
+      },
+    },
+    localBusiness: {
+      '@type': 'LocalBusiness',
+      name: 'Seattle Shaadi - Indian Wedding Planner',
+      image: 'https://seattleshaadi.com/images/storefront.jpg',
+      '@id': 'https://seattleshaadi.com',
+      url: 'https://seattleshaadi.com',
+      telephone: '+1-206-555-0123',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: '123 Wedding Lane',
+        addressLocality: 'Seattle',
+        addressRegion: 'WA',
+        postalCode: '98101',
+        addressCountry: 'US',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 47.6062,
+        longitude: -122.3321,
+      },
+      openingHoursSpecification: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: [
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday',
+        ],
+        opens: '10:00',
+        closes: '18:00',
+      },
+      priceRange: '$$',
+    },
+  },
+  
+  // Keywords
+  keywords: [
+    'Indian wedding planner Seattle',
+    'South Asian wedding Seattle',
+    'Hindu wedding planner',
+    'Sikh wedding planner',
+    'Muslim wedding planner',
+    'Indian wedding venues Seattle',
+    'Seattle Indian wedding packages',
+    'Luxury Indian wedding',
+    'Budget Indian wedding Seattle',
+    'Indian wedding decorations',
+    'Mehndi ceremony Seattle',
+    'Sangeet planner Seattle',
+    'Indian wedding catering Seattle',
+    'Wedding mandap Seattle',
+    'Baraat ceremony Seattle',
   ],
   
-  // Business hours
-  businessHours: {
-    monday: '9:00 AM - 6:00 PM',
-    tuesday: '9:00 AM - 6:00 PM',
-    wednesday: '9:00 AM - 6:00 PM',
-    thursday: '9:00 AM - 6:00 PM',
-    friday: '9:00 AM - 6:00 PM',
-    saturday: '10:00 AM - 4:00 PM',
-    sunday: 'By Appointment Only'
-  },
-  
-  // Social media profiles (update with real URLs)
-  socialProfiles: {
-    facebook: 'https://www.facebook.com/seattleshaadi',
-    instagram: 'https://www.instagram.com/seattleshaadi',
-    pinterest: 'https://www.pinterest.com/seattleshaadi',
-    linkedin: 'https://www.linkedin.com/company/seattleshaadi',
-    youtube: 'https://www.youtube.com/@seattleshaadi',
-    twitter: 'https://twitter.com/seattleshaadi'
-  },
-  
-  // Primary services offered
+  // Service Pages
   services: [
     {
-      name: 'Complete Indian Wedding Under $30K',
-      description: 'Smart budget Indian wedding planning with luxury touches - full coordination from engagement to reception',
-      url: '/services/budget-indian-wedding-30k'
+      title: 'Budget Indian Wedding Planning in Seattle - $30K Package',
+      description: 'Affordable Indian wedding planning in Seattle starting at $30,000. Get a beautiful, culturally authentic wedding without breaking the bank.',
+      url: '/services/budget-indian-wedding-30k',
+      keywords: ['budget Indian wedding', 'affordable Indian wedding Seattle', 'Indian wedding package'],
     },
     {
-      name: 'Hindu Wedding Ceremony Planning',
-      description: 'Traditional Hindu wedding ceremony coordination with authentic rituals and customs',
-      url: '/services/hindu-wedding-planning'
+      title: 'Hindu Wedding Planning in Seattle | Traditional & Modern Ceremonies',
+      description: 'Expert Hindu wedding planning in Seattle with traditional ceremonies, modern touches, and authentic cultural elements.',
+      url: '/services/hindu-wedding-planning',
+      keywords: ['Hindu wedding planner', 'Hindu ceremony Seattle', 'traditional Hindu wedding'],
     },
     {
-      name: 'Sikh Wedding Ceremony Planning',
-      description: 'Authentic Sikh wedding ceremony coordination including Anand Karaj and Gurdwara ceremonies',
-      url: '/services/sikh-wedding-planning'
+      title: 'Sikh Wedding Planning in Seattle | Authentic Anand Karaj Ceremonies',
+      description: 'Authentic Sikh wedding planning in Seattle with traditional Anand Karaj ceremonies and cultural expertise.',
+      url: '/services/sikh-wedding-planning',
+      keywords: ['Sikh wedding planner', 'Anand Karaj Seattle', 'Gurdwara wedding'],
     },
     {
-      name: 'Punjabi Wedding Planning',
-      description: 'Vibrant Punjabi wedding coordination with traditional music, dance, and celebrations',
-      url: '/services/punjabi-wedding-planning'
+      title: 'Punjabi Wedding Planning in Seattle | Vibrant Cultural Celebrations',
+      description: 'Vibrant Punjabi wedding planning in Seattle with authentic traditions, bhangra, and cultural celebrations.',
+      url: '/services/punjabi-wedding-planning',
+      keywords: ['Punjabi wedding planner', 'bhangra wedding Seattle', 'Punjabi wedding traditions'],
     },
     {
-      name: 'Tamil Wedding Ceremony Planning',
-      description: 'Authentic South Indian Tamil wedding coordination with traditional rituals and customs',
-      url: '/services/tamil-wedding-planning'
+      title: 'Tamil Wedding Planning in Seattle | South Indian Ceremonies',
+      description: 'Traditional Tamil wedding planning in Seattle with authentic South Indian ceremonies and cultural elements.',
+      url: '/services/tamil-wedding-planning',
+      keywords: ['Tamil wedding planner', 'South Indian wedding Seattle', 'Tamil ceremonies'],
     },
     {
-      name: 'Telugu Wedding Planning',
-      description: 'Traditional Telugu wedding ceremony coordination with authentic Andhra/Telangana customs',
-      url: '/services/telugu-wedding-planning'
+      title: 'Telugu Wedding Planning in Seattle | South Indian Traditions',
+      description: 'Authentic Telugu wedding planning in Seattle with traditional South Indian ceremonies and cultural expertise.',
+      url: '/services/telugu-wedding-planning',
+      keywords: ['Telugu wedding planner', 'South Indian wedding Seattle', 'Telugu ceremonies'],
     },
     {
-      name: 'Kannada Wedding Planning',
-      description: 'Karnataka tradition wedding coordination with authentic Kannada customs and rituals',
-      url: '/services/kannada-wedding-planning'
+      title: 'Kannada Wedding Planning in Seattle | South Indian Celebrations',
+      description: 'Traditional Kannada wedding planning in Seattle with authentic South Indian ceremonies and cultural elements.',
+      url: '/services/kannada-wedding-planning',
+      keywords: ['Kannada wedding planner', 'South Indian wedding Seattle', 'Kannada ceremonies'],
     },
     {
-      name: 'Muslim Indian Wedding Planning',
-      description: 'Islamic Indian wedding coordination including Nikah ceremony and traditional celebrations',
-      url: '/services/muslim-indian-wedding-planning'
+      title: 'Muslim Indian Wedding Planning in Seattle | Nikah & Walima Ceremonies',
+      description: 'Culturally sensitive Muslim Indian wedding planning in Seattle with traditional Nikah and Walima ceremonies.',
+      url: '/services/muslim-indian-wedding-planning',
+      keywords: ['Muslim wedding planner', 'Nikah ceremony Seattle', 'Walima reception'],
     },
     {
-      name: 'Bengali Wedding Planning',
-      description: 'Traditional Bengali wedding coordination with authentic rituals and cultural celebrations',
-      url: '/services/bengali-wedding-planning'
+      title: 'Bengali Wedding Planning in Seattle | Traditional Ceremonies',
+      description: 'Authentic Bengali wedding planning in Seattle with traditional ceremonies and cultural expertise.',
+      url: '/services/bengali-wedding-planning',
+      keywords: ['Bengali wedding planner', 'Bengali wedding traditions', 'Bengali ceremony Seattle'],
     },
     {
-      name: 'Gujarati Wedding Planning',
-      description: 'Vibrant Gujarati wedding coordination with traditional ceremonies and celebrations',
-      url: '/services/gujarati-wedding-planning'
+      title: 'Gujarati Wedding Planning in Seattle | Vibrant Cultural Celebrations',
+      description: 'Vibrant Gujarati wedding planning in Seattle with authentic traditions and cultural celebrations.',
+      url: '/services/gujarati-wedding-planning',
+      keywords: ['Gujarati wedding planner', 'Gujarati wedding traditions', 'Garba night Seattle'],
     },
     {
-      name: 'Affordable Luxury Indian Weddings',
-      description: 'Premium Indian wedding planning services with smart budget management and value optimization',
-      url: '/services/affordable-luxury-indian-weddings'
+      title: 'Affordable Luxury Indian Weddings in Seattle | Premium Experience',
+      description: 'Experience affordable luxury for your Indian wedding in Seattle. Premium venues, decor, and services at competitive prices.',
+      url: '/services/affordable-luxury-indian-weddings',
+      keywords: ['luxury Indian wedding', 'premium Indian wedding Seattle', 'high-end Indian wedding'],
     },
     {
-      name: 'Indian Wedding Venue Selection',
-      description: 'Expert venue selection and booking services for all Indian wedding types',
-      url: '/services/venue-selection'
-    }
+      title: 'Indian Wedding Venue Selection in Seattle | Perfect Locations',
+      description: 'Find the perfect venue for your Indian wedding in Seattle. Expert guidance on selecting locations that accommodate cultural requirements.',
+      url: '/services/venue-selection',
+      keywords: ['Indian wedding venues', 'Seattle wedding locations', 'mandap-friendly venues'],
+    },
   ],
   
-  // Target keywords for different pages
-  pageKeywords: {
-    home: [
-      'best Indian wedding planner Seattle',
-      'Seattle Shaadi wedding planning',
-      'Indian wedding coordinator Seattle',
-      'Hindu wedding planner Seattle',
-      'Sikh wedding planner Seattle'
-    ],
-    services: [
-      'Indian wedding planning services Seattle',
-      'Hindu wedding ceremony planning',
-      'Sikh wedding ceremony planning',
-      'Indian wedding venue selection Seattle',
-      'Indian wedding decoration services Seattle'
-    ],
-    about: [
-      'experienced Indian wedding planner Seattle',
-      'certified Indian wedding coordinator',
-      'top rated Indian wedding planner Seattle',
-      'Indian wedding planning expert Seattle'
-    ],
-    contact: [
-      'Indian wedding planner near me Seattle',
-      'contact Indian wedding planner Seattle',
-      'Indian wedding planning consultation Seattle'
-    ]
+  // New Pages
+  newPages: [
+    {
+      title: 'Indian Wedding Budget Calculator | Plan Your Seattle Wedding',
+      description: 'Plan your perfect Indian wedding with our interactive budget calculator. Estimate costs for venue, catering, decor, attire, and more based on your guest count.',
+      url: '/wedding-calculator',
+      keywords: ['Indian wedding budget', 'wedding cost calculator', 'Indian wedding planning tool'],
+    },
+    {
+      title: 'Indian Wedding Traditions & Customs | Cultural Wedding Guide',
+      description: 'Explore the rich cultural heritage of Indian wedding traditions. Learn about Hindu, Sikh, Muslim, and South Indian wedding rituals and their modern adaptations.',
+      url: '/traditions',
+      keywords: ['Indian wedding traditions', 'Hindu wedding customs', 'Indian wedding rituals'],
+    },
+    {
+      title: 'Indian Wedding Gallery | Inspiration for Your Special Day',
+      description: 'Browse our gallery of stunning Indian weddings in Seattle. Get inspiration for ceremonies, decor, food, and attire for your perfect Indian wedding.',
+      url: '/gallery',
+      keywords: ['Indian wedding photos', 'wedding inspiration gallery', 'Indian wedding decor ideas'],
+    },
+  ],
+  
+  // Local SEO
+  localSEO: {
+    city: 'Seattle',
+    region: 'WA',
+    country: 'USA',
+    zipCodes: ['98101', '98102', '98103', '98104', '98105', '98106', '98107', '98108', '98109', '98112', '98115', '98116', '98117', '98118', '98119', '98121', '98122', '98125', '98126', '98133', '98134', '98136', '98144', '98154', '98164', '98174', '98177', '98178', '98195', '98199'],
+    neighborhoods: ['Downtown', 'Capitol Hill', 'Ballard', 'Fremont', 'Queen Anne', 'Belltown', 'South Lake Union', 'University District', 'Wallingford', 'Green Lake', 'Magnolia', 'West Seattle', 'Beacon Hill', 'Columbia City', 'Rainier Valley', 'Northgate', 'Greenwood', 'Phinney Ridge', 'Madison Park', 'Leschi', 'Mount Baker', 'Seward Park', 'Alki', 'Admiral', 'Fauntleroy'],
+    nearbyAreas: ['Bellevue', 'Redmond', 'Kirkland', 'Renton', 'Mercer Island', 'Shoreline', 'Edmonds', 'Lynnwood', 'Bothell', 'Woodinville', 'Issaquah', 'Sammamish', 'Newcastle', 'Kent', 'Federal Way', 'Tacoma', 'Everett'],
   },
-  
-  // FAQ content for voice search optimization
-  faqs: [
-    {
-      question: 'What makes Seattle Shaadi the best Indian wedding planner in Seattle?',
-      answer: 'Seattle Shaadi combines years of experience with deep cultural knowledge to create authentic Indian weddings. We specialize in Hindu, Sikh, Punjabi, Tamil, Telugu, Kannada, Muslim Indian, Bengali, Gujarati, and Marathi wedding traditions while incorporating modern elements that reflect your unique style.'
-    },
-    {
-      question: 'Can you plan a complete Indian wedding under $30,000 in Seattle?',
-      answer: 'Yes! We specialize in smart budget Indian wedding planning. Our complete wedding packages under $30K include venue coordination, decoration, catering coordination, photography coordination, and day-of management. We focus on value and luxury touches without compromising on authenticity.'
-    },
-    {
-      question: 'What is included in your $30K Indian wedding package?',
-      answer: 'Our $30K complete Indian wedding package includes: venue selection and booking, traditional decoration setup, catering coordination, photography/videography coordination, music and entertainment booking, day-of coordination, timeline management, and vendor coordination. We maximize value while maintaining authentic cultural elements.'
-    },
-    {
-      question: 'Do you plan weddings for all Indian communities in Seattle?',
-      answer: 'Absolutely! We plan weddings for all Indian communities including Punjabi, Tamil, Telugu, Kannada, Bengali, Gujarati, Marathi, and Muslim Indian families. Our team understands the unique traditions, rituals, and customs of each community and ensures authentic celebrations.'
-    },
-    {
-      question: 'What is the difference between North Indian and South Indian wedding planning?',
-      answer: 'North Indian weddings (Punjabi, Hindi, Gujarati) typically feature vibrant colors, Bollywood music, and ceremonies like Mehendi, Sangeet, and Baraat. South Indian weddings (Tamil, Telugu, Kannada) focus on traditional rituals, classical music, and ceremonies like Haldi and temple blessings. We expertly coordinate both styles.'
-    },
-    {
-      question: 'How do you plan affordable luxury Indian weddings?',
-      answer: 'We achieve affordable luxury through smart budget allocation, vendor partnerships, DIY elements for non-critical items, seasonal timing, and focusing spending on high-impact areas like venue, food, and photography. Our goal is maximum impact within your budget.'
-    },
-    {
-      question: 'What Indian wedding venues are available in Seattle?',
-      answer: 'Seattle offers numerous venues perfect for Indian weddings, including luxury hotels, cultural centers, outdoor gardens, and traditional banquet halls. We have partnerships with venues that understand diverse Indian wedding requirements for all communities.'
-    },
-    {
-      question: 'How far in advance should I book an Indian wedding planner in Seattle?',
-      answer: 'We recommend booking your Indian wedding planner 12-18 months in advance, especially for popular wedding seasons. This ensures availability of preferred vendors and venues in the Seattle area, and better pricing for budget-conscious couples.'
-    },
-    {
-      question: 'Do you coordinate Muslim Indian weddings and Nikah ceremonies?',
-      answer: 'Yes, we specialize in Muslim Indian wedding coordination including Nikah ceremonies, Walima receptions, and traditional Islamic wedding customs. We work with local mosques and Islamic centers to ensure authentic and respectful celebrations.'
-    },
-    {
-      question: 'Can you plan Tamil, Telugu, or Kannada weddings in Seattle?',
-      answer: 'Absolutely! We have extensive experience planning South Indian weddings including Tamil, Telugu, and Kannada ceremonies. We understand the traditional rituals, coordinate with local temples, and ensure authentic cultural celebrations with proper customs and traditions.'
-    }
-  ],
-  
-  // Review and testimonial keywords
-  reviewKeywords: [
-    'best Indian wedding planner Seattle reviews',
-    'Seattle Shaadi testimonials',
-    'top rated Indian wedding coordinator Seattle',
-    'Indian wedding planner Seattle recommendations',
-    'Seattle Indian wedding planning reviews'
-  ],
-  
-  // Local business categories
-  businessCategories: [
-    'Wedding Planner',
-    'Event Planner',
-    'Indian Wedding Specialist',
-    'Hindu Wedding Planner',
-    'Sikh Wedding Planner',
-    'Cultural Wedding Coordinator',
-    'Destination Wedding Planner',
-    'Luxury Wedding Planner'
-  ],
-  
-  // Certifications and awards (add real ones)
-  certifications: [
-    'Certified Wedding Planner (CWP)',
-    'International Association of Wedding Planners Member',
-    'Better Business Bureau A+ Rating',
-    'WeddingWire Couples Choice Award 2023',
-    'The Knot Best of Weddings 2023'
-  ]
 };
 
-// Generate structured data for local business
-export const generateLocalBusinessSchema = () => ({
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': `${enhancedSeoConfig.siteUrl}/#localbusiness`,
-  name: enhancedSeoConfig.businessName,
-  alternateName: enhancedSeoConfig.businessLegalName,
-  description: 'Premier Indian wedding planner in Seattle specializing in Hindu, Sikh, and traditional Indian wedding ceremonies. Expert coordination for authentic cultural celebrations.',
-  url: enhancedSeoConfig.siteUrl,
-  telephone: enhancedSeoConfig.phone,
-  email: enhancedSeoConfig.email,
-  foundingDate: enhancedSeoConfig.foundedYear,
-  
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: enhancedSeoConfig.address.streetAddress,
-    addressLocality: enhancedSeoConfig.address.addressLocality,
-    addressRegion: enhancedSeoConfig.address.addressRegion,
-    postalCode: enhancedSeoConfig.address.postalCode,
-    addressCountry: enhancedSeoConfig.address.addressCountry
-  },
-  
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: '47.6062', // Seattle coordinates
-    longitude: '-122.3321'
-  },
-  
-  areaServed: enhancedSeoConfig.serviceAreas.map(area => ({
-    '@type': 'City',
-    name: area
-  })),
-  
-  serviceType: enhancedSeoConfig.businessCategories,
-  
-  openingHoursSpecification: Object.entries(enhancedSeoConfig.businessHours).map(([day, hours]) => ({
-    '@type': 'OpeningHoursSpecification',
-    dayOfWeek: day.charAt(0).toUpperCase() + day.slice(1),
-    opens: hours.split(' - ')[0],
-    closes: hours.split(' - ')[1] || 'By Appointment'
-  })),
-  
-  sameAs: Object.values(enhancedSeoConfig.socialProfiles),
-  
-  priceRange: '$5000-$25000',
-  
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '4.9',
-    reviewCount: '127',
-    bestRating: '5',
-    worstRating: '1'
-  }
-});
-
-// Generate FAQ schema for voice search
-export const generateFAQSchema = () => ({
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: enhancedSeoConfig.faqs.map(faq => ({
-    '@type': 'Question',
-    name: faq.question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.answer
-    }
-  }))
-});
-
-// Generate service schema
-export const generateServiceSchema = () => ({
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  serviceType: 'Indian Wedding Planning',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: enhancedSeoConfig.businessName,
-    url: enhancedSeoConfig.siteUrl
-  },
-  areaServed: enhancedSeoConfig.serviceAreas,
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Indian Wedding Planning Services',
-    itemListElement: enhancedSeoConfig.services.map((service, index) => ({
-      '@type': 'Offer',
-      itemOffered: {
-        '@type': 'Service',
-        name: service.name,
-        description: service.description,
-        url: `${enhancedSeoConfig.siteUrl}${service.url}`
-      }
-    }))
-  }
-});
+export default enhancedSeoConfig;
