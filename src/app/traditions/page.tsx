@@ -115,6 +115,28 @@ const traditions: Record<string, Tradition[]> = {
       imageUrl: '/images/traditions/sikh/jago-ceremony.jpg',
     },
     {
+      id: 'mehndi-sikh',
+      name: 'Mehndi Ceremony',
+      description:
+        'A festive pre-wedding celebration where intricate henna designs are applied to the hands and feet of the bride and female family members.',
+      significance:
+        'Symbolizes beauty, joy, and good fortune. The ceremony brings together female relatives and friends to bless the bride before her wedding day.',
+      modernAdaptations:
+        'Modern Sikh mehndi ceremonies often include professional artists, music, dancing, and themed decorations with a Punjabi flair.',
+      imageUrl: '/images/ceremonies/mehndi/sikh-mehndi-ceremony.jpg',
+    },
+    {
+      id: 'choora',
+      name: 'Choora Ceremony',
+      description:
+        "The maternal uncle places red and white bangles (choora) on the bride's wrists, which she wears for several weeks after marriage.",
+      significance:
+        'The choora symbolizes marital status, prosperity, and the blessings of maternal relatives. The red color represents love and fertility.',
+      modernAdaptations:
+        'Modern brides often choose designer chooras with gold accents and may wear them for a shorter period than traditionally expected.',
+      imageUrl: '/images/traditions/sikh/choora-ceremony.jpg',
+    },
+    {
       id: 'anand-karaj',
       name: 'Anand Karaj',
       description:
