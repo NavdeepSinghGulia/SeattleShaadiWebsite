@@ -234,7 +234,7 @@ const traditions: Record<string, Tradition[]> = {
       id: 'jeelakarra-bellam',
       name: 'Jeelakarra-Bellam',
       description:
-        'The couple places cumin and jaggery paste on each other's heads, signifying inseparable union.',
+        "The couple places cumin and jaggery paste on each other's heads, signifying inseparable union.",
       significance:
         'Cumin and jaggery represent steadfastness and sweetness in marriage.',
       modernAdaptations:
@@ -247,11 +247,11 @@ const traditions: Record<string, Tradition[]> = {
       id: 'nalangu',
       name: 'Nalangu Ceremony',
       description:
-        'A playful pre-wedding ritual where the bride and groom take turns crushing each other's toes with their feet.',
+        "A playful pre-wedding ritual where the bride and groom take turns crushing each other's toes with their feet.",
       significance:
-        'Symbolizes the couple's playful relationship and establishes who will have the upper hand in the marriage.',
+        "Symbolizes the couple's playful relationship and establishes who will have the upper hand in the marriage.",
       modernAdaptations:
-        'Modern ceremonies often include games and contests between the bride and groom's families.',
+        "Modern ceremonies often include games and contests between the bride and groom's families.",
       imageUrl: '/images/traditions/kannada/nalangu-ceremony.jpg',
     },
     {
