@@ -271,9 +271,9 @@ const traditions: Record<string, Tradition[]> = {
       id: 'thalikettu',
       name: 'Thalikettu (Tying the Thali)',
       description:
-        'The groom ties the thali (mangalsutra) around the bride's neck, symbolizing their marital union.',
+        "The groom ties the thali (mangalsutra) around the bride's neck, symbolizing their marital union.",
       significance:
-        'The thali is a sacred thread that represents the couple's commitment and bond in marriage.',
+        "The thali is a sacred thread that represents the couple's commitment and bond in marriage.",
       modernAdaptations:
         'Modern thalis often feature contemporary designs while maintaining traditional elements.',
       imageUrl: '/images/traditions/malayalam/thalikettu-ceremony.jpg',
