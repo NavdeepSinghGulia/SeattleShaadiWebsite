@@ -187,12 +187,6 @@ export const enhancedSeoConfig = {
   // New Pages
   newPages: [
     {
-      title: 'Indian Wedding Budget Calculator | Plan Your Seattle Wedding',
-      description: 'Plan your perfect Indian wedding with our interactive budget calculator. Estimate costs for venue, catering, decor, attire, and more based on your guest count.',
-      url: '/wedding-calculator',
-      keywords: ['Indian wedding budget', 'wedding cost calculator', 'Indian wedding planning tool'],
-    },
-    {
       title: 'Indian Wedding Traditions & Customs | Cultural Wedding Guide',
       description: 'Explore the rich cultural heritage of Indian wedding traditions. Learn about Hindu, Sikh, Muslim, and South Indian wedding rituals and their modern adaptations.',
       url: '/traditions',

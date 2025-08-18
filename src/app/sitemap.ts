@@ -36,6 +36,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/haldi-ceremony-seattle-indian-wedding',
     '/blog/mehndi-ceremony-seattle-indian-wedding',
     '/blog/vidaai-ceremony-seattle-indian-wedding',
+    '/blog/jago-ceremony-seattle-indian-wedding',
+    '/blog/choora-ceremony-seattle-indian-wedding',
+    '/blog/anand-karaj-ceremony-seattle-indian-wedding',
+    '/blog/milni-ceremony-seattle-indian-wedding',
+    '/blog/laavan-ceremony-seattle-indian-wedding',
+    '/blog/oonjal-ceremony-seattle-indian-wedding',
+    '/blog/kanyadaanam-ceremony-seattle-indian-wedding',
+    '/blog/nalangu-ceremony-seattle-indian-wedding',
+    '/blog/arundhati-nakshatra-ceremony-seattle-indian-wedding',
+    '/blog/jeelakarra-bellam-ceremony-seattle-indian-wedding',
+    '/blog/talambralu-ceremony-seattle-indian-wedding',
+    '/blog/kashi-yatra-ceremony-seattle-indian-wedding',
+    '/blog/thalikettu-ceremony-seattle-indian-wedding',
+    '/blog/pudamuri-ceremony-seattle-indian-wedding',
     '/blog/seattle-wedding-planning-guide',
     '/blog/south-asian-wedding-seattle',
     '/blog/top-5-seattle-wedding-venues',
@@ -64,4 +78,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [...mainRoutes, ...blogPosts, ...servicePages, demoPage];
 }
-
