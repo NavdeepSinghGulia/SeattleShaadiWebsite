@@ -106,6 +106,12 @@ export const enhancedSeoConfig = {
     'Indian wedding catering Seattle',
     'Wedding mandap Seattle',
     'Baraat ceremony Seattle',
+    'Jago ceremony Seattle',
+    'Sikh wedding traditions',
+    'Tamil wedding traditions',
+    'Telugu wedding traditions',
+    'Kannada wedding traditions',
+    'Malayalam wedding traditions',
   ],
   
   // Service Pages
@@ -187,10 +193,10 @@ export const enhancedSeoConfig = {
   // New Pages
   newPages: [
     {
-      title: 'Indian Wedding Traditions & Customs | Cultural Wedding Guide',
-      description: 'Explore the rich cultural heritage of Indian wedding traditions. Learn about Hindu, Sikh, Muslim, and South Indian wedding rituals and their modern adaptations.',
+      title: 'Indian Wedding Traditions & Customs | Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam',
+      description: 'Explore Indian wedding traditions across Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam, and Muslim cultures. Discover Jago, Oonjal, Talambralu, Thalikettu, Nalangu & more with modern adaptations.',
       url: '/traditions',
-      keywords: ['Indian wedding traditions', 'Hindu wedding customs', 'Indian wedding rituals'],
+      keywords: ['Indian wedding traditions', 'Sikh Jago', 'Tamil Oonjal', 'Telugu Talambralu', 'Kannada Nalangu', 'Malayalam Thalikettu', 'Hindu pheras', 'Muslim Nikah', 'Seattle Indian wedding rituals'],
     },
     {
       title: 'Indian Wedding Gallery | Inspiration for Your Special Day',
