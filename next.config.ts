@@ -54,16 +54,17 @@ const nextConfig: NextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60 * 60 * 24 * 30,
+    minimumCacheTTL: 0, // Disable caching to ensure fresh images
     dangerouslyAllowSVG: true,
     contentDispositionType: 'inline',
     contentSecurityPolicy: "default-src 'self'; img-src * data: blob:; media-src * data: blob:;",
+    unoptimized: true, // Disable image optimization to ensure direct loading
   },
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },
       { source: '/favicon/:path*', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] },
-      { source: '/:path*\\.(jpg|jpeg|png|webp|avif|ico|svg)', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] },
+      { source: '/:path*\\.(jpg|jpeg|png|webp|avif|ico|svg)', headers: [{ key: 'Cache-Control', value: 'no-cache, no-store, must-revalidate' }] },
       { source: '/:path*\\.(woff|woff2|eot|ttf|otf)', headers: [{ key: 'Cache-Control', value: 'public, max-age=31536000, immutable' }] },
     ];
   },

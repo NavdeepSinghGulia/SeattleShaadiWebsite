@@ -372,12 +372,13 @@ const TraditionsPage = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
                             <div className="relative h-full w-full">
                               <Image
-                                src={tradition.imageUrl}
+                                src={`${tradition.imageUrl}?v=2`}
                                 alt={`${tradition.name} - Seattle Indian Wedding ${key.charAt(0).toUpperCase() + key.slice(1)} Tradition | Authentic Cultural Ceremony`}
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 priority={key === 'hindu'}
+                                unoptimized={true}
                               />
                             </div>
                           </div>
@@ -385,6 +386,10 @@ const TraditionsPage = () => {
                             <h2 className="text-2xl font-playfair font-bold text-primary mb-2">
                               {tradition.name}
                             </h2>
+                            {/* Debug info - will remove after confirming images work */}
+                            <div className="text-xs text-gray-500 mb-2 hidden">
+                              Image path: {tradition.imageUrl}
+                            </div>
                             <p className="text-muted-foreground mb-4">
                               {tradition.description}
                             </p>
