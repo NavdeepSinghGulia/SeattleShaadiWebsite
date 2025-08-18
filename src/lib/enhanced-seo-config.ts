@@ -106,6 +106,12 @@ export const enhancedSeoConfig = {
     'Indian wedding catering Seattle',
     'Wedding mandap Seattle',
     'Baraat ceremony Seattle',
+    'Jago ceremony Seattle',
+    'Sikh wedding traditions',
+    'Tamil wedding traditions',
+    'Telugu wedding traditions',
+    'Kannada wedding traditions',
+    'Malayalam wedding traditions',
   ],
   
   // Service Pages
@@ -187,16 +193,10 @@ export const enhancedSeoConfig = {
   // New Pages
   newPages: [
     {
-      title: 'Indian Wedding Budget Calculator | Plan Your Seattle Wedding',
-      description: 'Plan your perfect Indian wedding with our interactive budget calculator. Estimate costs for venue, catering, decor, attire, and more based on your guest count.',
-      url: '/wedding-calculator',
-      keywords: ['Indian wedding budget', 'wedding cost calculator', 'Indian wedding planning tool'],
-    },
-    {
       title: 'Indian Wedding Traditions & Customs | Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam',
       description: 'Explore Indian wedding traditions across Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam, and Muslim cultures. Discover Jago, Oonjal, Talambralu, Thalikettu, Nalangu & more with modern adaptations.',
       url: '/traditions',
-      keywords: ['Indian wedding traditions', 'Sikh Jago', 'Tamil Oonjal', 'Telugu Talambralu', 'Kannada Nalangu', 'Malayalam Thalikettu', 'Hindu pheras', 'Muslim Nikah', 'Seattle Indian wedding rituals'],
+      keywords: ['Indian wedding traditions', 'Sikh Jago', 'Sikh Choora', 'Telugu Arundhati Nakshatra', 'Tamil Oonjal', 'Telugu Talambralu', 'Kannada Dhare Heralu', 'Malayalam Thalikettu', 'Hindu pheras', 'Muslim Nikah', 'Seattle Indian wedding rituals'],
     },
     {
       title: 'Indian Wedding Gallery | Inspiration for Your Special Day',

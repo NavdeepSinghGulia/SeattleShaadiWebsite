@@ -40,6 +40,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/seattle-wedding-planning-guide',
     '/blog/south-asian-wedding-seattle',
     '/blog/top-5-seattle-wedding-venues',
+    '/blog/sikh-jago-ceremony-seattle',
+    '/blog/tamil-oonjal-ceremony-seattle',
+    '/blog/telugu-talambralu-ceremony-seattle',
+    '/blog/kannada-dhare-heralu-ceremony-seattle',
+    '/blog/malayalam-thalikettu-ceremony-seattle',
   ].map(post => ({
     url: `${baseUrl}${post}`,
     lastModified,

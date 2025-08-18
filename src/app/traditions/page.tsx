@@ -2,7 +2,7 @@
 
 import React from 'react';
 import type { Metadata } from 'next';
-import OptimizedImage from '@/components/optimized-image';
+import Image from 'next/image';
 
 import { Seo } from '@/components/seo';
 import { RoyalBackground } from '@/components/royal-background';
@@ -237,7 +237,7 @@ const traditions: Record<string, Tradition[]> = {
         'Symbolizes the playful aspect of marriage and helps the couple and families bond through fun activities before the serious ceremony.',
       modernAdaptations:
         'Modern celebrations include creative games, professional photography, and sometimes even water balloon fights in upscale venues.',
-      imageUrl: '/images/traditions/kannada/nalangu-ceremony.jpg',
+      imageUrl: '/images/traditions/tamil/nalangu-ceremony.jpg',
     },
   ],
   telugu: [
@@ -277,15 +277,15 @@ const traditions: Record<string, Tradition[]> = {
   ],
   kannada: [
     {
-      id: 'nalangu',
-      name: 'Nalangu Ceremony',
+      id: 'dhare-heralu',
+      name: 'Dhare Heralu Ceremony',
       description:
-        "A playful pre-wedding ritual where the bride and groom take turns crushing each other's toes with their feet.",
+        "A sacred ritual where the bride's father pours holy water through a bamboo filter onto the couple's joined hands.",
       significance:
-        "Symbolizes the couple's playful relationship and establishes who will have the upper hand in the marriage.",
+        "Symbolizes the purification of the couple's union and the blessing of their new life together.",
       modernAdaptations:
-        "Modern ceremonies often include games and contests between the bride and groom's families.",
-      imageUrl: '/images/traditions/kannada/nalangu-ceremony.jpg',
+        "Modern ceremonies often incorporate decorative vessels and colored water for visual appeal.",
+      imageUrl: '/images/traditions/kannada/dhare-heralu-ceremony.jpg',
     },
     {
       id: 'kashi-yatra',
@@ -371,7 +371,7 @@ const TraditionsPage = () => {
                           <div className="md:col-span-1 relative h-60 md:h-full rounded-lg overflow-hidden">
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
                             <div className="relative h-full w-full">
-                              <OptimizedImage
+                              <Image
                                 src={tradition.imageUrl}
                                 alt={`${tradition.name} - Seattle Indian Wedding Traditions`}
                                 fill
