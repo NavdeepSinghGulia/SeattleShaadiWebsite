@@ -43,7 +43,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/sikh-jago-ceremony-seattle',
     '/blog/tamil-oonjal-ceremony-seattle',
     '/blog/telugu-talambralu-ceremony-seattle',
-    '/blog/kannada-nalangu-ceremony-seattle',
+    '/blog/kannada-dhare-heralu-ceremony-seattle',
     '/blog/malayalam-thalikettu-ceremony-seattle',
   ].map(post => ({
     url: `${baseUrl}${post}`,

@@ -44,7 +44,7 @@ const traditions: Record<string, Tradition[]> = {
         "The darker the mehndi color, the stronger the love between the couple. It's also believed that the bride won't have to do housework until the mehndi fades.",
       modernAdaptations:
         'Contemporary mehndi parties often include professional artists, music, dancing, and themed decorations.',
-      imageUrl: '/images/traditions/hindu/mehndi-ceremony.jpg',
+      imageUrl: '/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg',
     },
     {
       id: 'sangeet',
@@ -99,7 +99,7 @@ const traditions: Record<string, Tradition[]> = {
         "This ritual symbolizes the bride's transition from her birth family to her new family.",
       modernAdaptations:
         'Modern Vidaai ceremonies may be less formal and emotional, reflecting changing family dynamics.',
-      imageUrl: '/images/traditions/hindu/vidaai-ceremony.jpg',
+      imageUrl: '/images/ceremonies/vidaai/emotional-vidaai-parents-moment.jpeg',
     },
   ],
   sikh: [
@@ -123,7 +123,7 @@ const traditions: Record<string, Tradition[]> = {
         'Symbolizes beauty, joy, and good fortune. The ceremony brings together female relatives and friends to bless the bride before her wedding day.',
       modernAdaptations:
         'Modern Sikh mehndi ceremonies often include professional artists, music, dancing, and themed decorations with a Punjabi flair.',
-      imageUrl: '/images/traditions/sikh/mehndi-ceremony.jpg',
+      imageUrl: '/images/ceremonies/mehndi/sikh-mehndi-ceremony.jpg',
     },
     {
       id: 'choora',
@@ -145,7 +145,7 @@ const traditions: Record<string, Tradition[]> = {
         'The ceremony emphasizes equality and spiritual union, with the couple circling the holy scripture four times.',
       modernAdaptations:
         'While the core ceremony remains traditional, many couples add translations or brief explanations for guests.',
-      imageUrl: '/images/traditions/sikh/anand-karaj-ceremony.jpg',
+      imageUrl: '/images/portraits/bride-groom-ceremony-moment.jpg',
     },
     {
       id: 'milni',
@@ -156,7 +156,7 @@ const traditions: Record<string, Tradition[]> = {
         'This ritual symbolizes the union of two families and the building of new relationships.',
       modernAdaptations:
         'Modern Milni ceremonies often include creative introductions and personalized gifts.',
-      imageUrl: '/images/traditions/sikh/milni-ceremony.jpg',
+      imageUrl: '/images/portraits/groom-bride-sagai-engagement.jpg',
     },
     {
       id: 'laavan',
@@ -167,7 +167,7 @@ const traditions: Record<string, Tradition[]> = {
         'Each phera represents a stage in spiritual development and married life.',
       modernAdaptations:
         'The ceremony remains traditional; some couples have translations or narrations for guests.',
-      imageUrl: '/images/traditions/sikh/laavan-ceremony.jpg',
+      imageUrl: '/images/portraits/bride-groom-decorative-portrait.jpg',
     },
   ],
   muslim: [
@@ -180,7 +180,7 @@ const traditions: Record<string, Tradition[]> = {
         'The Nikah is a sacred contract that establishes the rights and obligations of the bride and groom.',
       modernAdaptations:
         'Modern Nikahs may be held in wedding halls rather than mosques, with decorative elements added to the ceremony.',
-      imageUrl: '/images/traditions/muslim/nikah-ceremony.jpg',
+      imageUrl: '/images/portraits/bride-groom-ceremony-handshake.jpg',
     },
     {
       id: 'mehndi-muslim',
@@ -191,7 +191,7 @@ const traditions: Record<string, Tradition[]> = {
         'The mehndi symbolizes beauty, joy, and good fortune for the bride.',
       modernAdaptations:
         'Contemporary Muslim mehndi ceremonies often include professional artists and festive celebrations.',
-      imageUrl: '/images/traditions/muslim/mehndi-ceremony.jpg',
+      imageUrl: '/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg',
     },
     {
       id: 'walima',
@@ -202,7 +202,7 @@ const traditions: Record<string, Tradition[]> = {
         'The Walima is a celebration to publicly announce the marriage and share joy with the community.',
       modernAdaptations:
         'Modern Walima celebrations often include elaborate decorations, entertainment, and catering.',
-      imageUrl: '/images/traditions/muslim/walima-ceremony.jpg',
+      imageUrl: '/images/celebrations/wedding-feast-table-setup.webp',
     },
   ],
   tamil: [

@@ -196,7 +196,7 @@ export const enhancedSeoConfig = {
       title: 'Indian Wedding Traditions & Customs | Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam',
       description: 'Explore Indian wedding traditions across Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam, and Muslim cultures. Discover Jago, Oonjal, Talambralu, Thalikettu, Nalangu & more with modern adaptations.',
       url: '/traditions',
-      keywords: ['Indian wedding traditions', 'Sikh Jago', 'Tamil Oonjal', 'Telugu Talambralu', 'Kannada Nalangu', 'Malayalam Thalikettu', 'Hindu pheras', 'Muslim Nikah', 'Seattle Indian wedding rituals'],
+      keywords: ['Indian wedding traditions', 'Sikh Jago', 'Sikh Choora', 'Telugu Arundhati Nakshatra', 'Tamil Oonjal', 'Telugu Talambralu', 'Kannada Dhare Heralu', 'Malayalam Thalikettu', 'Hindu pheras', 'Muslim Nikah', 'Seattle Indian wedding rituals'],
     },
     {
       title: 'Indian Wedding Gallery | Inspiration for Your Special Day',
