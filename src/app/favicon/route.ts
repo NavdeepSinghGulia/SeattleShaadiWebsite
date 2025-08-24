@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 
+export const dynamic = 'force-static';
+
 /**
  * Route handler for /favicon
  * This resolves the build error by providing a direct route for favicon
