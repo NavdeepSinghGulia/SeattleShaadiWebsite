@@ -83,7 +83,6 @@ const nextConfig: NextConfig = {
       '*.svg': { loaders: ['@svgr/webpack'], as: '*.js' },
     },
   },
-  serverExternalPackages: ['sharp'],
   reactStrictMode: true,
   webpack: (config) => {
     config.resolve.alias = {
