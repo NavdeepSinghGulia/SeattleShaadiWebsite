@@ -58,7 +58,6 @@ const nextConfig: NextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: 'inline',
     contentSecurityPolicy: "default-src 'self'; img-src * data: blob:; media-src * data: blob:;",
-    unoptimized: true, // Serve images without Next.js optimization for broader hosting compatibility
   },
   async headers() {
     return [
