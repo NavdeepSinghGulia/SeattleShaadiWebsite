@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { Seo } from '@/components/seo';
 import { RoyalBackground } from '@/components/royal-background';
 import { useAnimation } from '@/hooks/use-animation-preferences';
@@ -25,7 +26,7 @@ const galleryImages: GalleryImage[] = [
   // Ceremonies
   {
     id: 'ceremony-1',
-    src: '/images/gallery/ceremony-1.jpg',
+    src: '/images/ceremonies/hindu-wedding-photography-ceremony.jpg',
     alt: 'Hindu wedding ceremony with mandap',
     category: 'ceremonies',
     location: 'Four Seasons Hotel, Seattle',
@@ -33,7 +34,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-2',
-    src: '/images/gallery/ceremony-2.jpg',
+    src: '/images/ceremonies/mehndi/charlotte-mehndi-ceremony-bride.jpg',
     alt: 'Sikh wedding ceremony',
     category: 'ceremonies',
     location: 'Hyatt Regency, Bellevue',
@@ -41,7 +42,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-3',
-    src: '/images/gallery/ceremony-3.jpg',
+    src: '/images/ceremonies/baraat/traditional-baraat-procession-celebration.jpg',
     alt: 'South Indian wedding ceremony',
     category: 'ceremonies',
     location: 'Fairmont Olympic Hotel, Seattle',
@@ -49,7 +50,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-4',
-    src: '/images/gallery/ceremony-4.jpg',
+    src: '/images/ceremonies/vidaai/seattle-bride-vidaai-ceremony.jpg',
     alt: 'Muslim Nikah ceremony',
     category: 'ceremonies',
     location: 'The Westin, Seattle',
@@ -57,7 +58,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-5',
-    src: '/images/gallery/ceremony-5.jpg',
+    src: '/images/ceremonies/haldi/indian-bride-haldi-ceremony.jpg',
     alt: 'Fusion wedding ceremony',
     category: 'ceremonies',
     location: 'Willows Lodge, Woodinville',
@@ -65,7 +66,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-6',
-    src: '/images/gallery/ceremony-6.jpg',
+    src: '/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg',
     alt: 'Outdoor Indian wedding ceremony',
     category: 'ceremonies',
     location: 'Woodland Park Rose Garden, Seattle',
@@ -75,7 +76,7 @@ const galleryImages: GalleryImage[] = [
   // Decor
   {
     id: 'decor-1',
-    src: '/images/gallery/decor-1.jpg',
+    src: '/images/venues/elegant-wedding-hall-lighting.webp',
     alt: 'Luxury Indian wedding reception decor',
     category: 'decor',
     location: 'Grand Hyatt, Seattle',
@@ -83,7 +84,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-2',
-    src: '/images/gallery/decor-2.jpg',
+    src: '/images/venues/wedding-floral-decoration-setup.jpg',
     alt: 'Traditional mandap decoration',
     category: 'decor',
     location: 'Sheraton Grand, Seattle',
@@ -91,7 +92,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-3',
-    src: '/images/gallery/decor-3.jpg',
+    src: '/images/celebrations/wedding-feast-table-setup.webp',
     alt: 'Modern Indian wedding table setting',
     category: 'decor',
     location: 'Museum of History & Industry, Seattle',
@@ -99,7 +100,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-4',
-    src: '/images/gallery/decor-4.jpg',
+    src: '/images/celebrations/bollywood-wedding-dance.jpg',
     alt: 'Sangeet night decoration',
     category: 'decor',
     location: 'W Hotel, Seattle',
@@ -107,7 +108,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-5',
-    src: '/images/gallery/decor-5.jpg',
+    src: '/images/celebrations/indian-wedding-food-menu-spread.jpg',
     alt: 'Mehndi ceremony decoration',
     category: 'decor',
     location: 'Private Estate, Mercer Island',
@@ -115,7 +116,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-6',
-    src: '/images/gallery/decor-6.jpg',
+    src: '/images/venues/seattle-wedding-hall-ceremony.jpg',
     alt: 'Royal Indian wedding stage',
     category: 'decor',
     location: 'The Bellevue Club, Bellevue',
@@ -125,7 +126,7 @@ const galleryImages: GalleryImage[] = [
   // Food
   {
     id: 'food-1',
-    src: '/images/gallery/food-1.jpg',
+    src: '/images/celebrations/hindu-wedding-food-spread.jpeg',
     alt: 'Indian wedding catering display',
     category: 'food',
     location: 'Fairmont Olympic Hotel, Seattle',
@@ -133,7 +134,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-2',
-    src: '/images/gallery/food-2.jpg',
+    src: '/images/celebrations/indian-wedding-food-menu-spread.jpg',
     alt: 'Wedding dessert table',
     category: 'food',
     location: 'Four Seasons Hotel, Seattle',
@@ -141,7 +142,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-3',
-    src: '/images/gallery/food-3.jpg',
+    src: '/images/venues/seattle-wedding-garden-lawns.jpg',
     alt: 'Chaat station',
     category: 'food',
     location: 'Hyatt Regency, Bellevue',
@@ -149,7 +150,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-4',
-    src: '/images/gallery/food-4.jpg',
+    src: '/images/portraits/bride-groom-wedding-decor.jpg',
     alt: 'Wedding cake with Indian design',
     category: 'food',
     location: 'The Westin, Seattle',
@@ -157,7 +158,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-5',
-    src: '/images/gallery/food-5.jpg',
+    src: '/images/portraits/bride-groom-dance-celebration.jpg',
     alt: 'Traditional Indian thali',
     category: 'food',
     location: 'Sheraton Grand, Seattle',
@@ -165,7 +166,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-6',
-    src: '/images/gallery/food-6.jpg',
+    src: '/images/venues/traditional-phere-ceremony-hall.jpg',
     alt: 'Signature cocktails',
     category: 'food',
     location: 'W Hotel, Seattle',
@@ -175,7 +176,7 @@ const galleryImages: GalleryImage[] = [
   // Attire
   {
     id: 'attire-1',
-    src: '/images/gallery/attire-1.jpg',
+    src: '/images/portraits/indian-wedding-dresses-collection.jpg',
     alt: 'Bride in traditional lehenga',
     category: 'attire',
     location: 'Four Seasons Hotel, Seattle',
@@ -183,7 +184,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-2',
-    src: '/images/gallery/attire-2.jpg',
+    src: '/images/portraits/kaajol-pruthul-wedding-portrait.jpg',
     alt: 'Groom in traditional sherwani',
     category: 'attire',
     location: 'Fairmont Olympic Hotel, Seattle',
@@ -191,7 +192,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-3',
-    src: '/images/gallery/attire-3.jpg',
+    src: '/images/portraits/bride-celebration-dance.jpeg',
     alt: 'Bridal mehndi design',
     category: 'attire',
     location: 'Private Residence, Bellevue',
@@ -199,7 +200,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-4',
-    src: '/images/gallery/attire-4.jpg',
+    src: '/images/portraits/sarita-souvik-wedding-portrait.jpg',
     alt: 'Fusion bride and groom outfits',
     category: 'attire',
     location: 'The Bellevue Club, Bellevue',
@@ -207,7 +208,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-5',
-    src: '/images/gallery/attire-5.jpg',
+    src: '/images/portraits/bride-groom-ceremony-moment.jpg',
     alt: 'South Indian bride in Kanjeevaram',
     category: 'attire',
     location: 'Hyatt Regency, Bellevue',
@@ -215,7 +216,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-6',
-    src: '/images/gallery/attire-6.jpg',
+    src: '/images/portraits/groom-bride-sagai-engagement.jpg',
     alt: 'Wedding party in coordinated outfits',
     category: 'attire',
     location: 'Grand Hyatt, Seattle',
@@ -257,14 +258,7 @@ const GalleryPage = () => {
     }
   };
 
-  // Create a placeholder component for images since we don't have actual images
-  const ImagePlaceholder = ({ category, id }: { category: string; id: string }) => (
-    <div className="relative aspect-square bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg overflow-hidden">
-      <div className="absolute inset-0 flex items-center justify-center">
-        <span className="text-sm font-medium text-primary/70">{category} - {id}</span>
-      </div>
-    </div>
-  );
+  // Render actual images with Next/Image
 
   return (
     <>
@@ -306,8 +300,15 @@ const GalleryPage = () => {
                           onClick={() => openLightbox(image)}
                         >
                           <div className="relative">
-                            {/* In production, use actual images */}
-                            <ImagePlaceholder category={image.category} id={image.id} />
+                            <Image 
+                              src={image.src}
+                              alt={image.alt}
+                              width={800}
+                              height={800}
+                              className="w-full h-auto object-cover"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                              loading="lazy"
+                            />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
                               <h3 className="text-white font-medium">{image.alt}</h3>
                               <p className="text-white/80 text-sm">{image.location}</p>
@@ -334,10 +335,15 @@ const GalleryPage = () => {
                     <div className="md:col-span-2 relative aspect-square md:aspect-auto">
                       {selectedImage && (
                         <>
-                          {/* In production, use actual images */}
-                          <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-                            <span className="text-xl font-medium text-white">{selectedImage.alt}</span>
-                          </div>
+                          <Image 
+                            src={selectedImage.src}
+                            alt={selectedImage.alt}
+                            width={1200}
+                            height={1200}
+                            className="w-full h-auto object-contain"
+                            sizes="100vw"
+                            loading="eager"
+                          />
                           
                           <button 
                             className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 rounded-full p-2 text-white hover:bg-black/80 transition-colors"

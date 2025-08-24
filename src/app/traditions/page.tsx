@@ -89,7 +89,7 @@ const traditions: Record<string, Tradition[]> = {
         'Each phera represents a specific promise and prayer for their married life together.',
       modernAdaptations:
         'Some couples now personalize their vows while maintaining the traditional structure of the seven rounds.',
-      imageUrl: '/images/traditions/hindu/ipheras-ceremony.jpg',
+      imageUrl: '/images/traditions/hindu/pheras-ceremony.jpg',
     },
     {
       id: 'vidaai',
