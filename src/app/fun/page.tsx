@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = generateMetadata({
   title: "Behind the Scenes - Fun at Seattle Shaadi",
-  description: "Get a glimpse behind the scenes at Seattle Shaadi! See our team in action, candid moments, and the joy that goes into creating your perfect South Asian wedding celebration.",
+  description: "Get a glimpse behind the scenes at Seattle Shaadi! See our team in action, candid moments, and the joy that goes into creating your perfect Indian wedding celebration.",
   pathname: "/fun",
 });
 
@@ -42,6 +42,7 @@ export default function FunPage() {
                   width={600}
                   height={400}
                   sizes="(max-width: 768px) 50vw, 33vw"
+                  style={{objectFit: 'cover'}}
                   className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
                 />
                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 group-hover:shadow-[inset_0_0_0_8px_hsl(var(--primary))]">

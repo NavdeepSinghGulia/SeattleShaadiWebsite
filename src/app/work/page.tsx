@@ -68,6 +68,7 @@ export default function WorkPage() {
                       width={800}
                       height={600}
                       sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
+                      style={{objectFit: 'cover'}}
                       className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                       decoding="async"
