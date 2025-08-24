@@ -57,7 +57,6 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24, // Cache images for 24 hours
     dangerouslyAllowSVG: true,
     contentDispositionType: 'inline',
-    contentSecurityPolicy: "default-src 'self'; img-src * data: blob:; media-src * data: blob:;",
   },
   async headers() {
     return [
@@ -98,3 +97,5 @@ const nextConfig: NextConfig = {
 };
 
 export default withBundleAnalyzer(nextConfig);
+
+    
