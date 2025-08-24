@@ -426,8 +426,8 @@ const TraditionsPage = () => {
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 priority={key === 'hindu'}
-                                loading="eager"
-                                quality={85}
+                                loading={key === 'hindu' ? 'eager' : 'lazy'}
+                                quality={80}
                                 placeholder="blur"
                                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAEDQIHXG8H/QAAAABJRU5ErkJggg=="
                               />

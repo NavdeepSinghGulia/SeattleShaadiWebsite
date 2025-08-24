@@ -73,6 +73,9 @@ export default function RootLayout({
           {/* Preload critical resources for better performance */}
           <link rel="preload" href="/images/seo/shaadi-squad-og-image.png" as="image" type="image/png" />
           <link rel="preload" href="/images/branding/logos/shaadi-squad-high-resolution-logo-transparent.png" as="image" type="image/png" />
+          <link rel="preconnect" href="https://fonts.googleapis.com" crossOrigin="anonymous" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+          
           <link rel="dns-prefetch" href="//fonts.googleapis.com" />
           <link rel="dns-prefetch" href="//www.googletagmanager.com" />
           <link rel="dns-prefetch" href="//www.google-analytics.com" />

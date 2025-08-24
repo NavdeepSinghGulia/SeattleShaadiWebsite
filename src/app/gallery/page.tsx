@@ -308,6 +308,8 @@ const GalleryPage = () => {
                               className="w-full h-auto object-cover"
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                               loading="lazy"
+                              decoding="async"
+                              fetchPriority="low"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
                               <h3 className="text-white font-medium">{image.alt}</h3>
@@ -343,6 +345,8 @@ const GalleryPage = () => {
                             className="w-full h-auto object-contain"
                             sizes="100vw"
                             loading="eager"
+                            decoding="sync"
+                            fetchPriority="high"
                           />
                           
                           <button 
