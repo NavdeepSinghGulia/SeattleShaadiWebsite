@@ -34,7 +34,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-2',
-    src: '/images/ceremonies/mehndi/charlotte-mehndi-ceremony-bride.jpg',
+    src: '/images/ceremonies/sikh-wedding-gurdwara.jpg',
     alt: 'Sikh wedding ceremony',
     category: 'ceremonies',
     location: 'Hyatt Regency, Bellevue',
@@ -42,7 +42,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-3',
-    src: '/images/ceremonies/baraat/traditional-baraat-procession-celebration.jpg',
+    src: '/images/ceremonies/south-indian-wedding-rituals.jpg',
     alt: 'South Indian wedding ceremony',
     category: 'ceremonies',
     location: 'Fairmont Olympic Hotel, Seattle',
@@ -50,7 +50,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-4',
-    src: '/images/ceremonies/vidaai/seattle-bride-vidaai-ceremony.jpg',
+    src: '/images/ceremonies/muslim-nikah-ceremony.jpg',
     alt: 'Muslim Nikah ceremony',
     category: 'ceremonies',
     location: 'The Westin, Seattle',
@@ -58,7 +58,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-5',
-    src: '/images/ceremonies/haldi/indian-bride-haldi-ceremony.jpg',
+    src: '/images/ceremonies/fusion-wedding-ceremony.jpg',
     alt: 'Fusion wedding ceremony',
     category: 'ceremonies',
     location: 'Willows Lodge, Woodinville',
@@ -66,7 +66,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-6',
-    src: '/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg',
+    src: '/images/ceremonies/outdoor-indian-wedding-ceremony.jpg',
     alt: 'Outdoor Indian wedding ceremony',
     category: 'ceremonies',
     location: 'Woodland Park Rose Garden, Seattle',
@@ -108,7 +108,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-5',
-    src: '/images/celebrations/indian-wedding-food-menu-spread.jpg',
+    src: '/images/ceremonies/mehndi/seattle-mehndi-ceremony-celebration.webp',
     alt: 'Mehndi ceremony decoration',
     category: 'decor',
     location: 'Private Estate, Mercer Island',
@@ -142,7 +142,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-3',
-    src: '/images/venues/seattle-wedding-garden-lawns.jpg',
+    src: '/images/celebrations/indian-wedding-chaat-station.jpg',
     alt: 'Chaat station',
     category: 'food',
     location: 'Hyatt Regency, Bellevue',
@@ -150,7 +150,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-4',
-    src: '/images/portraits/bride-groom-wedding-decor.jpg',
+    src: '/images/celebrations/indian-wedding-cake-design.jpg',
     alt: 'Wedding cake with Indian design',
     category: 'food',
     location: 'The Westin, Seattle',
@@ -158,7 +158,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-5',
-    src: '/images/portraits/bride-groom-dance-celebration.jpg',
+    src: '/images/celebrations/indian-wedding-thali.jpg',
     alt: 'Traditional Indian thali',
     category: 'food',
     location: 'Sheraton Grand, Seattle',
@@ -166,7 +166,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-6',
-    src: '/images/venues/traditional-phere-ceremony-hall.jpg',
+    src: '/images/celebrations/indian-wedding-cocktails.jpg',
     alt: 'Signature cocktails',
     category: 'food',
     location: 'W Hotel, Seattle',
@@ -184,7 +184,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-2',
-    src: '/images/portraits/kaajol-pruthul-wedding-portrait.jpg',
+    src: '/images/portraits/groom-traditional-sherwani.jpg',
     alt: 'Groom in traditional sherwani',
     category: 'attire',
     location: 'Fairmont Olympic Hotel, Seattle',
@@ -192,7 +192,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-3',
-    src: '/images/portraits/bride-celebration-dance.jpeg',
+    src: '/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg',
     alt: 'Bridal mehndi design',
     category: 'attire',
     location: 'Private Residence, Bellevue',
@@ -200,7 +200,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-4',
-    src: '/images/portraits/sarita-souvik-wedding-portrait.jpg',
+    src: '/images/portraits/fusion-bride-groom-outfits.jpg',
     alt: 'Fusion bride and groom outfits',
     category: 'attire',
     location: 'The Bellevue Club, Bellevue',
@@ -208,7 +208,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-5',
-    src: '/images/portraits/bride-groom-ceremony-moment.jpg',
+    src: '/images/portraits/south-indian-bride-kanjeevaram.jpg',
     alt: 'South Indian bride in Kanjeevaram',
     category: 'attire',
     location: 'Hyatt Regency, Bellevue',
@@ -216,7 +216,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-6',
-    src: '/images/portraits/groom-bride-sagai-engagement.jpg',
+    src: '/images/portraits/wedding-party-coordinated-outfits.jpg',
     alt: 'Wedding party in coordinated outfits',
     category: 'attire',
     location: 'Grand Hyatt, Seattle',
@@ -299,12 +299,11 @@ const GalleryPage = () => {
                           className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
                           onClick={() => openLightbox(image)}
                         >
-                          <div className="relative">
+                          <div className="relative aspect-square">
                             <Image 
                               src={image.src}
                               alt={image.alt}
-                              width={800}
-                              height={800}
+                              fill
                               className="w-full h-auto object-cover"
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                               loading="lazy"
@@ -340,8 +339,7 @@ const GalleryPage = () => {
                           <Image 
                             src={selectedImage.src}
                             alt={selectedImage.alt}
-                            width={1200}
-                            height={1200}
+                            fill
                             className="w-full h-auto object-contain"
                             sizes="100vw"
                             loading="eager"

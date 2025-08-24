@@ -9,7 +9,7 @@ import { ShimmerEffect } from '../shimmer-effect';
 const testimonials = [
     {
         name: "Priya & Rohan",
-        avatar: "/images/portraits/sarita-souvik-wedding-portrait.jpg",
+        avatar: "/images/portraits/bride-groom-wedding-portrait.jpg",
         text: "Seattle Shaadi made our dream wedding a reality! Their attention to detail and creative vision were outstanding. We couldn't have asked for a better team."
     },
     {
