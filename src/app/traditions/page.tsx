@@ -250,7 +250,7 @@ const traditions: Record<string, Tradition[]> = {
         'Denotes prosperity, love, and mutual care as the couple embarks on their new life.',
       modernAdaptations:
         'Eco-friendly petals or colored rice and staged photo moments are popular.',
-      imageUrl: '/tradition/vows and union in the saat pheras tradition.png',
+      imageUrl: '/images/traditions/telugu/talambralu-ceremony.jpg',
     },
     {
       id: 'jeelakarra-bellam',
@@ -261,7 +261,7 @@ const traditions: Record<string, Tradition[]> = {
         'Cumin and jaggery represent steadfastness and sweetness in marriage.',
       modernAdaptations:
         'Often accompanied by explanatory cards or a brief narration for guests.',
-      imageUrl: '/tradition/A South Indian bride performing a sacred wedding ritual amid traditional decorations and offerings.png',
+      imageUrl: '/images/traditions/telugu/jeelakarra-bellam-ceremony.jpg',
     },
     {
       id: 'arundhati-nakshatra',
@@ -272,7 +272,7 @@ const traditions: Record<string, Tradition[]> = {
         'Arundhati, wife of sage Vasishtha, is revered for her devotion and purity. Viewing her star symbolizes the couple aspiring to have a relationship like hers.',
       modernAdaptations:
         'Modern ceremonies may use a telescope or star-projector when the actual star is not visible, or incorporate the ritual during daytime with symbolic representations.',
-      imageUrl: '/tradition/Indian Baraat procession with family and friends.png',
+      imageUrl: '/images/traditions/telugu/arundhati-nakshatra-ceremony.jpg',
     },
   ],
   kannada: [
@@ -285,7 +285,7 @@ const traditions: Record<string, Tradition[]> = {
         "Symbolizes the purification of the couple's union and the blessing of their new life together.",
       modernAdaptations:
         "Modern ceremonies often incorporate decorative vessels and colored water for visual appeal.",
-      imageUrl: '/tradition/a traditional Kannada wedding ritual hold ceremonial items including water, coconuts, and flower garlands for a blessing ceremony outdoors.png',
+      imageUrl: '/images/traditions/kannada/dhare-heralu-ceremony.jpg',
     },
     {
       id: 'kashi-yatra',
@@ -296,7 +296,18 @@ const traditions: Record<string, Tradition[]> = {
         'Represents the balance between spiritual pursuits and worldly responsibilities in Hindu philosophy.',
       modernAdaptations:
         'Often performed with theatrical elements and comedy to entertain guests.',
-      imageUrl: '/tradition/Kanyadaanam 2.png',
+      imageUrl: '/images/traditions/kannada/kashi-yatra-ceremony.jpg',
+    },
+    {
+      id: 'nalangu',
+      name: 'Nalangu Ceremony',
+      description:
+        'A playful ritual where the bride and groom engage in games with turmeric-colored water and rice.',
+      significance:
+        'Celebrates the fun and playful aspects of marriage while strengthening the bond between the couple.',
+      modernAdaptations:
+        'Contemporary ceremonies often include music and dance elements to enhance the festive atmosphere.',
+      imageUrl: '/images/traditions/kannada/nalangu-ceremony.jpg',
     },
   ],
   malayalam: [
@@ -309,7 +320,7 @@ const traditions: Record<string, Tradition[]> = {
         "The thali is a sacred thread that represents the couple's commitment and bond in marriage.",
       modernAdaptations:
         'Modern thalis often feature contemporary designs while maintaining traditional elements.',
-      imageUrl: '/tradition/Thalikettu.png',
+      imageUrl: '/images/traditions/malayalam/thalikettu-ceremony.jpg',
     },
     {
       id: 'pudamuri',
@@ -320,7 +331,7 @@ const traditions: Record<string, Tradition[]> = {
         "Symbolizes the groom's commitment to provide for his wife and respect her family.",
       modernAdaptations:
         'Contemporary ceremonies may include designer sarees or other luxury items instead of the traditional mundu.',
-      imageUrl: '/tradition/Mehandi beautiful.png',
+      imageUrl: '/images/traditions/malayalam/pudamuri-ceremony.jpg',
     },
   ],
 };
