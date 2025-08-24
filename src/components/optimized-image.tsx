@@ -19,7 +19,7 @@ interface OptimizedImageProps extends Omit<ImageProps, 'onLoad' | 'onError'> {
 const OptimizedImage: React.FC<OptimizedImageProps> = ({
   src,
   alt,
-  fallbackSrc = '/images/placeholder.jpg',
+  fallbackSrc = '/images/seo/shaadi-squad-og-image.png',
   className,
   loadingClassName,
   errorClassName,

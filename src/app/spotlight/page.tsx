@@ -10,12 +10,12 @@ export const metadata: Metadata = generateMetadata({
 });
 
 const publications = [
-  { name: 'Vogue Weddings', logo: "/images/media/logos/vogue-weddings-logo.png" },
-  { name: 'Harper\'s Bazaar Bride', logo: "/images/media/logos/harpers-bazaar-bride-logo.png" },
-  { name: 'Brides Today', logo: "/images/media/logos/brides-today-magazine-logo.png" },
-  { name: 'Elle Decor', logo: "/images/media/logos/elle-decor-magazine-logo.png" },
-  { name: 'Condé Nast Traveller', logo: "/images/media/logos/conde-nast-traveller-logo.png" },
-  { name: 'WeddingSutra', logo: "/images/media/logos/weddingsutra-platform-logo.png" },
+  { name: 'Vogue Weddings', logo: "/images/branding/logos/shaadi-squad-grayscale-logo.png" },
+  { name: 'Harper\'s Bazaar Bride', logo: "/images/branding/logos/shaadi-squad-grayscale-logo.png" },
+  { name: 'Brides Today', logo: "/images/branding/logos/shaadi-squad-grayscale-logo.png" },
+  { name: 'Elle Decor', logo: "/images/branding/logos/shaadi-squad-grayscale-logo.png" },
+  { name: 'Condé Nast Traveller', logo: "/images/branding/logos/shaadi-squad-grayscale-logo.png" },
+  { name: 'WeddingSutra', logo: "/images/branding/logos/shaadi-squad-grayscale-logo.png" },
 ];
 
 export default function SpotlightPage() {

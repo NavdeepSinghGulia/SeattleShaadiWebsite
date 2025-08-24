@@ -8,7 +8,7 @@
  * @param baseUrl - The base URL of the site
  * @returns Full canonical URL
  */
-export function getCanonicalUrl(path: string, baseUrl: string = 'https://indianweddingsite.com'): string {
+export function getCanonicalUrl(path: string, baseUrl: string = (process.env.NEXT_PUBLIC_SITE_URL || 'https://seattleshaadi.com')): string {
   // Remove trailing slash from baseUrl if present
   const normalizedBaseUrl = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
   
@@ -40,7 +40,7 @@ export function generateTraditionStructuredData(
     '@type': 'Article',
     'headline': `${tradition.name} - Indian Wedding Tradition`,
     'description': tradition.description,
-    'image': tradition.imageUrl || `${url.split('/').slice(0, -1).join('/')}/images/traditions/default.jpg`,
+    'image': tradition.imageUrl || `${url.split('/').slice(0, 3).join('/')}/images/seo/shaadi-squad-og-image.png`,
     'author': {
       '@type': 'Organization',
       'name': 'Indian Wedding Planner',
@@ -51,7 +51,7 @@ export function generateTraditionStructuredData(
       'name': 'Indian Wedding Planner',
       'logo': {
         '@type': 'ImageObject',
-        'url': `${url.split('/').slice(0, 3).join('/')}/logo.png`
+        'url': `${url.split('/').slice(0, 3).join('/')}/images/branding/logos/shaadi-squad-standard-logo.png`
       }
     },
     'mainEntityOfPage': {
@@ -143,7 +143,7 @@ export function generateLocalBusinessStructuredData(
     '@type': 'LocalBusiness',
     'name': data.name || 'Indian Wedding Planner',
     'description': data.description || 'Luxury Indian wedding planning services in Seattle.',
-    'image': data.image || `${url.split('/').slice(0, 3).join('/')}/logo.png`,
+    'image': data.image || `${url.split('/').slice(0, 3).join('/')}/images/branding/logos/shaadi-squad-standard-logo.png`,
     'url': url,
     'telephone': data.telephone || '+1-206-555-0100',
     'address': {

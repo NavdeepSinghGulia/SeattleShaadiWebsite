@@ -17,7 +17,7 @@ export const enhancedSeoConfig = {
     siteName: 'Seattle Shaadi',
     images: [
       {
-        url: 'https://seattleshaadi.com/images/og-image.jpg',
+        url: 'https://seattleshaadi.com/images/seo/shaadi-squad-og-image.png',
         width: 1200,
         height: 630,
         alt: 'Seattle Shaadi - Indian Wedding Planner',
@@ -38,7 +38,7 @@ export const enhancedSeoConfig = {
       '@type': 'Organization',
       name: 'Seattle Shaadi',
       url: 'https://seattleshaadi.com',
-      logo: 'https://seattleshaadi.com/images/logo.png',
+      logo: 'https://seattleshaadi.com/images/branding/logos/shaadi-squad-standard-logo.png',
       sameAs: [
         'https://www.facebook.com/seattleshaadi',
         'https://www.instagram.com/seattleshaadi',
@@ -55,7 +55,7 @@ export const enhancedSeoConfig = {
     localBusiness: {
       '@type': 'LocalBusiness',
       name: 'Seattle Shaadi - Indian Wedding Planner',
-      image: 'https://seattleshaadi.com/images/storefront.jpg',
+      image: 'https://seattleshaadi.com/images/branding/shaadi-squad-og-image.png',
       '@id': 'https://seattleshaadi.com',
       url: 'https://seattleshaadi.com',
       telephone: '+1-206-555-0123',
