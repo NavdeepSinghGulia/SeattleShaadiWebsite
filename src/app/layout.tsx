@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 // Updated global layout with enhanced SEO, performance hints, and structured data
 
-import { Playfair_Display, Lato } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/header';
 import { Footer } from '@/components/footer';
@@ -22,6 +21,33 @@ import {
 } from '@/lib/schema';
 import ErrorBoundary from '@/components/error-boundary';
 import { PageLoadingFallback } from '@/components/loading-fallback';
+
+// Fallback font declarations
+let playfairDisplay = { variable: '--font-playfair-display' };
+let lato = { variable: '--font-lato' };
+
+// Try to load Google Fonts with graceful fallback
+try {
+  const { Playfair_Display, Lato } = require('next/font/google');
+  
+  playfairDisplay = Playfair_Display({
+    subsets: ['latin'],
+    variable: '--font-playfair-display',
+    display: 'swap',
+    weight: ['400', '700'],
+    fallback: ['serif']
+  });
+
+  lato = Lato({
+    subsets: ['latin'],
+    weight: ['400', '700'],
+    variable: '--font-lato',
+    display: 'swap',
+    fallback: ['sans-serif']
+  });
+} catch (error) {
+  console.warn('Google Fonts could not be loaded, using fallback fonts');
+}
 
 export const metadata: Metadata = {
   ...generateMetadata({
@@ -45,20 +71,6 @@ export const metadata: Metadata = {
   },
   manifest: "/favicon/site.webmanifest",
 };
-
-const playfairDisplay = Playfair_Display({
-  subsets: ['latin'],
-  variable: '--font-playfair-display',
-  display: 'swap',
-  weight: ['400', '700'],
-});
-
-const lato = Lato({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  variable: '--font-lato',
-  display: 'swap',
-});
 
 // Schema markup is now imported from /lib/schema.ts
 
