@@ -16,6 +16,7 @@ import {
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
 import { ThumbnailImage } from '@/components/optimized-image';
+import imageLoader from '@/lib/image-loader';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -38,6 +39,7 @@ function Logo({ className }: { className?: string }) {
         height={50}
         className="h-12 w-auto md:h-16 transition-all duration-300 ease-out group-hover:scale-105 filter drop-shadow-sm"
         priority
+        loader={imageLoader}
       />
       {/* Subtle glow effect on hover */}
       <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out blur-xl -z-10" />

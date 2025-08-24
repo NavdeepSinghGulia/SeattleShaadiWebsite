@@ -2,6 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import imageLoader from '@/lib/image-loader';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Twitter, Linkedin } from 'lucide-react';
 import { AnimatedDiv } from './animated-div';
@@ -31,6 +32,7 @@ export function Footer() {
                     width={120}
                     height={40}
                     className="h-10 w-auto transition-all duration-300 ease-out group-hover:scale-105 filter drop-shadow-sm"
+                    loader={imageLoader}
                   />
                   {/* Subtle glow effect on hover */}
                   <div className="absolute inset-0 bg-gradient-to-r from-primary/20 via-accent/20 to-primary/20 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-out blur-xl -z-10" />
