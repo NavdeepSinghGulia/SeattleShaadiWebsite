@@ -33,7 +33,7 @@ const traditions: Record<string, Tradition[]> = {
         "Turmeric is known for its medicinal properties and is believed to purify the body and bring good fortune.",
       modernAdaptations:
         'Modern Haldi ceremonies often include music, dancing, and themed decorations, turning it into a festive pre-wedding celebration.',
-      imageUrl: '/images/traditions/hindu/haldi-ceremony.jpg',
+      imageUrl: '/tradition/haldi.png',
     },
     {
       id: 'mehndi',
@@ -44,7 +44,7 @@ const traditions: Record<string, Tradition[]> = {
         "The darker the mehndi color, the stronger the love between the couple. It's also believed that the bride won't have to do housework until the mehndi fades.",
       modernAdaptations:
         'Contemporary mehndi parties often include professional artists, music, dancing, and themed decorations.',
-      imageUrl: '/images/traditions/hindu/mehndi-ceremony.jpg',
+      imageUrl: '/tradition/Mehandi beautiful.png',
     },
     {
       id: 'sangeet',
@@ -55,7 +55,7 @@ const traditions: Record<string, Tradition[]> = {
         'The Sangeet brings both families together in a joyful celebration before the wedding ceremonies begin.',
       modernAdaptations:
         'Modern Sangeet events often include choreographed performances, professional DJs, and elaborate stage setups.',
-      imageUrl: '/images/traditions/hindu/sangeet-ceremony.jpg',
+      imageUrl: '/tradition/Sangeet Ceremony.png',
     },
     {
       id: 'baraat',
@@ -66,7 +66,7 @@ const traditions: Record<string, Tradition[]> = {
         "The Baraat symbolizes the groom's journey to begin a new life and the joy of his family in welcoming a new member.",
       modernAdaptations:
         'Contemporary Baraats may include luxury cars, motorcycles, or even helicopters instead of traditional animals.',
-      imageUrl: '/images/traditions/hindu/baraat-ceremony.jpg',
+      imageUrl: '/tradition/Baraat Ceremony.png',
     },
     {
       id: 'jaimala',
@@ -77,7 +77,7 @@ const traditions: Record<string, Tradition[]> = {
         "This ritual marks the beginning of the wedding ceremony and represents the couple's mutual choice and acceptance.",
       modernAdaptations:
         'Modern couples often add personal touches like custom garlands or special music during this exchange.',
-      imageUrl: '/images/traditions/hindu/jaimala-ceremony.jpg',
+      imageUrl: '/tradition/Jaimala (Garland Exchange).png',
     },
     {
       id: 'pheras',
@@ -88,7 +88,7 @@ const traditions: Record<string, Tradition[]> = {
         'Each phera represents a specific promise and prayer for their married life together.',
       modernAdaptations:
         'Some couples now personalize their vows while maintaining the traditional structure of the seven rounds.',
-      imageUrl: '/images/traditions/hindu/pheras-ceremony.jpg',
+      imageUrl: '/tradition/Saat Pheras (Seven Vows).png',
     },
     {
       id: 'vidaai',
@@ -99,7 +99,7 @@ const traditions: Record<string, Tradition[]> = {
         "This ritual symbolizes the bride's transition from her birth family to her new family.",
       modernAdaptations:
         'Modern Vidaai ceremonies may be less formal and emotional, reflecting changing family dynamics.',
-      imageUrl: '/images/traditions/hindu/vidaai-ceremony.jpg',
+      imageUrl: '/tradition/Vidaai.png',
     },
   ],
   sikh: [
@@ -112,7 +112,7 @@ const traditions: Record<string, Tradition[]> = {
         'Jago literally means "wake up" — waking the neighborhood to share joy and invite the community to celebrate. It symbolizes collective happiness and blessings for the couple.',
       modernAdaptations:
         'Often celebrated with dhol, DJ, and choreographed bhangra; families use LED-lit pots and custom props for a high-energy party.',
-      imageUrl: '/images/traditions/sikh/jago-ceremony.jpg',
+      imageUrl: '/tradition/Jago-Jaggo.png',
     },
     {
       id: 'mehndi-sikh',
@@ -123,7 +123,7 @@ const traditions: Record<string, Tradition[]> = {
         'Symbolizes beauty, joy, and good fortune. The ceremony brings together female relatives and friends to bless the bride before her wedding day.',
       modernAdaptations:
         'Modern Sikh mehndi ceremonies often include professional artists, music, dancing, and themed decorations with a Punjabi flair.',
-      imageUrl: '/images/traditions/sikh/mehndi-ceremony.jpg',
+      imageUrl: '/tradition/Mehandi.png',
     },
     {
       id: 'choora',
@@ -134,7 +134,7 @@ const traditions: Record<string, Tradition[]> = {
         'The choora symbolizes marital status, prosperity, and the blessings of maternal relatives. The red color represents love and fertility.',
       modernAdaptations:
         'Modern brides often choose designer chooras with gold accents and may wear them for a shorter period than traditionally expected.',
-      imageUrl: '/images/traditions/sikh/choora-ceremony.jpg',
+      imageUrl: '/tradition/Choora Ceremony.png',
     },
     {
       id: 'anand-karaj',
@@ -145,7 +145,7 @@ const traditions: Record<string, Tradition[]> = {
         'The ceremony emphasizes equality and spiritual union, with the couple circling the holy scripture four times.',
       modernAdaptations:
         'While the core ceremony remains traditional, many couples add translations or brief explanations for guests.',
-      imageUrl: '/images/traditions/sikh/anand-karaj-ceremony.jpg',
+      imageUrl: '/tradition/Anand Karaj.png',
     },
     {
       id: 'milni',
@@ -156,7 +156,7 @@ const traditions: Record<string, Tradition[]> = {
         'This ritual symbolizes the union of two families and the building of new relationships.',
       modernAdaptations:
         'Modern Milni ceremonies often include creative introductions and personalized gifts.',
-      imageUrl: '/images/traditions/sikh/milni-ceremony.jpg',
+      imageUrl: '/tradition/Milni.png',
     },
     {
       id: 'laavan',
@@ -167,7 +167,7 @@ const traditions: Record<string, Tradition[]> = {
         'Each phera represents a stage in spiritual development and married life.',
       modernAdaptations:
         'The ceremony remains traditional; some couples have translations or narrations for guests.',
-      imageUrl: '/images/traditions/sikh/laavan-ceremony.jpg',
+      imageUrl: '/tradition/sacred saat pheras (seven vows) ceremony.png',
     },
   ],
   muslim: [
@@ -180,7 +180,7 @@ const traditions: Record<string, Tradition[]> = {
         'The Nikah is a sacred contract that establishes the rights and obligations of the bride and groom.',
       modernAdaptations:
         'Modern Nikahs may be held in wedding halls rather than mosques, with decorative elements added to the ceremony.',
-      imageUrl: '/images/traditions/muslim/nikah-ceremony.jpg',
+      imageUrl: '/tradition/Nikah ceremony.png',
     },
     {
       id: 'mehndi-muslim',
@@ -191,7 +191,7 @@ const traditions: Record<string, Tradition[]> = {
         'The mehndi symbolizes beauty, joy, and good fortune for the bride.',
       modernAdaptations:
         'Contemporary Muslim mehndi ceremonies often include professional artists and festive celebrations.',
-      imageUrl: '/images/traditions/muslim/mehndi-ceremony.jpg',
+      imageUrl: '/tradition/mehandi muslim.png',
     },
     {
       id: 'walima',
@@ -202,7 +202,7 @@ const traditions: Record<string, Tradition[]> = {
         'The Walima is a celebration to publicly announce the marriage and share joy with the community.',
       modernAdaptations:
         'Modern Walima celebrations often include elaborate decorations, entertainment, and catering.',
-      imageUrl: '/images/traditions/muslim/walima-ceremony.jpg',
+      imageUrl: '/tradition/joyful bride displaying her beautifully decorated hands.png',
     },
   ],
   tamil: [
@@ -215,7 +215,7 @@ const traditions: Record<string, Tradition[]> = {
         "Represents life's ups and downs and the couple's mutual support; elders bless the couple with rice and turmeric.",
       modernAdaptations:
         'Custom floral swings, curated Carnatic playlists, and photography-centered setups are common today.',
-      imageUrl: '/images/traditions/tamil/oonjal-ceremony.jpg',
+      imageUrl: '/tradition/bride with elaborate mehndi and traditional jewelry.png',
     },
     {
       id: 'kanyadaanam',
@@ -226,7 +226,7 @@ const traditions: Record<string, Tradition[]> = {
         "Symbolizes the father's blessing and the transfer of responsibility for the bride's well-being to the groom.",
       modernAdaptations:
         'Contemporary ceremonies often include both parents or even grandparents in this ritual, emphasizing family unity.',
-      imageUrl: '/images/traditions/tamil/kanyadaanam-ceremony.jpg',
+      imageUrl: '/tradition/Kanyadaanam.png',
     },
     {
       id: 'nalangu',
@@ -237,7 +237,7 @@ const traditions: Record<string, Tradition[]> = {
         'Symbolizes the playful aspect of marriage and helps the couple and families bond through fun activities before the serious ceremony.',
       modernAdaptations:
         'Modern celebrations include creative games, professional photography, and sometimes even water balloon fights in upscale venues.',
-      imageUrl: '/images/traditions/tamil/nalangu-ceremony.jpg',
+      imageUrl: '/tradition/Nalangu.png',
     },
   ],
   telugu: [
@@ -250,7 +250,7 @@ const traditions: Record<string, Tradition[]> = {
         'Denotes prosperity, love, and mutual care as the couple embarks on their new life.',
       modernAdaptations:
         'Eco-friendly petals or colored rice and staged photo moments are popular.',
-      imageUrl: '/images/traditions/telugu/talambralu-ceremony.jpg',
+      imageUrl: '/tradition/vows and union in the saat pheras tradition.png',
     },
     {
       id: 'jeelakarra-bellam',
@@ -261,7 +261,7 @@ const traditions: Record<string, Tradition[]> = {
         'Cumin and jaggery represent steadfastness and sweetness in marriage.',
       modernAdaptations:
         'Often accompanied by explanatory cards or a brief narration for guests.',
-      imageUrl: '/images/traditions/telugu/jeelakarra-bellam-ceremony.jpg',
+      imageUrl: '/tradition/A South Indian bride performing a sacred wedding ritual amid traditional decorations and offerings.png',
     },
     {
       id: 'arundhati-nakshatra',
@@ -272,7 +272,7 @@ const traditions: Record<string, Tradition[]> = {
         'Arundhati, wife of sage Vasishtha, is revered for her devotion and purity. Viewing her star symbolizes the couple aspiring to have a relationship like hers.',
       modernAdaptations:
         'Modern ceremonies may use a telescope or star-projector when the actual star is not visible, or incorporate the ritual during daytime with symbolic representations.',
-      imageUrl: '/images/traditions/telugu/arundhati-nakshatra-ceremony.jpg',
+      imageUrl: '/tradition/Indian Baraat procession with family and friends.png',
     },
   ],
   kannada: [
@@ -285,7 +285,7 @@ const traditions: Record<string, Tradition[]> = {
         "Symbolizes the purification of the couple's union and the blessing of their new life together.",
       modernAdaptations:
         "Modern ceremonies often incorporate decorative vessels and colored water for visual appeal.",
-      imageUrl: '/images/traditions/kannada/dhare-heralu-ceremony.jpg',
+      imageUrl: '/tradition/a traditional Kannada wedding ritual hold ceremonial items including water, coconuts, and flower garlands for a blessing ceremony outdoors.png',
     },
     {
       id: 'kashi-yatra',
@@ -296,7 +296,7 @@ const traditions: Record<string, Tradition[]> = {
         'Represents the balance between spiritual pursuits and worldly responsibilities in Hindu philosophy.',
       modernAdaptations:
         'Often performed with theatrical elements and comedy to entertain guests.',
-      imageUrl: '/images/traditions/kannada/kashi-yatra-ceremony.jpg',
+      imageUrl: '/tradition/Kanyadaanam 2.png',
     },
   ],
   malayalam: [
@@ -309,7 +309,7 @@ const traditions: Record<string, Tradition[]> = {
         "The thali is a sacred thread that represents the couple's commitment and bond in marriage.",
       modernAdaptations:
         'Modern thalis often feature contemporary designs while maintaining traditional elements.',
-      imageUrl: '/images/traditions/malayalam/thalikettu-ceremony.jpg',
+      imageUrl: '/tradition/Thalikettu.png',
     },
     {
       id: 'pudamuri',
@@ -320,7 +320,7 @@ const traditions: Record<string, Tradition[]> = {
         "Symbolizes the groom's commitment to provide for his wife and respect her family.",
       modernAdaptations:
         'Contemporary ceremonies may include designer sarees or other luxury items instead of the traditional mundu.',
-      imageUrl: '/images/traditions/malayalam/pudamuri-ceremony.jpg',
+      imageUrl: '/tradition/Mehandi beautiful.png',
     },
   ],
 };
