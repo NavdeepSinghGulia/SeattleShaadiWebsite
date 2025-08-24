@@ -3,6 +3,7 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import Image from 'next/image';
+import Script from 'next/script';
 
 import { Seo } from '@/components/seo';
 import { RoyalBackground } from '@/components/royal-background';
@@ -237,7 +238,7 @@ const traditions: Record<string, Tradition[]> = {
         'Symbolizes the playful aspect of marriage and helps the couple and families bond through fun activities before the serious ceremony.',
       modernAdaptations:
         'Modern celebrations include creative games, professional photography, and sometimes even water balloon fights in upscale venues.',
-      imageUrl: '/tradition/Nalangu.png',
+      imageUrl: '/images/traditions/kannada/nalangu-ceremony.jpg',
     },
   ],
   telugu: [
@@ -339,8 +340,43 @@ const traditions: Record<string, Tradition[]> = {
 const TraditionsPage = () => {
   const { shouldAnimate } = useAnimation();
 
+  // Generate structured data for SEO
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    'name': 'Indian Wedding Traditions & Customs',
+    'description': 'Explore Indian wedding traditions across Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam, and Muslim cultures.',
+    'url': 'https://seattleshaadi.com/traditions',
+    'mainEntity': {
+      '@type': 'ItemList',
+      'itemListElement': Object.entries(traditions).flatMap(([culture, traditionsList], cultureIndex) => 
+        traditionsList.map((tradition, index) => ({
+          '@type': 'ListItem',
+          'position': cultureIndex * 10 + index + 1,
+          'item': {
+            '@type': 'Article',
+            'name': tradition.name,
+            'description': tradition.description,
+            'image': tradition.imageUrl,
+            'mainEntityOfPage': `https://seattleshaadi.com/traditions#${tradition.id}`,
+            'about': {
+              '@type': 'Thing',
+              'name': `${culture.charAt(0).toUpperCase() + culture.slice(1)} Wedding Tradition`,
+              'description': `Traditional ${culture.charAt(0).toUpperCase() + culture.slice(1)} wedding ceremony and customs`
+            }
+          }
+        }))
+      )
+    }
+  };
+
   return (
     <>
+      <Script
+        id="traditions-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <Seo
         title="Indian Wedding Traditions & Customs | Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam"
         description="Explore Indian wedding traditions across Hindu, Sikh, Tamil, Telugu, Kannada, Malayalam, and Muslim cultures. Discover Jago, Choora, Arundhati Nakshatra, Oonjal, Talambralu, Thalikettu, Nalangu & more with modern adaptations."
@@ -376,6 +412,7 @@ const TraditionsPage = () => {
                     {traditionsList.map((tradition) => (
                       <Card
                         key={tradition.id}
+                        id={tradition.id}
                         className="p-6 bg-card/95 backdrop-blur-sm border-primary/20 overflow-hidden"
                       >
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -383,13 +420,16 @@ const TraditionsPage = () => {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-10"></div>
                             <div className="relative h-full w-full">
                               <Image
-                                src={`${tradition.imageUrl}?v=2`}
+                                src={tradition.imageUrl}
                                 alt={`${tradition.name} - Seattle Indian Wedding ${key.charAt(0).toUpperCase() + key.slice(1)} Tradition | Authentic Cultural Ceremony`}
                                 fill
                                 className="object-cover"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                                 priority={key === 'hindu'}
-                                unoptimized={true}
+                                loading="eager"
+                                quality={85}
+                                placeholder="blur"
+                                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAEDQIHXG8H/QAAAABJRU5ErkJggg=="
                               />
                             </div>
                           </div>
