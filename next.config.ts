@@ -57,7 +57,6 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24, // Cache images for 24 hours
     dangerouslyAllowSVG: true,
     contentDispositionType: 'inline',
-    unoptimized: true, // Required for Firebase hosting static deployment
   },
   async headers() {
     return [
@@ -98,5 +97,3 @@ const nextConfig: NextConfig = {
 };
 
 export default withBundleAnalyzer(nextConfig);
-
-    
