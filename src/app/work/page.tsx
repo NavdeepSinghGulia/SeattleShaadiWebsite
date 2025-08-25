@@ -8,24 +8,22 @@ import { ShimmerEffect } from '@/components/shimmer-effect';
 import type { Metadata } from 'next';
 
 const weddings = [
-  { src: "/images/portraits/bride-groom-wedding-portrait.jpg", caption: 'Regal Palace Nuptials' },
-  { src: "/images/portraits/bride-groom-dance-celebration.jpg", caption: 'Lakeside Serenity' },
-  { src: "/images/portraits/groom-bride-sagai-engagement.jpg", caption: 'Cross-Cultural Celebration' },
-  { src: "/images/portraits/bride-groom-wedding-decor.jpg", caption: 'Secret Garden Vows' },
-  { src: "/images/portraits/sarita-souvik-wedding-portrait.jpg", caption: 'Portrait of Love' },
-  { src: "/images/venues/traditional-phere-ceremony-hall.jpg", caption: 'Sunset Beach Ceremony' },
-  { src: "/images/venues/wedding-floral-decoration-setup.jpg", caption: 'Opulent Floral Fantasy' },
-  { src: "/images/venues/elegant-wedding-hall-lighting.webp", caption: 'Grand Ballroom Gala' },
-  { src: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg", caption: 'Radiant Smiles' },
-  { src: "/images/ceremonies/haldi/seattle-haldi-ceremony-celebration.webp", caption: 'Vibrant Haldi Rituals' },
-  { src: "/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg", caption: 'Intricate Mehndi Art' },
-  { src: "/images/ceremonies/baraat/traditional-baraat-procession-celebration.jpg", caption: 'Joyful Baraat Procession' },
-  { src: "/images/portraits/bride-groom-ceremony-handshake.jpg", caption: 'A Vow of Togetherness' },
-  { src: "/images/venues/seattle-resort-wedding-hall.jpg", caption: 'Destination Dream' },
-  { src: "/images/venues/seattle-wedding-garden-lawns.jpg", caption: 'Garden Paradise' },
-  { src: "/images/ceremonies/vidaai/seattle-bride-vidaai-ceremony.jpg", caption: 'An Emotional Farewell' },
-  { src: "/images/traditions/sikh/anand-karaj-ceremony.jpg", caption: 'A Sacred Union' },
-  { src: "/images/traditions/tamil/kanyadaanam-ceremony.jpg", caption: 'Timeless Traditions' }
+  { src: "/images/portraits/bride-groom-wedding-portrait.jpg", caption: 'Regal Palace Nuptials', key: 'work-1' },
+  { src: "/images/portraits/bride-groom-dance-celebration.jpg", caption: 'Lakeside Serenity', key: 'work-2' },
+  { src: "/images/portraits/groom-bride-sagai-engagement.jpg", caption: 'Cross-Cultural Celebration', key: 'work-3' },
+  { src: "/images/portraits/bride-groom-wedding-decor.jpg", caption: 'Secret Garden Vows', key: 'work-4' },
+  { src: "/images/portraits/sarita-souvik-wedding-portrait.jpg", caption: 'Portrait of Love', key: 'work-5' },
+  { src: "/images/venues/traditional-phere-ceremony-hall.jpg", caption: 'Sunset Beach Ceremony', key: 'work-6' },
+  { src: "/images/venues/wedding-floral-decoration-setup.jpg", caption: 'Opulent Floral Fantasy', key: 'work-7' },
+  { src: "/images/venues/elegant-wedding-hall-lighting.webp", caption: 'Grand Ballroom Gala', key: 'work-8' },
+  { src: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg", caption: 'Radiant Smiles', key: 'work-9' },
+  { src: "/images/ceremonies/haldi/seattle-haldi-ceremony-celebration.webp", caption: 'Vibrant Haldi Rituals', key: 'work-10' },
+  { src: "/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg", caption: 'Intricate Mehndi Art', key: 'work-11' },
+  { src: "/images/ceremonies/baraat/traditional-baraat-procession-celebration.jpg", caption: 'Joyful Baraat Procession', key: 'work-12' },
+  { src: "/images/portraits/bride-groom-ceremony-handshake.jpg", caption: 'A Vow of Togetherness', key: 'work-13' },
+  { src: "/images/venues/seattle-resort-wedding-hall.jpg", caption: 'Destination Dream', key: 'work-14' },
+  { src: "/images/venues/seattle-wedding-garden-lawns.jpg", caption: 'Garden Paradise', key: 'work-15' },
+  { src: "/images/ceremonies/vidaai/seattle-bride-vidaai-ceremony.jpg", caption: 'An Emotional Farewell', key: 'work-16' },
 ];
 
 export default function WorkPage() {
@@ -53,7 +51,7 @@ export default function WorkPage() {
 
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 mt-16 space-y-4">
             {weddings.map((wedding, index) => (
-              <AnimatedDiv key={wedding.caption} delay={index * 100} className="break-inside-avoid">
+              <AnimatedDiv key={wedding.key} delay={index * 100} className="break-inside-avoid">
                 <div className="group relative overflow-hidden rounded-lg shadow-2xl border border-amber-200/20 aspect-[3/4]">
                     <ImageWithFallback
                       src={wedding.src}
