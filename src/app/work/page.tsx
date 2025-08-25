@@ -10,10 +10,10 @@ import type { Metadata } from 'next';
 const weddings = [
   { src: "/images/portraits/bride-groom-wedding-portrait.jpg", caption: 'Regal Palace Nuptials', key: 'work-1' },
   { src: "/images/portraits/bride-groom-dance-celebration.jpg", caption: 'Lakeside Serenity', key: 'work-2' },
-  { src: "/images/portraits/groom-bride-sagai-engagement.jpg", caption: 'Cross-Cultural Celebration', key: 'work-3' },
+  { src: "/images/portraits/bride-groom-wedding-ceremony.jpg", caption: 'A Sacred Moment', key: 'work-3' },
   { src: "/images/portraits/bride-groom-wedding-decor.jpg", caption: 'Secret Garden Vows', key: 'work-4' },
   { src: "/images/portraits/sarita-souvik-wedding-portrait.jpg", caption: 'Portrait of Love', key: 'work-5' },
-  { src: "/images/venues/traditional-phere-ceremony-hall.jpg", caption: 'Sunset Beach Ceremony', key: 'work-6' },
+  { src: "/images/venues/traditional-phere-ceremony-hall.jpg", caption: 'Timeless Traditions', key: 'work-6' },
   { src: "/images/venues/wedding-floral-decoration-setup.jpg", caption: 'Opulent Floral Fantasy', key: 'work-7' },
   { src: "/images/venues/elegant-wedding-hall-lighting.webp", caption: 'Grand Ballroom Gala', key: 'work-8' },
   { src: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg", caption: 'Radiant Smiles', key: 'work-9' },

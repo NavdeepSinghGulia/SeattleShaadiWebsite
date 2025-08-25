@@ -538,5 +538,3 @@ const TraditionsPage = () => {
 };
 
 export default TraditionsPage;
-
-    
