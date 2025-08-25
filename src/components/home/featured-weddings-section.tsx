@@ -1,7 +1,9 @@
+'use client';
+
 import { Button } from '@/components/ui/button';
 import { AnimatedDiv } from '@/components/animated-div';
 import { ShimmerEffect } from '../shimmer-effect';
-import { ThumbnailImage } from '@/components/optimized-image';
+import Image from 'next/image';
 
 const featuredWeddings = [
     { src: "/images/portraits/bride-groom-wedding-portrait.jpg", alt: "Bride smiling" },
@@ -28,7 +30,7 @@ export function FeaturedWeddingsSection() {
                     {featuredWeddings.map((wedding, index) => (
                         <AnimatedDiv key={index} delay={index * 150} animation="fadeInScale">
                            <div className="group relative overflow-hidden rounded-lg shadow-2xl border border-amber-200/20 aspect-[3/4]">
-                                <ThumbnailImage src={wedding.src} alt={wedding.alt} fill style={{ objectFit: 'cover' }} className="transition-transform duration-500 group-hover:scale-110" />
+                                <Image src={wedding.src} alt={wedding.alt} fill style={{ objectFit: 'cover' }} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" className="transition-transform duration-500 group-hover:scale-110" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                                 <ShimmerEffect>
                                     <div className="absolute inset-0 bg-gradient-to-br from-amber-400/10 to-rose-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

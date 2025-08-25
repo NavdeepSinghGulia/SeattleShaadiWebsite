@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import { AnimatedDiv } from '@/components/animated-div';
 import { RoyalBackground } from '@/components/royal-background';
@@ -6,34 +8,26 @@ import { ShimmerEffect } from '@/components/shimmer-effect';
 import { generateMetadata } from "@/lib/seo-config";
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = generateMetadata({
-  title: "Our Work - Seattle Shaadi Wedding Portfolio",
-  description: "Explore our stunning portfolio of Indian weddings in Seattle. See how we bring dreams to life with our 'Regal Modernity' approach to wedding planning.",
-  pathname: "/work",
-});
-
 const weddings = [
-  { src: "/images/portraits/bride-groom-wedding-ceremony.jpg", caption: 'Regal Palace Nuptials' },
+  { src: "/images/portraits/bride-groom-wedding-portrait.jpg", caption: 'Regal Palace Nuptials' },
   { src: "/images/portraits/bride-groom-dance-celebration.jpg", caption: 'Lakeside Serenity' },
   { src: "/images/portraits/groom-bride-sagai-engagement.jpg", caption: 'Cross-Cultural Celebration' },
   { src: "/images/portraits/bride-groom-wedding-decor.jpg", caption: 'Secret Garden Vows' },
-  { src: "/images/celebrations/bollywood-wedding-dance.jpg", caption: 'Modern City Romance' },
+  { src: "/images/portraits/sarita-souvik-wedding-portrait.jpg", caption: 'Portrait of Love' },
   { src: "/images/venues/traditional-phere-ceremony-hall.jpg", caption: 'Sunset Beach Ceremony' },
   { src: "/images/venues/wedding-floral-decoration-setup.jpg", caption: 'Opulent Floral Fantasy' },
   { src: "/images/venues/elegant-wedding-hall-lighting.webp", caption: 'Grand Ballroom Gala' },
-  { src: "/images/celebrations/hindu-wedding-food-spread.jpeg", caption: 'A Culinary Journey' },
+  { src: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg", caption: 'Radiant Smiles' },
   { src: "/images/ceremonies/haldi/seattle-haldi-ceremony-celebration.webp", caption: 'Vibrant Haldi Rituals' },
   { src: "/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg", caption: 'Intricate Mehndi Art' },
   { src: "/images/ceremonies/baraat/traditional-baraat-procession-celebration.jpg", caption: 'Joyful Baraat Procession' },
   { src: "/images/portraits/bride-groom-ceremony-handshake.jpg", caption: 'A Vow of Togetherness' },
   { src: "/images/venues/seattle-resort-wedding-hall.jpg", caption: 'Destination Dream' },
   { src: "/images/venues/seattle-wedding-garden-lawns.jpg", caption: 'Garden Paradise' },
-  { src: "/images/portraits/sarita-souvik-wedding-portrait.jpg", caption: 'Portrait of Love' },
-  { src: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg", caption: 'Radiant Smiles' },
-  { src: "/images/celebrations/bride-dance-celebration.jpeg", caption: 'Joyful Moves' }
+  { src: "/images/ceremonies/vidaai/seattle-bride-vidaai-ceremony.jpg", caption: 'An Emotional Farewell' },
+  { src: "/images/ceremonies/sikh-wedding-gurdwara.jpg", caption: 'A Sacred Union' },
+  { src: "/images/ceremonies/south-indian-wedding-rituals.jpg", caption: 'Timeless Traditions' }
 ];
-
-// Gallery schema is now handled by the global schema markup
 
 export default function WorkPage() {
   return (
@@ -65,8 +59,7 @@ export default function WorkPage() {
                     <Image
                       src={wedding.src}
                       alt={wedding.caption}
-                      width={800}
-                      height={600}
+                      fill
                       sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                       style={{objectFit: 'cover'}}
                       className="w-full h-auto transition-transform duration-500 group-hover:scale-105"

@@ -1,3 +1,5 @@
+'use client';
+
 import { CheckCircle } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import Image from 'next/image';
@@ -8,12 +10,6 @@ import { ShimmerEffect } from '@/components/shimmer-effect';
 import { generateMetadata } from "@/lib/seo-config";
 import { Breadcrumb, BreadcrumbStructuredData } from "@/components/breadcrumb";
 import type { Metadata } from 'next';
-
-export const metadata: Metadata = generateMetadata({
-  title: "Wedding Planning Services - Seattle Shaadi",
-  description: "Explore our bespoke wedding planning services in Seattle, from full-service planning and destination weddings to decor design and partial planning. Specializing in Indian weddings.",
-  pathname: "/services",
-});
 
 const services = [
   {

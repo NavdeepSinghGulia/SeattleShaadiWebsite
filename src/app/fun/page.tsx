@@ -1,20 +1,16 @@
+'use client';
+
 import Image from 'next/image';
 import { AnimatedDiv } from '@/components/animated-div';
 import { generateMetadata } from "@/lib/seo-config";
 import type { Metadata } from 'next';
 
-export const metadata: Metadata = generateMetadata({
-  title: "Behind the Scenes - Fun at Seattle Shaadi",
-  description: "Get a glimpse behind the scenes at Seattle Shaadi! See our team in action, candid moments, and the joy that goes into creating your perfect Indian wedding celebration.",
-  pathname: "/fun",
-});
-
 const funMoments = [
-  { src: "/images/celebrations/traditional-wedding-dance.jpg", caption: 'Post-event shenanigans' },
-  { src: "/images/celebrations/bride-dance-celebration.jpeg", caption: 'Our amazing crew' },
-  { src: "/images/celebrations/bollywood-wedding-dance.jpg", caption: 'The magic in making' },
-  { src: "/images/celebrations/indian-wedding-dance-celebration.png", caption: 'Laughs on set' },
-  { src: "/images/celebrations/wedding-feast-table-setup.webp", caption: 'Celebrating a success' },
+  { src: "/images/ceremonies/baraat/seattle-groom-baraat-procession.jpg", caption: 'Post-event shenanigans' },
+  { src: "/images/ceremonies/haldi/indian-bride-haldi-ceremony.jpg", caption: 'Our amazing crew' },
+  { src: "/images/ceremonies/mehndi/charlotte-mehndi-ceremony-bride.jpg", caption: 'The magic in making' },
+  { src: "/images/ceremonies/sangeet/indian-wedding-dance-performance.webp", caption: 'Laughs on set' },
+  { src: "/images/venues/seattle-wedding-hall-ceremony.jpg", caption: 'Celebrating a success' },
   { src: "/images/ceremonies/vidaai/emotional-vidaai-parents-moment.jpeg", caption: 'Candid Moments' },
 ];
 
