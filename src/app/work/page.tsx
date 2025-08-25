@@ -63,8 +63,6 @@ export default function WorkPage() {
                       style={{objectFit: 'cover'}}
                       className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
-                      decoding="async"
-                      fetchPriority="low"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <h3 className="text-white font-headline text-xl">{wedding.caption}</h3>

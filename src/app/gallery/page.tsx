@@ -2,26 +2,27 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { Seo } from '@/components/seo';
-import { RoyalBackground } from '@/components/royal-background';
 import { useAnimation } from '@/hooks/use-animation-preferences';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { generateMetadata } from '@/lib/seo-config';
+import { PageHeading } from '@/components/page-heading';
+import { RoyalBackground } from '@/components/royal-background';
+import { FloatingParticles } from '@/components/floating-particles';
 
 interface GalleryImage {
   id: string;
   src: string;
   alt: string;
-  category: string;
+  category: 'ceremonies' | 'decor' | 'food' | 'attire';
   location: string;
   description: string;
 }
 
-// Sample gallery data - in production, this would come from a CMS or API
 const galleryImages: GalleryImage[] = [
   // Ceremonies
   {
@@ -58,11 +59,11 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-5',
-    src: '/images/ceremonies/fusion-wedding-ceremony.jpg',
-    alt: 'Fusion wedding ceremony',
+    src: '/images/ceremonies/baraat/seattle-groom-baraat-procession.jpg',
+    alt: 'Baraat procession at a Seattle wedding',
     category: 'ceremonies',
     location: 'Willows Lodge, Woodinville',
-    description: 'Indo-American fusion ceremony blending Hindu and Western traditions.',
+    description: 'A joyous Baraat procession with the groom on a decorated horse.',
   },
   {
     id: 'ceremony-6',
@@ -228,6 +229,7 @@ const GalleryPage = () => {
   const { shouldAnimate } = useAnimation();
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState<string>('ceremonies');
 
   const openLightbox = (image: GalleryImage) => {
     setSelectedImage(image);
@@ -241,8 +243,7 @@ const GalleryPage = () => {
   const navigateImage = (direction: 'next' | 'prev') => {
     if (!selectedImage) return;
     
-    const currentCategory = selectedImage.category;
-    const categoryImages = galleryImages.filter(img => img.category === currentCategory);
+    const categoryImages = galleryImages.filter(img => img.category === activeTab);
     const currentIndex = categoryImages.findIndex(img => img.id === selectedImage.id);
     
     let newIndex;
@@ -258,29 +259,19 @@ const GalleryPage = () => {
     }
   };
 
-  // Render actual images with Next/Image
-
   return (
     <>
-      <Seo 
-        title="Indian Wedding Gallery | Inspiration for Your Special Day" 
-        description="Browse our gallery of stunning Indian weddings in Seattle. Get inspiration for ceremonies, decor, food, and attire for your perfect Indian wedding."
-      />
-      <div className="flex flex-col relative min-h-screen">
+      <div className="relative min-h-screen">
         {shouldAnimate && <RoyalBackground />}
+        {shouldAnimate && <FloatingParticles />}
         <div className="relative z-10 container mx-auto px-4 py-12 mt-20">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-10">
-              <h1 className="text-3xl md:text-4xl font-playfair font-bold text-primary mb-4">
-                Indian Wedding Gallery
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-                Browse our collection of stunning Indian weddings in Seattle. Get inspired by our 
-                ceremonies, decor, food, and attire for your perfect wedding day.
-              </p>
-            </div>
+            <PageHeading 
+              title="Indian Wedding Gallery"
+              subtitle="Browse our collection of stunning Indian weddings in Seattle. Get inspired by our ceremonies, decor, food, and attire for your perfect wedding day."
+            />
 
-            <Tabs defaultValue="ceremonies" className="mb-12">
+            <Tabs defaultValue="ceremonies" onValueChange={setActiveTab} className="mb-12">
               <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
                 <TabsTrigger value="ceremonies">Ceremonies</TabsTrigger>
                 <TabsTrigger value="decor">Decor</TabsTrigger>
@@ -307,8 +298,6 @@ const GalleryPage = () => {
                               className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                               loading="lazy"
-                              decoding="async"
-                              fetchPriority="low"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
                               <h3 className="text-white font-medium">{image.alt}</h3>
@@ -323,7 +312,7 @@ const GalleryPage = () => {
             </Tabs>
 
             <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
-              <DialogContent className="max-w-5xl p-0 bg-black/90 border-none">
+              <DialogContent className="max-w-5xl w-full p-0 bg-black/90 border-none">
                 <div className="relative">
                   <button 
                     className="absolute top-4 right-4 z-50 bg-black/50 rounded-full p-2 text-white hover:bg-black/80 transition-colors"
@@ -340,11 +329,9 @@ const GalleryPage = () => {
                             src={selectedImage.src}
                             alt={selectedImage.alt}
                             fill
-                            className="w-full h-auto object-contain"
+                            className="w-full h-full object-contain"
                             sizes="100vw"
                             loading="eager"
-                            decoding="sync"
-                            fetchPriority="high"
                           />
                           
                           <button 
@@ -389,8 +376,8 @@ const GalleryPage = () => {
             </Dialog>
 
             <div className="text-center mt-12">
-              <h2 className="text-2xl font-playfair font-bold mb-4">Create Your Own Beautiful Memories</h2>
-              <p className="text-muted-foreground mb-6">
+              <h2 className="text-2xl font-headline font-bold mb-4">Create Your Own Beautiful Memories</h2>
+              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
                 Let our expert wedding planners help you design a stunning Indian wedding that reflects your 
                 personal style and cultural heritage.
               </p>

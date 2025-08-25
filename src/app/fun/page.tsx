@@ -1,7 +1,7 @@
 'use client';
 
-import Image from 'next/image';
 import { AnimatedDiv } from '@/components/animated-div';
+import { GalleryImage } from '@/components/optimized-image';
 import { generateMetadata } from "@/lib/seo-config";
 import type { Metadata } from 'next';
 
@@ -32,14 +32,12 @@ export default function FunPage() {
         {funMoments.map((moment, index) => (
            <AnimatedDiv key={index} className="break-inside-avoid">
              <div className="group relative overflow-hidden rounded-lg shadow-lg">
-                <Image
+                <GalleryImage
                   src={moment.src}
                   alt={moment.caption}
-                  width={600}
-                  height={400}
-                  sizes="(max-width: 768px) 50vw, 33vw"
-                  style={{objectFit: 'cover'}}
+                  fill
                   className="w-full h-auto transition-transform duration-300 group-hover:scale-105"
+                  style={{objectFit: 'cover'}}
                 />
                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center p-4 group-hover:shadow-[inset_0_0_0_8px_hsl(var(--primary))]">
                     <h3 className="text-white font-headline text-xl text-center">{moment.caption}</h3>
