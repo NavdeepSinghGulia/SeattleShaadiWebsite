@@ -1,7 +1,6 @@
-
 'use client';
 
-import Image from 'next/image';
+import ImageWithFallback from '@/components/image-with-fallback';
 import { AnimatedDiv } from '@/components/animated-div';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
@@ -56,7 +55,7 @@ export default function WorkPage() {
             {weddings.map((wedding, index) => (
               <AnimatedDiv key={wedding.caption} delay={index * 100} className="break-inside-avoid">
                 <div className="group relative overflow-hidden rounded-lg shadow-2xl border border-amber-200/20 aspect-[3/4]">
-                    <Image
+                    <ImageWithFallback
                       src={wedding.src}
                       alt={wedding.caption}
                       fill
@@ -64,6 +63,7 @@ export default function WorkPage() {
                       style={{objectFit: 'cover'}}
                       className="w-full h-auto transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
+                      fallbackSrc="/images/seo/shaadi-squad-og-image.png"
                     />
                     <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                         <h3 className="text-white font-headline text-xl">{wedding.caption}</h3>
