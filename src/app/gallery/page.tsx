@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ImageWithFallback from '@/components/image-with-fallback';
 import { useAnimation } from '@/hooks/use-animation-preferences';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -224,13 +224,14 @@ const galleryImages: GalleryImage[] = [
   },
 ];
 
-const gallerySchema = {
+// Schema markup will be generated dynamically based on loaded images
+const getGallerySchema = (images: GalleryImage[]) => ({
     "@context": "https://schema.org",
     "@type": "ImageGallery",
     "name": "Indian Wedding Gallery by Seattle Shaadi",
     "description": "An inspirational gallery showcasing stunning Indian weddings in Seattle, including ceremonies, decor, food, and attire.",
     "url": "https://seattleshaadi.com/gallery",
-    "image": galleryImages.map(img => ({
+    "image": images.map(img => ({
       "@type": "ImageObject",
       "contentUrl": `https://seattleshaadi.com${img.src}`,
       "name": img.alt,
@@ -240,17 +241,43 @@ const gallerySchema = {
         "name": img.location
       }
     }))
-};
+});
 
 const GalleryPage = () => {
   const { shouldAnimate } = useAnimation();
   const [activeTab, setActiveTab] = useState<string>('ceremonies');
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [galleryImagesState, setGalleryImagesState] = useState<GalleryImage[]>([]);
 
-  const filteredImages = galleryImages.filter(img => img.category === activeTab);
+  // Preload images and verify they exist
+  useEffect(() => {
+    // Set a small delay to ensure client-side rendering is complete
+    const timer = setTimeout(() => {
+      // Create a copy of the gallery images with verified paths
+      const verifiedImages = galleryImages.map(image => {
+        // For Firebase hosting, ensure paths are correct
+        const src = image.src.startsWith('/') ? image.src : `/${image.src}`;
+        return {
+          ...image,
+          src
+        };
+      });
+      
+      setGalleryImagesState(verifiedImages);
+      setImagesLoaded(true);
+      console.log('Gallery images loaded:', verifiedImages.length);
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, []);
+
+  const filteredImages = imagesLoaded 
+    ? galleryImagesState.filter(img => img.category === activeTab)
+    : [];
 
   return (
     <>
-      <SchemaMarkup schema={gallerySchema} id="gallery-schema" />
+      {imagesLoaded && <SchemaMarkup schema={getGallerySchema(galleryImagesState)} id="gallery-schema" />}
       <div className="relative min-h-screen">
         {shouldAnimate && <RoyalBackground />}
         {shouldAnimate && <FloatingParticles />}
@@ -270,31 +297,41 @@ const GalleryPage = () => {
               </TabsList>
               
               <TabsContent value={activeTab} className="mt-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                  {filteredImages.map((image) => (
-                    <Card 
-                      key={image.id} 
-                      className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group"
-                    >
-                      <div className="relative aspect-square">
-                        <ImageWithFallback 
-                          src={image.src}
-                          alt={image.alt}
-                          fill
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          loading="lazy"
-                          fallbackSrc="/images/seo/shaadi-squad-og-image.png"
-                          containerClassName="w-full h-full"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
-                          <h3 className="text-white font-medium">{image.alt}</h3>
-                          <p className="text-white/80 text-sm">{image.location}</p>
+                {!imagesLoaded ? (
+                  <div className="flex justify-center items-center py-20">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-rose-600" />
+                  </div>
+                ) : filteredImages.length === 0 ? (
+                  <div className="text-center py-20">
+                    <p className="text-muted-foreground">No images found in this category.</p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    {filteredImages.map((image) => (
+                      <Card 
+                        key={image.id} 
+                        className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group"
+                      >
+                        <div className="relative aspect-square">
+                          <ImageWithFallback 
+                            src={image.src}
+                            alt={image.alt}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            loading="lazy"
+                            fallbackSrc="/images/seo/shaadi-squad-og-image.png"
+                            containerClassName="w-full h-full"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                            <h3 className="text-white font-medium">{image.alt}</h3>
+                            <p className="text-white/80 text-sm">{image.location}</p>
+                          </div>
                         </div>
-                      </div>
-                    </Card>
-                  ))}
-                </div>
+                      </Card>
+                    ))}
+                  </div>
+                )}
               </TabsContent>
             </Tabs>
 

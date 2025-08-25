@@ -24,8 +24,8 @@ const weddings = [
   { src: "/images/venues/seattle-resort-wedding-hall.jpg", caption: 'Destination Dream' },
   { src: "/images/venues/seattle-wedding-garden-lawns.jpg", caption: 'Garden Paradise' },
   { src: "/images/ceremonies/vidaai/seattle-bride-vidaai-ceremony.jpg", caption: 'An Emotional Farewell' },
-  { src: "/images/ceremonies/sikh-wedding-gurdwara.jpg", caption: 'A Sacred Union' },
-  { src: "/images/ceremonies/south-indian-wedding-rituals.jpg", caption: 'Timeless Traditions' }
+  { src: "/images/traditions/sikh/anand-karaj-ceremony.jpg", caption: 'A Sacred Union' },
+  { src: "/images/traditions/tamil/kanyadaanam-ceremony.jpg", caption: 'Timeless Traditions' }
 ];
 
 export default function WorkPage() {
