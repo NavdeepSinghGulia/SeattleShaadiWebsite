@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, 'useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { useAnimation } from '@/hooks/use-animation-preferences';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
