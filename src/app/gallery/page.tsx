@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -249,21 +250,22 @@ const GalleryPage = () => {
   useEffect(() => {
     // This effect runs on the client after mount, ensuring window is available.
     setImagesLoaded(true);
-  }, []);
+  }, [activeTab]); // Add activeTab to dependency array to ensure re-validation
 
-  const filteredImages = imagesLoaded 
+  // Ensure images are only filtered and displayed after the component has mounted
+  const filteredImages = imagesLoaded
     ? galleryImages.filter(img => img.category === activeTab)
     : [];
 
   return (
     <>
-      {imagesLoaded && <SchemaMarkup schema={getGallerySchema(galleryImages)} id="gallery-schema" />}
+      {imagesLoaded && filteredImages.length > 0 && <SchemaMarkup schema={getGallerySchema(filteredImages)} id="gallery-schema" />}
       <div className="relative min-h-screen">
         {shouldAnimate && <RoyalBackground />}
         {shouldAnimate && <FloatingParticles />}
         <div className="relative z-10 container mx-auto px-4 py-12 mt-20">
           <div className="max-w-6xl mx-auto">
-            <PageHeading 
+            <PageHeading
               title="Indian Wedding Gallery"
               subtitle="Browse our collection of stunning Indian weddings in Seattle. Get inspired by our ceremonies, decor, food, and attire for your perfect wedding day."
             />
@@ -275,11 +277,12 @@ const GalleryPage = () => {
                 <TabsTrigger value="food">Food</TabsTrigger>
                 <TabsTrigger value="attire">Attire</TabsTrigger>
               </TabsList>
-              
+
               <TabsContent value={activeTab} className="mt-6">
                 {!imagesLoaded ? (
                   <div className="flex justify-center items-center py-20">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-rose-600" />
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
+                    <p className="ml-4 text-muted-foreground">Loading Gallery...</p>
                   </div>
                 ) : filteredImages.length === 0 ? (
                   <div className="text-center py-20">
@@ -288,12 +291,12 @@ const GalleryPage = () => {
                 ) : (
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     {filteredImages.map((image) => (
-                      <Card 
-                        key={image.id} 
+                      <Card
+                        key={image.id}
                         className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group"
                       >
                         <div className="relative aspect-square">
-                          <ImageWithFallback 
+                          <ImageWithFallback
                             src={image.src}
                             alt={image.alt}
                             fill
@@ -318,7 +321,7 @@ const GalleryPage = () => {
             <div className="text-center mt-12">
               <h2 className="text-2xl font-headline font-bold mb-4">Create Your Own Beautiful Memories</h2>
               <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-                Let our expert wedding planners help you design a stunning Indian wedding that reflects your 
+                Let our expert wedding planners help you design a stunning Indian wedding that reflects your
                 personal style and cultural heritage.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
