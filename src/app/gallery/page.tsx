@@ -9,7 +9,6 @@ import { Button } from '@/components/ui/button';
 import { PageHeading } from '@/components/page-heading';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
-import { generateMetadata } from '@/lib/seo-config';
 import { SchemaMarkup } from '@/components/schema-markup';
 
 // Corrected and verified GalleryImage data structure
@@ -224,7 +223,6 @@ const galleryImages: GalleryImage[] = [
   },
 ];
 
-// Schema markup will be generated dynamically based on loaded images
 const getGallerySchema = (images: GalleryImage[]) => ({
     "@context": "https://schema.org",
     "@type": "ImageGallery",
@@ -247,37 +245,19 @@ const GalleryPage = () => {
   const { shouldAnimate } = useAnimation();
   const [activeTab, setActiveTab] = useState<string>('ceremonies');
   const [imagesLoaded, setImagesLoaded] = useState(false);
-  const [galleryImagesState, setGalleryImagesState] = useState<GalleryImage[]>([]);
 
-  // Preload images and verify they exist
   useEffect(() => {
-    // Set a small delay to ensure client-side rendering is complete
-    const timer = setTimeout(() => {
-      // Create a copy of the gallery images with verified paths
-      const verifiedImages = galleryImages.map(image => {
-        // For Firebase hosting, ensure paths are correct
-        const src = image.src.startsWith('/') ? image.src : `/${image.src}`;
-        return {
-          ...image,
-          src
-        };
-      });
-      
-      setGalleryImagesState(verifiedImages);
-      setImagesLoaded(true);
-      console.log('Gallery images loaded:', verifiedImages.length);
-    }, 100);
-    
-    return () => clearTimeout(timer);
+    // This effect runs on the client after mount, ensuring window is available.
+    setImagesLoaded(true);
   }, []);
 
   const filteredImages = imagesLoaded 
-    ? galleryImagesState.filter(img => img.category === activeTab)
+    ? galleryImages.filter(img => img.category === activeTab)
     : [];
 
   return (
     <>
-      {imagesLoaded && <SchemaMarkup schema={getGallerySchema(galleryImagesState)} id="gallery-schema" />}
+      {imagesLoaded && <SchemaMarkup schema={getGallerySchema(galleryImages)} id="gallery-schema" />}
       <div className="relative min-h-screen">
         {shouldAnimate && <RoyalBackground />}
         {shouldAnimate && <FloatingParticles />}
