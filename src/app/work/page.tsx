@@ -10,7 +10,7 @@ import type { Metadata } from 'next';
 const weddings = [
   { src: "/images/portraits/bride-groom-wedding-portrait.jpg", caption: 'Regal Palace Nuptials', key: 'work-1' },
   { src: "/images/portraits/bride-groom-dance-celebration.jpg", caption: 'Lakeside Serenity', key: 'work-2' },
-  { src: "/images/portraits/bride-groom-wedding-ceremony.jpg", caption: 'A Sacred Moment', key: 'work-3' },
+  { src: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg", caption: 'A Sacred Union', key: 'work-3' },
   { src: "/images/portraits/bride-groom-wedding-decor.jpg", caption: 'Secret Garden Vows', key: 'work-4' },
   { src: "/images/portraits/sarita-souvik-wedding-portrait.jpg", caption: 'Portrait of Love', key: 'work-5' },
   { src: "/images/venues/traditional-phere-ceremony-hall.jpg", caption: 'Timeless Traditions', key: 'work-6' },
