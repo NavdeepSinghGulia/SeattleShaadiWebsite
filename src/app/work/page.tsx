@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from 'next/image';
@@ -53,7 +54,7 @@ export default function WorkPage() {
 
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 mt-16 space-y-4">
             {weddings.map((wedding, index) => (
-              <AnimatedDiv key={index} delay={index * 100} className="break-inside-avoid">
+              <AnimatedDiv key={wedding.caption} delay={index * 100} className="break-inside-avoid">
                 <div className="group relative overflow-hidden rounded-lg shadow-2xl border border-amber-200/20 aspect-[3/4]">
                     <Image
                       src={wedding.src}

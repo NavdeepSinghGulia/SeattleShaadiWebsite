@@ -1,6 +1,7 @@
+
 'use client';
 
-import React, { useState } from 'react';
+import React, 'useState } from 'react';
 import Image from 'next/image';
 import { useAnimation } from '@/hooks/use-animation-preferences';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -9,6 +10,8 @@ import { Button } from '@/components/ui/button';
 import { PageHeading } from '@/components/page-heading';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
+import { generateMetadata } from '@/lib/seo-config';
+import { SchemaMarkup } from '@/components/schema-markup';
 
 // Corrected and verified GalleryImage data structure
 interface GalleryImage {
@@ -20,7 +23,6 @@ interface GalleryImage {
   description: string;
 }
 
-// Meticulously corrected all image paths to match existing files
 const galleryImages: GalleryImage[] = [
   // Ceremonies
   {
@@ -223,12 +225,33 @@ const galleryImages: GalleryImage[] = [
   },
 ];
 
+const gallerySchema = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Indian Wedding Gallery by Seattle Shaadi",
+    "description": "An inspirational gallery showcasing stunning Indian weddings in Seattle, including ceremonies, decor, food, and attire.",
+    "url": "https://seattleshaadi.com/gallery",
+    "image": galleryImages.map(img => ({
+      "@type": "ImageObject",
+      "contentUrl": `https://seattleshaadi.com${img.src}`,
+      "name": img.alt,
+      "description": img.description,
+      "locationCreated": {
+        "@type": "City",
+        "name": img.location
+      }
+    }))
+};
+
 const GalleryPage = () => {
   const { shouldAnimate } = useAnimation();
   const [activeTab, setActiveTab] = useState<string>('ceremonies');
 
+  const filteredImages = galleryImages.filter(img => img.category === activeTab);
+
   return (
     <>
+      <SchemaMarkup schema={gallerySchema} id="gallery-schema" />
       <div className="relative min-h-screen">
         {shouldAnimate && <RoyalBackground />}
         {shouldAnimate && <FloatingParticles />}
@@ -247,35 +270,31 @@ const GalleryPage = () => {
                 <TabsTrigger value="attire">Attire</TabsTrigger>
               </TabsList>
               
-              {['ceremonies', 'decor', 'food', 'attire'].map((category) => (
-                <TabsContent key={category} value={category} className="mt-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                    {galleryImages
-                      .filter(img => img.category === category)
-                      .map((image) => (
-                        <Card 
-                          key={image.id} 
-                          className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group"
-                        >
-                          <div className="relative aspect-square">
-                            <Image 
-                              src={image.src}
-                              alt={image.alt}
-                              fill
-                              className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
-                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              loading="lazy"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
-                              <h3 className="text-white font-medium">{image.alt}</h3>
-                              <p className="text-white/80 text-sm">{image.location}</p>
-                            </div>
-                          </div>
-                        </Card>
-                      ))}
-                  </div>
-                </TabsContent>
-              ))}
+              <TabsContent value={activeTab} className="mt-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {filteredImages.map((image) => (
+                    <Card 
+                      key={image.id} 
+                      className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group"
+                    >
+                      <div className="relative aspect-square">
+                        <Image 
+                          src={image.src}
+                          alt={image.alt}
+                          fill
+                          className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                          <h3 className="text-white font-medium">{image.alt}</h3>
+                          <p className="text-white/80 text-sm">{image.location}</p>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+              </TabsContent>
             </Tabs>
 
             <div className="text-center mt-12">
