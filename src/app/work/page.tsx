@@ -5,7 +5,6 @@ import { AnimatedDiv } from '@/components/animated-div';
 import { RoyalBackground } from '@/components/royal-background';
 import { FloatingParticles } from '@/components/floating-particles';
 import { ShimmerEffect } from '@/components/shimmer-effect';
-import { generateMetadata } from "@/lib/seo-config";
 import type { Metadata } from 'next';
 
 const weddings = [
@@ -55,7 +54,7 @@ export default function WorkPage() {
           <div className="columns-2 md:columns-3 lg:columns-4 gap-4 mt-16 space-y-4">
             {weddings.map((wedding, index) => (
               <AnimatedDiv key={index} delay={index * 100} className="break-inside-avoid">
-                <div className="group relative overflow-hidden rounded-lg shadow-2xl border border-amber-200/20">
+                <div className="group relative overflow-hidden rounded-lg shadow-2xl border border-amber-200/20 aspect-[3/4]">
                     <Image
                       src={wedding.src}
                       alt={wedding.caption}

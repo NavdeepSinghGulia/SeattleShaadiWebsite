@@ -296,7 +296,7 @@ const GalleryPage = () => {
                       .map((image) => (
                         <Card 
                           key={image.id} 
-                          className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
+                          className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group"
                           onClick={() => openLightbox(image)}
                         >
                           <div className="relative aspect-square">
@@ -304,13 +304,13 @@ const GalleryPage = () => {
                               src={image.src}
                               alt={image.alt}
                               fill
-                              className="w-full h-auto object-cover"
+                              className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-300"
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                               loading="lazy"
                               decoding="async"
                               fetchPriority="low"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
                               <h3 className="text-white font-medium">{image.alt}</h3>
                               <p className="text-white/80 text-sm">{image.location}</p>
                             </div>
