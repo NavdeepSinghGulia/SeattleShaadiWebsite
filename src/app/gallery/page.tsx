@@ -34,43 +34,43 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-2',
-    src: '/images/ceremonies/sikh-wedding-gurdwara.jpg',
-    alt: 'Sikh wedding ceremony',
+    src: '/images/ceremonies/mehndi/seattle-mehndi-ceremony-celebration.webp',
+    alt: 'Mehndi ceremony celebration',
     category: 'ceremonies',
     location: 'Hyatt Regency, Bellevue',
-    description: 'Anand Karaj ceremony with traditional Sikh customs and vibrant decorations.',
+    description: 'Beautiful Mehndi ceremony with traditional decorations and henna designs.',
   },
   {
     id: 'ceremony-3',
-    src: '/images/ceremonies/south-indian-wedding-rituals.jpg',
-    alt: 'South Indian wedding ceremony',
+    src: '/images/ceremonies/haldi/seattle-haldi-ceremony-celebration.webp',
+    alt: 'Haldi ceremony celebration',
     category: 'ceremonies',
     location: 'Fairmont Olympic Hotel, Seattle',
-    description: 'South Indian wedding with traditional brass decor and banana leaf elements.',
+    description: 'Vibrant Haldi ceremony with turmeric traditions and joyful celebrations.',
   },
   {
     id: 'ceremony-4',
-    src: '/images/ceremonies/muslim-nikah-ceremony.jpg',
-    alt: 'Muslim Nikah ceremony',
+    src: '/images/ceremonies/baraat/traditional-baraat-procession-celebration.jpg',
+    alt: 'Traditional Baraat procession',
     category: 'ceremonies',
     location: 'The Westin, Seattle',
-    description: 'Elegant Nikah ceremony with modern Islamic design elements.',
+    description: 'Colorful Baraat procession with traditional music and dancing.',
   },
   {
     id: 'ceremony-5',
-    src: '/images/ceremonies/fusion-wedding-ceremony.jpg',
-    alt: 'Fusion wedding ceremony',
+    src: '/images/ceremonies/vidaai/seattle-bride-vidaai-ceremony.jpg',
+    alt: 'Emotional Vidaai ceremony',
     category: 'ceremonies',
     location: 'Willows Lodge, Woodinville',
-    description: 'Indo-American fusion ceremony blending Hindu and Western traditions.',
+    description: 'Touching Vidaai ceremony marking the bride\'s departure to her new home.',
   },
   {
     id: 'ceremony-6',
-    src: '/images/ceremonies/outdoor-indian-wedding-ceremony.jpg',
-    alt: 'Outdoor Indian wedding ceremony',
+    src: '/images/venues/traditional-phere-ceremony-hall.jpg',
+    alt: 'Traditional Phere ceremony',
     category: 'ceremonies',
     location: 'Woodland Park Rose Garden, Seattle',
-    description: 'Garden ceremony with a custom-designed mandap and natural elements.',
+    description: 'Sacred Phere ceremony with traditional mandap and fire ritual.',
   },
   
   // Decor
@@ -142,35 +142,35 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-3',
-    src: '/images/celebrations/indian-wedding-chaat-station.jpg',
-    alt: 'Chaat station',
+    src: '/images/catering/traditional-wedding-food-buffet.jpg',
+    alt: 'Wedding buffet setup',
     category: 'food',
     location: 'Hyatt Regency, Bellevue',
-    description: 'Interactive chaat station with various street food favorites from across India.',
+    description: 'Elegant buffet setup featuring authentic Indian cuisine and live cooking stations.',
   },
   {
     id: 'food-4',
-    src: '/images/celebrations/indian-wedding-cake-design.jpg',
-    alt: 'Wedding cake with Indian design',
+    src: '/images/catering/wedding-catering-food-display.jpg',
+    alt: 'Catering food display',
     category: 'food',
     location: 'The Westin, Seattle',
-    description: 'Five-tier wedding cake with henna-inspired patterns and gold accents.',
+    description: 'Professional catering display with artistic food presentation and traditional elements.',
   },
   {
     id: 'food-5',
-    src: '/images/celebrations/indian-wedding-thali.jpg',
-    alt: 'Traditional Indian thali',
+    src: '/images/catering/hindu-wedding-traditional-foods.jpeg',
+    alt: 'Traditional Hindu wedding foods',
     category: 'food',
     location: 'Sheraton Grand, Seattle',
-    description: 'Customized wedding thalis with regional specialties served on silver platters.',
+    description: 'Authentic Hindu wedding foods prepared according to traditional recipes and customs.',
   },
   {
     id: 'food-6',
-    src: '/images/celebrations/indian-wedding-cocktails.jpg',
-    alt: 'Signature cocktails',
+    src: '/images/celebrations/wedding-feast-table-setup.webp',
+    alt: 'Wedding feast table setting',
     category: 'food',
     location: 'W Hotel, Seattle',
-    description: 'Custom cocktail menu featuring Indian-inspired flavors and spices.',
+    description: 'Elegant table setting with traditional Indian feast and modern presentation.',
   },
   
   // Attire
@@ -184,11 +184,11 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-2',
-    src: '/images/portraits/groom-traditional-sherwani.jpg',
-    alt: 'Groom in traditional sherwani',
+    src: '/images/portraits/bride-groom-wedding-decor.jpg',
+    alt: 'Bride and groom in traditional attire',
     category: 'attire',
     location: 'Fairmont Olympic Hotel, Seattle',
-    description: 'Groom in an ivory and gold sherwani with traditional turban and safa.',
+    description: 'Beautiful couple in coordinated traditional Indian wedding attire with gold accents.',
   },
   {
     id: 'attire-3',
@@ -200,24 +200,24 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-4',
-    src: '/images/portraits/fusion-bride-groom-outfits.jpg',
-    alt: 'Fusion bride and groom outfits',
+    src: '/images/portraits/bride-groom-wedding-portrait.jpg',
+    alt: 'Bride and groom portrait',
     category: 'attire',
     location: 'The Bellevue Club, Bellevue',
-    description: 'Fusion couple with bride in pastel lehenga and groom in modern Indo-Western outfit.',
+    description: 'Elegant portrait showcasing traditional Indian wedding attire with modern styling.',
   },
   {
     id: 'attire-5',
-    src: '/images/portraits/south-indian-bride-kanjeevaram.jpg',
-    alt: 'South Indian bride in Kanjeevaram',
+    src: '/images/portraits/groom-bride-sagai-engagement.jpg',
+    alt: 'Engagement ceremony attire',
     category: 'attire',
     location: 'Hyatt Regency, Bellevue',
-    description: 'South Indian bride in traditional silk Kanjeevaram saree with temple jewelry.',
+    description: 'Beautiful engagement ceremony attire featuring pastel colors and elegant jewelry.',
   },
   {
     id: 'attire-6',
-    src: '/images/portraits/wedding-party-coordinated-outfits.jpg',
-    alt: 'Wedding party in coordinated outfits',
+    src: '/images/portraits/bride-groom-ceremony-moment.jpg',
+    alt: 'Ceremony moment attire',
     category: 'attire',
     location: 'Grand Hyatt, Seattle',
     description: 'Color-coordinated wedding party in traditional Indian attire with modern styling.',
@@ -299,16 +299,14 @@ const GalleryPage = () => {
                           className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow"
                           onClick={() => openLightbox(image)}
                         >
-                          <div className="relative aspect-square">
+                          <div className="relative aspect-square overflow-hidden">
                             <Image 
                               src={image.src}
                               alt={image.alt}
-                              fill
-                              className="w-full h-auto object-cover"
+                              width={400}
+                              height={400}
+                              className="object-cover w-full h-full"
                               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              loading="lazy"
-                              decoding="async"
-                              fetchPriority="low"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
                               <h3 className="text-white font-medium">{image.alt}</h3>
