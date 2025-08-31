@@ -9,17 +9,17 @@ import { ShimmerEffect } from '../shimmer-effect';
 const testimonials = [
     {
         name: "Priya & Rohan",
-        avatar: "/images/portraits/bride-groom-wedding-portrait.jpg",
+        avatar: "/bride-groom-wedding-portrait.jpg",
         text: "Seattle Shaadi made our dream wedding a reality! Their attention to detail and creative vision were outstanding. We couldn't have asked for a better team."
     },
     {
         name: "Aisha & Sameer",
-        avatar: "/images/portraits/groom-bride-sagai-engagement.jpg",
+        avatar: "/groom-bride-sagai-engagement.jpg",
         text: "The most professional and passionate team we've ever worked with. They took all the stress away and planned a flawless event. Highly recommended!"
     },
     {
         name: "Meera & Arjun",
-        avatar: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg",
+        avatar: "/kaajol-pruthul-wedding-portrait.jpg",
         text: "From start to finish, the experience was seamless. The decor was breathtaking, and our guests are still talking about how beautiful everything was."
     }
 ];

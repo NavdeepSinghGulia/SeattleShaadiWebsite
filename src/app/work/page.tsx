@@ -13,24 +13,24 @@ export const metadata: Metadata = generateMetadata({
 });
 
 const weddings = [
-  { src: "/images/portraits/bride-groom-wedding-ceremony.jpg", caption: 'Regal Palace Nuptials' },
-  { src: "/images/portraits/bride-groom-dance-celebration.jpg", caption: 'Lakeside Serenity' },
-  { src: "/images/portraits/groom-bride-sagai-engagement.jpg", caption: 'Cross-Cultural Celebration' },
-  { src: "/images/portraits/bride-groom-wedding-decor.jpg", caption: 'Secret Garden Vows' },
-  { src: "/images/celebrations/bollywood-wedding-dance.jpg", caption: 'Modern City Romance' },
-  { src: "/images/venues/traditional-phere-ceremony-hall.jpg", caption: 'Sunset Beach Ceremony' },
-  { src: "/images/venues/wedding-floral-decoration-setup.jpg", caption: 'Opulent Floral Fantasy' },
-  { src: "/images/venues/elegant-wedding-hall-lighting.webp", caption: 'Grand Ballroom Gala' },
-  { src: "/images/celebrations/hindu-wedding-food-spread.jpeg", caption: 'A Culinary Journey' },
-  { src: "/images/ceremonies/haldi/seattle-haldi-ceremony-celebration.webp", caption: 'Vibrant Haldi Rituals' },
-  { src: "/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg", caption: 'Intricate Mehndi Art' },
-  { src: "/images/ceremonies/baraat/traditional-baraat-procession-celebration.jpg", caption: 'Joyful Baraat Procession' },
-  { src: "/images/portraits/bride-groom-ceremony-handshake.jpg", caption: 'A Vow of Togetherness' },
-  { src: "/images/venues/seattle-resort-wedding-hall.jpg", caption: 'Destination Dream' },
-  { src: "/images/venues/seattle-wedding-garden-lawns.jpg", caption: 'Garden Paradise' },
-  { src: "/images/portraits/sarita-souvik-wedding-portrait.jpg", caption: 'Portrait of Love' },
-  { src: "/images/portraits/kaajol-pruthul-wedding-portrait.jpg", caption: 'Radiant Smiles' },
-  { src: "/images/celebrations/bride-dance-celebration.jpeg", caption: 'Joyful Moves' }
+  { src: "/bride-groom-wedding-ceremony.jpg", caption: 'Regal Palace Nuptials' },
+  { src: "/bride-groom-dance-celebration.jpg", caption: 'Lakeside Serenity' },
+  { src: "/groom-bride-sagai-engagement.jpg", caption: 'Cross-Cultural Celebration' },
+  { src: "/bride-groom-wedding-decor.jpg", caption: 'Secret Garden Vows' },
+  { src: "/bollywood-wedding-dance.jpg", caption: 'Modern City Romance' },
+  { src: "/traditional-phere-ceremony-hall.jpg", caption: 'Sunset Beach Ceremony' },
+  { src: "/wedding-floral-decoration-setup.jpg", caption: 'Opulent Floral Fantasy' },
+  { src: "/elegant-wedding-hall-lighting.webp", caption: 'Grand Ballroom Gala' },
+  { src: "/hindu-wedding-food-spread.jpeg", caption: 'A Culinary Journey' },
+  { src: "/seattle-haldi-ceremony-celebration.webp", caption: 'Vibrant Haldi Rituals' },
+  { src: "/intricate-mehndi-henna-designs.jpg", caption: 'Intricate Mehndi Art' },
+  { src: "/traditional-baraat-procession-celebration.jpg", caption: 'Joyful Baraat Procession' },
+  { src: "/bride-groom-ceremony-handshake.jpg", caption: 'A Vow of Togetherness' },
+  { src: "/seattle-resort-wedding-hall.jpg", caption: 'Destination Dream' },
+  { src: "/seattle-wedding-garden-lawns.jpg", caption: 'Garden Paradise' },
+  { src: "/sarita-souvik-wedding-portrait.jpg", caption: 'Portrait of Love' },
+  { src: "/kaajol-pruthul-wedding-portrait.jpg", caption: 'Radiant Smiles' },
+  { src: "/bride-dance-celebration.jpeg", caption: 'Joyful Moves' }
 ];
 
 // Gallery schema is now handled by the global schema markup

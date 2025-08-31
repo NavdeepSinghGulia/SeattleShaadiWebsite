@@ -16,7 +16,7 @@ const post = {
   description: "Complete guide to planning your dream wedding in Seattle. Expert tips on venues, vendors, timing, and making the most of the Pacific Northwest's natural beauty.",
   author: "Rajesh Patel",
   date: "2024-08-03",
-  image: "/images/venues/seattle-wedding-garden-lawns.jpg",
+  image: "/seattle-wedding-garden-lawns.jpg",
   imageHint: "seattle skyline wedding",
   tags: ["Wedding Planning", "Seattle", "Guide", "Pacific Northwest"],
 };

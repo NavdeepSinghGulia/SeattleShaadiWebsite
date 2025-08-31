@@ -17,7 +17,7 @@ const post = {
   description: "Explore the beautiful Mehndi ceremony traditions for Seattle Indian weddings. Learn about henna designs, cultural significance, and planning your perfect pre-wedding celebration.",
   author: "Anita Sharma",
   date: "2024-08-06",
-  image: "/images/ceremonies/mehndi/seattle-mehndi-ceremony-celebration.webp",
+  image: "/seattle-mehndi-ceremony-celebration.webp",
   imageHint: "mehndi henna ceremony",
   tags: ["Mehndi Ceremony", "Henna", "Indian Wedding", "Seattle", "Pre-Wedding"],
 };
@@ -101,7 +101,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/images/ceremonies/mehndi/charlotte-mehndi-ceremony-bride.jpg" alt="Beautiful Mehndi ceremony celebration" data-ai-hint="mehndi ceremony celebration" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/charlotte-mehndi-ceremony-bride.jpg" alt="Beautiful Mehndi ceremony celebration" data-ai-hint="mehndi ceremony celebration" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Planning Your Mehndi Ceremony in Seattle</h2>
@@ -145,7 +145,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg" alt="Intricate Mehndi designs" data-ai-hint="mehndi henna designs" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/intricate-mehndi-henna-designs.jpg" alt="Intricate Mehndi designs" data-ai-hint="mehndi henna designs" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h3 className="font-headline text-2xl text-primary/80 mt-8 mb-3">Music and Entertainment</h3>
@@ -225,7 +225,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/images/celebrations/bride-dance-celebration.jpeg" alt="Bride celebrating at Mehndi ceremony" data-ai-hint="bride mehndi celebration" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/bride-dance-celebration.jpeg" alt="Bride celebrating at Mehndi ceremony" data-ai-hint="bride mehndi celebration" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Professional Mehndi Services in Seattle</h2>
@@ -299,7 +299,7 @@ export default function BlogPostPage() {
                     </ul>
 
                     <div className="relative w-full aspect-video rounded-lg overflow-hidden my-6">
-                        <Image src="/images/celebrations/indian-wedding-food-menu-spread.jpg" alt="Indian wedding food spread" data-ai-hint="indian wedding food" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
+                        <Image src="/indian-wedding-food-menu-spread.jpg" alt="Indian wedding food spread" data-ai-hint="indian wedding food" fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 896px" loading="lazy"/>
                     </div>
 
                     <h2 className="font-headline text-3xl text-primary mt-12 mb-4">Tips for a Memorable Mehndi Ceremony</h2>

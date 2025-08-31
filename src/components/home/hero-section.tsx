@@ -8,8 +8,8 @@ import { InteractiveCtaButton } from '@/components/interactive-cta-button';
 import { HeroImage } from '@/components/optimized-image';
 
 const mainCarouselImages = [
-    { src: "/images/hero/seattle-indian-wedding-reception-hero.jpeg", alt: "Elegant wedding reception dinner setup" },
-    { src: "/images/hero/seattle-wedding-couple-outdoor-hero.jpg", alt: "Bride and groom in a beautiful outdoor setting" },
+    { src: "/seattle-indian-wedding-reception-hero.jpeg", alt: "Elegant wedding reception dinner setup" },
+    { src: "/seattle-wedding-couple-outdoor-hero.jpg", alt: "Bride and groom in a beautiful outdoor setting" },
 ];
 
 // Define proper types for media content
@@ -32,12 +32,12 @@ type MediaContent = ImageContent | VideoContent;
 const mobileCarouselContent: MediaContent[] = [
     { 
       type: 'image' as const,
-      src: "/images/hero/seattle-indian-wedding-reception-hero.jpeg", 
+      src: "/seattle-indian-wedding-reception-hero.jpeg", 
       alt: "Elegant wedding reception dinner setup" 
     },
     { 
       type: 'image' as const,
-      src: "/images/hero/seattle-wedding-couple-outdoor-hero.jpg", 
+      src: "/seattle-wedding-couple-outdoor-hero.jpg", 
       alt: "Bride and groom in a beautiful outdoor setting" 
     },
 ];
@@ -205,7 +205,7 @@ export function HeroSection() {
                                         >
                                             <source src={item.src} type="video/mp4" />
                                             <HeroImage
-                                                src={item.poster || "/images/hero/seattle-indian-wedding-reception-hero.jpeg"}
+                                                src={item.poster || "/seattle-indian-wedding-reception-hero.jpeg"}
                                                 alt={item.alt}
                                                 fill
                                                 className="object-cover object-center"
