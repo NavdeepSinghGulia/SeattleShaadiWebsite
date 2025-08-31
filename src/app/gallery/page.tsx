@@ -26,7 +26,7 @@ const galleryImages: GalleryImage[] = [
   // Ceremonies
   {
     id: 'ceremony-1',
-    src: '/images/ceremonies/hindu-wedding-photography-ceremony.jpg',
+    src: '/hindu-wedding-photography-ceremony.jpg',
     alt: 'Hindu wedding ceremony with mandap',
     category: 'ceremonies',
     location: 'Four Seasons Hotel, Seattle',
@@ -34,7 +34,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-2',
-    src: '/images/ceremonies/mehndi/seattle-mehndi-ceremony-celebration.webp',
+    src: '/seattle-mehndi-ceremony-celebration.webp',
     alt: 'Mehndi ceremony celebration',
     category: 'ceremonies',
     location: 'Hyatt Regency, Bellevue',
@@ -42,7 +42,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-3',
-    src: '/images/ceremonies/haldi/seattle-haldi-ceremony-celebration.webp',
+    src: '/seattle-haldi-ceremony-celebration.webp',
     alt: 'Haldi ceremony celebration',
     category: 'ceremonies',
     location: 'Fairmont Olympic Hotel, Seattle',
@@ -50,7 +50,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-4',
-    src: '/images/ceremonies/baraat/traditional-baraat-procession-celebration.jpg',
+    src: '/traditional-baraat-procession-celebration.jpg',
     alt: 'Traditional Baraat procession',
     category: 'ceremonies',
     location: 'The Westin, Seattle',
@@ -58,7 +58,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-5',
-    src: '/images/ceremonies/vidaai/seattle-bride-vidaai-ceremony.jpg',
+    src: '/seattle-bride-vidaai-ceremony.jpg',
     alt: 'Emotional Vidaai ceremony',
     category: 'ceremonies',
     location: 'Willows Lodge, Woodinville',
@@ -66,7 +66,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'ceremony-6',
-    src: '/images/venues/traditional-phere-ceremony-hall.jpg',
+    src: '/traditional-phere-ceremony-hall.jpg',
     alt: 'Traditional Phere ceremony',
     category: 'ceremonies',
     location: 'Woodland Park Rose Garden, Seattle',
@@ -76,7 +76,7 @@ const galleryImages: GalleryImage[] = [
   // Decor
   {
     id: 'decor-1',
-    src: '/images/venues/elegant-wedding-hall-lighting.webp',
+    src: '/elegant-wedding-hall-lighting.webp',
     alt: 'Luxury Indian wedding reception decor',
     category: 'decor',
     location: 'Grand Hyatt, Seattle',
@@ -84,7 +84,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-2',
-    src: '/images/venues/wedding-floral-decoration-setup.jpg',
+    src: '/wedding-floral-decoration-setup.jpg',
     alt: 'Traditional mandap decoration',
     category: 'decor',
     location: 'Sheraton Grand, Seattle',
@@ -92,7 +92,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-3',
-    src: '/images/celebrations/wedding-feast-table-setup.webp',
+    src: '/wedding-feast-table-setup.webp',
     alt: 'Modern Indian wedding table setting',
     category: 'decor',
     location: 'Museum of History & Industry, Seattle',
@@ -100,7 +100,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-4',
-    src: '/images/celebrations/bollywood-wedding-dance.jpg',
+    src: '/bollywood-wedding-dance.jpg',
     alt: 'Sangeet night decoration',
     category: 'decor',
     location: 'W Hotel, Seattle',
@@ -108,7 +108,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-5',
-    src: '/images/ceremonies/mehndi/seattle-mehndi-ceremony-celebration.webp',
+    src: '/seattle-mehndi-ceremony-celebration.webp',
     alt: 'Mehndi ceremony decoration',
     category: 'decor',
     location: 'Private Estate, Mercer Island',
@@ -116,7 +116,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'decor-6',
-    src: '/images/venues/seattle-wedding-hall-ceremony.jpg',
+    src: '/seattle-wedding-hall-ceremony.jpg',
     alt: 'Royal Indian wedding stage',
     category: 'decor',
     location: 'The Bellevue Club, Bellevue',
@@ -126,7 +126,7 @@ const galleryImages: GalleryImage[] = [
   // Food
   {
     id: 'food-1',
-    src: '/images/celebrations/hindu-wedding-food-spread.jpeg',
+    src: '/hindu-wedding-food-spread.jpeg',
     alt: 'Indian wedding catering display',
     category: 'food',
     location: 'Fairmont Olympic Hotel, Seattle',
@@ -134,7 +134,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-2',
-    src: '/images/celebrations/indian-wedding-food-menu-spread.jpg',
+    src: '/indian-wedding-food-menu-spread.jpg',
     alt: 'Wedding dessert table',
     category: 'food',
     location: 'Four Seasons Hotel, Seattle',
@@ -142,7 +142,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-3',
-    src: '/images/catering/traditional-wedding-food-buffet.jpg',
+    src: '/traditional-wedding-food-buffet.jpg',
     alt: 'Wedding buffet setup',
     category: 'food',
     location: 'Hyatt Regency, Bellevue',
@@ -150,7 +150,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-4',
-    src: '/images/catering/wedding-catering-food-display.jpg',
+    src: '/wedding-catering-food-display.jpg',
     alt: 'Catering food display',
     category: 'food',
     location: 'The Westin, Seattle',
@@ -158,7 +158,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-5',
-    src: '/images/catering/hindu-wedding-traditional-foods.jpeg',
+    src: '/hindu-wedding-traditional-foods.jpeg',
     alt: 'Traditional Hindu wedding foods',
     category: 'food',
     location: 'Sheraton Grand, Seattle',
@@ -166,7 +166,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'food-6',
-    src: '/images/celebrations/wedding-feast-table-setup.webp',
+    src: '/wedding-feast-table-setup.webp',
     alt: 'Wedding feast table setting',
     category: 'food',
     location: 'W Hotel, Seattle',
@@ -176,7 +176,7 @@ const galleryImages: GalleryImage[] = [
   // Attire
   {
     id: 'attire-1',
-    src: '/images/portraits/indian-wedding-dresses-collection.jpg',
+    src: '/indian-wedding-dresses-collection.jpg',
     alt: 'Bride in traditional lehenga',
     category: 'attire',
     location: 'Four Seasons Hotel, Seattle',
@@ -184,7 +184,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-2',
-    src: '/images/portraits/bride-groom-wedding-decor.jpg',
+    src: '/bride-groom-wedding-decor.jpg',
     alt: 'Bride and groom in traditional attire',
     category: 'attire',
     location: 'Fairmont Olympic Hotel, Seattle',
@@ -192,7 +192,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-3',
-    src: '/images/ceremonies/mehndi/intricate-mehndi-henna-designs.jpg',
+    src: '/intricate-mehndi-henna-designs.jpg',
     alt: 'Bridal mehndi design',
     category: 'attire',
     location: 'Private Residence, Bellevue',
@@ -200,7 +200,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-4',
-    src: '/images/portraits/bride-groom-wedding-portrait.jpg',
+    src: '/bride-groom-wedding-portrait.jpg',
     alt: 'Bride and groom portrait',
     category: 'attire',
     location: 'The Bellevue Club, Bellevue',
@@ -208,7 +208,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-5',
-    src: '/images/portraits/groom-bride-sagai-engagement.jpg',
+    src: '/groom-bride-sagai-engagement.jpg',
     alt: 'Engagement ceremony attire',
     category: 'attire',
     location: 'Hyatt Regency, Bellevue',
@@ -216,7 +216,7 @@ const galleryImages: GalleryImage[] = [
   },
   {
     id: 'attire-6',
-    src: '/images/portraits/bride-groom-ceremony-moment.jpg',
+    src: '/bride-groom-ceremony-moment.jpg',
     alt: 'Ceremony moment attire',
     category: 'attire',
     location: 'Grand Hyatt, Seattle',

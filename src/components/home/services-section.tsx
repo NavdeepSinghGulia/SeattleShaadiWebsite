@@ -11,19 +11,19 @@ const services = [
     {
         title: "Full Wedding Planning",
         description: "From venue selection to vendor management, we handle every detail so you can enjoy your special day stress-free.",
-        image: "/images/venues/seattle-wedding-hall-ceremony.jpg",
+        image: "/seattle-wedding-hall-ceremony.jpg",
         features: ["Venue Selection", "Vendor Management", "Timeline Coordination"]
     },
     {
         title: "Destination Weddings",
         description: "Dreaming of a wedding in an exotic location? We specialize in creating unforgettable destination weddings.",
-        image: "/images/venues/seattle-resort-wedding-hall.jpg",
+        image: "/seattle-resort-wedding-hall.jpg",
         features: ["Location Scouting", "Travel Coordination", "Local Vendor Network"]
     },
     {
         title: "Decor & Design",
         description: "Our team of talented designers will transform your vision into a stunning reality with bespoke decor concepts.",
-        image: "/images/venues/wedding-floral-decoration-setup.jpg",
+        image: "/wedding-floral-decoration-setup.jpg",
         features: ["Custom Design", "Floral Arrangements", "Lighting Design"]
     }
 ];

@@ -4,10 +4,10 @@ import { ShimmerEffect } from '../shimmer-effect';
 import { ThumbnailImage } from '@/components/optimized-image';
 
 const featuredWeddings = [
-    { src: "/images/portraits/bride-groom-wedding-portrait.jpg", alt: "Bride smiling" },
-    { src: "/images/portraits/bride-groom-dance-celebration.jpg", alt: "Couple smiling" },
-    { src: "/images/ceremonies/hindu-wedding-photography-ceremony.jpg", alt: "Wedding details" },
-    { src: "/images/venues/traditional-phere-ceremony-hall.jpg", alt: "Groom smiling" },
+    { src: "/bride-groom-wedding-portrait.jpg", alt: "Bride smiling" },
+    { src: "/bride-groom-dance-celebration.jpg", alt: "Couple smiling" },
+    { src: "/hindu-wedding-photography-ceremony.jpg", alt: "Wedding details" },
+    { src: "/traditional-phere-ceremony-hall.jpg", alt: "Groom smiling" },
 ];
 
 export function FeaturedWeddingsSection() {

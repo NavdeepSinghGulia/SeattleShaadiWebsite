@@ -20,25 +20,25 @@ const services = [
     title: "Full-Service Planning & Execution",
     description: "Our most comprehensive package, covering every aspect from the initial concept to the final farewell. We handle everything, so you can soak in every moment.",
     features: ["Unlimited Consultations", "Budget Management", "Venue & Vendor Sourcing", "Event Day Coordination"],
-    image: "/images/venues/seattle-wedding-hall-ceremony.jpg",
+    image: "/seattle-wedding-hall-ceremony.jpg",
   },
   {
     title: "Destination Wedding Curation",
     description: "From the serene beaches of Goa to the royal palaces of Rajasthan, we craft breathtaking destination weddings that are as unique as your love story.",
     features: ["Location Scouting", "Travel & Accommodation Logistics", "Guest Management", "Local Vendor Coordination"],
-    image: "/images/venues/seattle-wedding-garden-lawns.jpg",
+    image: "/seattle-wedding-garden-lawns.jpg",
   },
   {
     title: "Decor, Design & Styling",
     description: "For couples who have the planning under control but need a creative eye to bring their aesthetic vision to life. We design and execute stunning visual concepts.",
     features: ["Theme Conceptualization", "Floral & Lighting Design", "Custom Installations", "Furniture & Linen Sourcing"],
-    image: "/images/venues/elegant-wedding-hall-lighting.webp",
+    image: "/elegant-wedding-hall-lighting.webp",
   },
   {
     title: "Partial Planning",
     description: "Perfect for couples who have started planning but need expert assistance to tie up loose ends and manage specific aspects of their wedding.",
     features: ["Vendor Recommendations", "Timeline Creation", "Select Vendor Management", "Final Month Coordination"],
-    image: "/images/portraits/bride-groom-ceremony-handshake.jpg",
+    image: "/bride-groom-ceremony-handshake.jpg",
   }
 ];
 
