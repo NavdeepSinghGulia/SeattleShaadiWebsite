@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Script from 'next/script';
 
@@ -11,6 +11,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import OptimizedImage from '@/components/optimized-image';
 
 interface Tradition {
   id: string;
@@ -338,11 +339,6 @@ const traditions: Record<string, Tradition[]> = {
 const TraditionsPage = () => {
   const { shouldAnimate } = useAnimation();
   const [activeTab, setActiveTab] = useState('hindu');
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const structuredData = {
     '@context': 'https://schema.org',
@@ -393,78 +389,73 @@ const TraditionsPage = () => {
               </p>
             </div>
 
-            {isClient && (
-              <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="mb-12">
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-7">
-                  <TabsTrigger value="hindu">Hindu</TabsTrigger>
-                  <TabsTrigger value="sikh">Sikh</TabsTrigger>
-                  <TabsTrigger value="muslim">Muslim</TabsTrigger>
-                  <TabsTrigger value="tamil">Tamil</TabsTrigger>
-                  <TabsTrigger value="telugu">Telugu</TabsTrigger>
-                  <TabsTrigger value="kannada">Kannada</TabsTrigger>
-                  <TabsTrigger value="malayalam">Malayalam</TabsTrigger>
-                </TabsList>
+            <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="mb-12">
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-7">
+                <TabsTrigger value="hindu">Hindu</TabsTrigger>
+                <TabsTrigger value="sikh">Sikh</TabsTrigger>
+                <TabsTrigger value="muslim">Muslim</TabsTrigger>
+                <TabsTrigger value="tamil">Tamil</TabsTrigger>
+                <TabsTrigger value="telugu">Telugu</TabsTrigger>
+                <TabsTrigger value="kannada">Kannada</TabsTrigger>
+                <TabsTrigger value="malayalam">Malayalam</TabsTrigger>
+              </TabsList>
 
-                {Object.entries(traditions).map(([key, traditionsList]) => (
-                  <TabsContent key={key} value={key} className="mt-6">
-                    <div className="space-y-8">
-                      {traditionsList.map((tradition, index) => (
-                        <Card
-                          key={tradition.id}
-                          id={tradition.id}
-                          className="p-6 bg-card/95 backdrop-blur-sm border-primary/20 overflow-hidden"
-                        >
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                            <div className="md:col-span-1 relative h-60 md:h-full rounded-lg overflow-hidden">
-                              <Image
-                                src={tradition.imageUrl}
-                                alt={`${tradition.name} - Seattle Indian Wedding ${key.charAt(0).toUpperCase() + key.slice(1)} Tradition | Authentic Cultural Ceremony`}
-                                fill
-                                className="object-cover"
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                priority={activeTab === key && index < 2}
-                                loading={activeTab === key && index < 2 ? 'eager' : 'lazy'}
-                                quality={80}
-                                placeholder="blur"
-                                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAEDQIHXG8H/QAAAABJRU5ErkJggg=="
-                              />
+              {Object.entries(traditions).map(([key, traditionsList]) => (
+                <TabsContent key={key} value={key} className="mt-6">
+                  <div className="space-y-8">
+                    {traditionsList.map((tradition, index) => (
+                      <Card
+                        key={tradition.id}
+                        id={tradition.id}
+                        className="p-6 bg-card/95 backdrop-blur-sm border-primary/20 overflow-hidden"
+                      >
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          <div className="md:col-span-1 relative h-60 md:h-full rounded-lg overflow-hidden">
+                            <OptimizedImage
+                              src={tradition.imageUrl}
+                              alt={`${tradition.name} - Seattle Indian Wedding ${key.charAt(0).toUpperCase() + key.slice(1)} Tradition | Authentic Cultural Ceremony`}
+                              fill
+                              className="object-cover"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                              priority={activeTab === key && index < 2}
+                              lazy={!(activeTab === key && index < 2)}
+                            />
+                          </div>
+                          <div className="md:col-span-2">
+                            <h2 className="text-2xl font-playfair font-bold text-primary mb-2">
+                              {tradition.name}
+                            </h2>
+                            <p className="text-muted-foreground mb-4">
+                              {tradition.description}
+                            </p>
+
+                            <div className="space-y-4">
+                              <div>
+                                <h3 className="font-medium text-primary">Significance</h3>
+                                <p className="text-sm">{tradition.significance}</p>
+                              </div>
+                              <Separator />
+                              <div>
+                                <h3 className="font-medium text-primary">Modern Adaptations</h3>
+                                <p className="text-sm">{tradition.modernAdaptations}</p>
+                              </div>
                             </div>
-                            <div className="md:col-span-2">
-                              <h2 className="text-2xl font-playfair font-bold text-primary mb-2">
-                                {tradition.name}
-                              </h2>
-                              <p className="text-muted-foreground mb-4">
-                                {tradition.description}
-                              </p>
 
-                              <div className="space-y-4">
-                                <div>
-                                  <h3 className="font-medium text-primary">Significance</h3>
-                                  <p className="text-sm">{tradition.significance}</p>
-                                </div>
-                                <Separator />
-                                <div>
-                                  <h3 className="font-medium text-primary">Modern Adaptations</h3>
-                                  <p className="text-sm">{tradition.modernAdaptations}</p>
-                                </div>
-                              </div>
-
-                              <div className="mt-6">
-                                <Button variant="outline" size="sm" asChild>
-                                  <a href={`/blog/${tradition.id}-ceremony-seattle-indian-wedding`}>
-                                    Read More About {tradition.name}
-                                  </a>
-                                </Button>
-                              </div>
+                            <div className="mt-6">
+                              <Button variant="outline" size="sm" asChild>
+                                <a href={`/blog/${tradition.id}-ceremony-seattle-indian-wedding`}>
+                                  Read More About {tradition.name}
+                                </a>
+                              </Button>
                             </div>
                           </div>
-                        </Card>
-                      ))}
-                    </div>
-                  </TabsContent>
-                ))}
-              </Tabs>
-            )}
+                        </div>
+                      </Card>
+                    ))}
+                  </div>
+                </TabsContent>
+              ))}
+            </Tabs>
 
             <div className="text-center mb-12">
               <h2 className="text-2xl font-playfair font-bold mb-4">

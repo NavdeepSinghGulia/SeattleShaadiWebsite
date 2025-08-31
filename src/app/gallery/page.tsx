@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, 'useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Seo } from '@/components/seo';
 import { RoyalBackground } from '@/components/royal-background';
@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import OptimizedImage from '@/components/optimized-image';
 import { generateMetadata } from '@/lib/seo-config';
 
 interface GalleryImage {
@@ -227,13 +228,8 @@ const galleryImages: GalleryImage[] = [
 const GalleryPage = () => {
   const { shouldAnimate } = useAnimation();
   const [activeTab, setActiveTab] = useState('ceremonies');
-  const [isClient, setIsClient] = useState(false);
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
   const [lightboxOpen, setLightboxOpen] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   const openLightbox = (image: GalleryImage) => {
     setSelectedImage(image);
@@ -283,47 +279,45 @@ const GalleryPage = () => {
               </p>
             </div>
             
-            {isClient && (
-              <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="mb-12">
-                <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
-                  <TabsTrigger value="ceremonies">Ceremonies</TabsTrigger>
-                  <TabsTrigger value="decor">Decor</TabsTrigger>
-                  <TabsTrigger value="food">Food</TabsTrigger>
-                  <TabsTrigger value="attire">Attire</TabsTrigger>
-                </TabsList>
-                
-                {['ceremonies', 'decor', 'food', 'attire'].map((category) => (
-                  <TabsContent key={category} value={category} className="mt-6">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                      {galleryImages
-                        .filter(img => img.category === category)
-                        .map((image) => (
-                          <Card 
-                            key={image.id} 
-                            className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group"
-                            onClick={() => openLightbox(image)}
-                          >
-                            <div className="relative aspect-square overflow-hidden">
-                              <Image 
-                                src={image.src}
-                                alt={image.alt}
-                                width={400}
-                                height={400}
-                                className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
-                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
-                                <h3 className="text-white font-medium">{image.alt}</h3>
-                                <p className="text-white/80 text-sm">{image.location}</p>
-                              </div>
+            <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="mb-12">
+              <TabsList className="grid w-full grid-cols-2 md:grid-cols-4">
+                <TabsTrigger value="ceremonies">Ceremonies</TabsTrigger>
+                <TabsTrigger value="decor">Decor</TabsTrigger>
+                <TabsTrigger value="food">Food</TabsTrigger>
+                <TabsTrigger value="attire">Attire</TabsTrigger>
+              </TabsList>
+              
+              {['ceremonies', 'decor', 'food', 'attire'].map((category) => (
+                <TabsContent key={category} value={category} className="mt-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                    {galleryImages
+                      .filter(img => img.category === category)
+                      .map((image) => (
+                        <Card 
+                          key={image.id} 
+                          className="overflow-hidden cursor-pointer hover:shadow-lg transition-shadow group"
+                          onClick={() => openLightbox(image)}
+                        >
+                          <div className="relative aspect-square overflow-hidden">
+                            <OptimizedImage 
+                              src={image.src}
+                              alt={image.alt}
+                              width={400}
+                              height={400}
+                              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-4">
+                              <h3 className="text-white font-medium">{image.alt}</h3>
+                              <p className="text-white/80 text-sm">{image.location}</p>
                             </div>
-                          </Card>
-                        ))}
-                    </div>
-                  </TabsContent>
-                ))}
-              </Tabs>
-            )}
+                          </div>
+                        </Card>
+                      ))}
+                  </div>
+                </TabsContent>
+              ))}
+            </Tabs>
 
             <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
               <DialogContent className="max-w-5xl w-full p-0 bg-black/90 border-none">
@@ -339,7 +333,7 @@ const GalleryPage = () => {
                   {selectedImage && (
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
                       <div className="md:col-span-2 relative aspect-square md:aspect-auto h-[60vh] md:h-auto">
-                        <Image 
+                        <OptimizedImage 
                           src={selectedImage.src}
                           alt={selectedImage.alt}
                           fill

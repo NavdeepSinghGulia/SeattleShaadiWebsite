@@ -1,6 +1,7 @@
+
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import Image, { ImageProps } from 'next/image';
 import { cn } from '@/lib/utils';
 import { useIntersectionObserver } from '@/hooks/use-performance';
@@ -33,11 +34,16 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [currentSrc, setCurrentSrc] = useState(src);
-  
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   const { targetRef, hasIntersected } = useIntersectionObserver({
     threshold: 0.1,
     rootMargin: '50px',
-  }) as unknown as { targetRef: React.RefObject<HTMLDivElement>; hasIntersected: boolean };
+  });
 
   const handleLoad = useCallback(() => {
     setIsLoading(false);
@@ -59,20 +65,20 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
     }
   }, [src, fallbackSrc, currentSrc, onError]);
 
-  const shouldRender = !lazy || hasIntersected;
+  const shouldRender = !lazy || hasIntersected || !isMounted;
 
-  const wrapperFillClasses = (props as any).fill ? 'h-full w-full' : '';
+  const wrapperFillClasses = props.fill ? 'h-full w-full' : '';
 
   return (
     <div 
-      ref={targetRef}
+      ref={targetRef as React.RefObject<HTMLDivElement>}
       className={cn(
         'relative overflow-hidden',
         wrapperFillClasses,
         containerClassName
       )}
     >
-      {shouldRender && (
+      {shouldRender ? (
         <>
           {isLoading && showLoadingSpinner && (
             <div className={cn(
@@ -113,7 +119,7 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
             onLoad={handleLoad}
             onError={handleError}
             decoding={props.priority ? 'sync' : 'async'}
-            fetchPriority={(props as any).priority ? 'high' : 'auto'}
+            fetchPriority={props.priority ? 'high' : 'auto'}
             className={cn(
               'transition-opacity duration-300',
               isLoading ? 'opacity-0' : 'opacity-100',
@@ -123,12 +129,11 @@ const OptimizedImage: React.FC<OptimizedImageProps> = ({
             {...props}
           />
         </>
-      )}
-
-      {!shouldRender && (
+      ) : (
         <div className={cn(
           'w-full h-full bg-gray-200 animate-pulse',
-          className
+          props.fill ? 'absolute inset-0' : '',
+           props.className
         )} />
       )}
     </div>
@@ -246,4 +251,3 @@ export const ProgressiveImage: React.FC<ProgressiveImageProps> = ({
 };
 
 export default OptimizedImage;
-
